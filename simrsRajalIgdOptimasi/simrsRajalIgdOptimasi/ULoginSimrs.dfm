@@ -1,10 +1,12 @@
 object FLoginSimrs: TFLoginSimrs
-  Left = 471
-  Top = 221
-  Width = 482
-  Height = 295
+  Left = 275
+  Top = 445
+  Align = alCustom
   BorderIcons = [biMinimize, biMaximize]
+  BorderStyle = bsSingle
   Caption = 'LOGIN SIMRS....!'
+  ClientHeight = 242
+  ClientWidth = 445
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,16 +20,18 @@ object FLoginSimrs: TFLoginSimrs
   object pnlTengah: TPanel
     Left = 0
     Top = 0
-    Width = 466
-    Height = 49
+    Width = 445
+    Height = 41
     Align = alTop
     Color = 14581296
     TabOrder = 0
     object lblLogin: TLabel
-      Left = 120
-      Top = 16
-      Width = 193
-      Height = 24
+      Left = 1
+      Top = 1
+      Width = 443
+      Height = 39
+      Align = alClient
+      Alignment = taCenter
       Caption = 'SILAHKAN LOGIN...!'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -39,25 +43,25 @@ object FLoginSimrs: TFLoginSimrs
   end
   object pnlBawah: TPanel
     Left = 0
-    Top = 207
-    Width = 466
+    Top = 193
+    Width = 445
     Height = 49
     Align = alBottom
     Color = 14581296
     TabOrder = 1
     object btnLogin: TcxButton
       Left = 8
-      Top = 16
-      Width = 81
+      Top = 8
+      Width = 129
       Height = 25
       Caption = 'LOGIN'
       TabOrder = 0
       OnClick = btnLoginClick
     end
     object btnBatal: TcxButton
-      Left = 96
-      Top = 16
-      Width = 89
+      Left = 152
+      Top = 8
+      Width = 129
       Height = 25
       Caption = 'BATAL '
       TabOrder = 1
@@ -66,14 +70,14 @@ object FLoginSimrs: TFLoginSimrs
   end
   object pnlTengah1: TPanel
     Left = 0
-    Top = 49
-    Width = 466
-    Height = 158
+    Top = 41
+    Width = 445
+    Height = 152
     Align = alClient
     Color = clBtnHighlight
     TabOrder = 2
     object lblUsername: TLabel
-      Left = 168
+      Left = 144
       Top = 16
       Width = 57
       Height = 13
@@ -86,8 +90,8 @@ object FLoginSimrs: TFLoginSimrs
       ParentFont = False
     end
     object lblPassword: TLabel
-      Left = 168
-      Top = 72
+      Left = 144
+      Top = 56
       Width = 55
       Height = 13
       Caption = 'Password'
@@ -99,8 +103,8 @@ object FLoginSimrs: TFLoginSimrs
       ParentFont = False
     end
     object lblLevel: TLabel
-      Left = 168
-      Top = 112
+      Left = 144
+      Top = 88
       Width = 32
       Height = 13
       Caption = 'Level'
@@ -111,40 +115,9 @@ object FLoginSimrs: TFLoginSimrs
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object edtUsername: TEdit
-      Left = 232
-      Top = 16
-      Width = 201
-      Height = 21
-      TabOrder = 0
-      OnKeyPress = edtUsernameKeyPress
-    end
-    object edtPassword: TEdit
-      Left = 232
-      Top = 64
-      Width = 201
-      Height = 21
-      TabOrder = 1
-      OnKeyPress = edtPasswordKeyPress
-    end
-    object cbbLevel: TComboBox
-      Left = 232
-      Top = 104
-      Width = 201
-      Height = 21
-      CharCase = ecUpperCase
-      ItemHeight = 13
-      TabOrder = 2
-      OnKeyPress = cbbLevelKeyPress
-      Items.Strings = (
-        'ADMINISTRATOR'
-        'PENDAFTARAN'
-        'LOKET KASIR'
-        'RAWAT JALAN - IGD')
-    end
     object img1: TcxImage
-      Left = 0
-      Top = 0
+      Left = 16
+      Top = 8
       Picture.Data = {
         0A54504E474F626A65637489504E470D0A1A0A0000000D49484452000007BD00
         0008A00806000000434B3691000000097048597300000B1300000B1301009A9C
@@ -40375,9 +40348,40 @@ object FLoginSimrs: TFLoginSimrs
         AE426082}
       Style.BorderColor = clWindow
       Style.BorderStyle = ebsNone
+      TabOrder = 0
+      Height = 105
+      Width = 129
+    end
+    object edtUsername: TEdit
+      Left = 208
+      Top = 16
+      Width = 201
+      Height = 21
+      TabOrder = 1
+      OnKeyPress = edtUsernameKeyPress
+    end
+    object edtPassword: TEdit
+      Left = 208
+      Top = 48
+      Width = 201
+      Height = 21
+      TabOrder = 2
+      OnKeyPress = edtPasswordKeyPress
+    end
+    object cbbLevel: TComboBox
+      Left = 208
+      Top = 80
+      Width = 201
+      Height = 21
+      CharCase = ecUpperCase
+      ItemHeight = 13
       TabOrder = 3
-      Height = 161
-      Width = 161
+      OnKeyPress = cbbLevelKeyPress
+      Items.Strings = (
+        'ADMINISTRATOR'
+        'PENDAFTARAN'
+        'LOKET KASIR'
+        'RAWAT JALAN - IGD')
     end
   end
 end

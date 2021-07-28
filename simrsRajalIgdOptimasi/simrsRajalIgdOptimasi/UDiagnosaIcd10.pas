@@ -123,7 +123,7 @@ begin
                 'ON t_diagnosaicd10.kdJenisKasus = t_kasusdiagnosa.kdKasusDiagnosa INNER JOIN t_registrasi '+
                 'ON t_diagnosaicd10.noDaftar = t_registrasi.noDaftar INNER JOIN t_registrasirawatjalan '+
                 'ON t_registrasirawatjalan.noDaftar = t_registrasi.noDaftar INNER JOIN t_unit '+
-                'ON t_unit.kdUnit = t_registrasirawatjalan.kdUnit where t_diagnosaicd10.noRekamedis="'+FRawatJalanIgd.edtNoRm.Text+'" limit 30';
+                'ON t_unit.kdUnit = t_registrasirawatjalan.kdUnit where t_diagnosaicd10.noRekamedis="'+FRawatJalanIgd.edtNoRm.Text+'" ORDER BY t_registrasi.tglDaftar DESC limit 30';
     Open;
   end;
 end;

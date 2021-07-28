@@ -1,10 +1,12 @@
 object FTindakanIgd: TFTindakanIgd
-  Left = 191
-  Top = 125
-  Width = 1381
-  Height = 675
+  Left = 0
+  Top = 172
   Align = alClient
+  BorderIcons = [biSystemMenu, biMaximize]
+  BorderStyle = bsNone
   Caption = 'TINDAKAN IGD'
+  ClientHeight = 744
+  ClientWidth = 1365
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +14,7 @@ object FTindakanIgd: TFTindakanIgd
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  WindowState = wsMaximized
+  Visible = True
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -40,19 +42,19 @@ object FTindakanIgd: TFTindakanIgd
       Caption = 'KELUAR'
       Color = 5855743
       TabOrder = 0
-      Visible = False
+      OnClick = pnlKeluarClick
     end
   end
   object pnlBawah: TPanel
     Left = 0
-    Top = 584
+    Top = 692
     Width = 1365
     Height = 52
     Align = alBottom
     Color = 15115304
     TabOrder = 1
     object btnSelesai: TButton
-      Left = 104
+      Left = 256
       Top = 16
       Width = 75
       Height = 25
@@ -81,12 +83,42 @@ object FTindakanIgd: TFTindakanIgd
       TabOrder = 1
       OnClick = btnHapusClick
     end
+    object btnMasukanTindakan: TButton
+      Left = 336
+      Top = 16
+      Width = 145
+      Height = 25
+      Caption = 'MASUKAN TINDAKAN'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+      OnClick = btnMasukanTindakanClick
+    end
+    object btnRubahJml: TButton
+      Left = 104
+      Top = 16
+      Width = 145
+      Height = 25
+      Caption = 'UBAH JML TINDAKAN'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 3
+      OnClick = btnRubahJmlClick
+    end
   end
   object pnlTengah: TPanel
     Left = 0
     Top = 49
     Width = 1365
-    Height = 535
+    Height = 643
     Align = alClient
     TabOrder = 2
     object pnlTengahAtas: TPanel
@@ -102,6 +134,8 @@ object FTindakanIgd: TFTindakanIgd
         Width = 1361
         Height = 94
         Align = alClient
+        Color = 16577248
+        ParentColor = False
         TabOrder = 0
         object lblNoRm: TLabel
           Left = 8
@@ -291,7 +325,7 @@ object FTindakanIgd: TFTindakanIgd
         object edtDokter: TEdit
           Left = 576
           Top = 24
-          Width = 369
+          Width = 377
           Height = 21
           Enabled = False
           Font.Charset = ANSI_CHARSET
@@ -333,7 +367,7 @@ object FTindakanIgd: TFTindakanIgd
         object edtUmur: TEdit
           Left = 376
           Top = 64
-          Width = 185
+          Width = 193
           Height = 21
           Enabled = False
           Font.Charset = ANSI_CHARSET
@@ -361,7 +395,7 @@ object FTindakanIgd: TFTindakanIgd
         object dtpTglLahir: TDateTimePicker
           Left = 176
           Top = 64
-          Width = 185
+          Width = 193
           Height = 21
           Date = 43522.647666087960000000
           Time = 43522.647666087960000000
@@ -379,7 +413,6 @@ object FTindakanIgd: TFTindakanIgd
           Top = 24
           Width = 161
           Height = 21
-          Enabled = False
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -391,9 +424,8 @@ object FTindakanIgd: TFTindakanIgd
         object edtNoRajal: TEdit
           Left = 1128
           Top = 24
-          Width = 185
+          Width = 193
           Height = 21
-          Enabled = False
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -408,7 +440,7 @@ object FTindakanIgd: TFTindakanIgd
       Left = 1
       Top = 97
       Width = 1363
-      Height = 234
+      Height = 254
       Align = alClient
       TabOrder = 1
       object grpDokter: TGroupBox
@@ -433,19 +465,36 @@ object FTindakanIgd: TFTindakanIgd
           Width = 489
         end
         object edtNoTransaksiTindakanRajal: TEdit
-          Left = 544
+          Left = 520
           Top = 22
           Width = 217
           Height = 21
-          Enabled = False
           TabOrder = 1
+        end
+        object btnHistoriTndk: TButton
+          Left = 744
+          Top = 24
+          Width = 129
+          Height = 25
+          Caption = 'HISTORI TINDAKAN'
+          TabOrder = 2
+          OnClick = btnHistoriTndkClick
+        end
+        object btnNoBaru: TButton
+          Left = 880
+          Top = 24
+          Width = 113
+          Height = 25
+          Caption = 'NO TNDK BARU'
+          TabOrder = 3
+          OnClick = btnNoBaruClick
         end
       end
       object grpDataPilihTindakan: TGroupBox
         Left = 1
         Top = 57
         Width = 1361
-        Height = 176
+        Height = 196
         Align = alClient
         Caption = 'DATA PILIH TINDAKAN'
         TabOrder = 1
@@ -453,27 +502,18 @@ object FTindakanIgd: TFTindakanIgd
           Left = 2
           Top = 15
           Width = 1357
-          Height = 118
+          Height = 138
           Align = alClient
-          DataGrouping.GroupLevels = <>
           DataSource = DataSimrs.dsvw_tindakantarifrajalkelomopok
-          Flat = False
-          FooterColor = clWindow
-          FooterFont.Charset = DEFAULT_CHARSET
-          FooterFont.Color = clWindowText
-          FooterFont.Height = -11
-          FooterFont.Name = 'MS Sans Serif'
-          FooterFont.Style = []
+          DynProps = <>
+          FooterParams.Color = clWindow
           IndicatorOptions = [gioShowRowIndicatorEh, gioShowRowselCheckboxesEh]
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
           Columns = <
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'kdTindakan'
               Footers = <>
@@ -481,6 +521,8 @@ object FTindakanIgd: TFTindakanIgd
               Width = 84
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tindakan'
               Footers = <>
@@ -488,6 +530,8 @@ object FTindakanIgd: TFTindakanIgd
               Width = 378
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'kelompokTindakan'
               Footers = <>
@@ -495,7 +539,9 @@ object FTindakanIgd: TFTindakanIgd
               Width = 231
             end
             item
+              CellButtons = <>
               DisplayFormat = '#,#0.00'
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tarif'
               Footers = <>
@@ -506,7 +552,7 @@ object FTindakanIgd: TFTindakanIgd
         end
         object pnlDataTindakan: TPanel
           Left = 2
-          Top = 133
+          Top = 153
           Width = 1357
           Height = 41
           Align = alBottom
@@ -540,9 +586,9 @@ object FTindakanIgd: TFTindakanIgd
     end
     object grpTengahBawah: TGroupBox
       Left = 1
-      Top = 331
+      Top = 351
       Width = 1363
-      Height = 203
+      Height = 291
       Align = alBottom
       Caption = 'DATA TINDAKAN YANG SUDAH DI INPUT'
       TabOrder = 2
@@ -550,35 +596,27 @@ object FTindakanIgd: TFTindakanIgd
         Left = 2
         Top = 15
         Width = 1359
-        Height = 186
+        Height = 274
         Align = alClient
-        DataGrouping.GroupLevels = <>
         DataSource = DataSimrs.dsvw_detailtindakanpasienrajal
-        Flat = False
-        FooterColor = clWindow
-        FooterFont.Charset = DEFAULT_CHARSET
-        FooterFont.Color = clWindowText
-        FooterFont.Height = -11
-        FooterFont.Name = 'MS Sans Serif'
-        FooterFont.Style = []
+        DynProps = <>
         FooterRowCount = 1
-        IndicatorOptions = [gioShowRowIndicatorEh]
+        FooterParams.Color = clWindow
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
         SumList.Active = True
         TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
         Columns = <
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'kdTarif'
             Footers = <>
             Title.Caption = 'KODE'
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'tindakan'
             Footers = <>
@@ -586,6 +624,8 @@ object FTindakanIgd: TFTindakanIgd
             Width = 350
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'tarif'
             Footers = <>
@@ -593,6 +633,8 @@ object FTindakanIgd: TFTindakanIgd
             Width = 71
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'jumlahTindakan'
             Footers = <>
@@ -600,6 +642,8 @@ object FTindakanIgd: TFTindakanIgd
             Width = 52
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'totalTarif'
             Footer.DisplayFormat = '#,#0.00'
@@ -610,6 +654,8 @@ object FTindakanIgd: TFTindakanIgd
             Width = 83
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'namapetugasMedis'
             Footers = <>
@@ -617,6 +663,8 @@ object FTindakanIgd: TFTindakanIgd
             Width = 272
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'KelompokTenagaMedis'
             Footers = <>

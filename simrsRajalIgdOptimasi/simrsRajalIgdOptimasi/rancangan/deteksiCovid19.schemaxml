@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">simrs</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="t_FDeteksiDiniCovid19" view="colnames">
+<left>91</left>
+<top>26</top>
+<width>194</width>
+<height>321</height>
+<sql_create_table>CREATE TABLE `t_fdeteksidinicovid19` (
+  `noDeteksiDiniCovid19` varchar(100) NOT NULL,
+  `noDaftar` varchar(100) DEFAULT NULL,
+  `noRegistrasiRawatJalan` varchar(100) DEFAULT NULL,
+  `noRekamedis` varchar(30) DEFAULT NULL,
+  `tglDatang` datetime DEFAULT NULL,
+  `tglPertamaGejala` datetime DEFAULT NULL,
+  `batuk` varchar(20) DEFAULT NULL,
+  `sesakNafas` varchar(20) DEFAULT NULL,
+  `sakitTenggorokan` varchar(25) DEFAULT NULL,
+  `pneumonia` enum('Ringan','Sedang','Berat') DEFAULT NULL,
+  `riwayatDemam` text,
+  PRIMARY KEY (`noDeteksiDiniCovid19`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

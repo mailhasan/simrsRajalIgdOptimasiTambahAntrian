@@ -1,6 +1,6 @@
 object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
-  Left = 224
-  Top = 125
+  Left = 105
+  Top = 143
   Width = 1305
   Height = 675
   Caption = 'MASUKAN TINDAKAN RAWAT JALAN'
@@ -112,25 +112,16 @@ object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
         Width = 1283
         Height = 262
         Align = alClient
-        DataGrouping.GroupLevels = <>
         DataSource = DataSimrs.dsvw_tindakantarifrajal
-        Flat = False
-        FooterColor = clWindow
-        FooterFont.Charset = DEFAULT_CHARSET
-        FooterFont.Color = clWindowText
-        FooterFont.Height = -11
-        FooterFont.Name = 'MS Sans Serif'
-        FooterFont.Style = []
+        DynProps = <>
+        FooterParams.Color = clWindow
         IndicatorOptions = [gioShowRowIndicatorEh, gioShowRowselCheckboxesEh]
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
         TabOrder = 1
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
         Columns = <
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'kdTarif'
             Footers = <>
@@ -138,6 +129,8 @@ object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
             Width = 90
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'kdTindakan'
             Footers = <>
@@ -145,6 +138,8 @@ object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
             Width = 106
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'tindakan'
             Footers = <>
@@ -152,6 +147,8 @@ object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
             Width = 397
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'kelompokTindakan'
             Footers = <>
@@ -159,6 +156,8 @@ object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
             Width = 263
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'tarif'
             Footers = <>
@@ -182,25 +181,15 @@ object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
         Width = 1283
         Height = 196
         Align = alClient
-        DataGrouping.GroupLevels = <>
         DataSource = DataSimrs.dsvw_tindakantarifrajalkelomopok
-        Flat = False
-        FooterColor = clWindow
-        FooterFont.Charset = DEFAULT_CHARSET
-        FooterFont.Color = clWindowText
-        FooterFont.Height = -11
-        FooterFont.Name = 'MS Sans Serif'
-        FooterFont.Style = []
-        IndicatorOptions = [gioShowRowIndicatorEh]
+        DynProps = <>
+        FooterParams.Color = clWindow
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
         Columns = <
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'kdTarif'
             Footers = <>
@@ -208,6 +197,8 @@ object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
             Width = 109
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'kdTindakan'
             Footers = <>
@@ -215,6 +206,8 @@ object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
             Width = 108
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'kelompokTindakan'
             Footers = <>
@@ -222,6 +215,8 @@ object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
             Width = 207
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'tindakan'
             Footers = <>
@@ -229,12 +224,16 @@ object FMasukanTindakanRawatJalan: TFMasukanTindakanRawatJalan
             Width = 267
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'tarif'
             Footers = <>
             Title.Caption = 'TARIF'
           end
           item
+            CellButtons = <>
+            DynProps = <>
             EditButtons = <>
             FieldName = 'unit'
             Footers = <>

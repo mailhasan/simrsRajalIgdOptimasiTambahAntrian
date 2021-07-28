@@ -15,7 +15,8 @@ uses
   dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue, cxTextEdit,
   cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  cxCurrencyEdit, DBGridEhGrouping, GridsEh, DBGridEh;
+  cxCurrencyEdit, DBGridEhGrouping, GridsEh, DBGridEh, ToolCtrlsEh,
+  DBGridEhToolCtrls, DynVarsEh, EhLibVCL, DBAxisGridsEh;
 
 type
   TFEresepRajal = class(TForm)

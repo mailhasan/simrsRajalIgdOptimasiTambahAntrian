@@ -75,14 +75,14 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
         end
         object lblJk: TLabel
           Left = 224
-          Top = 104
+          Top = 64
           Width = 13
           Height = 13
           Caption = 'JK'
         end
         object lblTglLahir: TLabel
-          Left = 208
-          Top = 64
+          Left = 224
+          Top = 104
           Width = 90
           Height = 13
           Caption = 'TANGGAL LAHIR'
@@ -98,7 +98,7 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
         object edtNoRegistrasi: TEdit
           Left = 136
           Top = 40
-          Width = 169
+          Width = 201
           Height = 21
           Enabled = False
           TabOrder = 1
@@ -106,7 +106,7 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
         object edtNama: TEdit
           Left = 8
           Top = 80
-          Width = 185
+          Width = 209
           Height = 21
           Enabled = False
           TabOrder = 2
@@ -121,15 +121,15 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
         end
         object edtJk: TEdit
           Left = 224
-          Top = 120
-          Width = 89
+          Top = 80
+          Width = 113
           Height = 21
           Enabled = False
           TabOrder = 4
         end
         object dtpTglLahir: TDateTimePicker
-          Left = 208
-          Top = 80
+          Left = 224
+          Top = 120
           Width = 114
           Height = 21
           Date = 43601.396545740740000000
@@ -192,6 +192,13 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
           Width = 169
           Height = 13
           Caption = 'NO TRANSAKSI TINDAKAN RAD'
+        end
+        object lblCaraBayar: TLabel
+          Left = 344
+          Top = 120
+          Width = 72
+          Height = 13
+          Caption = 'lblCaraBayar'
         end
         object dtpTglPermintaan: TDateTimePicker
           Left = 8
@@ -327,25 +334,16 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
           Width = 506
           Height = 215
           Align = alClient
-          DataGrouping.GroupLevels = <>
           DataSource = DataSimrs.dsvw_tindakanrad
-          Flat = False
-          FooterColor = clWindow
-          FooterFont.Charset = DEFAULT_CHARSET
-          FooterFont.Color = clWindowText
-          FooterFont.Height = -11
-          FooterFont.Name = 'MS Sans Serif'
-          FooterFont.Style = [fsBold]
+          DynProps = <>
+          FooterParams.Color = clWindow
           IndicatorOptions = [gioShowRowIndicatorEh, gioShowRowselCheckboxesEh]
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = [fsBold]
           Columns = <
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'kdTindakan'
               Footers = <>
@@ -353,6 +351,8 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
               Width = 74
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tindakan'
               Footers = <>
@@ -360,6 +360,8 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
               Width = 211
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'kelas'
               Footers = <>
@@ -367,6 +369,8 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
               Width = 65
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tarif'
               Footers = <>
@@ -423,33 +427,26 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
           Width = 490
           Height = 278
           Align = alClient
-          DataGrouping.GroupLevels = <>
           DataSource = DataSimrs.dsvw_detailtindakanradiologirajal
-          Flat = False
-          FooterColor = clWindow
-          FooterFont.Charset = DEFAULT_CHARSET
-          FooterFont.Color = clWindowText
-          FooterFont.Height = -11
-          FooterFont.Name = 'MS Sans Serif'
-          FooterFont.Style = []
+          DynProps = <>
           FooterRowCount = 1
+          FooterParams.Color = clWindow
           IndicatorOptions = []
           Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
           SumList.Active = True
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
           Columns = <
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'kdTarif'
               Footers = <>
               Title.Caption = 'KODE'
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tindakan'
               Footers = <>
@@ -457,18 +454,24 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
               Width = 255
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tarif'
               Footers = <>
               Title.Caption = 'TARIF'
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'jumlahTindakan'
               Footers = <>
               Title.Caption = 'JUMLAH'
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'totalTarif'
               Footer.ValueType = fvtSum
@@ -477,6 +480,8 @@ object FPermintaanRadRajal: TFPermintaanRadRajal
               Width = 103
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'namapetugasMedis'
               Footers = <>

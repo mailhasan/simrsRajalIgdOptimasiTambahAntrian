@@ -17,7 +17,8 @@ uses
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
   cxDBLookupEdit, cxDBLookupComboBox, ComCtrls, StdCtrls, cxCalendar,
   Menus, cxButtons, Mask, DBCtrlsEh, DB, ADODB, DBGridEhGrouping, GridsEh,
-  DBGridEh;
+  DBGridEh, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, EhLibVCL,
+  DBAxisGridsEh;
 
 type
   TFRegistrasiRuangOk = class(TForm)

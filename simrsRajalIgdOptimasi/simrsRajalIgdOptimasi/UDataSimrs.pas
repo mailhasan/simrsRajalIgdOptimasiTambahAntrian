@@ -97,8 +97,9 @@ type
     dst_antrianpoli: TDataSource;
     qryt_statusantrian: TADOQuery;
     dst_statusantrian: TDataSource;
-    qryRl4B: TADOQuery;
-    dsRL4B: TDataSource;
+    qryt_detailtindakanpasienrajalhapus: TADOQuery;
+    qryt_statuscovid19: TADOQuery;
+    dst_statuscovid19: TDataSource;
   private
     { Private declarations }
   public

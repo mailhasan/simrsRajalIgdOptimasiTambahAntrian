@@ -1,6 +1,6 @@
 object FEresepRajal: TFEresepRajal
-  Left = 294
-  Top = 156
+  Left = 101
+  Top = 153
   Width = 1336
   Height = 675
   Align = alClient
@@ -93,22 +93,22 @@ object FEresepRajal: TFEresepRajal
         Caption = 'DATA RESEP'
         TabOrder = 0
         object lblNoResep: TLabel
-          Left = 8
-          Top = 24
+          Left = 24
+          Top = 16
           Width = 55
           Height = 13
           Caption = 'NO RESEP'
         end
         object lblTglResep: TLabel
-          Left = 304
-          Top = 24
+          Left = 296
+          Top = 16
           Width = 60
           Height = 13
           Caption = 'TGL RESEP'
         end
         object lblDokter: TLabel
           Left = 568
-          Top = 24
+          Top = 16
           Width = 40
           Height = 13
           Caption = 'DOKTER'
@@ -120,16 +120,16 @@ object FEresepRajal: TFEresepRajal
           ParentFont = False
         end
         object edtNoResep: TEdit
-          Left = 72
-          Top = 24
+          Left = 24
+          Top = 32
           Width = 217
           Height = 21
           TabOrder = 0
           Text = 'edtNoResep'
         end
         object dtpTglResep: TDateTimePicker
-          Left = 376
-          Top = 24
+          Left = 304
+          Top = 32
           Width = 186
           Height = 21
           Date = 43850.700385914350000000
@@ -137,8 +137,8 @@ object FEresepRajal: TFEresepRajal
           TabOrder = 1
         end
         object cbbDokter: TcxLookupComboBox
-          Left = 616
-          Top = 20
+          Left = 568
+          Top = 28
           ParentFont = False
           Properties.KeyFieldNames = 'kdPetugasMedis'
           Properties.ListColumns = <
@@ -321,25 +321,15 @@ object FEresepRajal: TFEresepRajal
             Width = 1310
             Height = 189
             Align = alClient
-            DataGrouping.GroupLevels = <>
             DataSource = DataSimrs.dst_detailresepranap
-            Flat = False
-            FooterColor = clWindow
-            FooterFont.Charset = DEFAULT_CHARSET
-            FooterFont.Color = clWindowText
-            FooterFont.Height = -11
-            FooterFont.Name = 'MS Sans Serif'
-            FooterFont.Style = []
-            IndicatorOptions = [gioShowRowIndicatorEh]
+            DynProps = <>
+            FooterParams.Color = clWindow
             PopupMenu = pmEresep
             TabOrder = 0
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -11
-            TitleFont.Name = 'MS Sans Serif'
-            TitleFont.Style = []
             Columns = <
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'kdObat'
                 Footers = <>
@@ -347,6 +337,8 @@ object FEresepRajal: TFEresepRajal
                 Width = 75
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'nmObat'
                 Footers = <>
@@ -354,6 +346,8 @@ object FEresepRajal: TFEresepRajal
                 Width = 216
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'satuanJual'
                 Footers = <>
@@ -361,6 +355,8 @@ object FEresepRajal: TFEresepRajal
                 Width = 91
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'aturanPakai'
                 Footers = <>
@@ -368,6 +364,8 @@ object FEresepRajal: TFEresepRajal
                 Width = 124
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'jmlPemberianNonKronis'
                 Footers = <>
@@ -375,6 +373,8 @@ object FEresepRajal: TFEresepRajal
                 Width = 93
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'jmlPemberianKronis'
                 Footers = <>
@@ -414,25 +414,15 @@ object FEresepRajal: TFEresepRajal
               Width = 1308
               Height = 166
               Align = alClient
-              DataGrouping.GroupLevels = <>
               DataSource = DataSimrs.dst_detailracikan
               DrawMemoText = True
-              Flat = False
-              FooterColor = clWindow
-              FooterFont.Charset = DEFAULT_CHARSET
-              FooterFont.Color = clWindowText
-              FooterFont.Height = -11
-              FooterFont.Name = 'MS Sans Serif'
-              FooterFont.Style = []
-              IndicatorOptions = [gioShowRowIndicatorEh]
+              DynProps = <>
+              FooterParams.Color = clWindow
               TabOrder = 0
-              TitleFont.Charset = DEFAULT_CHARSET
-              TitleFont.Color = clWindowText
-              TitleFont.Height = -11
-              TitleFont.Name = 'MS Sans Serif'
-              TitleFont.Style = []
               Columns = <
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'kdObat'
                   Footers = <>
@@ -440,6 +430,8 @@ object FEresepRajal: TFEresepRajal
                   Width = 77
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'nmObat'
                   Footers = <>
@@ -447,6 +439,8 @@ object FEresepRajal: TFEresepRajal
                   Width = 213
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'jmlPemberianNonKronis'
                   Footers = <>
@@ -454,6 +448,8 @@ object FEresepRajal: TFEresepRajal
                   Width = 85
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'jmlPemberian'
                   Footers = <>
@@ -461,6 +457,8 @@ object FEresepRajal: TFEresepRajal
                   Width = 75
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'keterangan'
                   Footers = <>

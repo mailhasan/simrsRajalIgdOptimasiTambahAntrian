@@ -26,6 +26,10 @@ type
     cbb1: TcxLookupComboBox;
     cxlbl1: TcxLabel;
     cbb2: TcxLookupComboBox;
+    lblDIRUJUKKE: TLabel;
+    lblALASANDIRUJUK: TLabel;
+    edtDIRUJUKKE: TEdit;
+    mmoALASANDIRUJUKAN: TMemo;
     procedure btnSimpanClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -47,6 +51,8 @@ procedure TFStatusPulang.Awal;
 begin
   cbb1.Text := '';
   cbb2.Text := '';
+  edtDIRUJUKKE.Text := '';
+  mmoALASANDIRUJUKAN.Text := '';
   with DataSimrs.qryStatusPulang do
   begin
     Close;
@@ -70,17 +76,42 @@ if (cbb1.Text = '') or (cbb2.Text='') then
   ShowMessage('Data Harus Di Isi Lengkap...!')
   else
   begin
-  with DataSimrs.qryt_registrasi do
-  begin
-   Close;
-   SQL.Clear;
-   SQL.Text := 'update t_registrasi set kdStatusKeluar="'+cbb1.EditValue+'",kdCaraKeluar="'+cbb2.EditValue+'",tglPulang="'+FormatDateTime('yyyy-MM-dd hh:mm:ss',Now)+'" where noDaftar="'+FRawatJalanIgd.edtNoRegistrasi.Text+'"';
-   ExecSQL;
-   SQL.Text := 'select noDaftar,kdStatusKeluar,tglPulang from t_registrasi';
-   Open;
-  end;
-  FRawatJalanIgd.tampilpasienhariini;
-  Close;
+    /// view filter diagnosa 10
+    with DataSimrs.qryvw_diagnosa10 do
+    begin
+     Close;
+     SQL.Clear;
+     SQL.Text := 'select * from vw_diagnosa10 where noDaftar="'+FRawatJalanIgd.edtNoRegistrasi.Text+'" and noRekamedis="'+FRawatJalanIgd.edtNoRm.Text+'"';
+     Open;
+    end;
+
+    if (FRawatJalanIgd.edtNoRegistrasi.Text=DataSimrs.qryvw_diagnosa10['noDaftar']) and (FRawatJalanIgd.edtNoRm.Text=DataSimrs.qryvw_diagnosa10['noRekamedis']) then
+    begin
+
+      with DataSimrs.qryt_registrasi do
+      begin
+       Close;
+       SQL.Clear;
+       SQL.Text := 'update t_registrasi set kdStatusKeluar="'+cbb1.EditValue+'",kdCaraKeluar="'+cbb2.EditValue+'",tglPulang="'+FormatDateTime('yyyy-MM-dd hh:mm:ss',Now)+'",dirujukke="'+edtDIRUJUKKE.Text+'",alasan="'+mmoALASANDIRUJUKAN.Text+'" where noDaftar="'+FRawatJalanIgd.edtNoRegistrasi.Text+'"';
+       ExecSQL;
+       SQL.Text := 'select noDaftar,kdStatusKeluar,tglPulang,dirujukke,alasan from t_registrasi';
+       Open;
+      end;
+
+       /// tampil pasien RAWAT JALAN
+      with FRawatJalanIgd do
+      begin
+        aturKolomPxRajal;
+
+        tampilDataTglUnit;
+
+        tampilDataPxRajal;
+      end;
+      
+      Close;
+    end
+    else
+    MessageDlg('ICD 10 Belum Di isi, Pasien Tidak Dapat Di Pulang...',mtWarning,[mbOK],0);
   end
 end;
 

@@ -1,6 +1,6 @@
 object FObatRacikanRawatJalan: TFObatRacikanRawatJalan
-  Left = 378
-  Top = 215
+  Left = 116
+  Top = 199
   Width = 1088
   Height = 243
   Caption = 'OBAT RACIKAN RAWAT JALAN'

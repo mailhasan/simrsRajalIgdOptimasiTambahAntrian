@@ -1,6 +1,6 @@
 object FRawatJalanIgd: TFRawatJalanIgd
-  Left = 192
-  Top = 124
+  Left = 111
+  Top = 115
   Width = 1316
   Height = 832
   Align = alClient
@@ -52,7 +52,7 @@ object FRawatJalanIgd: TFRawatJalanIgd
   end
   object pnlBawah: TPanel
     Left = 0
-    Top = 575
+    Top = 556
     Width = 1300
     Height = 199
     Align = alBottom
@@ -126,25 +126,15 @@ object FRawatJalanIgd: TFRawatJalanIgd
             Width = 1286
             Height = 99
             Align = alClient
-            DataGrouping.GroupLevels = <>
             DataSource = DataSimrs.dsvw_detailtindakanpasienrajal
-            Flat = False
-            FooterColor = clWindow
-            FooterFont.Charset = DEFAULT_CHARSET
-            FooterFont.Color = clWindowText
-            FooterFont.Height = -11
-            FooterFont.Name = 'MS Sans Serif'
-            FooterFont.Style = []
-            IndicatorOptions = [gioShowRowIndicatorEh]
+            DynProps = <>
+            FooterParams.Color = clWindow
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
             TabOrder = 0
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -11
-            TitleFont.Name = 'MS Sans Serif'
-            TitleFont.Style = []
             Columns = <
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'tindakan'
                 Footers = <>
@@ -152,12 +142,16 @@ object FRawatJalanIgd: TFRawatJalanIgd
                 Width = 303
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'tarif'
                 Footers = <>
                 Title.Caption = 'TARIF'
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'jumlahTindakan'
                 Footers = <>
@@ -165,6 +159,8 @@ object FRawatJalanIgd: TFRawatJalanIgd
                 Width = 84
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'totalTarif'
                 Footers = <>
@@ -183,25 +179,15 @@ object FRawatJalanIgd: TFRawatJalanIgd
             Width = 1233
             Height = 99
             Align = alClient
-            DataGrouping.GroupLevels = <>
             DataSource = DataSimrs.dsvw_riwayattindakanlabrajal
-            Flat = False
-            FooterColor = clWindow
-            FooterFont.Charset = DEFAULT_CHARSET
-            FooterFont.Color = clWindowText
-            FooterFont.Height = -11
-            FooterFont.Name = 'MS Sans Serif'
-            FooterFont.Style = []
-            IndicatorOptions = [gioShowRowIndicatorEh]
+            DynProps = <>
+            FooterParams.Color = clWindow
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
             TabOrder = 0
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -11
-            TitleFont.Name = 'MS Sans Serif'
-            TitleFont.Style = []
             Columns = <
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'tindakan'
                 Footers = <>
@@ -209,12 +195,16 @@ object FRawatJalanIgd: TFRawatJalanIgd
                 Width = 311
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'tarif'
                 Footers = <>
                 Title.Caption = 'TARIF'
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'jumlahTindakan'
                 Footers = <>
@@ -222,6 +212,8 @@ object FRawatJalanIgd: TFRawatJalanIgd
                 Width = 55
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'totalTarif'
                 Footers = <>
@@ -241,25 +233,15 @@ object FRawatJalanIgd: TFRawatJalanIgd
             Width = 1233
             Height = 99
             Align = alClient
-            DataGrouping.GroupLevels = <>
             DataSource = DataSimrs.dsvw_riwayattindakanradrajal
-            Flat = False
-            FooterColor = clWindow
-            FooterFont.Charset = DEFAULT_CHARSET
-            FooterFont.Color = clWindowText
-            FooterFont.Height = -11
-            FooterFont.Name = 'MS Sans Serif'
-            FooterFont.Style = []
-            IndicatorOptions = [gioShowRowIndicatorEh]
+            DynProps = <>
+            FooterParams.Color = clWindow
             Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
             TabOrder = 0
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -11
-            TitleFont.Name = 'MS Sans Serif'
-            TitleFont.Style = []
             Columns = <
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'tindakan'
                 Footers = <>
@@ -267,18 +249,24 @@ object FRawatJalanIgd: TFRawatJalanIgd
                 Width = 209
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'tarif'
                 Footers = <>
                 Title.Caption = 'TARIF'
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'jumlahTindakan'
                 Footers = <>
                 Title.Caption = 'JUMLAH'
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'totalTarif'
                 Footers = <>
@@ -286,6 +274,8 @@ object FRawatJalanIgd: TFRawatJalanIgd
                 Width = 100
               end
               item
+                CellButtons = <>
+                DynProps = <>
                 EditButtons = <>
                 FieldName = 'statusTindakan'
                 Footers = <>
@@ -303,7 +293,7 @@ object FRawatJalanIgd: TFRawatJalanIgd
     Left = 0
     Top = 49
     Width = 1300
-    Height = 526
+    Height = 507
     Align = alClient
     Color = clActiveCaption
     TabOrder = 2
@@ -311,14 +301,14 @@ object FRawatJalanIgd: TFRawatJalanIgd
       Left = 1074
       Top = 1
       Width = 225
-      Height = 524
+      Height = 505
       Align = alRight
       TabOrder = 0
       object dxnvbrAntrian: TdxNavBar
         Left = 1
         Top = 1
         Width = 223
-        Height = 522
+        Height = 503
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -386,6 +376,9 @@ object FRawatJalanIgd: TFRawatJalanIgd
               Item = dxnvbrtmAntrianItemStatusKeluar
             end
             item
+              Item = dxnvbrtmAntrianItemStatusCovid19
+            end
+            item
               Item = dxnvbrtmRegistrasiOK
             end
             item
@@ -423,6 +416,15 @@ object FRawatJalanIgd: TFRawatJalanIgd
             end
             item
               Item = dxnvbrtmAntrianItemJadwalKontrol
+            end>
+        end
+        object dxnvbrgrpMenuIgd: TdxNavBarGroup
+          Caption = 'MENU IGD'
+          SelectedLinkIndex = -1
+          TopVisibleLinkIndex = 0
+          Links = <
+            item
+              Item = dxnvbrtmAntrianItemAsesmenAwal
             end>
         end
         object dxnvbrtmKananMenuItemPasien: TdxNavBarItem
@@ -482,6 +484,7 @@ object FRawatJalanIgd: TFRawatJalanIgd
         end
         object dxnvbrtmAntrianItemRiwayat: TdxNavBarItem
           Caption = 'RIWAYAT KUNJUNGAN'
+          OnClick = dxnvbrtmAntrianItemRiwayatClick
         end
         object dxnvbrtmAntrianItemBatalKonsul: TdxNavBarItem
           Caption = 'BATAL KONSUL ANTAR POLI'
@@ -507,13 +510,21 @@ object FRawatJalanIgd: TFRawatJalanIgd
           Caption = 'PANGGIL ANTRIAN'
           OnClick = dxnvbrtmPanggilClick
         end
+        object dxnvbrtmAntrianItemStatusCovid19: TdxNavBarItem
+          Caption = 'STATUS COVID 19'
+          OnClick = dxnvbrtmAntrianItemStatusCovid19Click
+        end
+        object dxnvbrtmAntrianItemAsesmenAwal: TdxNavBarItem
+          Caption = 'ASESMEN AWAL'
+          OnClick = dxnvbrtmAntrianItemAsesmenAwalClick
+        end
       end
     end
     object pnlTengah1: TPanel
       Left = 1
       Top = 1
       Width = 1073
-      Height = 524
+      Height = 505
       Align = alClient
       TabOrder = 1
       object pnlAtasTegah: TPanel
@@ -878,7 +889,7 @@ object FRawatJalanIgd: TFRawatJalanIgd
           object edtNoRajal: TEdit
             Left = 176
             Top = 64
-            Width = 185
+            Width = 193
             Height = 27
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
@@ -937,7 +948,7 @@ object FRawatJalanIgd: TFRawatJalanIgd
           object dtpTglLahir: TDateTimePicker
             Left = 176
             Top = 104
-            Width = 185
+            Width = 193
             Height = 28
             Date = 43522.647666087960000000
             Time = 43522.647666087960000000
@@ -970,14 +981,14 @@ object FRawatJalanIgd: TFRawatJalanIgd
         Left = 1
         Top = 193
         Width = 1071
-        Height = 330
+        Height = 311
         Align = alClient
         TabOrder = 1
         object strngrdPxRajal: TStringGrid
           Left = 1
           Top = 1
           Width = 1069
-          Height = 328
+          Height = 309
           Align = alClient
           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSizing, goColSizing, goRowMoving, goColMoving, goRowSelect]
           PopupMenu = pmRawatJalan
@@ -988,6 +999,25 @@ object FRawatJalanIgd: TFRawatJalanIgd
     end
   end
   object statSimrs: TStatusBar
+    Left = 0
+    Top = 755
+    Width = 1300
+    Height = 19
+    Panels = <
+      item
+        Width = 200
+      end
+      item
+        Width = 200
+      end
+      item
+        Width = 300
+      end
+      item
+        Width = 50
+      end>
+  end
+  object stat1: TStatusBar
     Left = 0
     Top = 774
     Width = 1300
@@ -1034,7 +1064,7 @@ object FRawatJalanIgd: TFRawatJalanIgd
     Top = 336
   end
   object frxrprtLab: TfrxReport
-    Version = '4.12.6'
+    Version = '4.9.35'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

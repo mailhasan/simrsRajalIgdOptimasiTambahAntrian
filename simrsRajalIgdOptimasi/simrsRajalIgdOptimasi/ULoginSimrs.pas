@@ -22,16 +22,16 @@ type
     pnlTengah: TPanel;
     pnlBawah: TPanel;
     pnlTengah1: TPanel;
+    lblLogin: TLabel;
+    img1: TcxImage;
     lblUsername: TLabel;
     edtUsername: TEdit;
     lblPassword: TLabel;
     edtPassword: TEdit;
-    lblLogin: TLabel;
-    btnLogin: TcxButton;
-    btnBatal: TcxButton;
     lblLevel: TLabel;
     cbbLevel: TComboBox;
-    img1: TcxImage;
+    btnLogin: TcxButton;
+    btnBatal: TcxButton;
     procedure btnLoginClick(Sender: TObject);
     procedure edtUsernameKeyPress(Sender: TObject; var Key: Char);
     procedure edtPasswordKeyPress(Sender: TObject; var Key: Char);
@@ -50,7 +50,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UDataSimrs,URajalIgd,WinSock,scktcomp , ADODB, DB;
+uses UDataSimrs,URajalIgd,WinSock,scktcomp ,UTindakanIgd, ADODB, DB;
 
 function GetComputerNameFromWindows: string;
 var
@@ -92,7 +92,7 @@ begin
       FRawatJalanIgd.statSimrs.Panels[0].Text := edtUsername.Text;
       FRawatJalanIgd.statSimrs.Panels[1].Text := cbbLevel.Text;
       FRawatJalanIgd.statSimrs.Panels[2].Text := GetComputerNameFromWindows;
-      FRawatJalanIgd.statSimrs.Panels[3].Text := DataSimrs.qryt_pemakai['namaUser']
+      FRawatJalanIgd.statSimrs.Panels[3].Text := DataSimrs.qryt_pemakai['namaUser'];
     end
   end
   else
@@ -121,7 +121,7 @@ end;
 
 procedure TFLoginSimrs.cbbLevelKeyPress(Sender: TObject; var Key: Char);
 begin
-if Key=#13 then
+if Key=#13 then                                                                           
    Key:=#0;
    btnLogin.SetFocus;
 end;
@@ -129,6 +129,7 @@ end;
 procedure TFLoginSimrs.FormShow(Sender: TObject);
 begin
   cbbLevel.ItemIndex := 3;
+  FTindakanIgd.Close;
 end;
 
 procedure TFLoginSimrs.btnBatalClick(Sender: TObject);

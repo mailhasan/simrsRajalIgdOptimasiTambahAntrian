@@ -1,6 +1,6 @@
 object FRiwayatObatPasien: TFRiwayatObatPasien
-  Left = 215
-  Top = 116
+  Left = 85
+  Top = 69
   Width = 1381
   Height = 822
   Caption = 'RIWAYAT OBAT PASIEN'
@@ -77,28 +77,18 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
           Width = 1355
           Height = 652
           Align = alClient
-          DataGrouping.GroupLevels = <>
           DataSource = DataSimrs.dst_resepranap
-          Flat = False
-          FooterColor = clWindow
-          FooterFont.Charset = DEFAULT_CHARSET
-          FooterFont.Color = clWindowText
-          FooterFont.Height = -11
-          FooterFont.Name = 'MS Sans Serif'
-          FooterFont.Style = []
-          IndicatorOptions = [gioShowRowIndicatorEh]
+          DynProps = <>
+          FooterParams.Color = clWindow
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
           RowDetailPanel.Active = True
           RowDetailPanel.Height = 450
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
           OnCellClick = dbgrdhEresepCellClick
           Columns = <
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'noResep'
               Footers = <>
@@ -106,6 +96,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
               Width = 367
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tglResep'
               Footers = <>
@@ -113,6 +105,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
               Width = 320
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'noRekamedis'
               Footers = <>
@@ -120,6 +114,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
               Width = 192
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'noDaftarRawatInap'
               Footers = <>
@@ -133,29 +129,20 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
               Width = 1121
               Height = 448
               Align = alClient
-              DataGrouping.GroupLevels = <>
               DataSource = DataSimrs.dst_detailresepranap
               DrawMemoText = True
-              Flat = False
-              FooterColor = clWindow
-              FooterFont.Charset = DEFAULT_CHARSET
-              FooterFont.Color = clWindowText
-              FooterFont.Height = -11
-              FooterFont.Name = 'MS Sans Serif'
-              FooterFont.Style = []
+              DynProps = <>
+              FooterParams.Color = clWindow
               IndicatorOptions = [gioShowRowIndicatorEh, gioShowRowselCheckboxesEh]
               Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
               RowDetailPanel.Active = True
               RowDetailPanel.Height = 300
               TabOrder = 0
-              TitleFont.Charset = DEFAULT_CHARSET
-              TitleFont.Color = clWindowText
-              TitleFont.Height = -11
-              TitleFont.Name = 'MS Sans Serif'
-              TitleFont.Style = []
               OnCellClick = dbgrdhDetailResepCellClick
               Columns = <
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'kdObat'
                   Footers = <>
@@ -163,6 +150,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 95
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'nmObat'
                   Footers = <>
@@ -170,6 +159,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 330
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'aturanPakai'
                   Footers = <>
@@ -177,6 +168,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 92
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'satuanJual'
                   Footers = <>
@@ -184,6 +177,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 113
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'keterangan'
                   Footers = <>
@@ -191,6 +186,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 155
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'jmlPemberianKronis'
                   Footers = <>
@@ -198,6 +195,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 97
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'jmlPemberianNonKronis'
                   Footers = <>
@@ -211,26 +210,17 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 973
                   Height = 298
                   Align = alClient
-                  DataGrouping.GroupLevels = <>
                   DataSource = DataSimrs.dst_detailracikan
                   DrawMemoText = True
-                  Flat = False
-                  FooterColor = clWindow
-                  FooterFont.Charset = DEFAULT_CHARSET
-                  FooterFont.Color = clWindowText
-                  FooterFont.Height = -11
-                  FooterFont.Name = 'MS Sans Serif'
-                  FooterFont.Style = []
+                  DynProps = <>
+                  FooterParams.Color = clWindow
                   IndicatorOptions = [gioShowRowIndicatorEh, gioShowRowselCheckboxesEh]
                   Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
                   TabOrder = 0
-                  TitleFont.Charset = DEFAULT_CHARSET
-                  TitleFont.Color = clWindowText
-                  TitleFont.Height = -11
-                  TitleFont.Name = 'MS Sans Serif'
-                  TitleFont.Style = []
                   Columns = <
                     item
+                      CellButtons = <>
+                      DynProps = <>
                       EditButtons = <>
                       FieldName = 'kdObat'
                       Footers = <>
@@ -238,6 +228,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                       Width = 84
                     end
                     item
+                      CellButtons = <>
+                      DynProps = <>
                       EditButtons = <>
                       FieldName = 'nmObat'
                       Footers = <>
@@ -245,6 +237,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                       Width = 298
                     end
                     item
+                      CellButtons = <>
+                      DynProps = <>
                       EditButtons = <>
                       FieldName = 'satuan'
                       Footers = <>
@@ -252,6 +246,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                       Width = 89
                     end
                     item
+                      CellButtons = <>
+                      DynProps = <>
                       EditButtons = <>
                       FieldName = 'keterangan'
                       Footers = <>
@@ -259,6 +255,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                       Width = 193
                     end
                     item
+                      CellButtons = <>
+                      DynProps = <>
                       EditButtons = <>
                       FieldName = 'jmlPemberianKronis'
                       Footers = <>
@@ -266,6 +264,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                       Width = 127
                     end
                     item
+                      CellButtons = <>
+                      DynProps = <>
                       EditButtons = <>
                       FieldName = 'jmlPemberianNonKronis'
                       Footers = <>
@@ -289,28 +289,18 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
           Width = 1355
           Height = 652
           Align = alClient
-          DataGrouping.GroupLevels = <>
           DataSource = DataSimrs.dst_penjualanobatrajal
-          Flat = False
-          FooterColor = clWindow
-          FooterFont.Charset = DEFAULT_CHARSET
-          FooterFont.Color = clWindowText
-          FooterFont.Height = -11
-          FooterFont.Name = 'MS Sans Serif'
-          FooterFont.Style = []
-          IndicatorOptions = [gioShowRowIndicatorEh]
+          DynProps = <>
+          FooterParams.Color = clWindow
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
           RowDetailPanel.Active = True
           RowDetailPanel.Height = 350
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
           OnCellClick = dbgrdhObatCellClick
           Columns = <
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'noPenjualanObatRajal'
               Footers = <>
@@ -318,6 +308,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
               Width = 164
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tglPenjualanObatRajal'
               Footers = <>
@@ -325,6 +317,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
               Width = 183
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'noDaftar'
               Footers = <>
@@ -332,6 +326,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
               Width = 236
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tglDaftar'
               Footers = <>
@@ -339,6 +335,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
               Width = 215
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'unit'
               Footers = <>
@@ -346,7 +344,9 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
               Width = 233
             end
             item
+              CellButtons = <>
               DisplayFormat = '#,#0.00;(#,#0.00);#,#0.00 '
+              DynProps = <>
               EditButtons = <>
               FieldName = 'totalAkhirPenjualanRajal'
               Font.Charset = DEFAULT_CHARSET
@@ -365,26 +365,16 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
               Width = 1163
               Height = 348
               Align = alClient
-              DataGrouping.GroupLevels = <>
               DataSource = DataSimrs.dst_detailpenjualanobatrajal
-              Flat = False
-              FooterColor = clWindow
-              FooterFont.Charset = DEFAULT_CHARSET
-              FooterFont.Color = clWindowText
-              FooterFont.Height = -11
-              FooterFont.Name = 'MS Sans Serif'
-              FooterFont.Style = []
-              IndicatorOptions = [gioShowRowIndicatorEh]
+              DynProps = <>
+              FooterParams.Color = clWindow
               Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
               TabOrder = 0
-              TitleFont.Charset = DEFAULT_CHARSET
-              TitleFont.Color = clWindowText
-              TitleFont.Height = -11
-              TitleFont.Name = 'MS Sans Serif'
-              TitleFont.Style = []
-              UseMultiTitle = True
+              TitleParams.MultiTitle = True
               Columns = <
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'kdObat'
                   Footers = <>
@@ -392,6 +382,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 88
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'namaObat'
                   Footers = <>
@@ -399,7 +391,9 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 253
                 end
                 item
+                  CellButtons = <>
                   DisplayFormat = '#,#0.00;(#,#0.00);#,#0.00 '
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'harga'
                   Font.Charset = DEFAULT_CHARSET
@@ -416,6 +410,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Title.Font.Style = [fsBold]
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'satuan'
                   Footers = <>
@@ -423,6 +419,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 85
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'kebutuhanKronis'
                   Footers = <>
@@ -430,6 +428,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 61
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'kebutuhanNonKronis'
                   Footers = <>
@@ -437,6 +437,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 84
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'diberikanKronis'
                   Footers = <>
@@ -444,6 +446,8 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 70
                 end
                 item
+                  CellButtons = <>
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'diberikanNonKronis'
                   Footers = <>
@@ -451,7 +455,9 @@ object FRiwayatObatPasien: TFRiwayatObatPasien
                   Width = 79
                 end
                 item
+                  CellButtons = <>
                   DisplayFormat = '#,#0.00;(#,#0.00);#,#0.00 '
+                  DynProps = <>
                   EditButtons = <>
                   FieldName = 'subTotalPenjualan'
                   Font.Charset = DEFAULT_CHARSET

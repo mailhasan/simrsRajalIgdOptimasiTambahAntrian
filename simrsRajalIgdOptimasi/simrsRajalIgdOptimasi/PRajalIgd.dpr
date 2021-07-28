@@ -22,12 +22,19 @@ uses
   UTampilDetailIcd10 in 'UTampilDetailIcd10.pas' {FTampilDetailIcd10},
   URiwayatObatPasien in 'URiwayatObatPasien.pas' {FRiwayatObatPasien},
   UJadwalKontrolPasienRajal in 'UJadwalKontrolPasienRajal.pas' {FJadwalKontrolPasienRajal},
-  ULaporanRl4B in 'ULaporanRl4B.pas' {FLaporanRl4b};
+  URiwayatKunjungan in 'URiwayatKunjungan.pas' {FRiwayatKunjungan},
+  UUbahJmlTindkIgd in 'UUbahJmlTindkIgd.pas' {FUbahTndkJumlahIGD},
+  UHistoriTndkIgd in 'UHistoriTndkIgd.pas' {FormHistoriTndkIgd},
+  UStatusCovid19 in 'UStatusCovid19.pas' {FStatusCovid19},
+  UHistoriTndkRajal in 'UHistoriTndkRajal.pas' {FHistoriTndkRajal},
+  UAsesmenAwalIgd in 'UAsesmenAwalIgd.pas' {FAsesmenAwalIgd},
+  UDataSimrs1 in 'UDataSimrs1.pas' {DataSimrs1: TDataModule};
 
 {$R *.res}
 
 begin
   Application.Initialize;
+  Application.CreateForm(TFAsesmenAwalIgd, FAsesmenAwalIgd);
   Application.CreateForm(TFRawatJalanIgd, FRawatJalanIgd);
   Application.CreateForm(TFLoginSimrs, FLoginSimrs);
   Application.CreateForm(TDataSimrs, DataSimrs);
@@ -40,7 +47,6 @@ begin
   Application.CreateForm(TFPermintaanLabRajal, FPermintaanLabRajal);
   Application.CreateForm(TFPermintaanRadRajal, FPermintaanRadRajal);
   Application.CreateForm(TFStatusPulang, FStatusPulang);
-  Application.CreateForm(TFTindakanIgd, FTindakanIgd);
   Application.CreateForm(TFEresepRajal, FEresepRajal);
   Application.CreateForm(TFObatRacikanRawatJalan, FObatRacikanRawatJalan);
   Application.CreateForm(TFMasukanTindakanRawatJalan, FMasukanTindakanRawatJalan);
@@ -48,6 +54,12 @@ begin
   Application.CreateForm(TFTampilDetailIcd10, FTampilDetailIcd10);
   Application.CreateForm(TFRiwayatObatPasien, FRiwayatObatPasien);
   Application.CreateForm(TFJadwalKontrolPasienRajal, FJadwalKontrolPasienRajal);
-  Application.CreateForm(TFLaporanRl4b, FLaporanRl4b);
+  Application.CreateForm(TFRiwayatKunjungan, FRiwayatKunjungan);
+  Application.CreateForm(TFUbahTndkJumlahIGD, FUbahTndkJumlahIGD);
+  Application.CreateForm(TFormHistoriTndkIgd, FormHistoriTndkIgd);
+  Application.CreateForm(TFTindakanIgd, FTindakanIgd);
+  Application.CreateForm(TFStatusCovid19, FStatusCovid19);
+  Application.CreateForm(TFHistoriTndkRajal, FHistoriTndkRajal);
+  Application.CreateForm(TDataSimrs1, DataSimrs1);
   Application.Run;
 end.

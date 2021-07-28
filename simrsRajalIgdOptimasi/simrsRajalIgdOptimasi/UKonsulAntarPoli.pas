@@ -16,7 +16,7 @@ uses
   dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinXmas2008Blue, Menus, StdCtrls, cxButtons, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  ComCtrls, ExtCtrls;
+  ComCtrls, ExtCtrls, cxCurrencyEdit;
 
 type
   TFKonsulAntarPoli = class(TForm)
@@ -72,6 +72,8 @@ type
     btnDaftar: TcxButton;
     pnlAtas: TPanel;
     pnlKeluar: TPanel;
+    lbl5: TLabel;
+    cxcrncydtTarifKonsulAntarPoli: TcxCurrencyEdit;
     procedure pnlKeluarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnDaftarClick(Sender: TObject);
@@ -90,7 +92,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UDataSImrs,DateUtils;
+uses UDataSImrs,DateUtils, ADODB, DB;
 
 // procedure setting umur otomatis
 procedure umur(ThnLama, ThnBaru:TDate);
@@ -117,6 +119,13 @@ end;
 
 procedure TFKonsulAntarPoli.noRegisterRajal;
 begin
+  with DataSimrs.qryt_registrasirawatjalan DO
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'SELECT * FROM t_registrasirawatjalan';
+    Open;
+  end;
    edtNoRegisterRajal.Text :='RJ'+FormatDateTime('ddMMYYHHmmss',Now)+'-'+IntToStr(DataSimrs.qryt_registrasirawatjalan.RecordCount+1);
 end;
 
@@ -170,6 +179,15 @@ end;
 procedure TFKonsulAntarPoli.FormShow(Sender: TObject);
 begin
   dataPasien;
+
+  with DataSimrs.qryvw_tindakantarifrajal do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'SELECT * FROM vw_tindakantarifrajal WHERE kdTindakan="0000006"';
+    Open;
+  end;
+  cxcrncydtTarifKonsulAntarPoli.Value := StrToFloat(DataSimrs.qryvw_tindakantarifrajal['tarif']);
 end;
 
 procedure TFKonsulAntarPoli.btnDaftarClick(Sender: TObject);
@@ -186,9 +204,9 @@ if cbbUnitPelayanan.Text = '' then
   begin
     Close;
     SQL.Clear;
-    SQL.Text := 'insert into t_registrasirawatjalan (noRegistrasiRawatJalan,noDaftar,kdUnit,tglMasukRawatJalan,karciPendaftaran,konsulDokter,statusPasien)  '+
+    SQL.Text := 'insert into t_registrasirawatjalan (noRegistrasiRawatJalan,noDaftar,kdUnit,tglMasukRawatJalan,karciPendaftaran,konsulDokter,statusPasien,konsulAntarPoli)  '+
                             'values ("'+edtNoRegisterRajal.Text+'","'+edtNoRegistrasi.Text+'","'+cbbUnitPelayanan.EditValue+'","'+tgldaftar+'",'+
-                              '"'+FloatToStr(0)+'","'+FloatToStr(0)+'","konsulPoli")';
+                              '"'+FloatToStr(0)+'","'+FloatToStr(0)+'","konsulPoli","'+FloatToStr(cxcrncydtTarifKonsulAntarPoli.Value)+'")';
     ExecSQL;
     SQL.Text := 'select * from t_registrasirawatjalan';
     Open;

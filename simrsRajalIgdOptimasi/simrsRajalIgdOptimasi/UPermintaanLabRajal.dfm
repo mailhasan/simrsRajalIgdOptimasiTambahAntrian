@@ -1,6 +1,6 @@
 object FPermintaanLabRajal: TFPermintaanLabRajal
-  Left = 220
-  Top = 137
+  Left = 188
+  Top = 160
   Width = 1240
   Height = 582
   Align = alClient
@@ -74,15 +74,15 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
           Caption = 'UMUR'
         end
         object lblJk: TLabel
-          Left = 224
-          Top = 104
+          Left = 256
+          Top = 64
           Width = 15
           Height = 13
           Caption = 'JK'
         end
         object lblTglLahir: TLabel
-          Left = 208
-          Top = 64
+          Left = 232
+          Top = 104
           Width = 100
           Height = 13
           Caption = 'TANGGAL LAHIR'
@@ -98,7 +98,7 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
         object edtNoRegistrasi: TEdit
           Left = 136
           Top = 40
-          Width = 169
+          Width = 201
           Height = 21
           Enabled = False
           TabOrder = 1
@@ -106,7 +106,7 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
         object edtNama: TEdit
           Left = 8
           Top = 80
-          Width = 185
+          Width = 241
           Height = 21
           Enabled = False
           TabOrder = 2
@@ -120,17 +120,17 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
           TabOrder = 3
         end
         object edtJk: TEdit
-          Left = 224
-          Top = 120
-          Width = 89
+          Left = 256
+          Top = 80
+          Width = 81
           Height = 21
           Enabled = False
           TabOrder = 4
         end
         object dtpTglLahir: TDateTimePicker
-          Left = 208
-          Top = 80
-          Width = 114
+          Left = 232
+          Top = 120
+          Width = 105
           Height = 21
           Date = 43601.396545740740000000
           Time = 43601.396545740740000000
@@ -192,6 +192,13 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
           Width = 187
           Height = 13
           Caption = 'NO TRANSAKSI TINDAKAN LAB'
+        end
+        object lblCaraBayar: TLabel
+          Left = 344
+          Top = 120
+          Width = 72
+          Height = 13
+          Caption = 'lblCaraBayar'
         end
         object dtpTglPermintaan: TDateTimePicker
           Left = 8
@@ -327,31 +334,22 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
           Width = 514
           Height = 210
           Align = alClient
-          DataGrouping.GroupLevels = <>
           DataSource = DataSimrs.dsvw_tindakanlab
-          Flat = False
+          DynProps = <>
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Tahoma'
           Font.Style = []
-          FooterColor = clWindow
-          FooterFont.Charset = DEFAULT_CHARSET
-          FooterFont.Color = clWindowText
-          FooterFont.Height = -13
-          FooterFont.Name = 'Tahoma'
-          FooterFont.Style = [fsBold]
+          FooterParams.Color = clWindow
           IndicatorOptions = [gioShowRowIndicatorEh, gioShowRowselCheckboxesEh]
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
           ParentFont = False
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -13
-          TitleFont.Name = 'Tahoma'
-          TitleFont.Style = [fsBold]
           Columns = <
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'kdTindakan'
               Footers = <>
@@ -359,6 +357,8 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
               Width = 80
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tindakan'
               Footers = <>
@@ -366,6 +366,8 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
               Width = 211
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'kelas'
               Footers = <>
@@ -373,6 +375,8 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
               Width = 85
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tarif'
               Footers = <>
@@ -429,33 +433,24 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
           Width = 634
           Height = 276
           Align = alClient
-          DataGrouping.GroupLevels = <>
           DataSource = DataSimrs.dsvw_detailtindakanpenunjangrajal
-          Flat = False
+          DynProps = <>
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Tahoma'
           Font.Style = []
-          FooterColor = clWindow
-          FooterFont.Charset = DEFAULT_CHARSET
-          FooterFont.Color = clWindowText
-          FooterFont.Height = -11
-          FooterFont.Name = 'MS Sans Serif'
-          FooterFont.Style = []
           FooterRowCount = 1
+          FooterParams.Color = clWindow
           IndicatorOptions = []
           Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
           ParentFont = False
           SumList.Active = True
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
           Columns = <
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'kdTarif'
               Font.Charset = DEFAULT_CHARSET
@@ -467,6 +462,8 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
               Title.Caption = 'KODE'
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tindakan'
               Footers = <>
@@ -474,6 +471,8 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
               Width = 183
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tarif'
               Footers = <>
@@ -481,6 +480,8 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
               Width = 61
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'jumlahTindakan'
               Footer.Font.Charset = ANSI_CHARSET
@@ -495,6 +496,8 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
               Width = 51
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'totalTarif'
               Footer.Font.Charset = ANSI_CHARSET
@@ -508,6 +511,8 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
               Width = 80
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'namapetugasMedis'
               Footers = <>

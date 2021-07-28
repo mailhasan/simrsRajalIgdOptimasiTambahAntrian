@@ -18,7 +18,7 @@ uses
   cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
   cxDBLookupComboBox, StdCtrls, ComCtrls, dxNavBarCollns, cxClasses,
   dxNavBarBase, dxNavBar, GridsEh, DBGridEh, ExtCtrls, frxClass, frxDBSet,
-  Menus;
+  Menus, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, EhLibVCL, DBAxisGridsEh;
 
 type
   TFRawatJalanIgd = class(TForm)
@@ -108,6 +108,10 @@ type
     PANGGILANTRIAN1: TMenuItem;
     lblSTATUSPANGGILAN: TLabel;
     cbbStatusPanggilan: TcxLookupComboBox;
+    dxnvbrtmAntrianItemStatusCovid19: TdxNavBarItem;
+    dxnvbrgrpMenuIgd: TdxNavBarGroup;
+    dxnvbrtmAntrianItemAsesmenAwal: TdxNavBarItem;
+    stat1: TStatusBar;
     procedure pnlKeluarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure dxnvbrtmKananMenuItemPasienClick(Sender: TObject);
@@ -136,6 +140,9 @@ type
     procedure PANGGILANTRIAN1Click(Sender: TObject);
     procedure dxnvbrtmPanggilClick(Sender: TObject);
     procedure dxnvbrtmAntrianItemLaporanClick(Sender: TObject);
+    procedure dxnvbrtmAntrianItemRiwayatClick(Sender: TObject);
+    procedure dxnvbrtmAntrianItemStatusCovid19Click(Sender: TObject);
+    procedure dxnvbrtmAntrianItemAsesmenAwalClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -163,7 +170,8 @@ uses UDataSimrs,DateUtils,UAnamesaPasien,UKonsulAntarPoli,
      UDiagnosaIcd10,UDiagnosaIcd9,UTindakanRawatjalan,
      UPemeriksaanFisik,UPermintaanLabRajal, ADODB, DB, UPermintaanRadRajal,
      UStatusPulang, UTindakanIgd, UEresepRajal,URegistrasiRuangOk,
-     URiwayatObatPasien,UJadwalKontrolPasienRajal,ULaporanRl4B;
+     URiwayatObatPasien,UJadwalKontrolPasienRajal,URiwayatKunjungan,
+     UStatusCovid19,UAsesmenAwalIgd;
 
 function HorizontalIntersect(const aRect,bRect: TRect): boolean;
 begin
@@ -231,7 +239,7 @@ begin
     Close;
     SQL.Clear;
     //SQL.Text := 'select * from vw_pasienrawatjalan where tglDaftar BETWEEN "' + tanggal + '" AND "' + tanggal1 + '"';
-    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,t_registrasi.tglPulang,'+
+    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,t_registrasi.tglPulang,t_registrasi.statusCovid19,'+
                 't_registrasirawatjalan.noRegistrasiRawatJalan,t_registrasi.tglDaftar,'+
                 't_pasien.nmPasien,t_pasien.tempatLahir,t_pasien.tglLahir,t_pasien.jenisKelamin,'+
                 't_pasien.agama,t_pasien.alamat,t_registrasirawatjalan.kdUnit,t_unit.unit,'+
@@ -282,7 +290,7 @@ begin
         for j := 0 to rowCount-1 do
           Cells[i,j]:='';
 
-  ColCount :=15;
+  ColCount :=16;
   RowCount :=2;
   FixedCols:=1;
   DefaultROwHeight:=18;
@@ -297,11 +305,12 @@ begin
   Cells[7,0]:= 'UNIT';
   Cells[8,0]:= 'CARA BAYAR';
   Cells[9,0]:= ' STATUS KELUAR';
-  Cells[10,0]:= 'DOKTER/PETUGAS MEDIS';
-  Cells[11,0]:= 'NO REGISTER';
-  Cells[12,0]:= 'NO RAJAL';
-  Cells[13,0]:= 'TGL MASUK';
-  Cells[14,0]:= 'TGL KELUAR';
+  Cells[10,0]:= ' COVID 19';
+  Cells[11,0]:= 'DOKTER/PETUGAS MEDIS';
+  Cells[12,0]:= 'NO REGISTER';
+  Cells[13,0]:= 'NO RAJAL';
+  Cells[14,0]:= 'TGL MASUK';
+  Cells[15,0]:= 'TGL KELUAR';
 
   //lebar kolom
   ColWidths[0]:=25;
@@ -314,11 +323,12 @@ begin
   ColWidths[7]:= 100;
   ColWidths[8]:=100;
   ColWidths[9]:=100;
-  ColWidths[10]:= 150;
-  ColWidths[11]:= 100;
+  ColWidths[10]:=100;
+  ColWidths[11]:= 150;
   ColWidths[12]:= 100;
-  ColWidths[13]:= 110;
+  ColWidths[13]:= 100;
   ColWidths[14]:= 110;
+  ColWidths[15]:= 110;
 
   end;
 end;
@@ -342,11 +352,12 @@ begin
       strngrdPxRajal.Cells[7,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('unit').AsString;
       strngrdPxRajal.Cells[8,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('carabayar').AsString;
       strngrdPxRajal.Cells[9,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('statusKeluar').AsString;
-      strngrdPxRajal.Cells[10,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('namapetugasMedis').AsString;
-      strngrdPxRajal.Cells[11,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('noDaftar').AsString;
-      strngrdPxRajal.Cells[12,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('noRegistrasiRawatJalan').AsString;
-      strngrdPxRajal.Cells[13,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('tglDaftar').AsString;
-      strngrdPxRajal.Cells[14,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('tglPulang').AsString;
+      strngrdPxRajal.Cells[10,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('statusCovid19').AsString;
+      strngrdPxRajal.Cells[11,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('namapetugasMedis').AsString;
+      strngrdPxRajal.Cells[12,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('noDaftar').AsString;
+      strngrdPxRajal.Cells[13,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('noRegistrasiRawatJalan').AsString;
+      strngrdPxRajal.Cells[14,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('tglDaftar').AsString;
+      strngrdPxRajal.Cells[15,i+1] := DataSimrs.qryvw_pasienrawatjalan.FieldByName('tglPulang').AsString;
       DataSimrs.qryvw_pasienrawatjalan.Next
     end;
   end;
@@ -377,7 +388,7 @@ begin
     Close;
     SQL.Clear;
     //SQL.Text := 'select * from vw_pasienrawatjalan where tglDaftar BETWEEN "' + tanggal + '" AND "' + tanggal1 + '"';
-    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,t_registrasi.tglPulang,'+
+    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,t_registrasi.tglPulang,t_registrasi.statusCovid19,'+
                 't_registrasirawatjalan.noRegistrasiRawatJalan,t_registrasi.tglDaftar,'+
                 't_pasien.nmPasien,t_pasien.tempatLahir,t_pasien.tglLahir,t_pasien.jenisKelamin,'+
                 't_pasien.agama,t_pasien.alamat,t_registrasirawatjalan.kdUnit,t_unit.unit,'+
@@ -428,7 +439,7 @@ begin
     Close;
     SQL.Clear;
     //SQL.Text := 'select * from vw_pasienrawatjalan where tglDaftar BETWEEN "' + tanggal + '" AND "' + tanggal1 + '"';
-    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,t_registrasi.tglPulang,'+
+    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,t_registrasi.tglPulang,t_registrasi.statusCovid19,'+
                 't_registrasirawatjalan.noRegistrasiRawatJalan,t_registrasi.tglDaftar,'+
                 't_pasien.nmPasien,t_pasien.tempatLahir,t_pasien.tglLahir,t_pasien.jenisKelamin,'+
                 't_pasien.agama,t_pasien.alamat,t_registrasirawatjalan.kdUnit,t_unit.unit,'+
@@ -470,7 +481,7 @@ begin
     Close;
     SQL.Clear;
     //SQL.Text := 'select * from vw_pasienrawatjalan where tglDaftar BETWEEN "' + tanggal + '" AND "' + tanggal1 + '"';
-    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,t_registrasi.tglPulang,'+
+    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,t_registrasi.tglPulang,t_registrasi.statusCovid19,'+
                 't_registrasirawatjalan.noRegistrasiRawatJalan,t_registrasi.tglDaftar,'+
                 't_pasien.nmPasien,t_pasien.tempatLahir,t_pasien.tglLahir,t_pasien.jenisKelamin,'+
                 't_pasien.agama,t_pasien.alamat,t_registrasirawatjalan.kdUnit,t_unit.unit,'+
@@ -533,7 +544,19 @@ end;
 /// update data dokter setelah di pilih 
 procedure TFRawatJalanIgd.btnGantiNamaDokterClick(Sender: TObject);
 begin
-with DataSimrs.qryt_registrasi do
+with DataSimrs.qryt_registrasirawatjalan do
+begin
+ Close;
+ SQL.Clear;
+ SQL.Text := 'select * from t_registrasirawatjalan WHERE (statusPasien="konsulPoli") and (noRegistrasiRawatJalan="'+edtNoRajal.Text+'") ';
+ Open;
+end;
+if (DataSimrs.qryt_registrasirawatjalan['statusPasien'] = 'konsulPoli') and (DataSimrs.qryt_registrasirawatjalan['noRegistrasiRawatJalan'] = edtNoRajal.Text) then
+    MessageDlg('Pasien Konsul Tidak bisa Ganti Dokter...!',mtWarning,[mbOK],0)
+else
+begin
+
+  with DataSimrs.qryt_registrasi do
   begin
     Close;
     SQL.Clear;
@@ -562,6 +585,8 @@ with DataSimrs.qryt_registrasi do
   MessageDlg('Data Dokter Berhasil Di Ubah!', mtInformation, [mbok], 0);
 end;
 
+end;
+
 procedure TFRawatJalanIgd.strngrdPxRajalClick(Sender: TObject);
 var
   sTgl, LTgl : TDateTime;
@@ -578,8 +603,8 @@ begin
   cbbUnitPelayanan.Text := strngrdPxRajal.Cells[7,strngrdPxRajal.selection.top];
   edtPenjamin.Text :=   strngrdPxRajal.Cells[8,strngrdPxRajal.selection.top];
   edtDokter.Text :=   strngrdPxRajal.Cells[10,strngrdPxRajal.selection.top];
-  edtNoRegistrasi.Text :=   strngrdPxRajal.Cells[11,strngrdPxRajal.selection.top];
-  edtNoRajal.Text :=    strngrdPxRajal.Cells[12,strngrdPxRajal.selection.top];
+  edtNoRegistrasi.Text :=   strngrdPxRajal.Cells[12,strngrdPxRajal.selection.top];
+  edtNoRajal.Text :=    strngrdPxRajal.Cells[13,strngrdPxRajal.selection.top];
   sTgl := Date;
   LTgl := dtpTglLahir.Date;
   umur(LTgl, sTgl);
@@ -720,7 +745,7 @@ if edtNoRmNama.Text = '' then
     Active := True;
     Close;
     SQL.Clear;
-    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,t_registrasi.tglPulang,'+
+    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,t_registrasi.tglPulang,t_registrasi.statusCovid19,'+
                 't_registrasirawatjalan.noRegistrasiRawatJalan,t_registrasi.tglDaftar,'+
                 't_pasien.nmPasien,t_pasien.tempatLahir,t_pasien.tglLahir,t_pasien.jenisKelamin,'+
                 't_pasien.agama,t_pasien.alamat,t_registrasirawatjalan.kdUnit,t_unit.unit,'+
@@ -753,13 +778,14 @@ begin
     Active := True;
     Close;
     SQL.Clear;
-    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasirawatjalan.noRegistrasiRawatJalan,'+
+    SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasirawatjalan.noRegistrasiRawatJalan,t_registrasi.statusCovid19,'+
                 't_registrasirawatjalan.statusPasien,t_registrasi.noRekamedis,'+
                 't_pasien.nmPasien FROM t_pasien Inner Join t_registrasi ON t_pasien.noRekamedis = t_registrasi.noRekamedis Inner Join t_registrasirawatjalan '+
                 'ON t_registrasi.noDaftar = t_registrasirawatjalan.noDaftar where t_registrasi.noDaftar="'+edtNoRegistrasi.Text+'" and t_registrasirawatjalan.noRegistrasiRawatJalan="'+edtNoRajal.Text+'" and t_registrasirawatjalan.statusPasien="konsulPoli"';
   
     Open;
   end;
+
   if DataSimrs.qryvw_pasienrawatjalan.RecordCount = 0 then
      ShowMessage('Data Tidak ada ')
   else
@@ -792,12 +818,28 @@ begin
     MessageDlg('Silahkan Pilih Data Pasien Dulu', mtWarning, [mbOK], 0)
   else
   begin
-    tr_tindakanrajal := TFTindakanRawatJalan.Create(nil);
+    {tr_tindakanrajal := TFTindakanRawatJalan.Create(nil);
     tr_tindakanrajal.Parent := pnlTengahTegah;
     tr_tindakanrajal.Align := alClient;
     tr_tindakanrajal.Show;
     grpTindakan.Visible := False;
-    refreshForm;
+    refreshForm;}
+  with FTindakanRawatjalan Do
+  begin
+  lblPOLI.Caption := 'POLI :'+cbbUnitPelayanan.Text;
+  edtNoRmTndk.Text := edtNoRm.Text;
+  edtNoRegistrasiTndk.Text := edtNoRegistrasi.Text;
+  edtTempatLahirTndk.Text := edtTempatLahir.Text;
+  edtNmPasienTndk.Text := edtNmPasien.Text;
+  edtNoRajalTndk.Text := edtNoRajal.Text;
+  dtpTglLahirTndk.Date := dtpTglLahirTndk.Date;
+  edtPenjaminTndk.Text := edtPenjamin.Text;
+  edtAlamatTndk.Text := edtAlamat.Text;
+  edtUmurTndk.Text := edtUmur.Text;
+  edtJkTndk.Text := edtJk.Text;
+  edtDokterTndk.Text := edtDokter.Text;
+  Show;
+  end
   end;
 end;
 
@@ -833,10 +875,11 @@ begin
       SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,'+
                   't_registrasi.tglDaftar,t_pasien.nmPasien,t_pasien.tempatLahir,'+
                   't_pasien.tglLahir,t_pasien.jenisKelamin,t_pasien.agama,'+
-                't_pasien.alamat,t_registrasirawatjalan.kdUnit,t_unit.unit FROM t_registrasi Inner Join t_registrasirawatjalan '+
+                't_pasien.alamat,t_registrasirawatjalan.kdUnit,t_unit.unit,t_carabayar.carabayar FROM t_registrasi Inner Join t_registrasirawatjalan '+
                 'ON t_registrasi.noDaftar = t_registrasirawatjalan.noDaftar Inner Join t_pasien '+
                 'ON t_registrasi.noRekamedis = t_pasien.noRekamedis Inner Join t_unit '+
-                'ON t_registrasirawatjalan.kdUnit = t_unit.kdUnit WHERE t_registrasi.noDaftar="'+edtNoRegistrasi.Text+'" and t_registrasi.noRekamedis="'+edtNoRm.Text+'"';
+                'ON t_registrasirawatjalan.kdUnit = t_unit.kdUnit Inner Join t_carabayar '+
+                'ON t_registrasi.kdCaraBayar = t_carabayar.kdCaraBayar WHERE t_registrasi.noDaftar="'+edtNoRegistrasi.Text+'" and t_registrasi.noRekamedis="'+edtNoRm.Text+'"';
       Open;
     end;
 
@@ -853,6 +896,7 @@ begin
       dtpTglLahir.Date := DataSimrs.qryvw_pasienrawatjalan['tglLahir'];
       cbbDokter.Text := '';
       cxmKeterangan.Text := '';
+      lblCaraBayar.Caption := DataSimrs.qryvw_pasienrawatjalan['carabayar'];
       ShowModal;
     end;
     end
@@ -876,10 +920,10 @@ if edtNoRm.Text='' then
       SQL.Text := 'SELECT t_registrasi.noDaftar,t_registrasi.noRekamedis,'+
                   't_registrasi.tglDaftar,t_pasien.nmPasien,t_pasien.tempatLahir,'+
                   't_pasien.tglLahir,t_pasien.jenisKelamin,t_pasien.agama,'+
-                't_pasien.alamat,t_registrasirawatjalan.kdUnit,t_unit.unit FROM t_registrasi Inner Join t_registrasirawatjalan '+
-                'ON t_registrasi.noDaftar = t_registrasirawatjalan.noDaftar Inner Join t_pasien '+
-                'ON t_registrasi.noRekamedis = t_pasien.noRekamedis Inner Join t_unit '+
-                'ON t_registrasirawatjalan.kdUnit = t_unit.kdUnit WHERE t_registrasi.noDaftar="'+edtNoRegistrasi.Text+'" and t_registrasi.noRekamedis="'+edtNoRm.Text+'"';
+                  't_pasien.alamat,t_registrasirawatjalan.kdUnit,t_unit.unit,t_carabayar.carabayar FROM t_registrasi INNER JOIN t_registrasirawatjalan '+
+                  'ON t_registrasi.noDaftar = t_registrasirawatjalan.noDaftar INNER JOIN t_pasien '+
+                  'ON t_registrasi.noRekamedis = t_pasien.noRekamedis INNER JOIN t_unit '+
+                  'ON t_registrasirawatjalan.kdUnit = t_unit.kdUnit Inner Join t_carabayar ON t_registrasi.kdCaraBayar = t_carabayar.kdCaraBayar WHERE t_registrasi.noDaftar="'+edtNoRegistrasi.Text+'" and t_registrasi.noRekamedis="'+edtNoRm.Text+'"';
       Open;
     end;
 
@@ -896,6 +940,7 @@ if edtNoRm.Text='' then
       dtpTglLahir.Date := DataSimrs.qryvw_pasienrawatjalan['tglLahir'];
       cbbDokter.Text := '';
       cxmKeterangan.Text := '';
+      lblCaraBayar.Caption := DataSimrs.qryvw_pasienrawatjalan['carabayar'];
       Show;
     end;
     end
@@ -914,11 +959,11 @@ end;
 procedure TFRawatJalanIgd.dxnvbrtmAntrianItemTindakanIgdClick(
   Sender: TObject);
 begin
- if (edtNoRm.Text = '') and (cbbUnitPelayanan.Text='IGD') then
+ if (edtNoRm.Text = '') or  (edtNoRegistrasi.Text='') or (edtNoRajal.Text='') or ((cbbUnitPelayanan.Text<>'IGD') and (cbbUnitPelayanan.Text<>'IGD PINERE'))   then
     MessageDlg('Silahkan Pilih Data Pasien Dulu', mtWarning, [mbOK], 0)
   else
   begin
-    FTindakanIgd.edtNoRm.Text := edtNoRm.Text;
+    {FTindakanIgd.edtNoRm.Text := edtNoRm.Text;
     FTindakanIgd.edtNmPasien.Text := edtNmPasien.Text;
     FTindakanIgd.edtPenjamin.Text := edtPenjamin.Text;
     FTindakanIgd.edtDokter.Text := edtDokter.Text;
@@ -928,8 +973,47 @@ begin
     FTindakanIgd.edtTempatLahir.Text := edtTempatLahir.Text;
     FTindakanIgd.dtpTglLahir.Date := dtpTglLahir.Date;
     FTindakanIgd.edtUmur.Text := edtUmur.Text;
-    FTindakanIgd.edtJk.Text := edtJk.Text;
-    FTindakanIgd.Show;
+    FTindakanIgd.edtJk.Text := edtJk.Text;}
+
+    with DataSimrs.qryvw_pasienrawatjalan do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Text := 'SELECT '+
+                      '`noRekamedis`'+
+                      ', `nmPasien`'+
+                      ', `penjamin`'+
+                      ', `namapetugasMedis`'+
+                      ', `noDaftar`'+
+                      ', `noRegistrasiRawatJalan`'+
+                      ', `alamat`'+
+                      ', `tempatLahir`'+
+                      ', `tglLahir`'+
+                      ', `jenisKelamin`'+
+                  'FROM `vw_pasienrawatjalan` where `noDaftar`="'+edtNoRegistrasi.Text+'" and `noRegistrasiRawatJalan`="'+edtNoRajal.Text+'" ';
+      Open;
+    end;
+
+    FTindakanIgd.edtNoRm.Text := DataSimrs.qryvw_pasienrawatjalan['noRekamedis'];
+    FTindakanIgd.edtNmPasien.Text := DataSimrs.qryvw_pasienrawatjalan['nmPasien'];
+    FTindakanIgd.edtPenjamin.Text := DataSimrs.qryvw_pasienrawatjalan['penjamin'];
+    FTindakanIgd.edtDokter.Text := DataSimrs.qryvw_pasienrawatjalan['namapetugasMedis'];
+    FTindakanIgd.edtNoRegistrasi.Text := DataSimrs.qryvw_pasienrawatjalan['noDaftar'];
+    FTindakanIgd.edtNoRajal.Text := DataSimrs.qryvw_pasienrawatjalan['noRegistrasiRawatJalan'];
+    FTindakanIgd.edtAlamat.Text := DataSimrs.qryvw_pasienrawatjalan['alamat'];
+    FTindakanIgd.edtTempatLahir.Text := DataSimrs.qryvw_pasienrawatjalan['tempatLahir'];
+    FTindakanIgd.dtpTglLahir.Date := DataSimrs.qryvw_pasienrawatjalan['tglLahir'];
+    FTindakanIgd.edtUmur.Text := edtUmur.Text;
+    FTindakanIgd.edtJk.Text := DataSimrs.qryvw_pasienrawatjalan['jenisKelamin'];
+    FTindakanIgd.detailTampilTindakan;
+    
+    with FTindakanIgd Do
+    begin
+    //WindowState := wsNormal;
+    //WindowState := wsMaximized;
+    Show;
+    end
+
   end;
 end;
 
@@ -1001,7 +1085,7 @@ begin
       Open;
     end;
 
-    frxrprtLab.LoadFromFile(ExtractFilePath(Application.ExeName)+'laporan\hasilLab.fr3');
+    frxrprtLab.LoadFromFile(Trim('\\simrs_02\New folder\kelengkapan Pengembangan\_NEW SIMRS 2019\APPS\APLIKASI RAJAL_IGD_PINERE\REPOT')+'\hasilLab.fr3');
       //frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
     frxrprtLab.ShowReport;
 
@@ -1009,7 +1093,7 @@ end;
 
 procedure TFRawatJalanIgd.dxnvbrtmRegistrasiOKClick(Sender: TObject);
 begin
-if (edtNoRm.Text='') or (edtNoRegistrasi.Text='') then
+{if (edtNoRm.Text='') or (edtNoRegistrasi.Text='') then
     MessageDlg('Silahkan Pilih Data Pasien Dulu...',mtWarning,[mbOK],0)
     else
     begin
@@ -1029,7 +1113,8 @@ if (edtNoRm.Text='') or (edtNoRegistrasi.Text='') then
         edtUNITASAL.Text := DataSimrs.qryvw_pasienrawatjalan['unit'];
         Show;
       end;
-    end;
+    end; }
+  MessageDlg('Masih Dalam Proses Perbaikan...!',mtWarning,[mbOK],0)
 end;
 
 procedure TFRawatJalanIgd.dxnvbrtmAntrianItemRiwayatObatClick(
@@ -1092,7 +1177,27 @@ end;
 
 procedure TFRawatJalanIgd.dxnvbrtmAntrianItemLaporanClick(Sender: TObject);
 begin
-  FLaporanRl4b.Show;
+  WinExec('\\simrs_02\New folder\kelengkapan Pengembangan\_NEW SIMRS 2019\APPS\APLIKASI LAPORAN\laporanrajal.exe',SW_SHOWNORMAL)
+end;
+
+procedure TFRawatJalanIgd.dxnvbrtmAntrianItemRiwayatClick(Sender: TObject);
+begin
+FRiwayatKunjungan.Show;
+end;
+
+procedure TFRawatJalanIgd.dxnvbrtmAntrianItemStatusCovid19Click(
+  Sender: TObject);
+begin
+if (edtNoRegistrasi.Text='') then
+  MessageDlg('no registrasi pasien masih kosong, silahkan pilih pasien dulu...',mtWarning,[mbOK],0)
+  else
+  FStatusCovid19.Show;
+end;
+
+procedure TFRawatJalanIgd.dxnvbrtmAntrianItemAsesmenAwalClick(
+  Sender: TObject);
+begin
+  FAsesmenAwalIgd.Show;
 end;
 
 end.

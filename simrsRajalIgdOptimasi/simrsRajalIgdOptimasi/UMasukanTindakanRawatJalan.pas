@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, DBGridEhGrouping, GridsEh, DBGridEh;
+  Dialogs, ExtCtrls, StdCtrls, DBGridEhGrouping, GridsEh, DBGridEh,
+  ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, EhLibVCL, DBAxisGridsEh;
 
 type
   TFMasukanTindakanRawatJalan = class(TForm)
@@ -43,7 +44,6 @@ uses UDataSImrs,UTindakanRawatjalan,URajalIgd, cxDBLookupComboBox, ADODB, DB;
 
 procedure TFMasukanTindakanRawatJalan.tampilDataTindakan;
 begin
-  
   with DataSimrs.qryvw_tindakantarifrajalkelompok do
   begin
     Close;
@@ -55,7 +55,7 @@ begin
               't_tindakanrawatjalankelompok.idTindakanRawatjalanKelompok FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
               'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
               'ON t_tariftindakan2.kdTindakan = t_tindakan2.kdTindakan INNER JOIN t_tindakanrawatjalankelompok '+
-              'ON t_tindakanrawatjalankelompok.kdTarif = t_tariftindakan2.kdTarif AND t_tindakanrawatjalankelompok.kdTindakan = t_tariftindakan2.kdTindakan WHERE t_tariftindakan2.kdKelas IN ("10", "18", "19") AND t_tindakanrawatjalankelompok.unit="'+FRawatJalanIgd.cbbUnitPelayanan.Text+'"';
+              'ON t_tindakanrawatjalankelompok.kdTarif = t_tariftindakan2.kdTarif AND t_tindakanrawatjalankelompok.kdTindakan = t_tariftindakan2.kdTindakan WHERE t_tariftindakan2.kdKelas IN ("10", "18", "19","30") AND t_tindakanrawatjalankelompok.unit="'+FRawatJalanIgd.cbbUnitPelayanan.Text+'"';
     Open;
   end;
 end;
@@ -129,13 +129,29 @@ end;
 procedure TFMasukanTindakanRawatJalan.FormShow(Sender: TObject);
 begin
   tampilDataTindakan;
-end;
 
-procedure TFMasukanTindakanRawatJalan.edtCariNamaTindakanChange(
-  Sender: TObject);
-begin
-if edtCariNamaTindakan.Text = '' then
-  begin
+  if (FRawatJalanIgd.cbbUnitPelayanan.Text='IGD') then
+    begin
+    with DataSimrs.qryvw_tindakantarifrajal do
+    begin
+      Close;
+      SQL.Clear;
+      {SQL.Text := 'SELECT t_tariftindakan2.kdTarif,t_tariftindakan2.kdTindakan,'+
+                  't_tindakan2.tindakan,t_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
+                  't_tariftindakan2.tarif FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
+                  'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
+                  'ON t_tariftindakan2.kdTindakan = t_tindakan2.kdTindakan WHERE kdKelas IN("10","18","19")  ';}
+      SQL.Text := 'SELECT t_tariftindakan2.kdTarif,t_tariftindakan2.kdTindakan,'+
+                  't_tindakan2.tindakan,t_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
+                  't_tariftindakan2.tarif FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
+                  'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
+                  'ON t_tariftindakan2.kdTindakan = t_tindakan2.kdTindakan WHERE kdKelas in ("30") ORDER BY t_kelompoktindakan.kelompokTindakan ASC';
+
+      Open;
+    end;
+    end
+    else
+    begin
     with DataSimrs.qryvw_tindakantarifrajal do
     begin
       Close;
@@ -147,9 +163,69 @@ if edtCariNamaTindakan.Text = '' then
                   'ON t_tariftindakan2.kdTindakan = t_tindakan2.kdTindakan WHERE kdKelas IN("10","18","19")  ';
       Open;
     end;
+    end;
+end;
+
+procedure TFMasukanTindakanRawatJalan.edtCariNamaTindakanChange(
+  Sender: TObject);
+begin
+if edtCariNamaTindakan.Text = '' then
+  begin
+    if (FRawatJalanIgd.cbbUnitPelayanan.Text='IGD') then
+    begin
+    with DataSimrs.qryvw_tindakantarifrajal do
+    begin
+      Close;
+      SQL.Clear;
+      {SQL.Text := 'SELECT t_tariftindakan2.kdTarif,t_tariftindakan2.kdTindakan,'+
+                  't_tindakan2.tindakan,t_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
+                  't_tariftindakan2.tarif FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
+                  'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
+                  'ON t_tariftindakan2.kdTindakan = t_tindakan2.kdTindakan WHERE kdKelas IN("10","18","19")  ';}
+      SQL.Text := 'SELECT t_tariftindakan2.kdTarif,t_tariftindakan2.kdTindakan,'+
+                  't_tindakan2.tindakan,t_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
+                  't_tariftindakan2.tarif FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
+                  'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
+                  'ON t_tariftindakan2.kdTindakan = t_tindakan2.kdTindakan WHERE kdKelas in ("30") ORDER BY t_kelompoktindakan.kelompokTindakan ASC';
+
+      Open;
+    end;
+    end
+    else
+    begin
+    with DataSimrs.qryvw_tindakantarifrajal do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Text := 'SELECT t_tariftindakan2.kdTarif,t_tariftindakan2.kdTindakan,'+
+                  't_tindakan2.tindakan,t_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
+                  't_tariftindakan2.tarif FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
+                  'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
+                  'ON t_tariftindakan2.kdTindakan = t_tindakan2.kdTindakan WHERE kdKelas IN("10","18","19")  ';
+      Open;
+    end;
+    end;
   end
   else
   begin
+    if (FRawatJalanIgd.cbbUnitPelayanan.Text='IGD') then
+    begin
+    with DataSimrs.qryvw_tindakantarifrajal do
+    begin
+      Close;
+      SQL.Clear;
+      //SQL.Text := 'select * from vw_tindakantarifrajal where tindakan like "%'+edtCariNamaTindakan.Text+'%"';
+      SQL.Text := 'SELECT t_tariftindakan2.kdTarif,t_tariftindakan2.kdTindakan,'+
+                  't_tindakan2.tindakan,t_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
+                  't_tariftindakan2.tarif FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
+                  'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
+                  'ON t_tariftindakan2.kdTindakan = t_tindakan2.kdTindakan WHERE  kdKelas in ("30")  and (t_tindakan2.tindakan like "%'+edtCariNamaTindakan.Text+'%") ORDER BY t_kelompoktindakan.kelompokTindakan ASC';
+      Open;
+    end;
+    end
+    else
+    
+    begin
     with DataSimrs.qryvw_tindakantarifrajal do
     begin
       Close;
@@ -161,6 +237,7 @@ if edtCariNamaTindakan.Text = '' then
                   'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
                   'ON t_tariftindakan2.kdTindakan = t_tindakan2.kdTindakan WHERE kdKelas IN("10","18","19") and t_tindakan2.tindakan like "%'+edtCariNamaTindakan.Text+'%"';
       Open;
+    end;
     end;
   end;
 end;

@@ -16,7 +16,8 @@ uses
   dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  DBGridEhGrouping, GridsEh, DBGridEh, Buttons, cxMemo, cxLabel;
+  DBGridEhGrouping, GridsEh, DBGridEh, Buttons, cxMemo, cxLabel,
+  ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, EhLibVCL, DBAxisGridsEh;
 
 type
   TFPermintaanLabRajal = class(TForm)
@@ -67,6 +68,7 @@ type
     btnCetak: TBitBtn;
     cxlbl1: TcxLabel;
     cxmKeterangan: TcxMemo;
+    lblCaraBayar: TLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edtCariChange(Sender: TObject);
@@ -94,6 +96,23 @@ uses UDataSImrs,DB, ADODB, DateUtils, Math;
 
 procedure TFPermintaanLabRajal.awal;
 begin
+  /// REFRESH 
+  with DataSimrs.qryt_registrasipenunjangrajal do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'SELECT noRegistrasiPenunjangRajal FROM t_registrasipenunjangrajal';
+    Open;
+  end;
+
+  WITH DataSimrs.qryt_tindakanpenunjangrajal do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'SELECT noTindakanPenunjangRajal FROM t_tindakanpenunjangrajal';
+    Open;
+  end;
+
   edtNoRegistrasiLab.Text :='RJLAB'+FormatDateTime('ddMMYY HHmmss',Now)+'-'+IntToStr(DataSimrs.qryt_registrasipenunjangrajal.RecordCount+1);
   edtNoTindakanPermintaanLab.Text :='TLAB'+FormatDateTime('ddMMYY HHmmss',Now)+'-'+IntToStr(DataSimrs.qryt_tindakanpenunjangrajal.RecordCount+1);
   dtpTglPermintaan.DateTime := Now;
@@ -204,23 +223,45 @@ begin
   dtlTndPenunjang;
   if edtAsalRuang.Text = 'IGD' then
   begin
-    with DataSimrs.qryvw_tindakanlab do
+    if lblCaraBayar.Caption = 'UMUM' then
     begin
-      Close;
-      SQL.Clear;
-      //SQL.Text := 'select * from vw_tindakanlab where kelas="KELAS I"';
-      SQL.Text := 'SELECT t_tindakan2.kdTindakan,t_tindakan2.tindakan,'+
-                  't_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
-                  't_tariftindakan2.kdTarif,t_tariftindakan2.kdKelas,t_tariftindakan2.tarif,'+
-                  't_kelas.kelas FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
-                  'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
-                  'ON t_tindakan2.kdTindakan = t_tariftindakan2.kdTindakan INNER JOIN t_kelas '+
-                  'ON t_tariftindakan2.kdKelas = t_kelas.kdKelas WHERE (t_tindakan2.kdKelompokTindakan in (15,16,17,18,19,20,21,22,23,24,59))and t_kelas.kelas="KELAS I" ';
-      Open;
+      with DataSimrs.qryvw_tindakanlab do
+      begin
+        Close;
+        SQL.Clear;
+        //SQL.Text := 'select * from vw_tindakanlab where kelas="KELAS I"';
+        SQL.Text := 'SELECT t_tindakan2.kdTindakan,t_tindakan2.tindakan,'+
+                    't_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
+                    't_tariftindakan2.kdTarif,t_tariftindakan2.kdKelas,t_tariftindakan2.tarif,'+
+                    't_kelas.kelas FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
+                    'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
+                    'ON t_tindakan2.kdTindakan = t_tariftindakan2.kdTindakan INNER JOIN t_kelas '+
+                    'ON t_tariftindakan2.kdKelas = t_kelas.kdKelas WHERE (t_tindakan2.kdKelompokTindakan in (15,16,17,18,19,20,21,22,23,24,59))and t_kelas.kelas="KELAS II" ';
+        Open;
+      end;
+    end
+    else
+    begin
+      with DataSimrs.qryvw_tindakanlab do
+      begin
+        Close;
+        SQL.Clear;
+        //SQL.Text := 'select * from vw_tindakanlab where kelas="KELAS I"';
+        SQL.Text := 'SELECT t_tindakan2.kdTindakan,t_tindakan2.tindakan,'+
+                    't_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
+                    't_tariftindakan2.kdTarif,t_tariftindakan2.kdKelas,t_tariftindakan2.tarif,'+
+                    't_kelas.kelas FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
+                    'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
+                    'ON t_tindakan2.kdTindakan = t_tariftindakan2.kdTindakan INNER JOIN t_kelas '+
+                    'ON t_tariftindakan2.kdKelas = t_kelas.kdKelas WHERE (t_tindakan2.kdKelompokTindakan in (15,16,17,18,19,20,21,22,23,24,59))and t_kelas.kelas="KELAS I" ';
+        Open;
+      end;
     end;
+
   end
   else
   begin
+
     with DataSimrs.qryvw_tindakanlab do
     begin
       Close;
@@ -235,6 +276,7 @@ begin
                   'ON t_tariftindakan2.kdKelas = t_kelas.kdKelas WHERE (t_tindakan2.kdKelompokTindakan in (15,16,17,18,19,20,21,22,23,24,59)) and t_kelas.kelas="KELAS III" ';
       Open;
     end;
+    
   end;
 end;
 
@@ -244,6 +286,31 @@ if edtCari.Text = '' then
   begin
     if edtAsalRuang.Text = 'IGD' then
     begin
+
+      if lblCaraBayar.Caption = 'UMUM' then
+      begin
+
+       with DataSimrs.qryvw_tindakanlab do
+        begin
+          Close;
+          SQL.Clear;
+          //SQL.Text := 'select * from vw_tindakanlab where kelas="KELAS I"';
+          SQL.Text := 'SELECT t_tindakan2.kdTindakan,t_tindakan2.tindakan,'+
+                      't_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
+                      't_tariftindakan2.kdTarif,t_tariftindakan2.kdKelas,t_tariftindakan2.tarif,'+
+                      't_kelas.kelas FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
+                      'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
+                      'ON t_tindakan2.kdTindakan = t_tariftindakan2.kdTindakan INNER JOIN t_kelas '+
+                      'ON t_tariftindakan2.kdKelas = t_kelas.kdKelas WHERE (t_tindakan2.kdKelompokTindakan in (15,16,17,18,19,20,21,22,23,24,59)) and t_kelas.kelas="KELAS II" ';
+          Open;
+        end;
+
+      end
+
+      else
+
+      begin
+
        with DataSimrs.qryvw_tindakanlab do
         begin
           Close;
@@ -258,6 +325,8 @@ if edtCari.Text = '' then
                       'ON t_tariftindakan2.kdKelas = t_kelas.kdKelas WHERE (t_tindakan2.kdKelompokTindakan in (15,16,17,18,19,20,21,22,23,24,59)) and t_kelas.kelas="KELAS I" ';
           Open;
         end;
+
+       end;
     end
   else
   begin
@@ -283,6 +352,24 @@ if edtCari.Text = '' then
     begin
       with DataSimrs.qryvw_tindakanlab do
       begin
+        if (lblCaraBayar.Caption='UMUM') then
+        begin
+        with DataSimrs.qryvw_tindakanlab do
+        begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'SELECT t_tindakan2.kdTindakan,t_tindakan2.tindakan,'+
+                      't_tindakan2.kdKelompokTindakan,t_kelompoktindakan.kelompokTindakan,'+
+                      't_tariftindakan2.kdTarif,t_tariftindakan2.kdKelas,t_tariftindakan2.tarif,'+
+                      't_kelas.kelas FROM t_tindakan2 INNER JOIN t_kelompoktindakan '+
+                      'ON t_tindakan2.kdKelompokTindakan = t_kelompoktindakan.kdKelompokTindakan INNER JOIN t_tariftindakan2 '+
+                      'ON t_tindakan2.kdTindakan = t_tariftindakan2.kdTindakan INNER JOIN t_kelas '+
+                      'ON t_tariftindakan2.kdKelas = t_kelas.kdKelas WHERE (t_tindakan2.tindakan like "%'+edtCari.Text+'%") and (t_tindakan2.kdKelompokTindakan in (15,16,17,18,19,20,21,22,23,24,59)) and (t_kelas.kelas="KELAS II")  ';
+          Open;
+        end;
+        end
+        else
+        begin
         with DataSimrs.qryvw_tindakanlab do
         begin
           Close;
@@ -295,6 +382,7 @@ if edtCari.Text = '' then
                       'ON t_tindakan2.kdTindakan = t_tariftindakan2.kdTindakan INNER JOIN t_kelas '+
                       'ON t_tariftindakan2.kdKelas = t_kelas.kdKelas WHERE (t_tindakan2.tindakan like "%'+edtCari.Text+'%") and (t_tindakan2.kdKelompokTindakan in (15,16,17,18,19,20,21,22,23,24,59)) and (t_kelas.kelas="KELAS I")  ';
           Open;
+        end;
         end;
       end;
     end
@@ -357,6 +445,7 @@ begin
       DataSimrs.qryt_detailtindakanpenunjangrajal.post;
       end;
       end;
+
       dtlTndPenunjang;
 
       ///proses  data t_tindakanpenujangrajal
@@ -410,28 +499,92 @@ end
 end;
 
 procedure TFPermintaanLabRajal.btnHapusClick(Sender: TObject);
+var
+  idNo,tndk:String;
 begin
-{if DataSimrs.qryvw_detailtindakanpenunjangrajal.RecordCount >= 1 then
+If DataSimrs.qryvw_detailtindakanpenunjangrajal.RecordCount<=0 then
+  ShowMessage('Data Tidak ada ') else
 begin
- MessageDlg('Tidak ada data yang ditandai...',mtWarning,[mbOK],0);
- Exit;
+  if MessageDlg('Anda Ingin Menghapus Data "'+DataSimrs.qryvw_detailtindakanpenunjangrajal['tindakan']+'" ?', mtConfirmation,[mbyes,mbno],0)=mryes then
+  begin
+    tndk := DataSimrs.qryvw_detailtindakanpenunjangrajal['tindakan'];
+
+    with DataSimrs.qryvw_detailtindakanpenunjangrajal do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Text := 'select * from vw_detailtindakanpenunjangrajal where noTindakanPenunjangRajal="'+edtNoTindakanPermintaanLab.Text+'" and tindakan="'+tndk+'"';
+      Open;
+    end;
+
+    idNo:= DataSimrs.qryvw_detailtindakanpenunjangrajal['idTindakanPenunjangRajal'];
+    with DataSimrs.qryt_detailtindakanpenunjangrajal do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Text := 'delete FROM  t_detailtindakanpenunjangrajal where idTindakanPenunjangRajal="'+idNo+'"';
+      ExecSQL;
+      SQL.Text := 'select * from t_detailtindakanpenunjangrajal';
+      Open;
+    end;
+    ///DataSimrs.qryt_detailtindakanpenunjangrajal.Delete;
+    dtlTndPenunjang;
+
+    ///proses  data t_tindakanpenujangrajal
+      if DataSimrs.qryt_tindakanpenunjangrajal.Locate('noTindakanPenunjangRajal',edtNoTindakanPermintaanLab.Text,[])  then
+        begin
+          with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+            Edit;
+            FieldByName('noTindakanPenunjangRajal').AsString := edtNoTindakanPermintaanLab.Text;
+            FieldByName('noRegistrasiPenunjangRajal').AsString := edtNoRegistrasiLab.Text;
+            FieldByName('tglTindakanPenunjangRajal').AsDateTime := dtpTglPermintaan.DateTime;
+            FieldByName('totalTindakanPenunjangRajal').AsFloat := StrToFloat(FloatToStr(dbgrdhTindakanPermintaanLab.columns[4].Footer.SumValue));
+            FieldByName('statusPembayaran').AsString := 'BELUM LUNAS';
+            Post;
+          end;
+          with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_tindakanpenunjangrajal';
+            Open;
+          end;
+        end
+        else
+        begin
+          with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+            Append;
+            FieldByName('noTindakanPenunjangRajal').AsString := edtNoTindakanPermintaanLab.Text;
+            FieldByName('noRegistrasiPenunjangRajal').AsString := edtNoRegistrasiLab.Text;
+            FieldByName('tglTindakanPenunjangRajal').AsDateTime := dtpTglPermintaan.DateTime;
+            FieldByName('totalTindakanPenunjangRajal').AsFloat := StrToFloat(FloatToStr(dbgrdhTindakanPermintaanLab.columns[4].Footer.SumValue));
+            FieldByName('statusPembayaran').AsString := 'BELUM LUNAS';
+            Post;
+          end;
+          with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_tindakanpenunjangrajal';
+            Open;
+          end;
+        end;
+  end
+  else
+  abort;
 end;
-DataSimrs.qryt_detailtindakanpenunjangrajal.Delete;
-dtlTndPenunjang;}
-if DataSimrs.qryvw_detailtindakanpenunjangrajal.RecordCount >= 1 then
-begin
-DataSimrs.qryt_detailtindakanpenunjangrajal.Delete;
-dtlTndPenunjang
-end
-else
-Abort;
+
 end;
+
 procedure TFPermintaanLabRajal.btnSelesaiClick(Sender: TObject);
 begin
 if (cxmKeterangan.Text='') then
   MessageDlg('Data Harus Di Isi Lengkap...!',mtInformation,[mbok],0)
 else
 begin
+  /// insert ke registrasi penunjang
   with DataSimrs.qryt_registrasipenunjangrajal do
   begin
     Append;

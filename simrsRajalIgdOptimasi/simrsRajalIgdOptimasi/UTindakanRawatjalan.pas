@@ -16,7 +16,8 @@ uses
   dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinXmas2008Blue, DBGridEhGrouping, GridsEh, DBGridEh, Mask, DBCtrlsEh,
   cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
-  cxDBLookupComboBox, StdCtrls, Buttons, cxButtons, ExtCtrls;
+  cxDBLookupComboBox, StdCtrls, Buttons, cxButtons, ExtCtrls, ToolCtrlsEh,
+  DBGridEhToolCtrls, DynVarsEh, EhLibVCL, DBAxisGridsEh, ComCtrls;
 
 type
   TFTindakanRawatjalan = class(TForm)
@@ -29,6 +30,7 @@ type
     btnCariTindakan: TButton;
     btnMasukTindakan: TButton;
     pnlTegah: TPanel;
+    dbgrdhTindakanTarifRajal: TDBGridEh;
     grpNoTransaksi: TGroupBox;
     lblTindakan: TLabel;
     lblNoTransakasi: TLabel;
@@ -46,7 +48,31 @@ type
     cbbPelaksana: TcxLookupComboBox;
     edtJumlah: TDBNumberEditEh;
     edtKode: TEdit;
-    dbgrdhTindakanTarifRajal: TDBGridEh;
+    grp1: TGroupBox;
+    lblNoRm: TLabel;
+    edtNoRmTndk: TEdit;
+    lblNoRegistrasi: TLabel;
+    edtNoRegistrasiTndk: TEdit;
+    lblAsalPasien: TLabel;
+    edtTempatLahirTndk: TEdit;
+    dtpTglLahirTndk: TDateTimePicker;
+    lblTglLahir: TLabel;
+    edtNoRajalTndk: TEdit;
+    lblNoRajal: TLabel;
+    edtNmPasienTndk: TEdit;
+    lblNmPasien: TLabel;
+    edtUmurTndk: TEdit;
+    lblUmur: TLabel;
+    edtAlamatTndk: TEdit;
+    lblAlamat: TLabel;
+    edtPenjaminTndk: TEdit;
+    lblPenjamin: TLabel;
+    lblDokter1: TLabel;
+    edtDokterTndk: TEdit;
+    edtJkTndk: TEdit;
+    lblJk: TLabel;
+    lbl1: TLabel;
+    lblPOLI: TLabel;
     procedure btnSelesaiClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cbbTindakanKeyPress(Sender: TObject; var Key: Char);
@@ -56,6 +82,8 @@ type
     procedure btnHapusClick(Sender: TObject);
     procedure btnTambahClick(Sender: TObject);
     procedure btnMasukTindakanClick(Sender: TObject);
+    procedure edtJumlahClick(Sender: TObject);
+    procedure btnNoTransaksiClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,7 +102,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UDataSImrs,URajalIgd, UMasukanTindakanRawatJalan, ADODB, DB, Math;
+uses UDataSImrs,URajalIgd, UMasukanTindakanRawatJalan,UHistoriTndkRajal, ADODB, DB, Math;
 
 procedure TFTindakanRawatJalan.noTrajal;
 begin
@@ -140,6 +168,7 @@ begin
                 'ON t_registrasirawatjalan.noRegistrasiRawatJalan = t_tindakanpasienrajal.noRegistrasiRawatJalan where t_detailtindakanpasienrajal.noTindakanPasienRajal="'+edtNoTransaksiTindakanRajal.Text+'" ';
     Open;
   end;
+  
 end;
 
 
@@ -251,10 +280,20 @@ if (cbbTindakan.Text='') or (edtTarif.Text='') or (edtJumlah.Text = '') or (cbbP
   begin
     tglTindakan := FormatDateTime('yyyy-MM-dd hh:mm:ss',Now);
 
+    /// tampil filter query tindakan pasien
+    with DataSimrs.qryt_tindakanpasienrajal do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Text := 'select * from t_tindakanpasienrajal where noTindakanPasienRajal="'+edtNoTransaksiTindakanRajal.Text+'"';
+      Open;
+    end;
+
+    /// pengujian jika sudah ada no tindakan
      if DataSimrs.qryt_tindakanpasienrajal.Locate('noTindakanPasienRajal',edtNoTransaksiTindakanRajal.Text,[])  then
      begin
-
-       with DataSimrs.qryt_detailtindakanpasienrajal do
+        /// insert di t_detailtindakanpasienrajal
+        with DataSimrs.qryt_detailtindakanpasienrajal do
         begin
           Close;
           SQL.Clear;
@@ -268,29 +307,32 @@ if (cbbTindakan.Text='') or (edtTarif.Text='') or (edtJumlah.Text = '') or (cbbP
           Open;
         end;
 
+        //panggil procedure detail tampil tindakan
         detailTampilTindakan;
+        /// tampil variabel total tindakan
         totalTindakan := dbgrdhTindakanTarifRajal.columns[3].Footer.SumValue;
 
+        /// update data di tabel t_tindakanpasienrajal
         with DataSimrs.qryt_tindakanpasienrajal do
         begin
           Close;
           SQL.Clear;
           SQL.Text := 'update t_tindakanpasienrajal set noTindakanPasienRajal="'+edtNoTransaksiTindakanRajal.Text+'",'+
-                      'noRegistrasiRawatJalan="'+FRawatJalanIgd.edtNoRajal.Text+'",tglTindakan="'+tglTindakan+'",'+
+                      'noRegistrasiRawatJalan="'+edtNoRajalTndk.Text+'",tglTindakan="'+tglTindakan+'",'+
                       'totalTarifTindakan= "'+FloatToStr(totalTindakan)+'",statusPembayaran="BELUM LUNAS" where noTindakanPasienRajal="'+edtNoTransaksiTindakanRajal.Text+'"';
           ExecSQL;
           SQL.Text := 'select * from t_tindakanpasienrajal';
           Open;
         end;
-
+        /// panggil procedure awal
         awal;
 
      end
 
      else
      begin
-
-       with DataSimrs.qryt_detailtindakanpasienrajal do
+        /// insert di t_detailtindakanpasienrajal
+        with DataSimrs.qryt_detailtindakanpasienrajal do
         begin
           Close;
           SQL.Clear;
@@ -304,8 +346,10 @@ if (cbbTindakan.Text='') or (edtTarif.Text='') or (edtJumlah.Text = '') or (cbbP
           Open;
         end;
         
-
+        /// panggil procedure detail tindakan
         detailTampilTindakan;
+
+        /// panggil query di untuk total tarif
         with DataSimrs.qryt_detailtindakanpasienrajal do
         begin
           Close;
@@ -316,13 +360,15 @@ if (cbbTindakan.Text='') or (edtTarif.Text='') or (edtJumlah.Text = '') or (cbbP
 
         totalTindakan1 := DataSimrs.qryt_detailtindakanpasienrajal.Fields[0].AsFloat;
 
+        /// insert data di tabel tindakanpasienrajal
+        
         with DataSimrs.qryt_tindakanpasienrajal do
         begin
           Close;
           SQL.Clear;
           SQL.Text := 'insert into t_tindakanpasienrajal (noTindakanPasienRajal,noRegistrasiRawatJalan,'+
                       'tglTindakan,totalTarifTindakan,statusPembayaran) values ("'+edtNoTransaksiTindakanRajal.Text+'",'+
-                      '"'+FRawatJalanIgd.edtNoRajal.Text+'",'+
+                      '"'+edtNoRajalTndk.Text+'",'+
                       '"'+tglTindakan+'",'+
                       '"'+FloatToStr(totalTindakan1)+'","BELUM LUNAS")';
           ExecSQL;
@@ -350,6 +396,25 @@ if DataSimrs.qryvw_detailtindakanpasienrajal.RecordCount<=0 then
     nOTrsTndk := DataSimrs.qryvw_detailtindakanpasienrajal['noTindakanPasienRajal'];
 
     /// hapus tindakan
+    {with DataSimrs.qryt_tindakanpenunjangrajal do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Text := 'SELECT noTindakanPasienRajal,kdTarif,tindakan,tarif,jumlahTindakan,totalTarif FROM `t_detailtindakanpasienrajal` where noTindakanPasienRajal="'+kode+'" ';
+      Open;
+    end;
+    with DataSimrs.qryt_detailtindakanpasienrajalhapus do
+    begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'insert into t_detailtindakanpasienrajalhapus (noTindakanPasienRajal,kdTarif,tindakan,tarif,jumlahTindakan,totalTarif)  values'+
+                '("'+DataSimrs.qryt_tindakanpasienrajal['noTindakanPasienRajal']+'","'+DataSimrs.qryt_tindakanpasienrajal['kdTarif']+'","'+DataSimrs.qryt_tindakanpasienrajal['tindakan']+'"'+
+                '"'+DataSimrs.qryt_tindakanpasienrajal['tarif']+'","'+DataSimrs.qryt_tindakanpasienrajal['jumlahTindakan']+'","'+DataSimrs.qryt_tindakanpasienrajal['totalTarif']+'")';
+    ExecSQL;
+    SQL.Text := 'select * from t_detailtindakanpasienrajalhapus';
+    Open;
+    end;}
+
     with DataSimrs.qryvw_detailtindakanpasienrajal do
     begin
     Close;
@@ -385,7 +450,7 @@ begin
  Active := True;
  Close;
  SQL.Clear;
- SQL.Text := 'select * from t_tindakanpasienrajal where (noRegistrasiRawatJalan="'+FRawatJalanIgd.edtNoRajal.Text+'") and (tglTindakan BETWEEN "'+FormatDateTime('yyyy-MM-dd',Now)+'" and "'+FormatDateTime('yyyy-MM-dd',Now+1)+'")';
+ SQL.Text := 'select * from t_tindakanpasienrajal where (noRegistrasiRawatJalan="'+edtNoRajalTndk.Text+'") and (tglTindakan BETWEEN "'+FormatDateTime('yyyy-MM-dd',Now)+'" and "'+FormatDateTime('yyyy-MM-dd',Now+1)+'")';
  Open;
 end;
 If DataSimrs.qryt_tindakanpasienrajal.RecordCount >=1 then
@@ -403,6 +468,21 @@ end;
 procedure TFTindakanRawatjalan.btnMasukTindakanClick(Sender: TObject);
 begin
   FMasukanTindakanRawatJalan.Show;
+end;
+
+procedure TFTindakanRawatjalan.edtJumlahClick(Sender: TObject);
+begin
+  ShowMessage('Silahkan Di Enter Saja...!');
+  edtJumlah.Text;
+end;
+
+procedure TFTindakanRawatjalan.btnNoTransaksiClick(Sender: TObject);
+begin
+with FHistoriTndkRajal Do
+begin
+  lblNoRegisPasien.Caption := edtNoRajalTndk.Text;
+  Show;
+end;
 end;
 
 end.

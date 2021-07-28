@@ -2,7 +2,7 @@ object FKonsulAntarPoli: TFKonsulAntarPoli
   Left = 233
   Top = 124
   Width = 1147
-  Height = 563
+  Height = 633
   Caption = 'KONSUL ANTAR POLI'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,14 +18,14 @@ object FKonsulAntarPoli: TFKonsulAntarPoli
     Left = 0
     Top = 49
     Width = 1131
-    Height = 423
+    Height = 493
     Align = alClient
     TabOrder = 0
     object grpDataPasien: TGroupBox
       Left = 1
       Top = 1
       Width = 608
-      Height = 421
+      Height = 491
       Align = alLeft
       Caption = 'DATA IDENTITAS PASIEN'
       Color = clSkyBlue
@@ -536,7 +536,7 @@ object FKonsulAntarPoli: TFKonsulAntarPoli
       Left = 609
       Top = 1
       Width = 521
-      Height = 421
+      Height = 491
       Align = alClient
       Caption = 'POLI TUJUAN'
       Color = clSkyBlue
@@ -600,6 +600,19 @@ object FKonsulAntarPoli: TFKonsulAntarPoli
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object lbl5: TLabel
+        Left = 24
+        Top = 168
+        Width = 212
+        Height = 18
+        Caption = 'TARIF KONSUL ANTAR POLI'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object edtNoRegistrasi: TEdit
         Left = 264
         Top = 40
@@ -641,11 +654,17 @@ object FKonsulAntarPoli: TFKonsulAntarPoli
         Enabled = False
         TabOrder = 3
       end
+      object cxcrncydtTarifKonsulAntarPoli: TcxCurrencyEdit
+        Left = 264
+        Top = 168
+        TabOrder = 4
+        Width = 241
+      end
     end
   end
   object pnlBawah: TPanel
     Left = 0
-    Top = 472
+    Top = 542
     Width = 1131
     Height = 52
     Align = alBottom

@@ -285,7 +285,7 @@ object FRegistrasiRuangOk: TFRegistrasiRuangOk
         Top = 296
         TabOrder = 11
         Text = 'edtKeterangan'
-        Width = 337
+        Width = 265
       end
       object edtDIAGNOSAPREOP: TcxTextEdit
         Left = 184
@@ -414,6 +414,7 @@ object FRegistrasiRuangOk: TFRegistrasiRuangOk
           Top = 80
           Width = 121
           Height = 21
+          DynProps = <>
           EditButtons = <>
           TabOrder = 4
           Visible = True
@@ -449,26 +450,16 @@ object FRegistrasiRuangOk: TFRegistrasiRuangOk
           Width = 941
           Height = 181
           Align = alClient
-          DataGrouping.GroupLevels = <>
           DataSource = dst_detailtindakanok
-          Flat = False
-          FooterColor = clWindow
-          FooterFont.Charset = DEFAULT_CHARSET
-          FooterFont.Color = clWindowText
-          FooterFont.Height = -11
-          FooterFont.Name = 'MS Sans Serif'
-          FooterFont.Style = []
+          DynProps = <>
           FooterRowCount = 1
-          IndicatorOptions = [gioShowRowIndicatorEh]
+          FooterParams.Color = clWindow
           SumList.Active = True
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
           Columns = <
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'kdTarif'
               Footers = <>
@@ -476,6 +467,8 @@ object FRegistrasiRuangOk: TFRegistrasiRuangOk
               Width = 76
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'kdTindakan'
               Footers = <>
@@ -483,6 +476,8 @@ object FRegistrasiRuangOk: TFRegistrasiRuangOk
               Width = 86
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tindakan'
               Footers = <>
@@ -490,7 +485,9 @@ object FRegistrasiRuangOk: TFRegistrasiRuangOk
               Width = 228
             end
             item
+              CellButtons = <>
               DisplayFormat = '#,#0.00'
+              DynProps = <>
               EditButtons = <>
               FieldName = 'tarif'
               Footers = <>
@@ -498,6 +495,8 @@ object FRegistrasiRuangOk: TFRegistrasiRuangOk
               Width = 105
             end
             item
+              CellButtons = <>
+              DynProps = <>
               EditButtons = <>
               FieldName = 'jmlTindakan'
               Footers = <>
@@ -505,7 +504,9 @@ object FRegistrasiRuangOk: TFRegistrasiRuangOk
               Width = 52
             end
             item
+              CellButtons = <>
               DisplayFormat = '#,#0.00'
+              DynProps = <>
               EditButtons = <>
               FieldName = 'subTotal'
               Footer.DisplayFormat = '#,#0.00'

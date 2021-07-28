@@ -1,9 +1,9 @@
 object DataSimrs: TDataSimrs
   OldCreateOrder = False
-  Left = 227
-  Top = 97
-  Height = 953
-  Width = 1374
+  Left = 282
+  Top = 31
+  Height = 907
+  Width = 1406
   object conSimrs: TADOConnection
     Connected = True
     ConnectionString = 'Provider=MSDASQL.1;Persist Security Info=False;Data Source=simrs'
@@ -75,7 +75,8 @@ object DataSimrs: TDataSimrs
       't_tenagamedis2.namapetugasMedis,'
       't_kelompoktenagamedis.KelompokTenagaMedis,'
       't_tindakanpasienrajal.noRegistrasiRawatJalan,'
-      't_registrasirawatjalan.noDaftar'
+      't_registrasirawatjalan.noDaftar,'
+      't_tindakanpasienrajal.noTindakanPasienRajal'
       'FROM'
       't_detailtindakanpasienrajal'
       
@@ -92,7 +93,7 @@ object DataSimrs: TDataSimrs
         'INNER JOIN t_registrasirawatjalan ON t_registrasirawatjalan.noRe' +
         'gistrasiRawatJalan = t_tindakanpasienrajal.noRegistrasiRawatJala' +
         'n '
-      'limit 10')
+      'limit 30')
     Left = 72
     Top = 208
   end
@@ -138,6 +139,7 @@ object DataSimrs: TDataSimrs
     Top = 304
   end
   object qryvw_riwayattindakanradrajal: TADOQuery
+    Active = True
     Connection = conSimrs
     CursorType = ctStatic
     Parameters = <>
@@ -170,6 +172,7 @@ object DataSimrs: TDataSimrs
     Top = 368
   end
   object qryvw_pasienrawatjalan: TADOQuery
+    Active = True
     Connection = conSimrs
     CursorType = ctStatic
     Parameters = <>
@@ -194,7 +197,8 @@ object DataSimrs: TDataSimrs
       't_statuskeluar.statusKeluar,'
       't_tenagamedis2.namapetugasMedis,'
       't_registrasirawatjalan.ketMasukPasien,'
-      't_registrasirawatjalan.statusPasien'
+      't_registrasirawatjalan.statusPasien,'
+      't_registrasi.statusCovid19'
       'FROM'
       't_registrasi'
       
@@ -240,6 +244,7 @@ object DataSimrs: TDataSimrs
     Top = 480
   end
   object qryvw_anamesa: TADOQuery
+    Active = True
     Connection = conSimrs
     CursorType = ctStatic
     Parameters = <>
@@ -293,6 +298,7 @@ object DataSimrs: TDataSimrs
     Top = 24
   end
   object qryvw_diagnosa10: TADOQuery
+    Active = True
     Connection = conSimrs
     CursorType = ctStatic
     Parameters = <>
@@ -429,7 +435,7 @@ object DataSimrs: TDataSimrs
       'kelurahan,'#10
       'kecamatan,'#10#9
       'kabupaten,'#10#9
-      'provinsi,'#10#9'pekerjaan '#10'FROM'#10' t_pasien '#9'LIMIT 20')
+      'provinsi,'#10#9'pekerjaan '#10'FROM'#10' t_pasien LIMIT 20')
     Left = 344
     Top = 368
   end
@@ -489,6 +495,7 @@ object DataSimrs: TDataSimrs
     Top = 544
   end
   object qryt_detailtindakanpasienrajal: TADOQuery
+    Active = True
     Connection = conSimrs
     CursorType = ctStatic
     Parameters = <>
@@ -573,7 +580,8 @@ object DataSimrs: TDataSimrs
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      ' SELECT'
+      'SELECT'
+      't_detailtindakanpenunjangrajal.idTindakanPenunjangRajal,'
       't_detailtindakanpenunjangrajal.noTindakanPenunjangRajal,'
       't_detailtindakanpenunjangrajal.kdTarif,'
       't_detailtindakanpenunjangrajal.tindakan,'
@@ -587,7 +595,7 @@ object DataSimrs: TDataSimrs
       
         'INNER JOIN t_tenagamedis2 ON t_detailtindakanpenunjangrajal.kdTe' +
         'nagaMedis = t_tenagamedis2.kdPetugasMedis'
-      'limit 20')
+      '')
     Left = 584
     Top = 264
   end
@@ -657,6 +665,7 @@ object DataSimrs: TDataSimrs
     Parameters = <>
     SQL.Strings = (
       'SELECT'
+      't_detailtindakanradiologirajal.idTindakanRadiologiRajal,'
       't_detailtindakanradiologirajal.noTindakanRadiologiRajal,'
       't_detailtindakanradiologirajal.kdTarif,'
       't_detailtindakanradiologirajal.tindakan,'
@@ -779,16 +788,15 @@ object DataSimrs: TDataSimrs
     Top = 600
   end
   object conFarmasi: TADOConnection
-    Connected = True
     ConnectionString = 
       'Provider=MSDASQL.1;Persist Security Info=False;Data Source=farma' +
-      'si'
+      'si;'
     LoginPrompt = False
+    Provider = 'MSDASQL.1'
     Left = 904
     Top = 368
   end
   object qryObatRajal: TADOQuery
-    Active = True
     Connection = conFarmasi
     CursorType = ctStatic
     Parameters = <>
@@ -872,7 +880,7 @@ object DataSimrs: TDataSimrs
         '= t_kelompoktindakan.kdKelompokTindakan'
       
         'INNER JOIN t_tariftindakan2 ON t_tariftindakan2.kdTindakan = t_t' +
-        'indakan2.kdTindakan WHERE kdKelas IN('#39'10'#39','#39'18'#39','#39'19'#39') ')
+        'indakan2.kdTindakan WHERE kdKelas IN('#39'10'#39','#39'18'#39','#39'19'#39','#39'30'#39') ')
     Left = 536
     Top = 680
   end
@@ -882,7 +890,6 @@ object DataSimrs: TDataSimrs
     Top = 680
   end
   object qryHd: TADOQuery
-    Active = True
     Connection = conSimLab
     CursorType = ctStatic
     Parameters = <>
@@ -901,7 +908,8 @@ object DataSimrs: TDataSimrs
       '    , `SOURCE_NM`'
       '    , `CLINICIAN_NM`'
       'FROM'
-      '    `labreshd`')
+      '    `labreshd`'
+      'limit 30')
     Left = 1184
     Top = 184
   end
@@ -927,7 +935,8 @@ object DataSimrs: TDataSimrs
       '    , `FLAG`'
       '    , `VALIDATE_BY`'
       'FROM'
-      '    `labresdt`')
+      '    `labresdt`'
+      'limit 20')
     Left = 1192
     Top = 272
   end
@@ -940,18 +949,17 @@ object DataSimrs: TDataSimrs
     Connected = True
     ConnectionString = 
       'Provider=MSDASQL.1;Persist Security Info=False;Data Source=simLa' +
-      'b'
+      'b;'
     LoginPrompt = False
     Left = 1192
     Top = 128
   end
   object qryt_registrasiokrajal: TADOQuery
-    Active = True
     Connection = conSimrs
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select * from t_registrasiokrajal')
+      'select * from t_registrasiop')
     Left = 64
     Top = 688
   end
@@ -976,7 +984,6 @@ object DataSimrs: TDataSimrs
     Top = 488
   end
   object qryt_penjualanobatrajal: TADOQuery
-    Active = True
     Connection = conFarmasi
     CursorType = ctStatic
     Parameters = <>
@@ -991,7 +998,6 @@ object DataSimrs: TDataSimrs
     Top = 744
   end
   object qryt_detailpenjualanobatrajal: TADOQuery
-    Active = True
     Connection = conFarmasi
     CursorType = ctStatic
     Parameters = <>
@@ -1050,53 +1056,29 @@ object DataSimrs: TDataSimrs
     Left = 320
     Top = 848
   end
-  object qryRl4B: TADOQuery
+  object qryt_detailtindakanpasienrajalhapus: TADOQuery
     Active = True
     Connection = conSimrs
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      
-        'SELECT noDaftar,tglDaftar,unit,kdIcd10,icd10, SUM(umur06hr) AS u' +
-        'mur06hr, SUM(umur728hr) AS umur728hr, SUM(umur28hr1TH) AS umur28' +
-        'hr1TH, '
-      
-        'SUM(umur1_4th) AS umur1_4th, SUM(umur5_14th) AS umur5_14th, SUM(' +
-        'UMUR15_24TH) AS UMUR15_24TH, SUM(UMUR25_44TH) AS UMUR25_44TH, '
-      
-        'SUM(UMUR45_64TH) AS UMUR45_64TH,SUM(UMUR65KeatasTH) AS UMUR65Kea' +
-        'tasTH, '
-      
-        'SUM(kasusDiagnosaLama AND `LAKI-LAKI`) AS KASUSLAMA_LAKIlAKI,SUM' +
-        '(kasusDiagnosaLama AND `PEREMPUAN`) AS KASUSLAMA_PEREMPUAN, '
-      
-        '(SUM(kasusDiagnosaLama AND `LAKI-LAKI`)) +(SUM(kasusDiagnosaLama' +
-        ' AND `PEREMPUAN`)) AS JUMLAHKASUSLAMA, '
-      
-        'SUM(kasusDiagnosaBaru AND `LAKI-LAKI`) AS KASUSBARU_LAKIlAKI,SUM' +
-        '(kasusDiagnosaBaru AND `PEREMPUAN`) AS KASUSBARU_PEREMPUAN,'
-      
-        'SUM(kasusDiagnosaBaru AND `LAKI-LAKI`) +SUM(kasusDiagnosaBaru AN' +
-        'D `PEREMPUAN`) AS JUMLAHKASUSBARU,'
-      
-        '(SUM(kasusDiagnosaLama AND `LAKI-LAKI`)) +(SUM(kasusDiagnosaLama' +
-        ' AND `PEREMPUAN`)) +SUM(kasusDiagnosaBaru AND `LAKI-LAKI`) +SUM(' +
-        'kasusDiagnosaBaru AND `PEREMPUAN`) AS JUMLAHKUNJUNGAN,'
-      
-        '(((SUM(kasusDiagnosaLama AND `LAKI-LAKI`)) +(SUM(kasusDiagnosaLa' +
-        'ma AND `PEREMPUAN`)) +SUM(kasusDiagnosaBaru AND `LAKI-LAKI`) +SU' +
-        'M(kasusDiagnosaBaru AND `PEREMPUAN`)) -(SUM(UMUM)) )AS JUMLAHRUJ' +
-        'UKAN,'
-      'SUM(RujukRSlbhtinggi) AS JUMLAHDIRUJUK'
-      'FROM vw_masterlaporanrajal'
-      'GROUP BY icd10 '
-      'ORDER BY icd10 ASC')
-    Left = 440
-    Top = 760
+      'select * from t_detailtindakanpasienrajalhapus')
+    Left = 544
+    Top = 736
   end
-  object dsRL4B: TDataSource
-    DataSet = qryRl4B
-    Left = 496
-    Top = 760
+  object qryt_statuscovid19: TADOQuery
+    Active = True
+    Connection = conSimrs
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from t_statuscovid19')
+    Left = 672
+    Top = 24
+  end
+  object dst_statuscovid19: TDataSource
+    DataSet = qryt_statuscovid19
+    Left = 768
+    Top = 32
   end
 end
