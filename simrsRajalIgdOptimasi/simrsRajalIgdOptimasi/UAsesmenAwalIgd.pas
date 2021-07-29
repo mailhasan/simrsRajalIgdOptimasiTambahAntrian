@@ -966,7 +966,10 @@ type
     edtRR: TEdit;
     edtsuhukrs: TEdit;
     cbbpetugasobs: TComboBox;
+    btnBaru: TButton;
     procedure pnlKeluarClick(Sender: TObject);
+    procedure btnBaruClick(Sender: TObject);
+    procedure btnSIMPANTRIAGEClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -979,10 +982,22 @@ var
 implementation
 
 {$R *.dfm}
+uses UAsemenAwalIgdTriage;
 
 procedure TFAsesmenAwalIgd.pnlKeluarClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFAsesmenAwalIgd.btnBaruClick(Sender: TObject);
+begin
+  /// panggil dari unit asesmen awal igd triage
+  baruTriage;
+end;
+
+procedure TFAsesmenAwalIgd.btnSIMPANTRIAGEClick(Sender: TObject);
+begin
+  ProsesSimpanTriage;
 end;
 
 end.

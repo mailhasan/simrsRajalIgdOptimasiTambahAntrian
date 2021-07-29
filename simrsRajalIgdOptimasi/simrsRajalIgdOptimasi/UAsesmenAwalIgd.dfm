@@ -721,9 +721,9 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 13
           end
           object grpMenuTriage: TGroupBox
-            Left = 1080
+            Left = 1040
             Top = 16
-            Width = 321
+            Width = 361
             Height = 57
             Caption = 'MENU'
             Font.Charset = ANSI_CHARSET
@@ -734,7 +734,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 14
             object btnSIMPANTRIAGE: TButton
-              Left = 16
+              Left = 88
               Top = 16
               Width = 81
               Height = 25
@@ -746,9 +746,10 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Font.Style = [fsBold]
               ParentFont = False
               TabOrder = 0
+              OnClick = btnSIMPANTRIAGEClick
             end
             object btnUBAHTRIAGE: TButton
-              Left = 112
+              Left = 176
               Top = 16
               Width = 81
               Height = 25
@@ -756,12 +757,21 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 1
             end
             object btnHAPUSTRIAGE: TButton
-              Left = 216
+              Left = 264
               Top = 16
               Width = 81
               Height = 25
               Caption = 'HAPUS'
               TabOrder = 2
+            end
+            object btnBaru: TButton
+              Left = 8
+              Top = 16
+              Width = 75
+              Height = 25
+              Caption = 'BARU'
+              TabOrder = 3
+              OnClick = btnBaruClick
             end
           end
           object mmodiagrujukan: TMemo
@@ -2921,7 +2931,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Height = -11
             Font.Name = 'Tahoma'
             Font.Style = []
-            ItemHeight = 0
+            ItemHeight = 13
             ParentFont = False
             TabOrder = 1
             Text = 'cbbPEKERJAAN'
@@ -2936,7 +2946,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Height = -11
             Font.Name = 'Tahoma'
             Font.Style = []
-            ItemHeight = 0
+            ItemHeight = 13
             ParentFont = False
             TabOrder = 2
             Text = 'cbbTINGGAL'
@@ -2951,7 +2961,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Height = -11
             Font.Name = 'Tahoma'
             Font.Style = []
-            ItemHeight = 0
+            ItemHeight = 13
             ParentFont = False
             TabOrder = 3
             Text = 'cbbSUKU'
@@ -2966,7 +2976,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Height = -11
             Font.Name = 'Tahoma'
             Font.Style = []
-            ItemHeight = 0
+            ItemHeight = 13
             ParentFont = False
             TabOrder = 4
             Text = 'cbbAGAMA'
@@ -3950,7 +3960,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Top = 32
             Width = 145
             Height = 21
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 2
             Text = 'cbbDAERAH'
           end
@@ -9993,7 +10003,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Height = -11
             Font.Name = 'Tahoma'
             Font.Style = []
-            ItemHeight = 0
+            ItemHeight = 13
             ParentFont = False
             TabOrder = 2
             Text = 'cbbperawatdis'
@@ -11095,7 +11105,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Top = 64
               Width = 217
               Height = 22
-              ItemHeight = 0
+              ItemHeight = 14
               TabOrder = 2
               Text = 'cbbnamapetugas'
             end
@@ -11513,7 +11523,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Top = 48
             Width = 201
             Height = 21
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 0
             Text = 'cbbruangan'
           end
@@ -11574,7 +11584,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Top = 488
             Width = 145
             Height = 21
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 2
             Text = 'cbbperawatigd'
           end
@@ -11583,7 +11593,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Top = 488
             Width = 145
             Height = 21
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 3
             Text = 'cbbdokterigd'
           end
@@ -12012,7 +12022,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Top = 88
             Width = 201
             Height = 21
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 6
             Text = 'cbbpetugas'
           end
@@ -12172,7 +12182,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Top = 40
             Width = 145
             Height = 21
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 1
             Text = 'cbbdokterobs'
           end
@@ -12181,7 +12191,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Top = 64
             Width = 145
             Height = 21
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 2
             Text = 'cbbperawatobs'
           end
@@ -12190,7 +12200,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Top = 48
             Width = 145
             Height = 21
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 3
             Text = 'cbbP'
           end
@@ -12691,7 +12701,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Top = 160
             Width = 177
             Height = 22
-            ItemHeight = 0
+            ItemHeight = 14
             TabOrder = 13
             Text = 'cbbpetugasobs'
           end
@@ -13234,7 +13244,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Top = 24
               Width = 105
               Height = 22
-              ItemHeight = 0
+              ItemHeight = 14
               TabOrder = 4
               Text = 'ComboBox18'
             end
@@ -13393,7 +13403,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Top = 528
             Width = 145
             Height = 22
-            ItemHeight = 0
+            ItemHeight = 14
             TabOrder = 6
             Text = 'cbbdokter'
           end

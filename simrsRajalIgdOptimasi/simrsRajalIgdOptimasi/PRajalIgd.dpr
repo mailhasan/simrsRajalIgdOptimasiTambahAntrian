@@ -28,7 +28,8 @@ uses
   UStatusCovid19 in 'UStatusCovid19.pas' {FStatusCovid19},
   UHistoriTndkRajal in 'UHistoriTndkRajal.pas' {FHistoriTndkRajal},
   UAsesmenAwalIgd in 'UAsesmenAwalIgd.pas' {FAsesmenAwalIgd},
-  UDataSimrs1 in 'UDataSimrs1.pas' {DataSimrs1: TDataModule};
+  UDataSimrs1 in 'UDataSimrs1.pas' {DataSimrs1: TDataModule},
+  UAsemenAwalIgdTriage in 'UAsemenAwalIgdTriage.pas';
 
 {$R *.res}
 
