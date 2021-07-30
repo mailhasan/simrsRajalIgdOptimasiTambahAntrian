@@ -479,9 +479,6 @@ type
     GroupBox20: TGroupBox;
     GroupBox21: TGroupBox;
     GroupBox22: TGroupBox;
-    lblP1: TLabel;
-    lbl28: TLabel;
-    lbl29: TLabel;
     lbl1menit: TLabel;
     lbl10menit: TLabel;
     lbl60menit: TLabel;
@@ -967,6 +964,10 @@ type
     edtsuhukrs: TEdit;
     cbbpetugasobs: TComboBox;
     btnBaru: TButton;
+    dtpTglDaftarUnit: TDateTimePicker;
+    rbP1: TRadioButton;
+    rbP2: TRadioButton;
+    rbP3: TRadioButton;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -997,6 +998,7 @@ end;
 
 procedure TFAsesmenAwalIgd.btnSIMPANTRIAGEClick(Sender: TObject);
 begin
+  /// panggil dari procedure unit asesmen awal igd triage
   ProsesSimpanTriage;
 end;
 

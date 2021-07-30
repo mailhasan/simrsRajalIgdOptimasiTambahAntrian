@@ -1,8 +1,8 @@
 object FAsesmenAwalIgd: TFAsesmenAwalIgd
-  Left = 235
-  Top = 58
+  Left = 521
+  Top = 51
   Width = 1456
-  Height = 916
+  Height = 897
   Align = alClient
   AutoSize = True
   Caption = 'ASESMEN AWAL IGD'
@@ -46,7 +46,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
     Left = 0
     Top = 49
     Width = 1440
-    Height = 828
+    Height = 809
     Align = alClient
     TabOrder = 1
     object pnlTengahAtas: TPanel
@@ -283,7 +283,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object edtAlamat: TEdit
           Left = 640
           Top = 64
-          Width = 681
+          Width = 481
           Height = 21
           Enabled = False
           Font.Charset = ANSI_CHARSET
@@ -364,13 +364,22 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentFont = False
           TabOrder = 10
         end
+        object dtpTglDaftarUnit: TDateTimePicker
+          Left = 1128
+          Top = 64
+          Width = 186
+          Height = 21
+          Date = 44407.410763518520000000
+          Time = 44407.410763518520000000
+          TabOrder = 11
+        end
       end
     end
     object pgcAsesmenAwalIgd: TPageControl
       Left = 1
       Top = 97
       Width = 1438
-      Height = 730
+      Height = 711
       ActivePage = tsTRIAGE
       Align = alClient
       Font.Charset = ANSI_CHARSET
@@ -809,7 +818,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           Left = 1081
           Top = 145
           Width = 349
-          Height = 556
+          Height = 537
           Align = alClient
           Caption = 'DAFTAR RIWAYAT DATA TRIAGE PASIEN'
           Color = 16577248
@@ -826,7 +835,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           Left = 0
           Top = 145
           Width = 1081
-          Height = 556
+          Height = 537
           Align = alLeft
           Caption = 'TRIAGE (diisi oleh perawat, beri tanda [v])'
           Color = 16577248
@@ -2556,18 +2565,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Color = clMoneyGreen
               ParentColor = False
               TabOrder = 2
-              object lbl29: TLabel
-                Left = 97
+              object rbP3: TRadioButton
+                Left = 56
                 Top = 16
-                Width = 16
-                Height = 13
+                Width = 113
+                Height = 17
                 Caption = 'P3'
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clBlack
-                Font.Height = -11
-                Font.Name = 'MS Sans Serif'
-                Font.Style = [fsBold]
-                ParentFont = False
+                TabOrder = 0
               end
             end
             object GroupBox17: TGroupBox
@@ -2578,18 +2582,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Color = 9303029
               ParentColor = False
               TabOrder = 1
-              object lbl28: TLabel
-                Left = 97
+              object rbP2: TRadioButton
+                Left = 56
                 Top = 8
-                Width = 16
-                Height = 13
+                Width = 113
+                Height = 17
                 Caption = 'P2'
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clBlack
-                Font.Height = -11
-                Font.Name = 'MS Sans Serif'
-                Font.Style = [fsBold]
-                ParentFont = False
+                TabOrder = 0
               end
             end
             object GroupBox16: TGroupBox
@@ -2600,18 +2599,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Color = 11181051
               ParentColor = False
               TabOrder = 0
-              object lblP1: TLabel
-                Left = 144
-                Top = 16
-                Width = 16
-                Height = 13
+              object rbP1: TRadioButton
+                Left = 120
+                Top = 8
+                Width = 113
+                Height = 17
                 Caption = 'P1'
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clBlack
-                Font.Height = -11
-                Font.Name = 'MS Sans Serif'
-                Font.Style = [fsBold]
-                ParentFont = False
+                TabOrder = 0
               end
             end
           end

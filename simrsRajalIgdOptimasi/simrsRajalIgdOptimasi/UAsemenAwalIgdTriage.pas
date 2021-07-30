@@ -6,7 +6,8 @@ procedure baruTriage;
 procedure ProsesSimpanTriage;
 
 implementation
-uses UDataSimrs1,UAsesmenAwalIgd, SysUtils;
+uses UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
+  ZAbstractRODataset, DB;
 
 /// procedure baru
 procedure baruTriage;
@@ -112,13 +113,17 @@ begin
     chk36_50cF.Checked:= False;
     chknormal.Checked:= False;
     CheckBox2.Checked:= False;
+
+    rbP1.Checked := False;
+    rbP2.Checked := False;
+    rbP3.Checked := False;
   end;
 end;
 
 /// proses simpan & ubah Triage
 procedure ProsesSimpanTriage;
 var
-   nonTrauma,obsterti,trauma,kesadaran,
+   nonTrauma,obsterti,trauma,kesadaran,crBerjalan,
    /// jalanNafas
    jNResutassiSumbatan,jNEmergencyBebas,jNUrgentBebas,jNNonUrgentBebas,jNFalseEmergencyBebas,
    ///pernafasan
@@ -126,7 +131,10 @@ var
    pUrgentPr24,pUrgentWheezing,pUrgentPr60,pUrgentSianosi,pNonUrgentNormal,pFalseEmergencyNormal,pPR40Menit,
    /// sirkulasi
    sRHenditkanJantung,sRNadiTidakTerabahLemah,sRPucatPale,sRAkralDingin,sRFrek,sRCrt,sENadiTerabaLemah,sEBraadikardia,sETachikardia,sEPucat,sEAkiralDingin,sECrt,sEFrekNadi,
-   sNonUrgentNormal,sFalseEmergencyNormal,sUrgentNadiTeraba,sUrgentFrekNadi,sUrgentTekDarahSistole,sUrgentTekDarahDiastole,sUrgentCrt :String;
+   sNonUrgentNormal,sFalseEmergencyNormal,sUrgentNadiTeraba,sUrgentFrekNadi,sUrgentTekDarahSistole,sUrgentTekDarahDiastole,sUrgentCrt,
+   /// kesadaran
+   kRGcs,kRNeonatus,kEcyGcs,kENeonatus,kUGcs,kNonUrgentGcs,kNonUrgentLuka,kNonUrgentTrauma,kNonUrgent36,kFalseEmergency36,kFalseEmergencyNormal,kFalseEmergencyLuka,
+   pSatu,pDua,ptiga:String;
 begin
   with FAsesmenAwalIgd do
   begin
@@ -143,6 +151,13 @@ begin
       trauma := 'N'
     else
       trauma := 'Y';
+
+    if chkBERJALAN.Checked = True then
+      crBerjalan := 'BERJALAN'
+    else if chkBRANCAR.Checked = true then
+      crBerjalan := 'BRANCAR'
+    else
+      crBerjalan := 'KURSI RODA';
 
     ///triage kesadaran
     if chkcompos.Checked = True then
@@ -283,7 +298,7 @@ begin
        sRAkralDingin := 'N'
     else
        sRAkralDingin := 'Y';
-       
+
     if chkFrekNadi60x.Checked = False then
        sRFrek := 'N'
     else
@@ -363,6 +378,237 @@ begin
         sUrgentCrt := 'N'
     else
         sUrgentCrt := 'Y';
+
+    /// kesadaran
+    if chkGCS9.Checked = False then
+       kRGcs := 'N'
+    else
+       kRGcs := 'Y';
+
+    if chkNeonatus36.Checked = False then
+       kRNeonatus := 'N'
+    else
+       kRNeonatus  := 'Y';
+
+    if chkGCS9_12.Checked = False then
+       kEcyGcs := 'N'
+    else
+       kEcyGcs := 'Y';
+
+    if chkNeonatus35cE.Checked = False then
+       kENeonatus := 'N'
+    else
+       kENeonatus := 'Y';
+
+    if chkGCS12.Checked = False then
+       kUGcs := 'N'
+    else
+       kUGcs := 'Y';
+
+    if chkGcs15.Checked = False then
+       kNonUrgentGcs := 'N'
+    else
+       kNonUrgentGcs := 'Y';
+
+    if chkLukaDng.Checked = False then
+       kNonUrgentLuka := 'N'
+    else
+       kNonUrgentLuka := 'Y';
+
+    if chkTraumaNoU.Checked = False  then
+       kNonUrgentTrauma := 'N'
+    else
+       kNonUrgentTrauma := 'Y';
+
+    if chk36_50CNo.Checked = False then
+       kNonUrgent36 := 'N'
+    else
+       kNonUrgent36 := 'Y';
+
+    if chk36_50cF.Checked = False then
+       kFalseEmergency36 := 'N'
+    else
+      kFalseEmergency36 := 'Y';
+
+    if chknormal.Checked= False then
+       kFalseEmergencyNormal := 'N'
+    else
+       kFalseEmergencyNormal := 'Y';
+
+    if CheckBox2.Checked = False then
+       kFalseEmergencyLuka := 'N'
+    else
+       kFalseEmergencyLuka := 'Y';
+
+    if rbP1.Checked = False then
+       pSatu := 'N'
+    else
+       pSatu := 'Y';
+
+    if rbP2.Checked = False then
+       pDua := 'N'
+    else
+       pDua := 'Y';
+
+    if rbP3.Checked = False then
+       pDua := 'N'
+    else
+       pDua := 'Y';
+   
+   
+
+    if btnSIMPANTRIAGE.Caption = 'SIMPAN' then
+    //// simpan di tabel triage
+    begin
+     with DataSimrs1.qryt_asesmen_awal_triage do
+     begin
+       Close;
+       SQL.Clear;
+       SQL.Text := 'insert into t_asesmen_awal_triage (noRekamedis,noDaftar,noDaftarUnit,tglDaftarUnit,'+
+       /// data rujukan
+       'diKrimOleh,namaPengirim,alamatPengirim,diagnosaRujukan,terapiYangDiberikan,'+
+       'tglMasuk,jamMasuk,nonTrauma,obsterti,trauma,tglTrauma,jamTrauma,lokasiTkp,'+
+       ///triage
+       'caraDatang,keluhanUtama,riwayatSingkat,keadaanUmum,kesadaran,'+
+       /// pemeriksaan -> jalan Nafas
+       'jalanNafasResutassiSumbatan,jalanNafasEmergencyBebas,jalanNafasUrgentBebas,jalanNafasNonUrgentBebas,jalasNafasFalseEmergencyBebas,'+
+       ///pemeriksaan -> pernafasan
+       'pernafasanResutasiHentiNafas,pernafasanResutasiPR1Menit,pernafasanResutasiPR40Menit,pernafasanResutasiSiagnosiSentral,pernafasanResutasiSiagnosi,pernafasanResutasiApnea,'+
+
+       'pernafasanEmergencyPR,pernafasanEmergencyWheezing,pernafasanEmergencyPr80,pernafasanEmergencySianosis,'+
+
+       'pernafasanTandaVitalSa02,pernafasanTandaVitalFrekNafas,'+
+       'pernafasanUrgentPr24,pernafasanUrgentWheezing,pernafasanUrgentPr60,pernafasanUrgentSianosi,'+
+       'pernafasanNonUrgentNormal,pernafasanFalseEmergencyNormal,'+
+
+       ///pemeriksaan -> sirkulasi
+       'sirkulasiResutasiHenditkanJantung,sirkulasiResutasiPucatPale,sirkulasiResutasiAkralDingin,sirkulasiResutasiFrek,sirkulasiResutasiCrt,'+
+
+       'sirkulasiEmergencyNadiTerabaLemah,sirkulasiEmergencyBraadikardia,sirkulasiEmergencyTachikardia,sirkulasiEmergencyPucat,sirkulasiEmergencyAkiralDingin,'+
+       'sirkulasiEmergencyFrekNadi,sirkulasiEmergencyCrt,'+
+       'sirkulasiTandaVitalTekananDarah,sirkulasiTandaVitalNadi,'+
+       'sirkulasiUrgentNadiTeraba,sirkulasiUrgentFrekNadi,'+
+       'sirkulasiUrgentTekDarahSistole,sirkulasiUrgentTekDarahDiastole,sirkulasiUrgentCrt,'+
+       'sirkulasiNonUrgentNormal,sirkulasiFalseEmergencyNormal,'+
+       /// kesadaran
+       'kesadaranResutasiGcs,kesadaranResutasiNeonatus,'+
+       'kesadaranEmergencyGcs,kesadaranEmergencyNeonatus,'+
+       'kesadaranTandaVitalE,kesadaranTandaVitalV,kesadaranTandaVitalM,kesadaranTandaVitalSuhu,'+
+       'kesadaranUrgentGcs,'+
+       'kesadaranNonUrgentGcs,kesadaranNonUrgentLuka,kesadaranNonUrgentTrauma,kesadaranNonUrgent36,'+
+       'kesadaranFalseEmergencyNormal,kesadaranFalseEmergencyLuka,kesadaranFalseEmergency36,'+
+       'pSatu,pDua,pTiga,createDate,createUser) values ("'+edtNoRm.Text+'","'+edtNoRegistrasi.Text+'","'+edtNoRajal.Text+'","'+FormatDateTime('yyyy-MM-dd',dtpTglDaftarUnit.Date)+'",'+
+       //// Data Rujukan
+       '"'+edtDIKRIMOLEH.Text+'","'+edtNAMAPENGIRIM.Text+'","'+mmoAlamat.Text+'","'+mmodiagrujukan.Text+'","'+mmoterapi.Text+'",'+
+       '"'+FormatDateTime('yyyy-MM-dd',dtpTGLMASUK.Date)+'","'+FormatDateTime('hh:mm:ss',Time)+'","'+nonTrauma+'","'+obsterti+'","'+trauma+'","'+FormatDateTime('yyyy-MM-dd',dtpTGLTRAUMA.Date)+'","'+FormatDateTime('hh:mm:ss',cxtmdtJAMTRAUMA.Time)+'","'+mmoLokasiTKP.Text+'",'+
+       ///triage
+       '"'+crBerjalan+'","'+edtKELUHANUTAMA.Text+'","'+edtRIWAYATSINGKAT.Text+'","'+edtKEADAANUMUM.Text+'","'+kesadaran+'",'+
+       ///pemeriksaan -> JalanNafas
+       '"'+jNResutassiSumbatan+'","'+jNEmergencyBebas+'","'+jNUrgentBebas+'","'+jNFalseEmergencyBebas+'",'+
+       ///pemeriksaan -> pernafasan
+       '"'+pResutasiHentiNafas+'","'+pResutasiPR1Menit+'","'+pResutasiPR40Menit+'","'+pResutasiSiagnosiSentral+'","'+pResutasiSiagnosi+'","'+pResutasiApnea+'",'+
+
+       '"'+pEmergencyPR+'","'+pEmergencyWheezing+'","'+pUrgentPr60+'","'+pUrgentSianosi+'",'+
+       '"'+edtSaO2.Text+'","'+edtFrekNafas.Text+'",'+
+       '"'+pUrgentPr24+'","'+pUrgentWheezing+'","'+pUrgentPr60+'","'+pUrgentSianosi+'",'+
+       '"'+pNonUrgentNormal+'","'+pFalseEmergencyNormal+'",'+
+       /// sirkulasi
+       '"'+sRHenditkanJantung+'","'+sRPucatPale+'","'+sRAkralDingin+'","'+sRFrek+'","'+sRCrt+'",'+
+       '"'+sENadiTerabaLemah+'","'+sEBraadikardia+'","'+sETachikardia+'","'+sEPucat+'","'+sEAkiralDingin+'",'+
+       '"'+sEFrekNadi+'","'+sECrt+'",'+
+       '"'+edtTekananDarah.Text+'","'+edtNadi.Text+'",'+
+       '"'+sUrgentNadiTeraba+'","'+sUrgentFrekNadi+'",'+
+       '"'+sUrgentTekDarahSistole+'","'+sUrgentTekDarahDiastole+'","'+sUrgentCrt+'",'+
+       '"'+sNonUrgentNormal+'","'+sFalseEmergencyNormal+'",'+
+       /// kesadaran
+       '"'+kRGcs+'","'+kRNeonatus+'",'+
+       '"'+kEcyGcs+'","'+kENeonatus+'",'+
+       '"'+edtE.Text+'","'+edtV.Text+'","'+edtM.Text+'","'+edtSuhu.Text+'",'+
+       '"'+kUGcs+'",'+
+       '"'+kNonUrgentGcs+'","'+kNonUrgentLuka+'","'+kNonUrgentTrauma+'","'+kNonUrgent36+'",'+
+       '"'+kFalseEmergencyNormal+'","'+kFalseEmergencyLuka+'","'+kFalseEmergency36+'",'+
+       '"'+pSatu+'","'+pDua+'","'+ptiga+'","'+FormatDateTime('yyyy-MM-dd hh:mm:ss',Now)+'","coba")';
+       ExecSQL;
+       SQL.Text := 'select * from t_asesmen_awal_triage';
+       Open;
+     end;
+    end
+    else
+    /// update 
+    begin
+     with DataSimrs1.qryt_asesmen_awal_triage do
+     begin
+       Close;
+       SQL.Clear;
+       SQL.Text := 'update t_asesmen_awal_triage set noRekamedis="'+edtNoRm.Text+'"+,noDaftar="'+edtNoRegistrasi.Text+'",noDaftarUnit="'+edtNoRajal.Text+'",tglDaftarUnit="'+FormatDateTime('yyyy-MM-dd',dtpTglDaftarUnit.Date)+'",'+
+       /// data rujukan
+       'diKrimOleh="'+edtDIKRIMOLEH.Text+'",namaPengirim,alamatPengirim,diagnosaRujukan,terapiYangDiberikan,'+
+       'tglMasuk,jamMasuk,nonTrauma,obsterti,trauma,tglTrauma,jamTrauma,lokasiTkp,'+
+       ///triage
+       'caraDatang,keluhanUtama,riwayatSingkat,keadaanUmum,kesadaran,'+
+       /// pemeriksaan -> jalan Nafas
+       'jalanNafasResutassiSumbatan,jalanNafasEmergencyBebas,jalanNafasUrgentBebas,jalanNafasNonUrgentBebas,jalasNafasFalseEmergencyBebas,'+
+       ///pemeriksaan -> pernafasan
+       'pernafasanResutasiHentiNafas,pernafasanResutasiPR1Menit,pernafasanResutasiPR40Menit,pernafasanResutasiSiagnosiSentral,pernafasanResutasiSiagnosi,pernafasanResutasiApnea,'+
+
+       'pernafasanEmergencyPR,pernafasanEmergencyWheezing,pernafasanEmergencyPr80,pernafasanEmergencySianosis,'+
+
+       'pernafasanTandaVitalSa02,pernafasanTandaVitalFrekNafas,'+
+       'pernafasanUrgentPr24,pernafasanUrgentWheezing,pernafasanUrgentPr60,pernafasanUrgentSianosi,'+
+       'pernafasanNonUrgentNormal,pernafasanFalseEmergencyNormal,'+
+
+       ///pemeriksaan -> sirkulasi
+       'sirkulasiResutasiHenditkanJantung,sirkulasiResutasiPucatPale,sirkulasiResutasiAkralDingin,sirkulasiResutasiFrek,sirkulasiResutasiCrt,'+
+
+       'sirkulasiEmergencyNadiTerabaLemah,sirkulasiEmergencyBraadikardia,sirkulasiEmergencyTachikardia,sirkulasiEmergencyPucat,sirkulasiEmergencyAkiralDingin,'+
+       'sirkulasiEmergencyFrekNadi,sirkulasiEmergencyCrt,'+
+       'sirkulasiTandaVitalTekananDarah,sirkulasiTandaVitalNadi,'+
+       'sirkulasiUrgentNadiTeraba,sirkulasiUrgentFrekNadi,'+
+       'sirkulasiUrgentTekDarahSistole,sirkulasiUrgentTekDarahDiastole,sirkulasiUrgentCrt,'+
+       'sirkulasiNonUrgentNormal,sirkulasiFalseEmergencyNormal,'+
+       /// kesadaran
+       'kesadaranResutasiGcs,kesadaranResutasiNeonatus,'+
+       'kesadaranEmergencyGcs,kesadaranEmergencyNeonatus,'+
+       'kesadaranTandaVitalE,kesadaranTandaVitalV,kesadaranTandaVitalM,kesadaranTandaVitalSuhu,'+
+       'kesadaranUrgentGcs,'+
+       'kesadaranNonUrgentGcs,kesadaranNonUrgentLuka,kesadaranNonUrgentTrauma,kesadaranNonUrgent36,'+
+       'kesadaranFalseEmergencyNormal,kesadaranFalseEmergencyLuka,kesadaranFalseEmergency36'+
+       'pSatu,pDua,pTiga,createDate,createUser) values (,,,'+
+       //// Data Rujukan
+       ',"'+edtNAMAPENGIRIM.Text+'","'+mmoAlamat.Text+'","'+mmodiagrujukan.Text+'","'+mmoterapi.Text+'",'+
+       '"'+FormatDateTime('yyyy-MM-dd',dtpTGLMASUK.Date)+'","'+FormatDateTime('hh:mm:ss',Time)+'","'+nonTrauma+'","'+obsterti+'","'+trauma+'","'+FormatDateTime('yyyy-MM-dd',dtpTGLTRAUMA.Date)+'","'+FormatDateTime('hh:mm:ss',cxtmdtJAMTRAUMA.Time)+'","'+mmoLokasiTKP.Text+'",'+
+       ///triage
+       '"'+crBerjalan+'","'+edtKELUHANUTAMA.Text+'","'+edtRIWAYATSINGKAT.Text+'","'+edtKEADAANUMUM.Text+'","'+kesadaran+'",'+
+       ///pemeriksaan -> JalanNafas
+       '"'+jNResutassiSumbatan+'","'+jNEmergencyBebas+'","'+jNUrgentBebas+'","'+jNFalseEmergencyBebas+'",'+
+       ///pemeriksaan -> pernafasan
+       '"'+pResutasiHentiNafas+'","'+pResutasiPR1Menit+'","'+pResutasiPR40Menit+'","'+pResutasiSiagnosiSentral+'","'+pResutasiSiagnosi+'","'+pResutasiApnea+'",'+
+
+       '"'+pEmergencyPR+'","'+pEmergencyWheezing+'","'+pUrgentPr60+'","'+pUrgentSianosi+'",'+
+       '"'+edtSaO2.Text+'","'+edtFrekNafas.Text+'",'+
+       '"'+pUrgentPr24+'","'+pUrgentWheezing+'","'+pUrgentPr60+'","'+pUrgentSianosi+'",'+
+       '"'+pNonUrgentNormal+'","'+pFalseEmergencyNormal+'",'+
+       /// sirkulasi
+       '"'+sRHenditkanJantung+'","'+sRPucatPale+'","'+sRAkralDingin+'","'+sRFrek+'","'+sRCrt+'",'+
+       '"'+sENadiTerabaLemah+'","'+sEBraadikardia+'","'+sETachikardia+'","'+sEPucat+'","'+sEAkiralDingin+'",'+
+       '"'+sEFrekNadi+'","'+sECrt+'",'+
+       '"'+edtTekananDarah.Text+'","'+edtNadi.Text+'",'+
+       '"'+sUrgentNadiTeraba+'","'+sUrgentFrekNadi+'",'+
+       '"'+sUrgentTekDarahSistole+'","'+sUrgentTekDarahDiastole+'","'+sUrgentCrt+'",'+
+       '"'+sNonUrgentNormal+'","'+sFalseEmergencyNormal+'",'+
+       /// kesadaran
+       '"'+kRGcs+'","'+kRNeonatus+'",'+
+       '"'+kEcyGcs+'","'+kENeonatus+'",'+
+       '"'+edtE.Text+'","'+edtV.Text+'","'+edtM.Text+'","'+edtSuhu.Text+'",'+
+       '"'+kUGcs+'",'+
+       '"'+kNonUrgentGcs+'","'+kNonUrgentLuka+'","'+kNonUrgentTrauma+'","'+kNonUrgent36+'",'+
+       '"'+kFalseEmergencyNormal+'","'+kFalseEmergencyLuka+'","'+kFalseEmergency36+'",'+
+       '"'+pSatu+'","'+pDua+'","'+ptiga+'","'+FormatDateTime('yyyy-MM-dd hh:mm:ss',Now)+'","coba")';
+       ExecSQL;
+       SQL.Text := 'select * from t_asesmen_awal_triage';
+       Open;
+     end;
+    end;
   end;
 
 end;
