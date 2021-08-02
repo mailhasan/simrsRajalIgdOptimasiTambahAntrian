@@ -1,6 +1,6 @@
 object FAsesmenAwalIgd: TFAsesmenAwalIgd
-  Left = 521
-  Top = 51
+  Left = 463
+  Top = 62
   Width = 1456
   Height = 897
   Align = alClient
@@ -542,6 +542,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
+          end
+          object lblKodeTriage: TLabel
+            Left = 1024
+            Top = 80
+            Width = 79
+            Height = 13
+            Caption = 'lblKodeTriage'
           end
           object edtDIKRIMOLEH: TEdit
             Left = 144

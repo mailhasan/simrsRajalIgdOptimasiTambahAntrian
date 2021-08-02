@@ -968,6 +968,7 @@ type
     rbP1: TRadioButton;
     rbP2: TRadioButton;
     rbP3: TRadioButton;
+    lblKodeTriage: TLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
