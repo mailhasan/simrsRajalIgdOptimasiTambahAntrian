@@ -972,6 +972,8 @@ type
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnUBAHTRIAGEClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1001,6 +1003,18 @@ procedure TFAsesmenAwalIgd.btnSIMPANTRIAGEClick(Sender: TObject);
 begin
   /// panggil dari procedure unit asesmen awal igd triage
   ProsesSimpanTriage;
+end;
+
+procedure TFAsesmenAwalIgd.FormShow(Sender: TObject);
+begin
+  /// panggil procedure 
+  baruTriage;
+end;
+
+procedure TFAsesmenAwalIgd.btnUBAHTRIAGEClick(Sender: TObject);
+begin
+  /// panggil procedure ubah triage
+  tampilUbahTriage;
 end;
 
 end.

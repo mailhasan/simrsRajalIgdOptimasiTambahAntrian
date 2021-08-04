@@ -1,6 +1,6 @@
 object FAsesmenAwalIgd: TFAsesmenAwalIgd
-  Left = 463
-  Top = 62
+  Left = 249
+  Top = 91
   Width = 1456
   Height = 897
   Align = alClient
@@ -13,6 +13,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlAtas: TPanel
@@ -771,6 +772,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
+              OnClick = btnUBAHTRIAGEClick
             end
             object btnHAPUSTRIAGE: TButton
               Left = 264

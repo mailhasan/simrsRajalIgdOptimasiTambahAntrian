@@ -4,6 +4,7 @@ unit UAsemenAwalIgdTriage;
 interface
 procedure baruTriage;
 procedure ProsesSimpanTriage;
+procedure tampilUbahTriage;
 
 implementation
 uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
@@ -583,6 +584,210 @@ begin
     MessageDlg('DATA BERHASIL DISIMPAN...!',mtInformation,[mbOK],0);
   end;
 
+end;
+
+/// tampil procedure ubah di triage
+procedure tampilUbahTriage;
+begin
+  /// tampil ubah
+  with FAsesmenAwalIgd do
+  begin
+  //// data rujukan
+    edtDIKRIMOLEH.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('diKrimOleh').AsString;
+    edtNAMAPENGIRIM.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('namaPengirim').AsString;
+    mmoAlamat.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('alamatPengirim').AsString;
+    mmodiagrujukan.Text := DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('diagnosaRujukan').AsString;
+    mmoterapi.Text := DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('terapiYangDiberikan').AsString;
+    
+    dtpTGLMASUK.DateTime:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('tglMasuk').AsDateTime;
+    cxtmdtJAM.Time:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('jamMasuk').AsDateTime;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('nonTrauma').AsBoolean = False then
+    chkNontrauma.Checked:= False
+    else
+    chkNontrauma.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('obsterti').AsBoolean = False then
+    chkObstetri.Checked:= False
+    else
+    chkObstetri.Checked:= True;
+
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('trauma').AsBoolean = False then
+    chkTrauma.Checked:= False
+    else
+    chkTrauma.Checked:= False;
+    
+    dtpTGLTRAUMA.DateTime:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('tglTrauma').AsDateTime;
+    cxtmdtJAMTRAUMA.Time:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('jamTrauma').AsDateTime;
+    mmoLokasiTKP.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('lokasiTkp').AsString;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('caraDatang').AsString = 'BERJALAN' then
+      chkBERJALAN.Checked:= True
+    ELSE IF  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('caraDatang').AsString = 'BRANCAR' then
+      chkBRANCAR.Checked:= True
+    else IF  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('caraDatang').AsString = 'KURSI RODA' then
+      chkKURSIRODA.Checked:= True
+    else
+    begin
+      chkBERJALAN.Checked:= False;
+      chkBRANCAR.Checked:= False;
+      chkKURSIRODA.Checked:= False;
+    end;
+
+    /// triage
+    edtKELUHANUTAMA.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('keluhanUtama').AsString;
+    edtRIWAYATSINGKAT.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('riwayatSingkat').AsString;
+    edtKEADAANUMUM.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('keadaanUmum').AsString;
+
+
+    ///triage kesadaran
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaran').AsString = 'compos' then
+       chkcompos.Checked := True
+    ELSE IF  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaran').AsString = 'kapasitas' then
+       chkapatis.Checked := True
+    ELSE IF  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaran').AsString = 'somnolens' then
+       chksomnolens.Checked := True
+    else IF  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaran').AsString = 'sopor' then
+       chksopor.Checked := True
+    else if  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaran').AsString = 'coma' then
+       chkcoma.Checked := True
+    ELSE
+    begin
+       chkcompos.Checked := False;
+       chkapatis.Checked := False;
+       chksomnolens.Checked := False;
+       chksopor.Checked := False;
+       chkcoma.Checked := False;
+    end;
+
+    /// jalan nafas
+    IF  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('jalanNafasResutassiSumbatan').AsBoolean = False then
+      chkSumbatan.Checked:= False
+    else
+      chkSumbatan.Checked:= True;
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('jalanNafasEmergencyBebas').AsBoolean = False then
+      chkBebasE.Checked:= False
+    else
+      chkBebasE.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('jalanNafasUrgentBebas').AsBoolean = False then  
+      chkBebasU.Checked:= False
+    ELSE
+      chkBebasU.Checked:= True;
+
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('jalanNafasNonUrgentBebas').AsBoolean = False then
+      chkNoUrgent.Checked:= False
+    ELSE
+      chkNoUrgent.Checked:= True;
+      
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('jalasNafasFalseEmergencyBebas').AsBoolean = False then
+      chkBebasFE.Checked:= False
+    else
+      chkBebasFE.Checked:= True;
+    ///pernafasan
+
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanResutasiHentiNafas').AsBoolean = False then
+      chkHentinafas.Checked:= False
+    ELSE
+      chkHentinafas.Checked:= True;
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanResutasiPR1Menit').AsBoolean = False then
+      chkRR1xmnt.Checked:= False
+    ELSE
+      chkRR1xmnt.Checked:= True;
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanResutasiSiagnosi').AsBoolean = False then
+      chkSianosis.Checked:= False
+    ELSE
+      chkSianosis.Checked:= True;
+      
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanResutasiApnea').AsBoolean = False then  
+      chkApnea.Checked:= False
+    ELSE
+      chkApnea.Checked:= True;
+
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanResutasiPR40Menit').AsBoolean = False then
+      chkRR40xmnt.Checked:= False
+    ELSE
+      chkRR40xmnt.Checked:= True;
+
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanResutasiSiagnosiSentral').AsBoolean = False then
+      chkSianosisSentalMenetapDenganOs2.Checked:= False
+    ELSE
+      chkSianosisSentalMenetapDenganOs2.Checked:= True;
+      
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanEmergencyPR').AsBoolean = False then
+      chkRR32.Checked:= False
+    ELSE
+      chkRR32.Checked:= True;
+      
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanEmergencyWheezing').AsBoolean = False then
+      chkWheezing.Checked:= False
+    else
+      chkWheezing.Checked:= True;
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanEmergencyPr80').AsBoolean = False then
+      chkRR80.Checked:= False
+    else
+      chkRR80.Checked:= True;
+
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanEmergencySianosis').AsBoolean = False then 
+      chkSianosisEmergency.Checked:= False
+    ELSE
+      chkSianosisEmergency.Checked:= True;
+
+    edtSaO2.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanTandaVitalSa02').AsString;
+    edtFrekNafas.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanTandaVitalSa02').AsString;
+    chkpr24_32Xm.Checked:= False;
+    chkWhezingE.Checked:= False;
+    chkPR60.Checked:= False;
+    chkSianosiSentalU.Checked:= False;
+    chkNormalNoU.Checked:= False;
+    chkNormalFE.Checked:= False;
+
+    ///sirkulasi
+    chkHentiJantung.Checked:= False;
+    chkNadiTidakTerabaLemah.Checked:= False;
+    chkPucatpale.Checked:= False;
+    chkAkralDingin.Checked:= False;
+    chkFrekNadi60x.Checked:= False;
+    chkCRT3detik.Checked:= False;
+    chkNadiTeraba.Checked:= False;
+    chkBraadikardia.Checked:= False;
+    chkTachikardia.Checked:= False;
+    chkPucatPaleE.Checked:= False;
+    chkAkralDinginE.Checked:= False;
+    chkCrt3DetikE.Checked:= False;
+    edtTekananDarah.Text:= '';
+    chkFreknadiE.Checked:= False;
+    edtNadi.Text:= '';
+    chkNormalUSirkulasi.Checked:= False;
+    chkNormalFESirkulasi.Checked:= False;
+    chkNadiTeraba120_150.Checked:= False;
+    chkFrekNadiUrgent.Checked:= False;
+    chkTekDarahSistole.Checked:= False;
+    chkTekDarahDiastole.Checked:= False;
+    chkCrt3DetikU.Checked:= False;
+
+    /// kesadaran
+    chkGCS9.Checked:= False;
+    chkNeonatus36.Checked:= False;
+    chkGCS9_12.Checked:= False;
+    chkNeonatus35cE.Checked:= False;
+    edt1.Text:= '';
+    edt2.Text:= '';
+    edt3.Text:= '';
+    chkGCS12.Checked:= False;
+    chkGcs15.Checked:= False;
+    chkLukaDng.Checked:= False;
+    chkTraumaNoU.Checked:= False;
+    edtSuhu.Text:= '';
+    chk36_50CNo.Checked:= False;
+    chk36_50cF.Checked:= False;
+    chknormal.Checked:= False;
+    CheckBox2.Checked:= False;
+
+    rbP1.Checked := False;
+    rbP2.Checked := False;
+    rbP3.Checked := False;
+  end;
 end;
 
 end.
