@@ -2,13 +2,26 @@ unit UAsemenAwalIgdTriage;
 
  
 interface
+procedure tampilTriage;
 procedure baruTriage;
 procedure ProsesSimpanTriage;
 procedure tampilUbahTriage;
+procedure hapusTriage;
 
 implementation
 uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
   ZAbstractRODataset, DB;
+
+procedure tampilTriage;
+begin
+ with DataSimrs1.qryt_asesmen_awal_triage do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from t_asesmen_awal_triage';
+   Open;
+ end;
+end;
 
 /// procedure baru
 procedure baruTriage;
@@ -542,7 +555,7 @@ begin
      begin
        Close;
        SQL.Clear;
-       SQL.Text := 'update t_asesmen_awal_triage set noRekamedis="'+edtNoRm.Text+'"+,noDaftar="'+edtNoRegistrasi.Text+'",noDaftarUnit="'+edtNoRajal.Text+'",tglDaftarUnit="'+FormatDateTime('yyyy-MM-dd',dtpTglDaftarUnit.Date)+'",'+
+       SQL.Text := 'update t_asesmen_awal_triage set noRekamedis="'+edtNoRm.Text+'",noDaftar="'+edtNoRegistrasi.Text+'",noDaftarUnit="'+edtNoRajal.Text+'",tglDaftarUnit="'+FormatDateTime('yyyy-MM-dd',dtpTglDaftarUnit.Date)+'",'+
        /// data rujukan
        'diKrimOleh="'+edtDIKRIMOLEH.Text+'",namaPengirim="'+edtNAMAPENGIRIM.Text+'",alamatPengirim="'+mmoAlamat.Text+'",diagnosaRujukan="'+mmodiagrujukan.Text+'",terapiYangDiberikan="'+mmoterapi.Text+'",'+
        'tglMasuk="'+FormatDateTime('yyyy-MM-dd',dtpTGLMASUK.Date)+'",jamMasuk="'+FormatDateTime('hh:mm:ss',Time)+'",nonTrauma="'+nonTrauma+'",obsterti="'+obsterti+'",trauma="'+trauma+'",tglTrauma="'+FormatDateTime('yyyy-MM-dd',dtpTGLTRAUMA.Date)+'",jamTrauma="'+FormatDateTime('hh:mm:ss',cxtmdtJAMTRAUMA.Time)+'",lokasiTkp="'+mmoLokasiTKP.Text+'",'+
@@ -574,7 +587,7 @@ begin
        'kesadaranTandaVitalE="'+edtE.Text+'",kesadaranTandaVitalV="'+edtV.Text+'",kesadaranTandaVitalM="'+edtM.Text+'",kesadaranTandaVitalSuhu="'+edtSuhu.Text+'",'+
        'kesadaranUrgentGcs="'+kUGcs+'",'+
        'kesadaranNonUrgentGcs="'+kNonUrgentGcs+'",kesadaranNonUrgentLuka="'+kNonUrgentLuka+'",kesadaranNonUrgentTrauma="'+kNonUrgentTrauma+'",kesadaranNonUrgent36="'+kNonUrgent36+'",'+
-       'kesadaranFalseEmergencyNormal="'+kFalseEmergencyNormal+'",kesadaranFalseEmergencyLuka="'+kFalseEmergencyLuka+'",kesadaranFalseEmergency36="'+kFalseEmergency36+'"'+
+       'kesadaranFalseEmergencyNormal="'+kFalseEmergencyNormal+'",kesadaranFalseEmergencyLuka="'+kFalseEmergencyLuka+'",kesadaranFalseEmergency36="'+kFalseEmergency36+'",'+
        'pSatu="'+pSatu+'",pDua="'+pDua+'",pTiga="'+ptiga+'",modifDate="'+FormatDateTime('yyyy-MM-dd hh:mm:ss',Now)+'",modifUser="coba" WHERE idAsesmenAwalTriage="'+lblKodeTriage.Caption+'" ';
        ExecSQL;
        SQL.Text := 'select * from t_asesmen_awal_triage';
@@ -582,16 +595,43 @@ begin
      end;
     end;
     MessageDlg('DATA BERHASIL DISIMPAN...!',mtInformation,[mbOK],0);
+    /// panggil procedure
+    tampilTriage; btnSIMPANTRIAGE.Caption := 'SIMPAN'; baruTriage;
   end;
 
 end;
 
 /// tampil procedure ubah di triage
 procedure tampilUbahTriage;
+var
+  id,selisih:String;
 begin
+if DataSimrs1.qryt_asesmen_awal_triage.RecordCount >= 1 then
+begin
+  id:= IntToStr(DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('idAsesmenAwalTriage').AsInteger);
+
+  with DataSimrs1.qryt_asesmen_awal_triage do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from t_asesmen_awal_triage where idAsesmenAwalTriage="'+id+'"';
+    Open;
+  end;
+
+  /// selisih
+  selisih := FloattoStr(StrtoDate(DateToStr(Now))-StrtoDate(DateToStr(DataSimrs1.qryt_asesmen_awal_triage['tglDaftarUnit'])));
+  /// pengujian selisih
+  if selisih > '1' then
+  begin
+   MessageDlg('Tanggal Transaksi Sudah Melebihi Satu hari',mtInformation,[mbOK],0);
+   tampilTriage;
+  end
+  else
+  begin
   /// tampil ubah
   with FAsesmenAwalIgd do
   begin
+    lblKodeTriage.Caption := id;
   //// data rujukan
     edtDIKRIMOLEH.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('diKrimOleh').AsString;
     edtNAMAPENGIRIM.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('namaPengirim').AsString;
@@ -728,66 +768,272 @@ begin
     else
       chkRR80.Checked:= True;
 
-    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanEmergencySianosis').AsBoolean = False then 
+    IF DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanEmergencySianosis').AsBoolean = False then
       chkSianosisEmergency.Checked:= False
     ELSE
       chkSianosisEmergency.Checked:= True;
 
     edtSaO2.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanTandaVitalSa02').AsString;
     edtFrekNafas.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanTandaVitalSa02').AsString;
-    chkpr24_32Xm.Checked:= False;
-    chkWhezingE.Checked:= False;
-    chkPR60.Checked:= False;
-    chkSianosiSentalU.Checked:= False;
-    chkNormalNoU.Checked:= False;
-    chkNormalFE.Checked:= False;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanUrgentPr24').AsBoolean = False then
+        chkpr24_32Xm.Checked:= False
+    else
+        chkpr24_32Xm.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanUrgentWheezing').AsBoolean = False then
+       chkWhezingE.Checked:= False
+    else
+       chkWhezingE.Checked:= True;
+       
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanUrgentPr60').AsBoolean = False then
+        chkPR60.Checked:= False
+    else
+        chkPR60.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanUrgentSianosi').AsBoolean = False then
+        chkSianosiSentalU.Checked:= False
+    else
+        chkSianosiSentalU.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanNonUrgentNormal').AsBoolean = False then
+        chkNormalNoU.Checked:= False
+    else
+        chkNormalNoU.Checked:= False;
+        
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pernafasanFalseEmergencyNormal').AsBoolean = False then
+        chkNormalFE.Checked:= False
+    else
+        chkNormalFE.Checked:= True;
 
     ///sirkulasi
-    chkHentiJantung.Checked:= False;
-    chkNadiTidakTerabaLemah.Checked:= False;
-    chkPucatpale.Checked:= False;
-    chkAkralDingin.Checked:= False;
-    chkFrekNadi60x.Checked:= False;
-    chkCRT3detik.Checked:= False;
-    chkNadiTeraba.Checked:= False;
-    chkBraadikardia.Checked:= False;
-    chkTachikardia.Checked:= False;
-    chkPucatPaleE.Checked:= False;
-    chkAkralDinginE.Checked:= False;
-    chkCrt3DetikE.Checked:= False;
-    edtTekananDarah.Text:= '';
-    chkFreknadiE.Checked:= False;
-    edtNadi.Text:= '';
-    chkNormalUSirkulasi.Checked:= False;
-    chkNormalFESirkulasi.Checked:= False;
-    chkNadiTeraba120_150.Checked:= False;
-    chkFrekNadiUrgent.Checked:= False;
-    chkTekDarahSistole.Checked:= False;
-    chkTekDarahDiastole.Checked:= False;
-    chkCrt3DetikU.Checked:= False;
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiResutasiHenditkanJantung').AsBoolean = False then
+        chkHentiJantung.Checked:= False
+    else
+        chkHentiJantung.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiResutasiNadiTidakTerabahLemah').AsBoolean = False then
+        chkNadiTidakTerabaLemah.Checked:= False
+    else
+        chkNadiTidakTerabaLemah.Checked:= False;
+        
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiResutasiPucatPale').AsBoolean = False then
+        chkPucatpale.Checked:= False
+    else
+        chkPucatpale.Checked:= True;
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiResutasiAkralDingin').AsBoolean = False then
+        chkAkralDingin.Checked:= False
+    else
+        chkAkralDingin.Checked:= False;
+        
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiResutasiFrek').AsBoolean = False then
+        chkFrekNadi60x.Checked:= False
+    else
+        chkFrekNadi60x.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiResutasiCrt').AsBoolean = False then
+        chkCRT3detik.Checked:= False
+    else
+       chkCRT3detik.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiEmergencyNadiTerabaLemah').AsBoolean = False then
+        chkNadiTeraba.Checked:= False
+    else
+        chkNadiTeraba.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiEmergencyBraadikardia').AsBoolean = False then
+        chkBraadikardia.Checked:= False
+    else
+        chkBraadikardia.Checked:= True;
+        
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiEmergencyTachikardia').AsBoolean = False then
+        chkTachikardia.Checked:= False
+    else
+        chkTachikardia.Checked:= True;
+        
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiEmergencyPucat').AsBoolean = False then
+        chkPucatPaleE.Checked:= False
+    else
+        chkPucatPaleE.Checked:= True;
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiEmergencyAkiralDingin').AsBoolean = False then
+        chkAkralDinginE.Checked:= False
+    else
+        chkAkralDinginE.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiEmergencyCrt').AsBoolean = False then
+        chkCrt3DetikE.Checked:= False
+    else
+        chkCrt3DetikE.Checked:= True;
+        
+    edtTekananDarah.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiTandaVitalTekananDarah').AsString;
+    
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiEmergencyFrekNadi').AsBoolean = False then
+        chkFreknadiE.Checked:= False
+    else
+        chkFreknadiE.Checked:= True;
+
+    edtNadi.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiTandaVitalNadi').AsString;
+    
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiNonUrgentNormal').AsBoolean = False then
+        chkNormalUSirkulasi.Checked:= False
+    else
+        chkNormalUSirkulasi.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiUrgentFrekNadi').AsBoolean = False then
+        chkNormalFESirkulasi.Checked:= False
+    else
+        chkNormalFESirkulasi.Checked:= True;
+        
+    if  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiUrgentNadiTeraba').AsBoolean = False then
+        chkNadiTeraba120_150.Checked:= False
+    else
+        chkNadiTeraba120_150.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiUrgentFrekNadi').AsBoolean = False then
+        chkFrekNadiUrgent.Checked:= False
+    else
+        chkFrekNadiUrgent.Checked:= True;
+        
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiUrgentTekDarahSistole').AsBoolean = False then
+        chkTekDarahSistole.Checked:= False
+    else
+        chkTekDarahSistole.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiUrgentTekDarahDiastole').AsBoolean = False then
+        chkTekDarahDiastole.Checked:= False
+    else
+        chkTekDarahDiastole.Checked:= True;
+        
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('sirkulasiUrgentCrt').AsBoolean = False then
+        chkCrt3DetikU.Checked:= False
+    else
+        chkCrt3DetikU.Checked:= True;
 
     /// kesadaran
-    chkGCS9.Checked:= False;
-    chkNeonatus36.Checked:= False;
-    chkGCS9_12.Checked:= False;
-    chkNeonatus35cE.Checked:= False;
-    edt1.Text:= '';
-    edt2.Text:= '';
-    edt3.Text:= '';
-    chkGCS12.Checked:= False;
-    chkGcs15.Checked:= False;
-    chkLukaDng.Checked:= False;
-    chkTraumaNoU.Checked:= False;
-    edtSuhu.Text:= '';
-    chk36_50CNo.Checked:= False;
-    chk36_50cF.Checked:= False;
-    chknormal.Checked:= False;
-    CheckBox2.Checked:= False;
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranResutasiGcs').AsBoolean = False then
+       chkGCS9.Checked := False
+    else
+       chkGCS9.Checked := True;
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranResutasiNeonatus').AsBoolean = False then
+        chkNeonatus36.Checked:= False
+    else
+        chkNeonatus36.Checked:= True;
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranEmergencyGcs').AsBoolean = False then
+        chkGCS9_12.Checked:= False
+    else
+        chkGCS9_12.Checked:= True;
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranEmergencyNeonatus').AsBoolean = False then
+        chkNeonatus35cE.Checked:= False
+    else
+        chkNeonatus35cE.Checked:= True;
+    edt1.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranTandaVitalE').AsString;
+    edt2.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranTandaVitalV').AsString;
+    edt3.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranTandaVitalM').AsString;
 
-    rbP1.Checked := False;
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranUrgentGcs').AsBoolean = False then
+        chkGCS12.Checked:= False
+    else
+        chkGCS12.Checked:= True;
+
+    if  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranNonUrgentGcs').AsBoolean = False then
+        chkGcs15.Checked:= False
+    else
+        chkGcs15.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranNonUrgentLuka').AsBoolean = False then
+        chkLukaDng.Checked:= False
+    else
+        chkLukaDng.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranNonUrgentTrauma').AsBoolean = False then
+        chkTraumaNoU.Checked:= False
+    else
+        chkTraumaNoU.Checked:= True;
+    edtSuhu.Text:= DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranTandaVitalSuhu').AsString;
+    
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranNonUrgent36').AsBoolean = False then
+        chk36_50CNo.Checked:= False
+    else
+        chk36_50CNo.Checked:= True;
+
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranFalseEmergency36').AsBoolean = False then
+        chk36_50cF.Checked:= False
+    else
+        chk36_50cF.Checked:= True;
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranFalseEmergencyNormal').AsBoolean = False then
+        chknormal.Checked:= False
+    else
+        chknormal.Checked:= True;
+    if DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('kesadaranFalseEmergencyLuka').AsBoolean = False then
+        CheckBox2.Checked:= False
+    else
+        CheckBox2.Checked:= True;
+    if  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pSatu').AsBoolean = False then
+        rbP1.Checked := False
+    else
+        rbP1.Checked := True;
     rbP2.Checked := False;
-    rbP3.Checked := False;
+    if  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pDua').AsBoolean = False then
+        rbP2.Checked := False
+    else
+        rbP2.Checked := True;
+        
+    if  DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('pTiga').AsBoolean = False then
+        rbP3.Checked := False
+    else
+        rbP3.Checked := True;
+
+    btnSIMPANTRIAGE.Caption := 'UBAH';
   end;
+  tampilTriage;
+  end;
+end
+else
+  MessageDlg('Data Tidak Di Temukan...!',mtInformation,[mbOK],0);
+end;
+
+/// hapus triager
+procedure hapusTriage;
+var
+  id,selisih:String;
+begin
+if DataSimrs1.qryt_asesmen_awal_triage.RecordCount >= 1 then
+begin
+  /// id kode unik
+  id:= IntToStr(DataSimrs1.qryt_asesmen_awal_triage.Fieldbyname('idAsesmenAwalTriage').AsInteger);
+  /// query di tampilkan
+  with DataSimrs1.qryt_asesmen_awal_triage do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from t_asesmen_awal_triage where idAsesmenAwalTriage="'+id+'"';
+    Open;
+  end;
+  /// selisih
+  selisih := FloattoStr(StrtoDate(DateToStr(Now))-StrtoDate(DateToStr(DataSimrs1.qryt_asesmen_awal_triage['tglDaftarUnit'])));
+  /// pengujian selisih
+  if selisih > '1' then
+  begin
+   MessageDlg('Tanggal Transaksi Sudah Melebihi Satu hari',mtInformation,[mbOK],0);
+   tampilTriage;
+  end
+  else
+  begin
+    /// perintah hapus
+   with DataSimrs1.qryt_asesmen_awal_triage do
+   begin
+     Close;
+     SQL.Clear;
+     SQL.Text := 'delete from t_asesmen_awal_triage where idAsesmenAwalTriage="'+id+'"';
+     ExecSQL;
+     SQL.Text := 'select * from t_asesmen_awal_triage';
+     Open;
+   end;
+   MessageDlg('Berhasil Di Hapus...!',mtInformation,[mbOK],0);
+  end
+end
+else
+MessageDlg('Data Tidak Di Temukan...!',mtInformation,[mbOK],0);
 end;
 
 end.

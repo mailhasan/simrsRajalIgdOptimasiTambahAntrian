@@ -381,7 +381,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
       Top = 97
       Width = 1438
       Height = 711
-      ActivePage = tsTRIAGE
+      ActivePage = tsSTATUS
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -781,6 +781,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'HAPUS'
               TabOrder = 2
+              OnClick = btnHAPUSTRIAGEClick
             end
             object btnBaru: TButton
               Left = 8
@@ -839,6 +840,297 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           ParentFont = False
           TabOrder = 1
+          object cxgrdTriage: TcxGrid
+            Left = 2
+            Top = 15
+            Width = 345
+            Height = 520
+            Align = alClient
+            TabOrder = 0
+            object cxgrdbtblvwTriage: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              DataController.DataSource = DataSimrs1.dst_asesmen_awal_triage
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxgrdbclmnTriageidAsesmenAwalTriage: TcxGridDBColumn
+                DataBinding.FieldName = 'idAsesmenAwalTriage'
+              end
+              object cxgrdbclmnTriagenoRekamedis: TcxGridDBColumn
+                DataBinding.FieldName = 'noRekamedis'
+              end
+              object cxgrdbclmnTriagenoDaftar: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftar'
+              end
+              object cxgrdbclmnTriagenoDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftarUnit'
+              end
+              object cxgrdbclmnTriagetglDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'tglDaftarUnit'
+              end
+              object cxgrdbclmnTriagediKrimOleh: TcxGridDBColumn
+                DataBinding.FieldName = 'diKrimOleh'
+              end
+              object cxgrdbclmnTriagenamaPengirim: TcxGridDBColumn
+                DataBinding.FieldName = 'namaPengirim'
+              end
+              object cxgrdbclmnTriagealamatPengirim: TcxGridDBColumn
+                DataBinding.FieldName = 'alamatPengirim'
+              end
+              object cxgrdbclmnTriagediagnosaRujukan: TcxGridDBColumn
+                DataBinding.FieldName = 'diagnosaRujukan'
+              end
+              object cxgrdbclmnTriageterapiYangDiberikan: TcxGridDBColumn
+                DataBinding.FieldName = 'terapiYangDiberikan'
+              end
+              object cxgrdbclmnTriagetglMasuk: TcxGridDBColumn
+                DataBinding.FieldName = 'tglMasuk'
+              end
+              object cxgrdbclmnTriagejamMasuk: TcxGridDBColumn
+                DataBinding.FieldName = 'jamMasuk'
+              end
+              object cxgrdbclmnTriagenonTrauma: TcxGridDBColumn
+                DataBinding.FieldName = 'nonTrauma'
+              end
+              object cxgrdbclmnTriageobsterti: TcxGridDBColumn
+                DataBinding.FieldName = 'obsterti'
+              end
+              object cxgrdbclmnTriagetrauma: TcxGridDBColumn
+                DataBinding.FieldName = 'trauma'
+              end
+              object cxgrdbclmnTriagetglTrauma: TcxGridDBColumn
+                DataBinding.FieldName = 'tglTrauma'
+              end
+              object cxgrdbclmnTriagejamTrauma: TcxGridDBColumn
+                DataBinding.FieldName = 'jamTrauma'
+              end
+              object cxgrdbclmnTriagelokasiTkp: TcxGridDBColumn
+                DataBinding.FieldName = 'lokasiTkp'
+              end
+              object cxgrdbclmnTriagecaraDatang: TcxGridDBColumn
+                DataBinding.FieldName = 'caraDatang'
+              end
+              object cxgrdbclmnTriagekeluhanUtama: TcxGridDBColumn
+                DataBinding.FieldName = 'keluhanUtama'
+              end
+              object cxgrdbclmnTriageriwayatSingkat: TcxGridDBColumn
+                DataBinding.FieldName = 'riwayatSingkat'
+              end
+              object cxgrdbclmnTriagekeadaanUmum: TcxGridDBColumn
+                DataBinding.FieldName = 'keadaanUmum'
+              end
+              object cxgrdbclmnTriagekesadaran: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaran'
+              end
+              object cxgrdbclmnTriagejalanNafasResutassiSumbatan: TcxGridDBColumn
+                DataBinding.FieldName = 'jalanNafasResutassiSumbatan'
+              end
+              object cxgrdbclmnTriagejalanNafasEmergencyBebas: TcxGridDBColumn
+                DataBinding.FieldName = 'jalanNafasEmergencyBebas'
+              end
+              object cxgrdbclmnTriagejalanNafasUrgentBebas: TcxGridDBColumn
+                DataBinding.FieldName = 'jalanNafasUrgentBebas'
+              end
+              object cxgrdbclmnTriagejalanNafasNonUrgentBebas: TcxGridDBColumn
+                DataBinding.FieldName = 'jalanNafasNonUrgentBebas'
+              end
+              object cxgrdbclmnTriagejalasNafasFalseEmergencyBebas: TcxGridDBColumn
+                DataBinding.FieldName = 'jalasNafasFalseEmergencyBebas'
+              end
+              object cxgrdbclmnTriagepernafasanResutasiHentiNafas: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanResutasiHentiNafas'
+              end
+              object cxgrdbclmnTriagepernafasanResutasiPR1Menit: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanResutasiPR1Menit'
+              end
+              object cxgrdbclmnTriagepernafasanResutasiPR40Menit: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanResutasiPR40Menit'
+              end
+              object cxgrdbclmnTriagepernafasanResutasiSiagnosiSentral: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanResutasiSiagnosiSentral'
+              end
+              object cxgrdbclmnTriagepernafasanResutasiSiagnosi: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanResutasiSiagnosi'
+              end
+              object cxgrdbclmnTriagepernafasanResutasiApnea: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanResutasiApnea'
+              end
+              object cxgrdbclmnTriagepernafasanEmergencyPR: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanEmergencyPR'
+              end
+              object cxgrdbclmnTriagepernafasanEmergencyWheezing: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanEmergencyWheezing'
+              end
+              object cxgrdbclmnTriagepernafasanEmergencyPr80: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanEmergencyPr80'
+              end
+              object cxgrdbclmnTriagepernafasanEmergencySianosis: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanEmergencySianosis'
+              end
+              object cxgrdbclmnTriagepernafasanTandaVitalSa02: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanTandaVitalSa02'
+              end
+              object cxgrdbclmnTriagepernafasanTandaVitalFrekNafas: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanTandaVitalFrekNafas'
+              end
+              object cxgrdbclmnTriagepernafasanUrgentPr24: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanUrgentPr24'
+              end
+              object cxgrdbclmnTriagepernafasanUrgentWheezing: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanUrgentWheezing'
+              end
+              object cxgrdbclmnTriagepernafasanUrgentPr60: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanUrgentPr60'
+              end
+              object cxgrdbclmnTriagepernafasanUrgentSianosi: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanUrgentSianosi'
+              end
+              object cxgrdbclmnTriagepernafasanNonUrgentNormal: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanNonUrgentNormal'
+              end
+              object cxgrdbclmnTriagepernafasanFalseEmergencyNormal: TcxGridDBColumn
+                DataBinding.FieldName = 'pernafasanFalseEmergencyNormal'
+              end
+              object cxgrdbclmnTriagesirkulasiResutasiHenditkanJantung: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiResutasiHenditkanJantung'
+              end
+              object cxgrdbclmnTriagesirkulasiResutasiNadiTidakTerabahLemah: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiResutasiNadiTidakTerabahLemah'
+              end
+              object cxgrdbclmnTriagesirkulasiResutasiPucatPale: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiResutasiPucatPale'
+              end
+              object cxgrdbclmnTriagesirkulasiResutasiAkralDingin: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiResutasiAkralDingin'
+              end
+              object cxgrdbclmnTriagesirkulasiResutasiFrek: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiResutasiFrek'
+              end
+              object cxgrdbclmnTriagesirkulasiResutasiCrt: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiResutasiCrt'
+              end
+              object cxgrdbclmnTriagesirkulasiEmergencyNadiTerabaLemah: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiEmergencyNadiTerabaLemah'
+              end
+              object cxgrdbclmnTriagesirkulasiEmergencyBraadikardia: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiEmergencyBraadikardia'
+              end
+              object cxgrdbclmnTriagesirkulasiEmergencyTachikardia: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiEmergencyTachikardia'
+              end
+              object cxgrdbclmnTriagesirkulasiEmergencyPucat: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiEmergencyPucat'
+              end
+              object cxgrdbclmnTriagesirkulasiEmergencyAkiralDingin: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiEmergencyAkiralDingin'
+              end
+              object cxgrdbclmnTriagesirkulasiEmergencyFrekNadi: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiEmergencyFrekNadi'
+              end
+              object cxgrdbclmnTriagesirkulasiEmergencyCrt: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiEmergencyCrt'
+              end
+              object cxgrdbclmnTriagesirkulasiTandaVitalTekananDarah: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiTandaVitalTekananDarah'
+              end
+              object cxgrdbclmnTriagesirkulasiTandaVitalNadi: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiTandaVitalNadi'
+              end
+              object cxgrdbclmnTriagesirkulasiUrgentNadiTeraba: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiUrgentNadiTeraba'
+              end
+              object cxgrdbclmnTriagesirkulasiUrgentFrekNadi: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiUrgentFrekNadi'
+              end
+              object cxgrdbclmnTriagesirkulasiUrgentTekDarahSistole: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiUrgentTekDarahSistole'
+              end
+              object cxgrdbclmnTriagesirkulasiUrgentTekDarahDiastole: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiUrgentTekDarahDiastole'
+              end
+              object cxgrdbclmnTriagesirkulasiUrgentCrt: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiUrgentCrt'
+              end
+              object cxgrdbclmnTriagesirkulasiNonUrgentNormal: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiNonUrgentNormal'
+              end
+              object cxgrdbclmnTriagesirkulasiFalseEmergencyNormal: TcxGridDBColumn
+                DataBinding.FieldName = 'sirkulasiFalseEmergencyNormal'
+              end
+              object cxgrdbclmnTriagekesadaranResutasiGcs: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranResutasiGcs'
+              end
+              object cxgrdbclmnTriagekesadaranResutasiNeonatus: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranResutasiNeonatus'
+              end
+              object cxgrdbclmnTriagekesadaranEmergencyGcs: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranEmergencyGcs'
+              end
+              object cxgrdbclmnTriagekesadaranEmergencyNeonatus: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranEmergencyNeonatus'
+              end
+              object cxgrdbclmnTriagekesadaranTandaVitalE: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranTandaVitalE'
+              end
+              object cxgrdbclmnTriagekesadaranTandaVitalV: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranTandaVitalV'
+              end
+              object cxgrdbclmnTriagekesadaranTandaVitalM: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranTandaVitalM'
+              end
+              object cxgrdbclmnTriagekesadaranTandaVitalSuhu: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranTandaVitalSuhu'
+              end
+              object cxgrdbclmnTriagekesadaranUrgentGcs: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranUrgentGcs'
+              end
+              object cxgrdbclmnTriagekesadaranNonUrgentGcs: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranNonUrgentGcs'
+              end
+              object cxgrdbclmnTriagekesadaranNonUrgentLuka: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranNonUrgentLuka'
+              end
+              object cxgrdbclmnTriagekesadaranNonUrgentTrauma: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranNonUrgentTrauma'
+              end
+              object cxgrdbclmnTriagekesadaranNonUrgent36: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranNonUrgent36'
+              end
+              object cxgrdbclmnTriagekesadaranFalseEmergencyNormal: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranFalseEmergencyNormal'
+              end
+              object cxgrdbclmnTriagekesadaranFalseEmergencyLuka: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranFalseEmergencyLuka'
+              end
+              object cxgrdbclmnTriagekesadaranFalseEmergency36: TcxGridDBColumn
+                DataBinding.FieldName = 'kesadaranFalseEmergency36'
+              end
+              object cxgrdbclmnTriagepSatu: TcxGridDBColumn
+                DataBinding.FieldName = 'pSatu'
+              end
+              object cxgrdbclmnTriagepDua: TcxGridDBColumn
+                DataBinding.FieldName = 'pDua'
+              end
+              object cxgrdbclmnTriagepTiga: TcxGridDBColumn
+                DataBinding.FieldName = 'pTiga'
+              end
+              object cxgrdbclmnTriagecreateDate: TcxGridDBColumn
+                DataBinding.FieldName = 'createDate'
+              end
+              object cxgrdbclmnTriagecreateUser: TcxGridDBColumn
+                DataBinding.FieldName = 'createUser'
+              end
+              object cxgrdbclmnTriagemodifDate: TcxGridDBColumn
+                DataBinding.FieldName = 'modifDate'
+              end
+              object cxgrdbclmnTriagemodifUser: TcxGridDBColumn
+                DataBinding.FieldName = 'modifUser'
+              end
+            end
+            object cxgrdlvlTriage: TcxGridLevel
+              GridView = cxgrdbtblvwTriage
+            end
+          end
         end
         object grpTRIAGE: TGroupBox
           Left = 0

@@ -29,7 +29,8 @@ uses
   UHistoriTndkRajal in 'UHistoriTndkRajal.pas' {FHistoriTndkRajal},
   UAsesmenAwalIgd in 'UAsesmenAwalIgd.pas' {FAsesmenAwalIgd},
   UDataSimrs1 in 'UDataSimrs1.pas' {DataSimrs1: TDataModule},
-  UAsemenAwalIgdTriage in 'UAsemenAwalIgdTriage.pas';
+  UAsemenAwalIgdTriage in 'UAsemenAwalIgdTriage.pas',
+  UAsesmenAwalIgdStatus in 'UAsesmenAwalIgdStatus.pas';
 
 {$R *.res}
 

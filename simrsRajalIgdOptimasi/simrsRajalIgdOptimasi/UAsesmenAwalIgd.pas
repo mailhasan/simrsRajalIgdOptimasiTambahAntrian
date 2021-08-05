@@ -15,7 +15,10 @@ uses
   dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
   dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxSpinEdit,
-  cxTimeEdit, cxCheckListBox, cxGroupBox, cxCheckGroup, frxpngimage;
+  cxTimeEdit, cxCheckListBox, cxGroupBox, cxCheckGroup, frxpngimage,
+  cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter, cxData,
+  cxDataStorage, DB, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid;
 
 type
   TFAsesmenAwalIgd = class(TForm)
@@ -969,11 +972,106 @@ type
     rbP2: TRadioButton;
     rbP3: TRadioButton;
     lblKodeTriage: TLabel;
+    cxgrdbtblvwTriage: TcxGridDBTableView;
+    cxgrdlvlTriage: TcxGridLevel;
+    cxgrdTriage: TcxGrid;
+    cxgrdbclmnTriageidAsesmenAwalTriage: TcxGridDBColumn;
+    cxgrdbclmnTriagenoRekamedis: TcxGridDBColumn;
+    cxgrdbclmnTriagenoDaftar: TcxGridDBColumn;
+    cxgrdbclmnTriagenoDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnTriagetglDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnTriagediKrimOleh: TcxGridDBColumn;
+    cxgrdbclmnTriagenamaPengirim: TcxGridDBColumn;
+    cxgrdbclmnTriagealamatPengirim: TcxGridDBColumn;
+    cxgrdbclmnTriagediagnosaRujukan: TcxGridDBColumn;
+    cxgrdbclmnTriageterapiYangDiberikan: TcxGridDBColumn;
+    cxgrdbclmnTriagetglMasuk: TcxGridDBColumn;
+    cxgrdbclmnTriagejamMasuk: TcxGridDBColumn;
+    cxgrdbclmnTriagenonTrauma: TcxGridDBColumn;
+    cxgrdbclmnTriageobsterti: TcxGridDBColumn;
+    cxgrdbclmnTriagetrauma: TcxGridDBColumn;
+    cxgrdbclmnTriagetglTrauma: TcxGridDBColumn;
+    cxgrdbclmnTriagejamTrauma: TcxGridDBColumn;
+    cxgrdbclmnTriagelokasiTkp: TcxGridDBColumn;
+    cxgrdbclmnTriagecaraDatang: TcxGridDBColumn;
+    cxgrdbclmnTriagekeluhanUtama: TcxGridDBColumn;
+    cxgrdbclmnTriageriwayatSingkat: TcxGridDBColumn;
+    cxgrdbclmnTriagekeadaanUmum: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaran: TcxGridDBColumn;
+    cxgrdbclmnTriagejalanNafasResutassiSumbatan: TcxGridDBColumn;
+    cxgrdbclmnTriagejalanNafasEmergencyBebas: TcxGridDBColumn;
+    cxgrdbclmnTriagejalanNafasUrgentBebas: TcxGridDBColumn;
+    cxgrdbclmnTriagejalanNafasNonUrgentBebas: TcxGridDBColumn;
+    cxgrdbclmnTriagejalasNafasFalseEmergencyBebas: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanResutasiHentiNafas: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanResutasiPR1Menit: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanResutasiPR40Menit: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanResutasiSiagnosiSentral: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanResutasiSiagnosi: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanResutasiApnea: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanEmergencyPR: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanEmergencyWheezing: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanEmergencyPr80: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanEmergencySianosis: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanTandaVitalSa02: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanTandaVitalFrekNafas: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanUrgentPr24: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanUrgentWheezing: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanUrgentPr60: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanUrgentSianosi: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanNonUrgentNormal: TcxGridDBColumn;
+    cxgrdbclmnTriagepernafasanFalseEmergencyNormal: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiResutasiHenditkanJantung: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiResutasiNadiTidakTerabahLemah: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiResutasiPucatPale: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiResutasiAkralDingin: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiResutasiFrek: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiResutasiCrt: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiEmergencyNadiTerabaLemah: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiEmergencyBraadikardia: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiEmergencyTachikardia: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiEmergencyPucat: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiEmergencyAkiralDingin: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiEmergencyFrekNadi: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiEmergencyCrt: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiTandaVitalTekananDarah: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiTandaVitalNadi: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiUrgentNadiTeraba: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiUrgentFrekNadi: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiUrgentTekDarahSistole: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiUrgentTekDarahDiastole: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiUrgentCrt: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiNonUrgentNormal: TcxGridDBColumn;
+    cxgrdbclmnTriagesirkulasiFalseEmergencyNormal: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranResutasiGcs: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranResutasiNeonatus: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranEmergencyGcs: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranEmergencyNeonatus: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranTandaVitalE: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranTandaVitalV: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranTandaVitalM: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranTandaVitalSuhu: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranUrgentGcs: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranNonUrgentGcs: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranNonUrgentLuka: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranNonUrgentTrauma: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranNonUrgent36: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranFalseEmergencyNormal: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranFalseEmergencyLuka: TcxGridDBColumn;
+    cxgrdbclmnTriagekesadaranFalseEmergency36: TcxGridDBColumn;
+    cxgrdbclmnTriagepSatu: TcxGridDBColumn;
+    cxgrdbclmnTriagepDua: TcxGridDBColumn;
+    cxgrdbclmnTriagepTiga: TcxGridDBColumn;
+    cxgrdbclmnTriagecreateDate: TcxGridDBColumn;
+    cxgrdbclmnTriagecreateUser: TcxGridDBColumn;
+    cxgrdbclmnTriagemodifDate: TcxGridDBColumn;
+    cxgrdbclmnTriagemodifUser: TcxGridDBColumn;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnUBAHTRIAGEClick(Sender: TObject);
+    procedure btnHAPUSTRIAGEClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -986,7 +1084,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UAsemenAwalIgdTriage;
+uses UAsemenAwalIgdTriage,UDataSimrs1;
 
 procedure TFAsesmenAwalIgd.pnlKeluarClick(Sender: TObject);
 begin
@@ -996,7 +1094,7 @@ end;
 procedure TFAsesmenAwalIgd.btnBaruClick(Sender: TObject);
 begin
   /// panggil dari unit asesmen awal igd triage
-  baruTriage;
+  baruTriage; tampilTriage; btnSIMPANTRIAGE.Caption := 'SIMPAN';
 end;
 
 procedure TFAsesmenAwalIgd.btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1015,6 +1113,11 @@ procedure TFAsesmenAwalIgd.btnUBAHTRIAGEClick(Sender: TObject);
 begin
   /// panggil procedure ubah triage
   tampilUbahTriage;
+end;
+
+procedure TFAsesmenAwalIgd.btnHAPUSTRIAGEClick(Sender: TObject);
+begin
+  hapusTriage;
 end;
 
 end.
