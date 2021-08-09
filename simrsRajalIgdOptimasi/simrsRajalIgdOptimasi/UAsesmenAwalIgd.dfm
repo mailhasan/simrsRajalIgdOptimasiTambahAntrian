@@ -629,6 +629,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 5
+            OnClick = chkNontraumaClick
           end
           object chkObstetri: TCheckBox
             Left = 672
@@ -643,6 +644,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 6
+            OnClick = chkObstetriClick
           end
           object chkTrauma: TCheckBox
             Left = 584
@@ -657,6 +659,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 7
+            OnClick = chkTraumaClick
           end
           object dtpTGLTRAUMA: TDateTimePicker
             Left = 752
@@ -708,6 +711,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 11
+            OnClick = chkBERJALANClick
           end
           object chkBRANCAR: TCheckBox
             Left = 776
@@ -722,6 +726,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 12
+            OnClick = chkBRANCARClick
           end
           object chkKURSIRODA: TCheckBox
             Left = 672
@@ -736,6 +741,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 13
+            OnClick = chkKURSIRODAClick
           end
           object grpMenuTriage: TGroupBox
             Left = 1040
@@ -2970,6 +2976,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 9
+            OnClick = chkcomposClick
           end
           object chkapatis: TCheckBox
             Left = 312
@@ -2984,6 +2991,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 10
+            OnClick = chkapatisClick
           end
           object chksomnolens: TCheckBox
             Left = 456
@@ -2998,6 +3006,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 11
+            OnClick = chksomnolensClick
           end
           object chksopor: TCheckBox
             Left = 616
@@ -3012,6 +3021,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 12
+            OnClick = chksoporClick
           end
           object chkcoma: TCheckBox
             Left = 784
@@ -3026,6 +3036,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 13
+            OnClick = chkcomaClick
           end
           object grprespontime: TGroupBox
             Left = 8
@@ -3202,7 +3213,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
           end
-          object Edit1: TEdit
+          object edtCaraBayar: TEdit
             Left = 96
             Top = 24
             Width = 225
@@ -3277,14 +3288,14 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Text = 'cbbAGAMA'
           end
           object grpMENUSTATUS: TGroupBox
-            Left = 1080
+            Left = 1040
             Top = 16
-            Width = 321
+            Width = 361
             Height = 57
             Caption = 'MENU'
             TabOrder = 5
             object btnSIMPANSTATUS: TButton
-              Left = 16
+              Left = 88
               Top = 16
               Width = 81
               Height = 25
@@ -3292,7 +3303,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 0
             end
             object btnUBAHSTATUS: TButton
-              Left = 112
+              Left = 176
               Top = 16
               Width = 81
               Height = 25
@@ -3300,12 +3311,21 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 1
             end
             object btnHAPUSSTATUS: TButton
-              Left = 216
+              Left = 264
               Top = 16
               Width = 81
               Height = 25
               Caption = 'HAPUS'
               TabOrder = 2
+            end
+            object btnBaruStatus: TButton
+              Left = 8
+              Top = 16
+              Width = 75
+              Height = 25
+              Caption = 'BARU'
+              TabOrder = 3
+              OnClick = btnBaruStatusClick
             end
           end
           object chkTIDAKADA: TCheckBox
@@ -3336,7 +3356,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 7
           end
-          object Edit2: TEdit
+          object edtAdaNilaiKepercayaan: TEdit
             Left = 672
             Top = 68
             Width = 329
@@ -4178,7 +4198,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Left = 8
             Top = 32
             Width = 225
-            Height = 17
+            Height = 25
             Caption = 'ADA MASALAH PERILAKU, SEBUTKAN'
             TabOrder = 1
           end

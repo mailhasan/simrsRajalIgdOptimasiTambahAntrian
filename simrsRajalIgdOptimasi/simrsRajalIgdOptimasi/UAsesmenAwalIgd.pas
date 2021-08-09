@@ -1,3 +1,56 @@
+{$A8,B-,C+,D+,E-,F-,G+,H+,I+,J-,K-,L+,M-,N+,O+,P+,Q-,R-,S-,T-,U-,V+,W-,X+,Y+,Z1}
+{$MINSTACKSIZE $00004000}
+{$MAXSTACKSIZE $00100000}
+{$IMAGEBASE $00400000}
+{$APPTYPE GUI}
+{$WARN SYMBOL_DEPRECATED ON}
+{$WARN SYMBOL_LIBRARY ON}
+{$WARN SYMBOL_PLATFORM ON}
+{$WARN UNIT_LIBRARY ON}
+{$WARN UNIT_PLATFORM ON}
+{$WARN UNIT_DEPRECATED ON}
+{$WARN HRESULT_COMPAT ON}
+{$WARN HIDING_MEMBER ON}
+{$WARN HIDDEN_VIRTUAL ON}
+{$WARN GARBAGE ON}
+{$WARN BOUNDS_ERROR ON}
+{$WARN ZERO_NIL_COMPAT ON}
+{$WARN STRING_CONST_TRUNCED ON}
+{$WARN FOR_LOOP_VAR_VARPAR ON}
+{$WARN TYPED_CONST_VARPAR ON}
+{$WARN ASG_TO_TYPED_CONST ON}
+{$WARN CASE_LABEL_RANGE ON}
+{$WARN FOR_VARIABLE ON}
+{$WARN CONSTRUCTING_ABSTRACT ON}
+{$WARN COMPARISON_FALSE ON}
+{$WARN COMPARISON_TRUE ON}
+{$WARN COMPARING_SIGNED_UNSIGNED ON}
+{$WARN COMBINING_SIGNED_UNSIGNED ON}
+{$WARN UNSUPPORTED_CONSTRUCT ON}
+{$WARN FILE_OPEN ON}
+{$WARN FILE_OPEN_UNITSRC ON}
+{$WARN BAD_GLOBAL_SYMBOL ON}
+{$WARN DUPLICATE_CTOR_DTOR ON}
+{$WARN INVALID_DIRECTIVE ON}
+{$WARN PACKAGE_NO_LINK ON}
+{$WARN PACKAGED_THREADVAR ON}
+{$WARN IMPLICIT_IMPORT ON}
+{$WARN HPPEMIT_IGNORED ON}
+{$WARN NO_RETVAL ON}
+{$WARN USE_BEFORE_DEF ON}
+{$WARN FOR_LOOP_VAR_UNDEF ON}
+{$WARN UNIT_NAME_MISMATCH ON}
+{$WARN NO_CFG_FILE_FOUND ON}
+{$WARN MESSAGE_DIRECTIVE ON}
+{$WARN IMPLICIT_VARIANTS ON}
+{$WARN UNICODE_TO_LOCALE ON}
+{$WARN LOCALE_TO_UNICODE ON}
+{$WARN IMAGEBASE_MULTIPLE ON}
+{$WARN SUSPICIOUS_TYPECAST ON}
+{$WARN PRIVATE_PROPACCESSOR ON}
+{$WARN UNSAFE_TYPE OFF}
+{$WARN UNSAFE_CODE OFF}
+{$WARN UNSAFE_CAST OFF}
 unit UAsesmenAwalIgd;
 
 interface
@@ -199,7 +252,7 @@ type
     lblSUKU: TLabel;
     lblAGAMA: TLabel;
     lblCARABAYAR: TLabel;
-    Edit1: TEdit;
+    edtCaraBayar: TEdit;
     edtPEKERJAAN: TComboBox;
     edtTINGGAL: TComboBox;
     edtSUKU: TComboBox;
@@ -433,7 +486,7 @@ type
     Label4: TLabel;
     chkTIDAKADA: TCheckBox;
     chkADA: TCheckBox;
-    Edit2: TEdit;
+    edtAdaNilaiKepercayaan: TEdit;
     edttotalskorrisiko: TEdit;
     lbltindakan: TLabel;
     lblnamapetugas: TLabel;
@@ -1066,12 +1119,25 @@ type
     cxgrdbclmnTriagecreateUser: TcxGridDBColumn;
     cxgrdbclmnTriagemodifDate: TcxGridDBColumn;
     cxgrdbclmnTriagemodifUser: TcxGridDBColumn;
+    btnBaruStatus: TButton;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnUBAHTRIAGEClick(Sender: TObject);
     procedure btnHAPUSTRIAGEClick(Sender: TObject);
+    procedure chkNontraumaClick(Sender: TObject);
+    procedure chkObstetriClick(Sender: TObject);
+    procedure chkTraumaClick(Sender: TObject);
+    procedure chkBERJALANClick(Sender: TObject);
+    procedure chkKURSIRODAClick(Sender: TObject);
+    procedure chkBRANCARClick(Sender: TObject);
+    procedure chkcomposClick(Sender: TObject);
+    procedure chkapatisClick(Sender: TObject);
+    procedure chksomnolensClick(Sender: TObject);
+    procedure chksoporClick(Sender: TObject);
+    procedure chkcomaClick(Sender: TObject);
+    procedure btnBaruStatusClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1084,7 +1150,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UAsemenAwalIgdTriage,UDataSimrs1;
+uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus;
 
 procedure TFAsesmenAwalIgd.pnlKeluarClick(Sender: TObject);
 begin
@@ -1118,6 +1184,67 @@ end;
 procedure TFAsesmenAwalIgd.btnHAPUSTRIAGEClick(Sender: TObject);
 begin
   hapusTriage;
+end;
+
+procedure TFAsesmenAwalIgd.chkNontraumaClick(Sender: TObject);
+begin
+JenisKasusChekNontrauma;
+end;
+
+procedure TFAsesmenAwalIgd.chkObstetriClick(Sender: TObject);
+begin
+JenisKasusChekObsterti;
+end;
+
+procedure TFAsesmenAwalIgd.chkTraumaClick(Sender: TObject);
+begin
+JenisKasusChektrauma;
+end;
+
+procedure TFAsesmenAwalIgd.chkBERJALANClick(Sender: TObject);
+begin
+CaraDatangBerjalan;
+end;
+
+procedure TFAsesmenAwalIgd.chkKURSIRODAClick(Sender: TObject);
+begin
+CaraDatangKursiRoda;
+end;
+
+procedure TFAsesmenAwalIgd.chkBRANCARClick(Sender: TObject);
+begin
+CaraDatangBrancar;
+end;
+
+procedure TFAsesmenAwalIgd.chkcomposClick(Sender: TObject);
+begin
+kesadaranCompos;
+end;
+
+procedure TFAsesmenAwalIgd.chkapatisClick(Sender: TObject);
+begin
+kesadarankapasitas;
+end;
+
+procedure TFAsesmenAwalIgd.chksomnolensClick(Sender: TObject);
+begin
+kesadaranSomnolens;
+end;
+
+procedure TFAsesmenAwalIgd.chksoporClick(Sender: TObject);
+begin
+kesadaranSopor;
+end;
+
+procedure TFAsesmenAwalIgd.chkcomaClick(Sender: TObject);
+begin
+kesadaranComa;
+end;
+
+procedure TFAsesmenAwalIgd.btnBaruStatusClick(Sender: TObject);
+begin
+ /// baru status
+ baruStatus;       
 end;
 
 end.

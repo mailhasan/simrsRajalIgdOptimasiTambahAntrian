@@ -8,9 +8,23 @@ procedure ProsesSimpanTriage;
 procedure tampilUbahTriage;
 procedure hapusTriage;
 
+procedure JenisKasusChekNontrauma;
+procedure JenisKasusChekObsterti;
+procedure JenisKasusChektrauma;
+
+procedure CaraDatangBerjalan;
+procedure CaraDatangKursiRoda;
+procedure CaraDatangBrancar;
+
+procedure kesadaranCompos;
+procedure kesadarankapasitas;
+procedure kesadaranSomnolens;
+procedure kesadaranSopor;
+procedure kesadaranComa;
+
 implementation
 uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
-  ZAbstractRODataset, DB;
+  ZAbstractRODataset, DB, Controls;
 
 procedure tampilTriage;
 begin
@@ -1034,6 +1048,239 @@ begin
 end
 else
 MessageDlg('Data Tidak Di Temukan...!',mtInformation,[mbOK],0);
+end;
+
+/// pengujian cek e di jenis kasus Nontrauma
+procedure  JenisKasusChekNontrauma;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chkNontrauma.Checked = True then
+    begin
+      chkObstetri.Enabled := False;
+      chkTrauma.Enabled := False;
+      dtpTGLTRAUMA.Enabled := False;
+      cxtmdtJAMTRAUMA.Enabled := False;
+      mmoLokasiTKP.Enabled := False;
+    end
+    else
+    begin
+      chkObstetri.Enabled := True;
+      chkTrauma.Enabled := True;
+      dtpTGLTRAUMA.Enabled := True;
+      cxtmdtJAMTRAUMA.Enabled := True;
+      mmoLokasiTKP.Enabled := True;
+    end
+  end;
+end;
+
+procedure JenisKasusChekObsterti;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chkObstetri.Checked = True then
+    begin
+      chkNontrauma.Enabled := false;
+      chkTrauma.Enabled := false;
+      dtpTGLTRAUMA.Enabled := false;
+      cxtmdtJAMTRAUMA.Enabled := false;
+      mmoLokasiTKP.Enabled := false;
+    end
+    else
+    begin
+      chkNontrauma.Enabled := True;
+      chkTrauma.Enabled := True;
+      dtpTGLTRAUMA.Enabled := True;
+      cxtmdtJAMTRAUMA.Enabled := True;
+      mmoLokasiTKP.Enabled := True;
+    end;
+
+  end;
+end;
+
+procedure JenisKasusChektrauma;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chkTrauma.Checked = True then
+    begin
+      chkNontrauma.Enabled := false;
+      chkObstetri.Enabled := false;
+      dtpTGLTRAUMA.Enabled := True;
+      cxtmdtJAMTRAUMA.Enabled := True;
+      mmoLokasiTKP.Enabled := True;
+    end
+    else
+    begin
+      chkNontrauma.Enabled := True;
+      chkObstetri.Enabled := True;
+      dtpTGLTRAUMA.Enabled := True;
+      cxtmdtJAMTRAUMA.Enabled := True;
+      mmoLokasiTKP.Enabled := True;
+    end;
+  end;
+end;
+
+procedure CaraDatangBerjalan;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chkBERJALAN.Checked = True then
+    Begin
+      chkKURSIRODA.Checked := False;
+      chkBRANCAR.Checked := False;
+      chkKURSIRODA.Enabled := False;
+      chkBRANCAR.Enabled := False;
+    end
+    else
+    begin
+      chkKURSIRODA.Enabled := True;
+      chkBRANCAR.Enabled := True;
+    end;
+  end;
+end;
+
+procedure CaraDatangKursiRoda;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chkKURSIRODA.Checked = True then
+    Begin
+      chkBERJALAN.Checked := False;
+      chkBRANCAR.Checked := False;
+      chkBERJALAN.Enabled := False;
+      chkBRANCAR.Enabled := False;
+    end
+    else
+    begin
+      chkBERJALAN.Enabled := True;
+      chkBRANCAR.Enabled := True;
+    end;
+  end;
+end;
+procedure CaraDatangBrancar;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chkBRANCAR.Checked = True then
+    Begin
+      chkBERJALAN.Checked := False;
+      chkKURSIRODA.Checked := False;
+      chkBERJALAN.Enabled := False;
+      chkKURSIRODA.Enabled := False;
+    end
+    else
+    begin
+      chkBERJALAN.Enabled := True;
+      chkKURSIRODA.Enabled := True;
+    end;
+  end;
+end;
+
+/// KESADARAAN
+procedure kesadaranCompos;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chkcompos.Checked = True then
+   begin
+    chkapatis.Enabled := False;
+    chksomnolens.Enabled := False;
+    chksopor.Enabled := False;
+    chkcoma.Enabled := False;
+   end
+   ELSE
+   begin
+    chkapatis.Enabled := True;
+    chksomnolens.Enabled := True;
+    chksopor.Enabled := True;
+    chkcoma.Enabled := True;
+   end;
+  end;
+end;
+
+procedure kesadarankapasitas;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chkapatis.Checked = True then
+   begin
+    chkcompos.Enabled := False;
+    chksomnolens.Enabled := False;
+    chksopor.Enabled := False;
+    chkcoma.Enabled := False;
+   end
+   ELSE
+   begin
+    chkcompos.Enabled := True;
+    chksomnolens.Enabled := True;
+    chksopor.Enabled := True;
+    chkcoma.Enabled := True;
+   end;
+  end;
+end;
+
+procedure kesadaranSomnolens;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chksomnolens.Checked = True then
+   begin
+    chkcompos.Enabled := False;
+    chkapatis.Enabled := False;
+    chksopor.Enabled := False;
+    chkcoma.Enabled := False;
+   end
+   ELSE
+   begin
+    chkcompos.Enabled := True;
+    chkapatis.Enabled := True;
+    chksopor.Enabled := True;
+    chkcoma.Enabled := True;
+   end;
+  end;
+end;
+
+procedure kesadaranSopor;
+begin
+ with FAsesmenAwalIgd do
+  begin
+   if chksopor.Checked = True then
+   begin
+    chkcompos.Enabled := False;
+    chkapatis.Enabled := False;
+    chksomnolens.Enabled := False;
+    chkcoma.Enabled := False;
+   end
+   ELSE
+   begin
+    chkcompos.Enabled := True;
+    chkapatis.Enabled := True;
+    chksomnolens.Enabled := True;
+    chkcoma.Enabled := True;
+   end;
+  end;
+end;
+
+procedure kesadaranComa;
+begin
+ with FAsesmenAwalIgd do
+  begin
+   if chkcoma.Checked = True then
+   begin
+    chkcompos.Enabled := False;
+    chkapatis.Enabled := False;
+    chksomnolens.Enabled := False;
+    chksopor.Enabled := False;
+   end
+   ELSE
+   begin
+    chkcompos.Enabled := True;
+    chkapatis.Enabled := True;
+    chksomnolens.Enabled := True;
+    chksopor.Enabled := True;
+   end;
+  end;
 end;
 
 end.
