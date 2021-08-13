@@ -381,7 +381,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
       Top = 97
       Width = 1438
       Height = 711
-      ActivePage = tsSTATUS
+      ActivePage = tsNyeri
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -3213,6 +3213,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
           end
+          object lblIdStatus: TLabel
+            Left = 1032
+            Top = 88
+            Width = 62
+            Height = 13
+            Caption = 'lblIdStatus'
+          end
           object edtCaraBayar: TEdit
             Left = 96
             Top = 24
@@ -3301,6 +3308,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'SIMPAN'
               TabOrder = 0
+              OnClick = btnSIMPANSTATUSClick
             end
             object btnUBAHSTATUS: TButton
               Left = 176
@@ -3309,6 +3317,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
+              OnClick = btnUBAHSTATUSClick
             end
             object btnHAPUSSTATUS: TButton
               Left = 264
@@ -3317,6 +3326,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'HAPUS'
               TabOrder = 2
+              OnClick = btnHAPUSSTATUSClick
             end
             object btnBaruStatus: TButton
               Left = 8
@@ -3341,6 +3351,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 6
+            OnClick = chkTIDAKADAClick
           end
           object chkADA: TCheckBox
             Left = 776
@@ -3355,6 +3366,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 7
+            OnClick = chkADAClick
           end
           object edtAdaNilaiKepercayaan: TEdit
             Left = 672
@@ -3374,8 +3386,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpRIWAYATSTATUS: TGroupBox
           Left = 1080
           Top = 128
-          Width = 353
-          Height = 689
+          Width = 833
+          Height = 713
           Caption = 'DAFTAR RIWAYAT STATUS PASIEN'
           Color = 16577248
           Font.Charset = ANSI_CHARSET
@@ -3386,6 +3398,150 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           ParentFont = False
           TabOrder = 1
+          object cxgrdStatus: TcxGrid
+            Left = 2
+            Top = 15
+            Width = 829
+            Height = 696
+            Align = alClient
+            TabOrder = 0
+            object cxgrdbtblvwStatus: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              DataController.DataSource = DataSimrs1.dst_asesmen_awal_status
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxgrdbclmnStatusIdAsesmenAwalStatus: TcxGridDBColumn
+                DataBinding.FieldName = 'IdAsesmenAwalStatus'
+              end
+              object cxgrdbclmnStatusnoRekamedis: TcxGridDBColumn
+                DataBinding.FieldName = 'noRekamedis'
+              end
+              object cxgrdbclmnStatusnoDaftar: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftar'
+              end
+              object cxgrdbclmnStatusnoDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftarUnit'
+              end
+              object cxgrdbclmnStatustglDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'tglDaftarUnit'
+              end
+              object cxgrdbclmnStatuscaraBayar: TcxGridDBColumn
+                DataBinding.FieldName = 'caraBayar'
+              end
+              object cxgrdbclmnStatusSuku: TcxGridDBColumn
+                DataBinding.FieldName = 'Suku'
+              end
+              object cxgrdbclmnStatusagama: TcxGridDBColumn
+                DataBinding.FieldName = 'agama'
+              end
+              object cxgrdbclmnStatuspekerjaan: TcxGridDBColumn
+                DataBinding.FieldName = 'pekerjaan'
+              end
+              object cxgrdbclmnStatustinggalBersama: TcxGridDBColumn
+                DataBinding.FieldName = 'tinggalBersama'
+              end
+              object cxgrdbclmnStatusnilaiKepercayaan: TcxGridDBColumn
+                DataBinding.FieldName = 'nilaiKepercayaan'
+              end
+              object cxgrdbclmnStatusketNilaiKepercayaan: TcxGridDBColumn
+                DataBinding.FieldName = 'ketNilaiKepercayaan'
+              end
+              object cxgrdbclmnStatusPedampinganRohani: TcxGridDBColumn
+                DataBinding.FieldName = 'PedampinganRohani'
+              end
+              object cxgrdbclmnStatusketPendampinganRohani: TcxGridDBColumn
+                DataBinding.FieldName = 'ketPendampinganRohani'
+              end
+              object cxgrdbclmnStatusbahasa: TcxGridDBColumn
+                DataBinding.FieldName = 'bahasa'
+              end
+              object cxgrdbclmnStatusganguanBicara: TcxGridDBColumn
+                DataBinding.FieldName = 'ganguanBicara'
+              end
+              object cxgrdbclmnStatusbutuhPenerjemah: TcxGridDBColumn
+                DataBinding.FieldName = 'butuhPenerjemah'
+              end
+              object cxgrdbclmnStatushambatanBelajar: TcxGridDBColumn
+                DataBinding.FieldName = 'hambatanBelajar'
+              end
+              object cxgrdbclmnStatuscaraBelajarYangDiSukai: TcxGridDBColumn
+                DataBinding.FieldName = 'caraBelajarYangDiSukai'
+              end
+              object cxgrdbclmnStatustenang: TcxGridDBColumn
+                DataBinding.FieldName = 'tenang'
+              end
+              object cxgrdbclmnStatuscemas: TcxGridDBColumn
+                DataBinding.FieldName = 'cemas'
+              end
+              object cxgrdbclmnStatusmarah: TcxGridDBColumn
+                DataBinding.FieldName = 'marah'
+              end
+              object cxgrdbclmnStatustakut: TcxGridDBColumn
+                DataBinding.FieldName = 'takut'
+              end
+              object cxgrdbclmnStatussedih: TcxGridDBColumn
+                DataBinding.FieldName = 'sedih'
+              end
+              object cxgrdbclmnStatuslain_lain: TcxGridDBColumn
+                DataBinding.FieldName = 'lain_lain'
+              end
+              object cxgrdbclmnStatusstatusMental: TcxGridDBColumn
+                DataBinding.FieldName = 'statusMental'
+              end
+              object cxgrdbclmnStatusketStatusMental: TcxGridDBColumn
+                DataBinding.FieldName = 'ketStatusMental'
+              end
+              object cxgrdbclmnStatuspenggunaanRestarin: TcxGridDBColumn
+                DataBinding.FieldName = 'penggunaanRestarin'
+              end
+              object cxgrdbclmnStatusketPenggunaanRestarin: TcxGridDBColumn
+                DataBinding.FieldName = 'ketPenggunaanRestarin'
+              end
+              object cxgrdbclmnStatusjenisRestarin: TcxGridDBColumn
+                DataBinding.FieldName = 'jenisRestarin'
+              end
+              object cxgrdbclmnStatusKetJenisRestarin: TcxGridDBColumn
+                DataBinding.FieldName = 'KetJenisRestarin'
+              end
+              object cxgrdbclmnStatuspenilaianStatusFungsionalSATU: TcxGridDBColumn
+                DataBinding.FieldName = 'penilaianStatusFungsionalSATU'
+              end
+              object cxgrdbclmnStatuspenilaianStatusFungsionalDUA: TcxGridDBColumn
+                DataBinding.FieldName = 'penilaianStatusFungsionalDUA'
+              end
+              object cxgrdbclmnStatuspenilaianStatusFungsionalTIGA: TcxGridDBColumn
+                DataBinding.FieldName = 'penilaianStatusFungsionalTIGA'
+              end
+              object cxgrdbclmnStatuspenilaianStatusFungsionalEMPAT: TcxGridDBColumn
+                DataBinding.FieldName = 'penilaianStatusFungsionalEMPAT'
+              end
+              object cxgrdbclmnStatuspenilaianStatusFungsionalLIMA: TcxGridDBColumn
+                DataBinding.FieldName = 'penilaianStatusFungsionalLIMA'
+              end
+              object cxgrdbclmnStatuspenilaianStatusFungsionalENAM: TcxGridDBColumn
+                DataBinding.FieldName = 'penilaianStatusFungsionalENAM'
+              end
+              object cxgrdbclmnStatuspenilaianStatusFungsionalTUJUH: TcxGridDBColumn
+                DataBinding.FieldName = 'penilaianStatusFungsionalTUJUH'
+              end
+              object cxgrdbclmnStatuspenilaianStatusFungsionalDELAPAN: TcxGridDBColumn
+                DataBinding.FieldName = 'penilaianStatusFungsionalDELAPAN'
+              end
+              object cxgrdbclmnStatuspenilaianStatusFungsionalSEMBILAN: TcxGridDBColumn
+                DataBinding.FieldName = 'penilaianStatusFungsionalSEMBILAN'
+              end
+              object cxgrdbclmnStatuspenilaianStatusFungsionalSEPULUH: TcxGridDBColumn
+                DataBinding.FieldName = 'penilaianStatusFungsionalSEPULUH'
+              end
+              object cxgrdbclmnStatustotalPenilainStatusFungsional: TcxGridDBColumn
+                DataBinding.FieldName = 'totalPenilainStatusFungsional'
+              end
+            end
+            object cxgrdlvlStatus: TcxGridLevel
+              GridView = cxgrdbtblvwStatus
+            end
+          end
         end
         object grpInterpretasiHasil: TGroupBox
           Left = 0
@@ -3686,6 +3842,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 0
             Text = 'cbbstatus1'
+            OnChange = cbbstatus1Change
             Items.Strings = (
               '(0) Tak Terkendali / tak teratur (perlu pencahar)'
               '(1) Kadang-kadang tak terkendali (1x seminggu)'
@@ -3719,6 +3876,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 2
             Text = 'cbbstatus2'
+            OnChange = cbbstatus2Change
             Items.Strings = (
               '(0) Tak Terkendali / pakai kateter'
               '(1) Kadang-kadang tak terkendali (1x 24 jam)'
@@ -3752,6 +3910,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 4
             Text = 'cbbstatus3'
+            OnChange = cbbstatus3Change
             Items.Strings = (
               '(0) Butuh pertolongan orang lain'
               '(1) Mandiri')
@@ -3784,6 +3943,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 6
             Text = 'cbbstatus4'
+            OnChange = cbbstatus4Change
             Items.Strings = (
               '(0) Tergantung pertolongan orang lain'
               
@@ -3819,6 +3979,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 8
             Text = 'cbbstatus5'
+            OnChange = cbbstatus5Change
             Items.Strings = (
               '(0) Tidak mampu'
               '(1) Perlu ditolong memotong makanan'
@@ -3852,6 +4013,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 10
             Text = 'cbbstatus6'
+            OnChange = cbbstatus6Change
             Items.Strings = (
               '(0) Tidak mampu'
               '(1) Perlu banyak bantuan untuk bisa duduk (2 orang)'
@@ -3886,6 +4048,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 12
             Text = 'cbbstatus7'
+            OnChange = cbbstatus7Change
             Items.Strings = (
               '(0) Tidak mampu'
               '(1) Bisa (pindah) dengan kursi roda'
@@ -3906,6 +4069,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 13
             Text = 'cbbstatus8'
+            OnChange = cbbstatus8Change
             Items.Strings = (
               '(0) Tergantung orang lain'
               '(1) Sebagian dibantu (misalnya mengancing baju)'
@@ -3925,6 +4089,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 14
             Text = 'cbbstatus9'
+            OnChange = cbbstatus9Change
             Items.Strings = (
               '(0) Tidak mampu'
               '(1) Butuh pertolongan'
@@ -3944,6 +4109,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 15
             Text = 'cbbstatus10'
+            OnChange = cbbstatus10Change
             Items.Strings = (
               '(0) Tergantung orang lain'
               '(1) Mandiri')
@@ -4017,6 +4183,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 20
             Text = 'edtTOTALSKOR'
+            OnClick = edtTOTALSKORClick
           end
         end
         object grpPENGGUNARESTARIN: TGroupBox
@@ -4049,6 +4216,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'TIDAK'
             TabOrder = 1
+            OnClick = chkTIDAK4Click
           end
           object chkYAKARENA: TCheckBox
             Left = 80
@@ -4057,6 +4225,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'YA, KARENA'
             TabOrder = 2
+            OnClick = chkYAKARENAClick
           end
         end
         object grpJENISRESTARIN: TGroupBox
@@ -4089,6 +4258,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'OBAT - OBAT'
             TabOrder = 1
+            OnClick = chkOBATClick
           end
           object chkALAT: TCheckBox
             Left = 104
@@ -4097,6 +4267,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'ALAT'
             TabOrder = 2
+            OnClick = chkALATClick
           end
           object chkLAINNYA1: TCheckBox
             Left = 176
@@ -4105,6 +4276,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'LAINNYA'
             TabOrder = 3
+            OnClick = chkLAINNYA1Click
           end
         end
         object grpSTATUSPSIKOLOGI: TGroupBox
@@ -4129,6 +4301,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'TENANG'
             TabOrder = 0
+            OnClick = chkTENANGClick
           end
           object chkCEMAS: TCheckBox
             Left = 120
@@ -4137,6 +4310,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'CEMAS'
             TabOrder = 1
+            OnClick = chkCEMASClick
           end
           object chkMARAH: TCheckBox
             Left = 216
@@ -4145,6 +4319,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'MARAH'
             TabOrder = 2
+            OnClick = chkMARAHClick
           end
           object chkTAKUT: TCheckBox
             Left = 216
@@ -4153,6 +4328,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'TAKUT'
             TabOrder = 3
+            OnClick = chkTAKUTClick
           end
           object chkSEDIH: TCheckBox
             Left = 328
@@ -4161,6 +4337,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'SEDIH'
             TabOrder = 4
+            OnClick = chkSEDIHClick
           end
           object chkLAIN: TCheckBox
             Left = 328
@@ -4169,6 +4346,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'LAIN - LAIN'
             TabOrder = 5
+            OnClick = chkLAINClick
           end
         end
         object grpSTATUSMENTAL: TGroupBox
@@ -4294,6 +4472,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'YA'
             TabOrder = 4
+            OnClick = chkYA1Click
           end
           object chkTIDAK1: TCheckBox
             Left = 536
@@ -4302,6 +4481,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'TIDAK'
             TabOrder = 5
+            OnClick = chkTIDAK1Click
           end
           object chkYA2: TCheckBox
             Left = 472
@@ -4310,6 +4490,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'YA'
             TabOrder = 6
+            OnClick = chkYA2Click
           end
           object chkYA3: TCheckBox
             Left = 472
@@ -4318,6 +4499,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'YA'
             TabOrder = 7
+            OnClick = chkYA3Click
           end
           object chkTIDAK2: TCheckBox
             Left = 536
@@ -4326,6 +4508,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'TIDAK'
             TabOrder = 8
+            OnClick = chkTIDAK2Click
           end
           object CHKtidak3: TCheckBox
             Left = 536
@@ -4334,6 +4517,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'TIDAK'
             TabOrder = 9
+            OnClick = CHKtidak3Click
           end
           object chkMENDENGAR: TCheckBox
             Left = 824
@@ -4342,6 +4526,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'MENDENGAR'
             TabOrder = 10
+            OnClick = chkMENDENGARClick
           end
           object chkMENULIS: TCheckBox
             Left = 824
@@ -4350,6 +4535,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'MENULIS'
             TabOrder = 11
+            OnClick = chkMENULISClick
           end
           object chkMEMBACA: TCheckBox
             Left = 824
@@ -4358,6 +4544,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = 'MEMBACA'
             TabOrder = 12
+            OnClick = chkMEMBACAClick
           end
         end
         object grpPENDAMPINGANROHANI: TGroupBox
@@ -6047,14 +6234,14 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 1
           end
           object grpMENUNYERI: TGroupBox
-            Left = 1080
+            Left = 1048
             Top = 16
-            Width = 321
+            Width = 361
             Height = 57
             Caption = 'MENU'
             TabOrder = 2
             object btnSIMPANNYERI: TButton
-              Left = 16
+              Left = 96
               Top = 16
               Width = 81
               Height = 25
@@ -6062,7 +6249,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 0
             end
             object btnUBAHNYERI: TButton
-              Left = 112
+              Left = 184
               Top = 16
               Width = 81
               Height = 25
@@ -6070,12 +6257,21 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 1
             end
             object btnHAPUSNYERI: TButton
-              Left = 216
+              Left = 272
               Top = 16
               Width = 81
               Height = 25
               Caption = 'HAPUS'
               TabOrder = 2
+            end
+            object btnBaruNyeri: TButton
+              Left = 8
+              Top = 16
+              Width = 75
+              Height = 25
+              Caption = 'BARU'
+              TabOrder = 3
+              OnClick = btnBaruNyeriClick
             end
           end
           object rb0: TRadioButton

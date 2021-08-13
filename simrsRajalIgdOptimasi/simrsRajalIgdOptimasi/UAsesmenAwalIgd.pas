@@ -1120,6 +1120,53 @@ type
     cxgrdbclmnTriagemodifDate: TcxGridDBColumn;
     cxgrdbclmnTriagemodifUser: TcxGridDBColumn;
     btnBaruStatus: TButton;
+    lblIdStatus: TLabel;
+    cxgrdbtblvwStatus: TcxGridDBTableView;
+    cxgrdlvlStatus: TcxGridLevel;
+    cxgrdStatus: TcxGrid;
+    cxgrdbclmnStatusIdAsesmenAwalStatus: TcxGridDBColumn;
+    cxgrdbclmnStatusnoRekamedis: TcxGridDBColumn;
+    cxgrdbclmnStatusnoDaftar: TcxGridDBColumn;
+    cxgrdbclmnStatusnoDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnStatustglDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnStatuscaraBayar: TcxGridDBColumn;
+    cxgrdbclmnStatusSuku: TcxGridDBColumn;
+    cxgrdbclmnStatusagama: TcxGridDBColumn;
+    cxgrdbclmnStatuspekerjaan: TcxGridDBColumn;
+    cxgrdbclmnStatustinggalBersama: TcxGridDBColumn;
+    cxgrdbclmnStatusnilaiKepercayaan: TcxGridDBColumn;
+    cxgrdbclmnStatusketNilaiKepercayaan: TcxGridDBColumn;
+    cxgrdbclmnStatusPedampinganRohani: TcxGridDBColumn;
+    cxgrdbclmnStatusketPendampinganRohani: TcxGridDBColumn;
+    cxgrdbclmnStatusbahasa: TcxGridDBColumn;
+    cxgrdbclmnStatusganguanBicara: TcxGridDBColumn;
+    cxgrdbclmnStatusbutuhPenerjemah: TcxGridDBColumn;
+    cxgrdbclmnStatushambatanBelajar: TcxGridDBColumn;
+    cxgrdbclmnStatuscaraBelajarYangDiSukai: TcxGridDBColumn;
+    cxgrdbclmnStatustenang: TcxGridDBColumn;
+    cxgrdbclmnStatuscemas: TcxGridDBColumn;
+    cxgrdbclmnStatusmarah: TcxGridDBColumn;
+    cxgrdbclmnStatustakut: TcxGridDBColumn;
+    cxgrdbclmnStatussedih: TcxGridDBColumn;
+    cxgrdbclmnStatuslain_lain: TcxGridDBColumn;
+    cxgrdbclmnStatusstatusMental: TcxGridDBColumn;
+    cxgrdbclmnStatusketStatusMental: TcxGridDBColumn;
+    cxgrdbclmnStatuspenggunaanRestarin: TcxGridDBColumn;
+    cxgrdbclmnStatusketPenggunaanRestarin: TcxGridDBColumn;
+    cxgrdbclmnStatusjenisRestarin: TcxGridDBColumn;
+    cxgrdbclmnStatusKetJenisRestarin: TcxGridDBColumn;
+    cxgrdbclmnStatuspenilaianStatusFungsionalSATU: TcxGridDBColumn;
+    cxgrdbclmnStatuspenilaianStatusFungsionalDUA: TcxGridDBColumn;
+    cxgrdbclmnStatuspenilaianStatusFungsionalTIGA: TcxGridDBColumn;
+    cxgrdbclmnStatuspenilaianStatusFungsionalEMPAT: TcxGridDBColumn;
+    cxgrdbclmnStatuspenilaianStatusFungsionalLIMA: TcxGridDBColumn;
+    cxgrdbclmnStatuspenilaianStatusFungsionalENAM: TcxGridDBColumn;
+    cxgrdbclmnStatuspenilaianStatusFungsionalTUJUH: TcxGridDBColumn;
+    cxgrdbclmnStatuspenilaianStatusFungsionalDELAPAN: TcxGridDBColumn;
+    cxgrdbclmnStatuspenilaianStatusFungsionalSEMBILAN: TcxGridDBColumn;
+    cxgrdbclmnStatuspenilaianStatusFungsionalSEPULUH: TcxGridDBColumn;
+    cxgrdbclmnStatustotalPenilainStatusFungsional: TcxGridDBColumn;
+    btnBaruNyeri: TButton;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1138,6 +1185,43 @@ type
     procedure chksoporClick(Sender: TObject);
     procedure chkcomaClick(Sender: TObject);
     procedure btnBaruStatusClick(Sender: TObject);
+    procedure btnUBAHSTATUSClick(Sender: TObject);
+    procedure btnHAPUSSTATUSClick(Sender: TObject);
+    procedure btnSIMPANSTATUSClick(Sender: TObject);
+    procedure cbbstatus1Change(Sender: TObject);
+    procedure cbbstatus2Change(Sender: TObject);
+    procedure cbbstatus3Change(Sender: TObject);
+    procedure cbbstatus4Change(Sender: TObject);
+    procedure cbbstatus5Change(Sender: TObject);
+    procedure cbbstatus6Change(Sender: TObject);
+    procedure cbbstatus7Change(Sender: TObject);
+    procedure cbbstatus8Change(Sender: TObject);
+    procedure cbbstatus9Change(Sender: TObject);
+    procedure cbbstatus10Change(Sender: TObject);
+    procedure edtTOTALSKORClick(Sender: TObject);
+    procedure chkTIDAKADAClick(Sender: TObject);
+    procedure chkADAClick(Sender: TObject);
+    procedure chkYA1Click(Sender: TObject);
+    procedure chkTIDAK1Click(Sender: TObject);
+    procedure chkYA2Click(Sender: TObject);
+    procedure chkTIDAK2Click(Sender: TObject);
+    procedure chkYA3Click(Sender: TObject);
+    procedure CHKtidak3Click(Sender: TObject);
+    procedure chkMENDENGARClick(Sender: TObject);
+    procedure chkMENULISClick(Sender: TObject);
+    procedure chkMEMBACAClick(Sender: TObject);
+    procedure chkTENANGClick(Sender: TObject);
+    procedure chkCEMASClick(Sender: TObject);
+    procedure chkMARAHClick(Sender: TObject);
+    procedure chkTAKUTClick(Sender: TObject);
+    procedure chkSEDIHClick(Sender: TObject);
+    procedure chkLAINClick(Sender: TObject);
+    procedure chkTIDAK4Click(Sender: TObject);
+    procedure chkYAKARENAClick(Sender: TObject);
+    procedure chkOBATClick(Sender: TObject);
+    procedure chkALATClick(Sender: TObject);
+    procedure chkLAINNYA1Click(Sender: TObject);
+    procedure btnBaruNyeriClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1150,7 +1234,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus;
+uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus,UAsemenAwalIgdNyeri;
 
 procedure TFAsesmenAwalIgd.pnlKeluarClick(Sender: TObject);
 begin
@@ -1245,6 +1329,191 @@ procedure TFAsesmenAwalIgd.btnBaruStatusClick(Sender: TObject);
 begin
  /// baru status
  baruStatus;       
+end;
+
+procedure TFAsesmenAwalIgd.btnUBAHSTATUSClick(Sender: TObject);
+begin
+tampilUbahStatus;
+end;
+
+procedure TFAsesmenAwalIgd.btnHAPUSSTATUSClick(Sender: TObject);
+begin
+hapusStatus;
+end;
+
+procedure TFAsesmenAwalIgd.btnSIMPANSTATUSClick(Sender: TObject);
+begin
+ProsesSimpanStatus;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatus1Change(Sender: TObject);
+begin
+  nilaiSatu;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatus2Change(Sender: TObject);
+begin
+nilaiDua;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatus3Change(Sender: TObject);
+begin
+nilaiTiga;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatus4Change(Sender: TObject);
+begin
+nilaiEmpat;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatus5Change(Sender: TObject);
+begin
+nilaiLima;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatus6Change(Sender: TObject);
+begin
+nilaiEnam;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatus7Change(Sender: TObject);
+begin
+nilaiTujuh;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatus8Change(Sender: TObject);
+begin
+nilaiDelapan;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatus9Change(Sender: TObject);
+begin
+nilaiDelapan;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatus10Change(Sender: TObject);
+begin
+nilaiSembilan;
+end;
+
+procedure TFAsesmenAwalIgd.edtTOTALSKORClick(Sender: TObject);
+begin
+totalNilaiStatus;
+end;
+
+procedure TFAsesmenAwalIgd.chkTIDAKADAClick(Sender: TObject);
+begin
+Y_N_NilaiKepercaan;
+end;
+
+procedure TFAsesmenAwalIgd.chkADAClick(Sender: TObject);
+begin
+Y_N_NilaiKepercaan;
+end;
+
+procedure TFAsesmenAwalIgd.chkYA1Click(Sender: TObject);
+begin
+bahasa;
+end;
+
+procedure TFAsesmenAwalIgd.chkTIDAK1Click(Sender: TObject);
+begin
+bahasa;
+end;
+
+procedure TFAsesmenAwalIgd.chkYA2Click(Sender: TObject);
+begin
+bahasa;
+end;
+
+procedure TFAsesmenAwalIgd.chkTIDAK2Click(Sender: TObject);
+begin
+bahasa;
+end;
+
+procedure TFAsesmenAwalIgd.chkYA3Click(Sender: TObject);
+begin
+bahasa;
+end;
+
+procedure TFAsesmenAwalIgd.CHKtidak3Click(Sender: TObject);
+begin
+bahasa;
+end;
+
+procedure TFAsesmenAwalIgd.chkMENDENGARClick(Sender: TObject);
+begin
+mendengar;
+end;
+
+procedure TFAsesmenAwalIgd.chkMENULISClick(Sender: TObject);
+begin
+menulis;
+end;
+
+procedure TFAsesmenAwalIgd.chkMEMBACAClick(Sender: TObject);
+begin
+membaca;
+end;
+
+procedure TFAsesmenAwalIgd.chkTENANGClick(Sender: TObject);
+begin
+  tenang
+end;
+
+procedure TFAsesmenAwalIgd.chkCEMASClick(Sender: TObject);
+begin
+cemas;
+end;
+
+procedure TFAsesmenAwalIgd.chkMARAHClick(Sender: TObject);
+begin
+marah
+end;
+
+procedure TFAsesmenAwalIgd.chkTAKUTClick(Sender: TObject);
+begin
+takut;
+end;
+
+procedure TFAsesmenAwalIgd.chkSEDIHClick(Sender: TObject);
+begin
+sedih;
+end;
+
+procedure TFAsesmenAwalIgd.chkLAINClick(Sender: TObject);
+begin
+lainlain;
+end;
+
+procedure TFAsesmenAwalIgd.chkTIDAK4Click(Sender: TObject);
+begin
+restarin;
+end;
+
+procedure TFAsesmenAwalIgd.chkYAKARENAClick(Sender: TObject);
+begin
+restarin;
+end;
+
+procedure TFAsesmenAwalIgd.chkOBATClick(Sender: TObject);
+begin
+obat
+end;
+
+procedure TFAsesmenAwalIgd.chkALATClick(Sender: TObject);
+begin
+alatalat;
+end;
+
+procedure TFAsesmenAwalIgd.chkLAINNYA1Click(Sender: TObject);
+begin
+lainnya;
+end;
+
+procedure TFAsesmenAwalIgd.btnBaruNyeriClick(Sender: TObject);
+begin
+baruNyeri;
 end;
 
 end.

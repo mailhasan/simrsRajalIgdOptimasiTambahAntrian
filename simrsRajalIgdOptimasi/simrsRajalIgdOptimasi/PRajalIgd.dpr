@@ -30,7 +30,8 @@ uses
   UAsesmenAwalIgd in 'UAsesmenAwalIgd.pas' {FAsesmenAwalIgd},
   UDataSimrs1 in 'UDataSimrs1.pas' {DataSimrs1: TDataModule},
   UAsemenAwalIgdTriage in 'UAsemenAwalIgdTriage.pas',
-  UAsesmenAwalIgdStatus in 'UAsesmenAwalIgdStatus.pas';
+  UAsesmenAwalIgdStatus in 'UAsesmenAwalIgdStatus.pas',
+  UAsemenAwalIgdNyeri in 'UAsemenAwalIgdNyeri.pas';
 
 {$R *.res}
 
