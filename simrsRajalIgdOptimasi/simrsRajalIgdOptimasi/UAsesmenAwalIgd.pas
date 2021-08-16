@@ -71,7 +71,8 @@ uses
   cxTimeEdit, cxCheckListBox, cxGroupBox, cxCheckGroup, frxpngimage,
   cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter, cxData,
   cxDataStorage, DB, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid;
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
+  cxLabel;
 
 type
   TFAsesmenAwalIgd = class(TForm)
@@ -366,7 +367,7 @@ type
     lblnyeriberat: TLabel;
     Label8: TLabel;
     grpprisikojatuh: TGroupBox;
-    Edit3: TEdit;
+    edttotalnyeri: TEdit;
     lblfaktorrisiko: TLabel;
     lblskalarisiko: TLabel;
     lblpoin: TLabel;
@@ -384,12 +385,12 @@ type
     cbbterpasanginfus: TComboBox;
     cbbgayaberjalan: TComboBox;
     cbbstatusmental: TComboBox;
-    Edit4: TEdit;
-    Edit5: TEdit;
-    Edit6: TEdit;
-    Edit7: TEdit;
-    Edit8: TEdit;
-    Edit9: TEdit;
+    edtriwayatjatuh: TEdit;
+    edtdiagnosis: TEdit;
+    edtalatbantu: TEdit;
+    edtterpasanginfus: TEdit;
+    edtgayaberjalan: TEdit;
+    edtstatusmental: TEdit;
     GroupBox3: TGroupBox;
     lbltotalskorrisiko: TLabel;
     lblskalanyeri: TLabel;
@@ -1167,6 +1168,74 @@ type
     cxgrdbclmnStatuspenilaianStatusFungsionalSEPULUH: TcxGridDBColumn;
     cxgrdbclmnStatustotalPenilainStatusFungsional: TcxGridDBColumn;
     btnBaruNyeri: TButton;
+    cxgrdbtblvwNyeri: TcxGridDBTableView;
+    cxgrdlvlNyeri: TcxGridLevel;
+    cxgrdNyeri: TcxGrid;
+    cxgrdbclmnNyeriidAsesmenAwalNyeri: TcxGridDBColumn;
+    cxgrdbclmnNyerinoRekamedis: TcxGridDBColumn;
+    cxgrdbclmnNyerinoDaftar: TcxGridDBColumn;
+    cxgrdbclmnNyerinoDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnNyeritglDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnNyerimerasakanNyeri: TcxGridDBColumn;
+    cxgrdbclmnNyeritidakSakitNoll: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriRinganSATU: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriRinganDUA: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriRinganTIGA: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriSedangEMPAT: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriSedangLIMA: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriSedangENAM: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriBeratTUJUH: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriBeratDELAPAN: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriBeratSEMBILAN: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriSedangSEPULUH: TcxGridDBColumn;
+    cxgrdbclmnNyeritidakNyeri: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriRingan: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriSedang: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriBerat: TcxGridDBColumn;
+    cxgrdbclmnNyerinyeriSangatBerat: TcxGridDBColumn;
+    cxgrdbclmnNyerilokasiNyeri: TcxGridDBColumn;
+    cxgrdbclmnNyerisejakKapan: TcxGridDBColumn;
+    cxgrdbclmnNyeriterusMenerus: TcxGridDBColumn;
+    cxgrdbclmnNyerihilangTimbul: TcxGridDBColumn;
+    cxgrdbclmnNyerilainyaSifat: TcxGridDBColumn;
+    cxgrdbclmnNyeritumpul: TcxGridDBColumn;
+    cxgrdbclmnNyeritajam: TcxGridDBColumn;
+    cxgrdbclmnNyeritertekan: TcxGridDBColumn;
+    cxgrdbclmnNyerilainyaKualitas: TcxGridDBColumn;
+    cxgrdbclmnNyericahaya: TcxGridDBColumn;
+    cxgrdbclmnNyerigerakan: TcxGridDBColumn;
+    cxgrdbclmnNyeriberbaring: TcxGridDBColumn;
+    cxgrdbclmnNyerilainyaPemberat: TcxGridDBColumn;
+    cxgrdbclmnNyerimakan: TcxGridDBColumn;
+    cxgrdbclmnNyerisunyi: TcxGridDBColumn;
+    cxgrdbclmnNyeridingin: TcxGridDBColumn;
+    cxgrdbclmnNyeripanas: TcxGridDBColumn;
+    cxgrdbclmnNyerilainyaPenringan: TcxGridDBColumn;
+    cxgrdbclmnNyerimualMuntah: TcxGridDBColumn;
+    cxgrdbclmnNyeritidur: TcxGridDBColumn;
+    cxgrdbclmnNyerinafsuMakan: TcxGridDBColumn;
+    cxgrdbclmnNyeriaktifitasEfekNyeri: TcxGridDBColumn;
+    cxgrdbclmnNyerilainyaEfekNyeri: TcxGridDBColumn;
+    cxgrdbclmnNyeriwajah: TcxGridDBColumn;
+    cxgrdbclmnNyerikaki: TcxGridDBColumn;
+    cxgrdbclmnNyeriaktifitasPeniliaiNyeri: TcxGridDBColumn;
+    cxgrdbclmnNyerimenangis: TcxGridDBColumn;
+    cxgrdbclmnNyeribersuara: TcxGridDBColumn;
+    cxgrdbclmnNyeritotalPenilaianAnak: TcxGridDBColumn;
+    cxgrdbclmnNyeririwayatJatuh: TcxGridDBColumn;
+    cxgrdbclmnNyeridiagnosa: TcxGridDBColumn;
+    cxgrdbclmnNyerialatbantu: TcxGridDBColumn;
+    cxgrdbclmnNyeritepasang: TcxGridDBColumn;
+    cxgrdbclmnNyerigayaBerjalan: TcxGridDBColumn;
+    cxgrdbclmnNyeristatusMental: TcxGridDBColumn;
+    cxgrdbclmnNyeritotalSkorPenilaiResiko: TcxGridDBColumn;
+    cxgrdbclmnNyeriintervensiResikoJatuhSATU: TcxGridDBColumn;
+    cxgrdbclmnNyerinamaPetugasIntervensiResikoJatuhSATU: TcxGridDBColumn;
+    cxgrdbclmnNyeriintervensiResikoJatuhDUA: TcxGridDBColumn;
+    cxgrdbclmnNyerinamaPetugasintervensiResikoJatuhDUA: TcxGridDBColumn;
+    cxgrdbclmnNyeriintervensiResikoJatuhTIGA: TcxGridDBColumn;
+    cxgrdbclmnNyerinamaPetugasintervensiResikoJatuhTIGA: TcxGridDBColumn;
+    cxlblIdNyeri: TcxLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1222,6 +1291,8 @@ type
     procedure chkALATClick(Sender: TObject);
     procedure chkLAINNYA1Click(Sender: TObject);
     procedure btnBaruNyeriClick(Sender: TObject);
+    procedure btnSIMPANNYERIClick(Sender: TObject);
+    procedure btnUBAHNYERIClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1514,6 +1585,16 @@ end;
 procedure TFAsesmenAwalIgd.btnBaruNyeriClick(Sender: TObject);
 begin
 baruNyeri;
+end;
+
+procedure TFAsesmenAwalIgd.btnSIMPANNYERIClick(Sender: TObject);
+begin
+prosesSimpanNyeri;
+end;
+
+procedure TFAsesmenAwalIgd.btnUBAHNYERIClick(Sender: TObject);
+begin
+tampilUbahNyeri;
 end;
 
 end.

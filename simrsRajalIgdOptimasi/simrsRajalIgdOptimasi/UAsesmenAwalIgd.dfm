@@ -6247,6 +6247,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'SIMPAN'
               TabOrder = 0
+              OnClick = btnSIMPANNYERIClick
             end
             object btnUBAHNYERI: TButton
               Left = 184
@@ -6255,6 +6256,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
+              OnClick = btnUBAHNYERIClick
             end
             object btnHAPUSNYERI: TButton
               Left = 272
@@ -6361,6 +6363,11 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '10'
             TabOrder = 13
+          end
+          object cxlblIdNyeri: TcxLabel
+            Left = 840
+            Top = 56
+            Caption = 'cxlblIdNyeri'
           end
         end
         object grpNYERI: TGroupBox
@@ -6995,7 +7002,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = [fsBold]
             ParentFont = False
           end
-          object Edit3: TEdit
+          object edttotalnyeri: TEdit
             Left = 896
             Top = 8
             Width = 105
@@ -7223,7 +7230,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               'Sering lupa akan keterbatasan yang dimiliki    (15)'
               'Orientasi baik terhadap kemampuan diri sendiri (0)')
           end
-          object Edit4: TEdit
+          object edtriwayatjatuh: TEdit
             Left = 896
             Top = 24
             Width = 105
@@ -7231,7 +7238,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 6
             Text = 'edtriwayatjatuh'
           end
-          object Edit5: TEdit
+          object edtdiagnosis: TEdit
             Left = 896
             Top = 48
             Width = 105
@@ -7239,7 +7246,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 7
             Text = 'edtdiagnosis'
           end
-          object Edit6: TEdit
+          object edtalatbantu: TEdit
             Left = 896
             Top = 72
             Width = 105
@@ -7247,7 +7254,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 8
             Text = 'edtalatbantu'
           end
-          object Edit7: TEdit
+          object edtterpasanginfus: TEdit
             Left = 896
             Top = 96
             Width = 105
@@ -7255,7 +7262,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 9
             Text = 'edtterpasanginfus'
           end
-          object Edit8: TEdit
+          object edtgayaberjalan: TEdit
             Left = 896
             Top = 120
             Width = 105
@@ -7263,7 +7270,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 10
             Text = 'edtgayaberjalan'
           end
-          object Edit9: TEdit
+          object edtstatusmental: TEdit
             Left = 896
             Top = 144
             Width = 105
@@ -7275,8 +7282,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpRIWAYATNYERI: TGroupBox
           Left = 1080
           Top = 184
-          Width = 353
-          Height = 633
+          Width = 833
+          Height = 657
           Caption = 'DAFTAR RIWAYAT PENILAIAN NYERI PASIEN'
           Color = 16577248
           Font.Charset = ANSI_CHARSET
@@ -7287,6 +7294,216 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           ParentFont = False
           TabOrder = 6
+          object cxgrdNyeri: TcxGrid
+            Left = 2
+            Top = 15
+            Width = 829
+            Height = 640
+            Align = alClient
+            TabOrder = 0
+            object cxgrdbtblvwNyeri: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              DataController.DataSource = DataSimrs1.dst_asesmen_awal_nyeri
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxgrdbclmnNyeriidAsesmenAwalNyeri: TcxGridDBColumn
+                DataBinding.FieldName = 'idAsesmenAwalNyeri'
+              end
+              object cxgrdbclmnNyerinoRekamedis: TcxGridDBColumn
+                DataBinding.FieldName = 'noRekamedis'
+              end
+              object cxgrdbclmnNyerinoDaftar: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftar'
+              end
+              object cxgrdbclmnNyerinoDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftarUnit'
+              end
+              object cxgrdbclmnNyeritglDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'tglDaftarUnit'
+              end
+              object cxgrdbclmnNyerimerasakanNyeri: TcxGridDBColumn
+                DataBinding.FieldName = 'merasakanNyeri'
+              end
+              object cxgrdbclmnNyeritidakSakitNoll: TcxGridDBColumn
+                DataBinding.FieldName = 'tidakSakitNoll'
+              end
+              object cxgrdbclmnNyerinyeriRinganSATU: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriRinganSATU'
+              end
+              object cxgrdbclmnNyerinyeriRinganDUA: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriRinganDUA'
+              end
+              object cxgrdbclmnNyerinyeriRinganTIGA: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriRinganTIGA'
+              end
+              object cxgrdbclmnNyerinyeriSedangEMPAT: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriSedangEMPAT'
+              end
+              object cxgrdbclmnNyerinyeriSedangLIMA: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriSedangLIMA'
+              end
+              object cxgrdbclmnNyerinyeriSedangENAM: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriSedangENAM'
+              end
+              object cxgrdbclmnNyerinyeriBeratTUJUH: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriBeratTUJUH'
+              end
+              object cxgrdbclmnNyerinyeriBeratDELAPAN: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriBeratDELAPAN'
+              end
+              object cxgrdbclmnNyerinyeriBeratSEMBILAN: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriBeratSEMBILAN'
+              end
+              object cxgrdbclmnNyerinyeriSedangSEPULUH: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriSedangSEPULUH'
+              end
+              object cxgrdbclmnNyeritidakNyeri: TcxGridDBColumn
+                DataBinding.FieldName = 'tidakNyeri'
+              end
+              object cxgrdbclmnNyerinyeriRingan: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriRingan'
+              end
+              object cxgrdbclmnNyerinyeriSedang: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriSedang'
+              end
+              object cxgrdbclmnNyerinyeriBerat: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriBerat'
+              end
+              object cxgrdbclmnNyerinyeriSangatBerat: TcxGridDBColumn
+                DataBinding.FieldName = 'nyeriSangatBerat'
+              end
+              object cxgrdbclmnNyerilokasiNyeri: TcxGridDBColumn
+                DataBinding.FieldName = 'lokasiNyeri'
+              end
+              object cxgrdbclmnNyerisejakKapan: TcxGridDBColumn
+                DataBinding.FieldName = 'sejakKapan'
+              end
+              object cxgrdbclmnNyeriterusMenerus: TcxGridDBColumn
+                DataBinding.FieldName = 'terusMenerus'
+              end
+              object cxgrdbclmnNyerihilangTimbul: TcxGridDBColumn
+                DataBinding.FieldName = 'hilangTimbul'
+              end
+              object cxgrdbclmnNyerilainyaSifat: TcxGridDBColumn
+                DataBinding.FieldName = 'lainyaSifat'
+              end
+              object cxgrdbclmnNyeritumpul: TcxGridDBColumn
+                DataBinding.FieldName = 'tumpul'
+              end
+              object cxgrdbclmnNyeritajam: TcxGridDBColumn
+                DataBinding.FieldName = 'tajam'
+              end
+              object cxgrdbclmnNyeritertekan: TcxGridDBColumn
+                DataBinding.FieldName = 'tertekan'
+              end
+              object cxgrdbclmnNyerilainyaKualitas: TcxGridDBColumn
+                DataBinding.FieldName = 'lainyaKualitas'
+              end
+              object cxgrdbclmnNyericahaya: TcxGridDBColumn
+                DataBinding.FieldName = 'cahaya'
+              end
+              object cxgrdbclmnNyerigerakan: TcxGridDBColumn
+                DataBinding.FieldName = 'gerakan'
+              end
+              object cxgrdbclmnNyeriberbaring: TcxGridDBColumn
+                DataBinding.FieldName = 'berbaring'
+              end
+              object cxgrdbclmnNyerilainyaPemberat: TcxGridDBColumn
+                DataBinding.FieldName = 'lainyaPemberat'
+              end
+              object cxgrdbclmnNyerimakan: TcxGridDBColumn
+                DataBinding.FieldName = 'makan'
+              end
+              object cxgrdbclmnNyerisunyi: TcxGridDBColumn
+                DataBinding.FieldName = 'sunyi'
+              end
+              object cxgrdbclmnNyeridingin: TcxGridDBColumn
+                DataBinding.FieldName = 'dingin'
+              end
+              object cxgrdbclmnNyeripanas: TcxGridDBColumn
+                DataBinding.FieldName = 'panas'
+              end
+              object cxgrdbclmnNyerilainyaPenringan: TcxGridDBColumn
+                DataBinding.FieldName = 'lainyaPenringan'
+              end
+              object cxgrdbclmnNyerimualMuntah: TcxGridDBColumn
+                DataBinding.FieldName = 'mualMuntah'
+              end
+              object cxgrdbclmnNyeritidur: TcxGridDBColumn
+                DataBinding.FieldName = 'tidur'
+              end
+              object cxgrdbclmnNyerinafsuMakan: TcxGridDBColumn
+                DataBinding.FieldName = 'nafsuMakan'
+              end
+              object cxgrdbclmnNyeriaktifitasEfekNyeri: TcxGridDBColumn
+                DataBinding.FieldName = 'aktifitasEfekNyeri'
+              end
+              object cxgrdbclmnNyerilainyaEfekNyeri: TcxGridDBColumn
+                DataBinding.FieldName = 'lainyaEfekNyeri'
+              end
+              object cxgrdbclmnNyeriwajah: TcxGridDBColumn
+                DataBinding.FieldName = 'wajah'
+              end
+              object cxgrdbclmnNyerikaki: TcxGridDBColumn
+                DataBinding.FieldName = 'kaki'
+              end
+              object cxgrdbclmnNyeriaktifitasPeniliaiNyeri: TcxGridDBColumn
+                DataBinding.FieldName = 'aktifitasPeniliaiNyeri'
+              end
+              object cxgrdbclmnNyerimenangis: TcxGridDBColumn
+                DataBinding.FieldName = 'menangis'
+              end
+              object cxgrdbclmnNyeribersuara: TcxGridDBColumn
+                DataBinding.FieldName = 'bersuara'
+              end
+              object cxgrdbclmnNyeritotalPenilaianAnak: TcxGridDBColumn
+                DataBinding.FieldName = 'totalPenilaianAnak'
+              end
+              object cxgrdbclmnNyeririwayatJatuh: TcxGridDBColumn
+                DataBinding.FieldName = 'riwayatJatuh'
+              end
+              object cxgrdbclmnNyeridiagnosa: TcxGridDBColumn
+                DataBinding.FieldName = 'diagnosa'
+              end
+              object cxgrdbclmnNyerialatbantu: TcxGridDBColumn
+                DataBinding.FieldName = 'alatbantu'
+              end
+              object cxgrdbclmnNyeritepasang: TcxGridDBColumn
+                DataBinding.FieldName = 'tepasang'
+              end
+              object cxgrdbclmnNyerigayaBerjalan: TcxGridDBColumn
+                DataBinding.FieldName = 'gayaBerjalan'
+              end
+              object cxgrdbclmnNyeristatusMental: TcxGridDBColumn
+                DataBinding.FieldName = 'statusMental'
+              end
+              object cxgrdbclmnNyeritotalSkorPenilaiResiko: TcxGridDBColumn
+                DataBinding.FieldName = 'totalSkorPenilaiResiko'
+              end
+              object cxgrdbclmnNyeriintervensiResikoJatuhSATU: TcxGridDBColumn
+                DataBinding.FieldName = 'intervensiResikoJatuhSATU'
+              end
+              object cxgrdbclmnNyerinamaPetugasIntervensiResikoJatuhSATU: TcxGridDBColumn
+                DataBinding.FieldName = 'namaPetugasIntervensiResikoJatuhSATU'
+              end
+              object cxgrdbclmnNyeriintervensiResikoJatuhDUA: TcxGridDBColumn
+                DataBinding.FieldName = 'intervensiResikoJatuhDUA'
+              end
+              object cxgrdbclmnNyerinamaPetugasintervensiResikoJatuhDUA: TcxGridDBColumn
+                DataBinding.FieldName = 'namaPetugasintervensiResikoJatuhDUA'
+              end
+              object cxgrdbclmnNyeriintervensiResikoJatuhTIGA: TcxGridDBColumn
+                DataBinding.FieldName = 'intervensiResikoJatuhTIGA'
+              end
+              object cxgrdbclmnNyerinamaPetugasintervensiResikoJatuhTIGA: TcxGridDBColumn
+                DataBinding.FieldName = 'namaPetugasintervensiResikoJatuhTIGA'
+              end
+            end
+            object cxgrdlvlNyeri: TcxGridLevel
+              GridView = cxgrdbtblvwNyeri
+            end
+          end
         end
         object GroupBox3: TGroupBox
           Left = 0
