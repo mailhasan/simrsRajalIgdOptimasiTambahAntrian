@@ -468,32 +468,45 @@ begin
         rb7.Checked:= False
    else
         rb7.Checked:= True;
-   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriBeratTUJUH').AsString = 'N' then    
+   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriBeratDELAPAN').AsString = 'N' then    
         rb8.Checked:= False
    else
         rb8.Checked:= True;
-   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriBeratTUJUH').AsString = 'N' then
+   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriBeratSEMBILAN').AsString = 'N' then
         rb9.Checked:= False
    else
         rb9.Checked:= True;
         
-   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriBeratTUJUH').AsString = 'N' then
+   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriSedangSEPULUH').AsString = 'N' then
         rb10.Checked:= False
    else
         rb10.Checked:= True;
 
     ///identitas nyeri
-   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriBeratTUJUH').AsString = 'N' then
+   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('tidakNyeri').AsString = 'N' then
         chktdknyeri.Checked:= False
    else
         chktdknyeri.Checked:= True;
-   if      
-    chkNYERIRINGAN.Checked:= False;
-    chkNYERIBERAT.Checked:= False;
-    chkNYERISEDANG.Checked:= False;
-    chkNYERISANGAT.Checked:= False;
-    edtLOKASINYERI.Text := '';
-    edtsejak.Text := '';
+   if  DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriRingan').AsString = 'N' then
+        chkNYERIRINGAN.Checked:= False
+   else
+        chkNYERIRINGAN.Checked:= True;
+        
+   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriBerat').AsString = 'N' then
+        chkNYERIBERAT.Checked:= False
+   else
+        chkNYERIBERAT.Checked:= True;
+   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriSedang').AsString = 'N' then
+        chkNYERISEDANG.Checked:= False
+   else
+        chkNYERISEDANG.Checked:= True;
+   if DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('nyeriSangatBerat').AsString = 'N' then
+        chkNYERISANGAT.Checked:= False
+   else
+        chkNYERISANGAT.Checked:= True;
+
+    edtLOKASINYERI.Text := DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('lokasiNyeri').AsString
+    edtsejak.Text := DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('sejakKapan').AsString
 
     /// sifat nyeri
     chkterus.Checked:= False;
