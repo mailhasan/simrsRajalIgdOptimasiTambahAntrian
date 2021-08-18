@@ -556,20 +556,20 @@ type
     lblgangguanling: TLabel;
     lblrespon: TLabel;
     lblmedika: TLabel;
-    ComboBox1: TComboBox;
-    ComboBox2: TComboBox;
-    ComboBox3: TComboBox;
-    ComboBox4: TComboBox;
-    ComboBox5: TComboBox;
-    ComboBox6: TComboBox;
-    ComboBox7: TComboBox;
-    Edit10: TEdit;
-    Edit11: TEdit;
-    Edit12: TEdit;
-    Edit13: TEdit;
-    Edit14: TEdit;
-    Edit15: TEdit;
-    Edit16: TEdit;
+    cbbhumpty1: TComboBox;
+    cbbhumpty2: TComboBox;
+    cbbhumpty3: TComboBox;
+    cbbhumpty4: TComboBox;
+    cbbhumpty5: TComboBox;
+    cbbhumpty6: TComboBox;
+    cbbhumpty7: TComboBox;
+    edtSkorPasien1: TEdit;
+    edtSkorPasien2: TEdit;
+    edtSkorPasien3: TEdit;
+    edtSkorPasien4: TEdit;
+    edtSkorPasien5: TEdit;
+    edtSkorPasien6: TEdit;
+    edtSkorPasien7: TEdit;
     GroupBox19: TGroupBox;
     grpskalahumpty: TGroupBox;
     lblskalahumpty: TLabel;
@@ -584,7 +584,7 @@ type
     edtTb: TEdit;
     lblcm: TLabel;
     Label10: TLabel;
-    Edit17: TEdit;
+    edtIMT: TEdit;
     lblkgm: TLabel;
     grppasiendewasa: TGroupBox;
     grppasienobstetri: TGroupBox;
@@ -597,17 +597,17 @@ type
     lblkriteria2: TLabel;
     lblskorhumpty2: TLabel;
     lbltotalskorhumpty1: TLabel;
-    ComboBox8: TComboBox;
+    cbbImt: TComboBox;
     grpMENUHUMPTY: TGroupBox;
     btnSIMPANHUMPTY: TButton;
     btnUBAHHUMPTY: TButton;
     btnHAPUSHUMPTY: TButton;
     grpRIWAYATHUMPTY: TGroupBox;
-    ComboBox9: TComboBox;
-    ComboBox10: TComboBox;
-    edthumpty1: TEdit;
-    edthumpty2: TEdit;
-    edthumpty3: TEdit;
+    cbbAdaPenurunanBB: TComboBox;
+    cbbApaAsupan: TComboBox;
+    edtImt1: TEdit;
+    edtAdaPenurunan2: TEdit;
+    edtApaAsupan: TEdit;
     edttotalskorhumpty1: TEdit;
     lbl1humpty: TLabel;
     lbl2humpty: TLabel;
@@ -616,10 +616,10 @@ type
     Label14: TLabel;
     Label15: TLabel;
     Label16: TLabel;
-    ComboBox11: TComboBox;
-    ComboBox12: TComboBox;
-    ComboBox13: TComboBox;
-    ComboBox14: TComboBox;
+    cbbobs1: TComboBox;
+    cbbobs2: TComboBox;
+    cbbobs3: TComboBox;
+    cbbobs4: TComboBox;
     cbbanak1: TComboBox;
     cbbanak2: TComboBox;
     cbbanak3: TComboBox;
@@ -652,7 +652,7 @@ type
     Label37: TLabel;
     Label38: TLabel;
     Label21: TLabel;
-    Edit22: TEdit;
+    edtotalskorobs: TEdit;
     edttotalskoranak: TEdit;
     grpdischarge: TGroupBox;
     lblusiadis: TLabel;
@@ -1236,6 +1236,8 @@ type
     cxgrdbclmnNyeriintervensiResikoJatuhTIGA: TcxGridDBColumn;
     cxgrdbclmnNyerinamaPetugasintervensiResikoJatuhTIGA: TcxGridDBColumn;
     cxlblIdNyeri: TcxLabel;
+    btnBaruHumpty: TButton;
+    lblIDHUMPTY: TLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1293,6 +1295,8 @@ type
     procedure btnBaruNyeriClick(Sender: TObject);
     procedure btnSIMPANNYERIClick(Sender: TObject);
     procedure btnUBAHNYERIClick(Sender: TObject);
+    procedure chkYaNyeriClick(Sender: TObject);
+    procedure btnBaruHumptyClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1305,7 +1309,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus,UAsemenAwalIgdNyeri;
+uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus,UAsemenAwalIgdNyeri,UAsemenAwalIgdHumpty;
 
 procedure TFAsesmenAwalIgd.pnlKeluarClick(Sender: TObject);
 begin
@@ -1414,7 +1418,7 @@ end;
 
 procedure TFAsesmenAwalIgd.btnSIMPANSTATUSClick(Sender: TObject);
 begin
-ProsesSimpanStatus;
+ProsesSimpanStatus; tampilStatus; btnSIMPANSTATUS.Caption := 'SIMPAN';
 end;
 
 procedure TFAsesmenAwalIgd.cbbstatus1Change(Sender: TObject);
@@ -1584,7 +1588,7 @@ end;
 
 procedure TFAsesmenAwalIgd.btnBaruNyeriClick(Sender: TObject);
 begin
-baruNyeri;
+baruNyeri;  tampilNyeri; btnSIMPANNYERI.Caption := 'SIMPAN';
 end;
 
 procedure TFAsesmenAwalIgd.btnSIMPANNYERIClick(Sender: TObject);
@@ -1595,6 +1599,16 @@ end;
 procedure TFAsesmenAwalIgd.btnUBAHNYERIClick(Sender: TObject);
 begin
 tampilUbahNyeri;
+end;
+
+procedure TFAsesmenAwalIgd.chkYaNyeriClick(Sender: TObject);
+begin
+penilaiNyeri;
+end;
+
+procedure TFAsesmenAwalIgd.btnBaruHumptyClick(Sender: TObject);
+begin
+baruHumpty;
 end;
 
 end.

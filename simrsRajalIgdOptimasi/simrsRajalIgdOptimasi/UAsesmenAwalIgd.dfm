@@ -1,6 +1,6 @@
 object FAsesmenAwalIgd: TFAsesmenAwalIgd
-  Left = 249
-  Top = 91
+  Left = 258
+  Top = 125
   Width = 1456
   Height = 897
   Align = alClient
@@ -381,7 +381,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
       Top = 97
       Width = 1438
       Height = 711
-      ActivePage = tsNyeri
+      ActivePage = TabSheet1
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -6218,6 +6218,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 0
+            OnClick = chkYaNyeriClick
           end
           object chkTIDAKNYERI: TCheckBox
             Left = 464
@@ -6236,12 +6237,12 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           object grpMENUNYERI: TGroupBox
             Left = 1048
             Top = 16
-            Width = 361
+            Width = 353
             Height = 57
             Caption = 'MENU'
             TabOrder = 2
             object btnSIMPANNYERI: TButton
-              Left = 96
+              Left = 88
               Top = 16
               Width = 81
               Height = 25
@@ -6250,7 +6251,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               OnClick = btnSIMPANNYERIClick
             end
             object btnUBAHNYERI: TButton
-              Left = 184
+              Left = 176
               Top = 16
               Width = 81
               Height = 25
@@ -6259,7 +6260,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               OnClick = btnUBAHNYERIClick
             end
             object btnHAPUSNYERI: TButton
-              Left = 272
+              Left = 264
               Top = 16
               Width = 81
               Height = 25
@@ -7813,8 +7814,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 2
             Text = 'cbbno3'
             Items.Strings = (
-              'Ya'
-              'Tidak')
+              'YA'
+              'TIDAK')
           end
           object edtnamapetugas1: TEdit
             Left = 856
@@ -7990,7 +7991,14 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
           end
-          object ComboBox1: TComboBox
+          object lblIDHUMPTY: TLabel
+            Left = 1024
+            Top = 96
+            Width = 73
+            Height = 13
+            Caption = 'lblIDHUMPTY'
+          end
+          object cbbhumpty1: TComboBox
             Left = 384
             Top = 40
             Width = 449
@@ -8012,7 +8020,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
                 '13 tahun                                                        ' +
                 '                                           (1)')
           end
-          object ComboBox2: TComboBox
+          object cbbhumpty2: TComboBox
             Left = 384
             Top = 64
             Width = 449
@@ -8028,7 +8036,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
                 'Perempuan                                                       ' +
                 '                                        (1)')
           end
-          object ComboBox3: TComboBox
+          object cbbhumpty3: TComboBox
             Left = 384
             Top = 88
             Width = 449
@@ -8050,7 +8058,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
                 'Diagnosis lainnya                                               ' +
                 '                                      (1)')
           end
-          object ComboBox4: TComboBox
+          object cbbhumpty4: TComboBox
             Left = 384
             Top = 112
             Width = 449
@@ -8069,7 +8077,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
                 'Mengetahui kemampuan diri                                       ' +
                 '                               (1)')
           end
-          object ComboBox5: TComboBox
+          object cbbhumpty5: TComboBox
             Left = 384
             Top = 136
             Width = 449
@@ -8091,7 +8099,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
                 'Diluar gawat darurat                                            ' +
                 '                                      (1)')
           end
-          object ComboBox6: TComboBox
+          object cbbhumpty6: TComboBox
             Left = 384
             Top = 160
             Width = 449
@@ -8110,7 +8118,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
                 'Lebih dari 48 jam                                               ' +
                 '                                         (1)')
           end
-          object ComboBox7: TComboBox
+          object cbbhumpty7: TComboBox
             Left = 384
             Top = 184
             Width = 449
@@ -8129,61 +8137,61 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
                 'Pengobatan lain                                                 ' +
                 '                                      (1)')
           end
-          object Edit10: TEdit
+          object edtSkorPasien1: TEdit
             Left = 848
             Top = 40
             Width = 121
             Height = 21
             TabOrder = 7
-            Text = 'edthumpty1'
+            Text = 'edtSkorPasien1'
           end
-          object Edit11: TEdit
+          object edtSkorPasien2: TEdit
             Left = 848
             Top = 64
             Width = 121
             Height = 21
             TabOrder = 8
-            Text = 'edthumpty2'
+            Text = 'edtSkorPasien2'
           end
-          object Edit12: TEdit
+          object edtSkorPasien3: TEdit
             Left = 848
             Top = 88
             Width = 121
             Height = 21
             TabOrder = 9
-            Text = 'edthumpty3'
+            Text = 'edtSkorPasien3'
           end
-          object Edit13: TEdit
+          object edtSkorPasien4: TEdit
             Left = 848
             Top = 112
             Width = 121
             Height = 21
             TabOrder = 10
-            Text = 'edthumpty4'
+            Text = 'edtSkorPasien4'
           end
-          object Edit14: TEdit
+          object edtSkorPasien5: TEdit
             Left = 848
             Top = 136
             Width = 121
             Height = 21
             TabOrder = 11
-            Text = 'edthumpty5'
+            Text = 'edtSkorPasien5'
           end
-          object Edit15: TEdit
+          object edtSkorPasien6: TEdit
             Left = 848
             Top = 160
             Width = 121
             Height = 21
             TabOrder = 12
-            Text = 'edthumpty6'
+            Text = 'edtSkorPasien6'
           end
-          object Edit16: TEdit
+          object edtSkorPasien7: TEdit
             Left = 848
             Top = 184
             Width = 121
             Height = 21
             TabOrder = 13
-            Text = 'edthumpty7'
+            Text = 'edtSkorPasien7'
           end
           object GroupBox19: TGroupBox
             Left = 0
@@ -8194,14 +8202,14 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 14
           end
           object grpMENUHUMPTY: TGroupBox
-            Left = 1080
+            Left = 1056
             Top = 16
-            Width = 321
+            Width = 353
             Height = 57
             Caption = 'MENU'
             TabOrder = 15
             object btnSIMPANHUMPTY: TButton
-              Left = 16
+              Left = 88
               Top = 16
               Width = 81
               Height = 25
@@ -8215,7 +8223,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 0
             end
             object btnUBAHHUMPTY: TButton
-              Left = 112
+              Left = 176
               Top = 16
               Width = 81
               Height = 25
@@ -8223,12 +8231,21 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 1
             end
             object btnHAPUSHUMPTY: TButton
-              Left = 216
+              Left = 264
               Top = 16
               Width = 81
               Height = 25
               Caption = 'HAPUS'
               TabOrder = 2
+            end
+            object btnBaruHumpty: TButton
+              Left = 8
+              Top = 16
+              Width = 75
+              Height = 25
+              Caption = 'BARU'
+              TabOrder = 3
+              OnClick = btnBaruHumptyClick
             end
           end
         end
@@ -8395,7 +8412,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 1
             Text = 'edtTb'
           end
-          object Edit17: TEdit
+          object edtIMT: TEdit
             Left = 744
             Top = 16
             Width = 65
@@ -8577,14 +8594,14 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = [fsBold]
             ParentFont = False
           end
-          object ComboBox8: TComboBox
+          object cbbImt: TComboBox
             Left = 392
             Top = 32
             Width = 441
             Height = 21
             ItemHeight = 13
             TabOrder = 0
-            Text = 'cbbhumpty01'
+            Text = 'cbbImt'
             Items.Strings = (
               
                 'Obesitas atau >20 kg/m2                                         ' +
@@ -8596,14 +8613,14 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
                 '<18,5 kg/m2                                                     ' +
                 '                               (2)')
           end
-          object ComboBox9: TComboBox
+          object cbbAdaPenurunanBB: TComboBox
             Left = 392
             Top = 56
             Width = 441
             Height = 21
             ItemHeight = 13
             TabOrder = 1
-            Text = 'cbbhumpty02'
+            Text = 'cbbAdaPenurunanBB'
             Items.Strings = (
               
                 '< 5 %                                                           ' +
@@ -8615,14 +8632,14 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
                 '> 10 %                                                          ' +
                 '                                   (2)')
           end
-          object ComboBox10: TComboBox
+          object cbbApaAsupan: TComboBox
             Left = 392
             Top = 80
             Width = 441
             Height = 21
             ItemHeight = 13
             TabOrder = 2
-            Text = 'cbbhumpty03'
+            Text = 'cbbApaAsupan'
             Items.Strings = (
               
                 'Ya                                                              ' +
@@ -8631,29 +8648,29 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
                 'Tidak                                                           ' +
                 '                                     (0)')
           end
-          object edthumpty1: TEdit
+          object edtImt1: TEdit
             Left = 848
             Top = 32
             Width = 121
             Height = 21
             TabOrder = 3
-            Text = 'edthumpty1'
+            Text = 'edtImt1'
           end
-          object edthumpty2: TEdit
+          object edtAdaPenurunan2: TEdit
             Left = 848
             Top = 56
             Width = 121
             Height = 21
             TabOrder = 4
-            Text = 'edthumpty2'
+            Text = 'edtAdaPenurunan2'
           end
-          object edthumpty3: TEdit
+          object edtApaAsupan: TEdit
             Left = 848
             Top = 80
             Width = 121
             Height = 21
             TabOrder = 5
-            Text = 'edthumpty3'
+            Text = 'edtApaAsupan'
           end
           object edttotalskorhumpty1: TEdit
             Left = 848
@@ -8839,7 +8856,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentBiDiMode = False
             ParentFont = False
           end
-          object ComboBox11: TComboBox
+          object cbbobs1: TComboBox
             Left = 832
             Top = 32
             Width = 145
@@ -8851,7 +8868,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               'Ya               (1)'
               'Tidak          (0)')
           end
-          object ComboBox12: TComboBox
+          object cbbobs2: TComboBox
             Left = 832
             Top = 56
             Width = 145
@@ -8863,7 +8880,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               'Ya               (2)'
               'Tidak          (0)')
           end
-          object ComboBox13: TComboBox
+          object cbbobs3: TComboBox
             Left = 832
             Top = 80
             Width = 145
@@ -8875,7 +8892,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               'Ya               (1)'
               'Tidak          (0)')
           end
-          object ComboBox14: TComboBox
+          object cbbobs4: TComboBox
             Left = 832
             Top = 104
             Width = 145
@@ -8887,7 +8904,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               'Ya               (2)'
               'Tidak          (0)')
           end
-          object Edit22: TEdit
+          object edtotalskorobs: TEdit
             Left = 832
             Top = 128
             Width = 145
@@ -8900,7 +8917,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           Left = 0
           Top = 600
           Width = 1081
-          Height = 217
+          Height = 225
           Caption = 'PASIEN ANAK'
           Color = 16577248
           Font.Charset = ANSI_CHARSET
