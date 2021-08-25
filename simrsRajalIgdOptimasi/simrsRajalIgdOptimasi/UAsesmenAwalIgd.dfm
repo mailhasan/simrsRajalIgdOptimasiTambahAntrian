@@ -1,8 +1,8 @@
 object FAsesmenAwalIgd: TFAsesmenAwalIgd
-  Left = 258
-  Top = 125
+  Left = -8
+  Top = -8
   Width = 1456
-  Height = 897
+  Height = 876
   Align = alClient
   AutoSize = True
   Caption = 'ASESMEN AWAL IGD'
@@ -47,7 +47,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
     Left = 0
     Top = 49
     Width = 1440
-    Height = 809
+    Height = 788
     Align = alClient
     TabOrder = 1
     object pnlTengahAtas: TPanel
@@ -380,8 +380,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
       Left = 1
       Top = 97
       Width = 1438
-      Height = 711
-      ActivePage = TabSheet1
+      Height = 690
+      ActivePage = TabSheet3
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -834,7 +834,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           Left = 1081
           Top = 145
           Width = 349
-          Height = 537
+          Height = 516
           Align = alClient
           Caption = 'DAFTAR RIWAYAT DATA TRIAGE PASIEN'
           Color = 16577248
@@ -850,7 +850,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Left = 2
             Top = 15
             Width = 345
-            Height = 520
+            Height = 499
             Align = alClient
             TabOrder = 0
             object cxgrdbtblvwTriage: TcxGridDBTableView
@@ -1142,7 +1142,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           Left = 0
           Top = 145
           Width = 1081
-          Height = 537
+          Height = 516
           Align = alLeft
           Caption = 'TRIAGE (diisi oleh perawat, beri tanda [v])'
           Color = 16577248
@@ -6539,45 +6539,6 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = [fsBold]
             ParentFont = False
           end
-          object lbl0: TLabel
-            Left = 184
-            Top = 16
-            Width = 8
-            Height = 16
-            Caption = '0'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object lbl01: TLabel
-            Left = 416
-            Top = 16
-            Width = 8
-            Height = 16
-            Caption = '1'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object lbl02: TLabel
-            Left = 712
-            Top = 16
-            Width = 8
-            Height = 16
-            Caption = '2'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
           object lblnilai: TLabel
             Left = 912
             Top = 16
@@ -6656,201 +6617,6 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
           end
-          object lbltersenyum: TLabel
-            Left = 112
-            Top = 40
-            Width = 179
-            Height = 13
-            Caption = 'Tersenyum/tidak ada ekspresi khusus'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lblgerakan: TLabel
-            Left = 112
-            Top = 64
-            Width = 120
-            Height = 13
-            Caption = 'Gerakan normal/relaksasi'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lblterkadang: TLabel
-            Left = 352
-            Top = 40
-            Width = 151
-            Height = 13
-            Caption = 'Terkadang meringis/menarik diri'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label6: TLabel
-            Left = 608
-            Top = 40
-            Width = 255
-            Height = 13
-            Caption = 'Sering menggertakan dagu dan mengatupkan rahang'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lbltidaktenang: TLabel
-            Left = 352
-            Top = 64
-            Width = 143
-            Height = 13
-            Caption = 'Gerakan Tidak tenang/tegang'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lblkakidibuat: TLabel
-            Left = 608
-            Top = 64
-            Width = 163
-            Height = 13
-            Caption = 'Kaki dibuat menenang/menarik diri'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lbltidur: TLabel
-            Left = 112
-            Top = 88
-            Width = 177
-            Height = 13
-            Caption = 'Tidur, posisi normal, mudah bergerak'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lblgerakanmenggeliat: TLabel
-            Left = 352
-            Top = 88
-            Width = 171
-            Height = 13
-            Caption = 'Gerakan menggeliat, berguling kaku'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lblmelengkung: TLabel
-            Left = 608
-            Top = 88
-            Width = 191
-            Height = 13
-            Caption = 'Melengkung punggung/kaku/mengentak'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lbltidakmenangis: TLabel
-            Left = 112
-            Top = 112
-            Width = 171
-            Height = 13
-            Caption = 'Tidak menangis (bangun tidur/tidur)'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lblmengerang: TLabel
-            Left = 352
-            Top = 112
-            Width = 108
-            Height = 13
-            Caption = 'Mengerang, merengek'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lblmenangisterus: TLabel
-            Left = 608
-            Top = 112
-            Width = 203
-            Height = 13
-            Caption = 'Menangis terus-menerus, terisak, menjerit'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object lblbersuaranormal: TLabel
-            Left = 112
-            Top = 136
-            Width = 119
-            Height = 13
-            Caption = 'Bersuara normal, tenang'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label5: TLabel
-            Left = 352
-            Top = 136
-            Width = 212
-            Height = 13
-            Caption = 'Tenang bila dipeluk, digendong/diajak bicara'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label7: TLabel
-            Left = 608
-            Top = 136
-            Width = 120
-            Height = 13
-            Caption = 'Sulit untuk menenangkan'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
           object cbbwajah: TComboBox
             Left = 896
             Top = 32
@@ -6915,6 +6681,97 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               '0'
               '1'
               '2')
+          end
+          object cbbwajahnyeri: TComboBox
+            Left = 176
+            Top = 32
+            Width = 617
+            Height = 21
+            ItemHeight = 13
+            TabOrder = 5
+            Text = 'cbbwajahnyeri'
+            Items.Strings = (
+              
+                'Tersenyum / tidak ada ekspresi khusus                           ' +
+                ' [0]'
+              
+                'Terkadang meringis / menarik diri                               ' +
+                '      [1]'
+              'Sering menggertakan dagu dan mengatupkan rahang    [2]')
+          end
+          object cbbkakinyeri: TComboBox
+            Left = 176
+            Top = 56
+            Width = 617
+            Height = 21
+            ItemHeight = 13
+            TabOrder = 6
+            Text = 'cbbkakinyeri'
+            Items.Strings = (
+              
+                'Gerakan normal / relaksasi                                      ' +
+                '         [0]'
+              
+                'Gerakan Tidak Tenang / Tegang                                   ' +
+                '   [1]'
+              
+                'Kaki dibuat menenang / menarik diri                             ' +
+                '    [2]')
+          end
+          object cbbaktifitasnyeri: TComboBox
+            Left = 176
+            Top = 80
+            Width = 617
+            Height = 21
+            ItemHeight = 13
+            TabOrder = 7
+            Text = 'cbbaktifitasnyeri'
+            Items.Strings = (
+              
+                'Tidur, posisi normal, mudah bergerak                            ' +
+                '  [0]'
+              
+                'Gerakan menggeliat, berguling kaku                              ' +
+                '  [1]'
+              'Melengkung punggung / kaku / mengentak                     [2]')
+          end
+          object cbbmenangisnyeri: TComboBox
+            Left = 176
+            Top = 104
+            Width = 617
+            Height = 21
+            ItemHeight = 13
+            TabOrder = 8
+            Text = 'cbbmenangisnyeri'
+            Items.Strings = (
+              
+                'Tidak menangis (bangun tidur / tidur)                           ' +
+                '   [0]'
+              
+                'Mengerang, merengek                                             ' +
+                '        [1]'
+              
+                'Menangis terus-menerus, terisak, menjerit                     [2' +
+                ']')
+          end
+          object cbbbersuaranyeri: TComboBox
+            Left = 176
+            Top = 128
+            Width = 617
+            Height = 21
+            ItemHeight = 13
+            TabOrder = 9
+            Text = 'cbbbersuaranyeri'
+            Items.Strings = (
+              
+                'Bersuara normal, tenang                                         ' +
+                '         [0]'
+              
+                'Tenang bila dipeluk, digendong / diajak bicara                 [' +
+                '1]'
+              
+                'Sulit untuk menenangkan                                         ' +
+                '         [2]')
           end
         end
         object grpskalanyeri: TGroupBox
@@ -12239,7 +12096,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           end
           object lblperawatigd: TLabel
             Left = 256
-            Top = 468
+            Top = 500
             Width = 70
             Height = 13
             Caption = 'PERAWAT IGD'
@@ -12252,7 +12109,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           end
           object lbldokterigd: TLabel
             Left = 632
-            Top = 468
+            Top = 500
             Width = 61
             Height = 13
             Caption = 'DOKTER IGD'
@@ -12274,7 +12131,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           end
           object GroupBox46: TGroupBox
             Left = 8
-            Top = 400
+            Top = 432
             Width = 1065
             Height = 57
             Caption = 'TRANSPORTASI PULANG'
@@ -12326,7 +12183,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           end
           object cbbperawatigd: TComboBox
             Left = 224
-            Top = 488
+            Top = 528
             Width = 145
             Height = 21
             ItemHeight = 13
@@ -12335,7 +12192,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           end
           object cbbdokterigd: TComboBox
             Left = 592
-            Top = 488
+            Top = 528
             Width = 145
             Height = 21
             ItemHeight = 13
@@ -12351,7 +12208,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 4
             object lblgcskrs: TLabel
               Left = 8
-              Top = 48
+              Top = 24
               Width = 27
               Height = 13
               Caption = 'GCS :'
@@ -12364,7 +12221,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             end
             object Label72: TLabel
               Left = 144
-              Top = 48
+              Top = 24
               Width = 6
               Height = 13
               Caption = 'E'
@@ -12377,7 +12234,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             end
             object Label73: TLabel
               Left = 216
-              Top = 48
+              Top = 24
               Width = 6
               Height = 13
               Caption = 'V'
@@ -12390,7 +12247,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             end
             object Label76: TLabel
               Left = 288
-              Top = 48
+              Top = 24
               Width = 8
               Height = 13
               Caption = 'M'
@@ -12403,7 +12260,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             end
             object Label77: TLabel
               Left = 8
-              Top = 80
+              Top = 56
               Width = 91
               Height = 13
               Caption = 'TEKANAN DARAH :'
@@ -12416,7 +12273,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             end
             object Label78: TLabel
               Left = 216
-              Top = 80
+              Top = 56
               Width = 29
               Height = 13
               Caption = 'mmHg'
@@ -12505,9 +12362,22 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Font.Style = []
               ParentFont = False
             end
+            object Label5: TLabel
+              Left = 8
+              Top = 80
+              Width = 26
+              Height = 13
+              Caption = 'SpO2'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
             object edtE: TEdit
               Left = 152
-              Top = 48
+              Top = 16
               Width = 57
               Height = 21
               TabOrder = 0
@@ -12515,7 +12385,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             end
             object edtV: TEdit
               Left = 224
-              Top = 48
+              Top = 16
               Width = 57
               Height = 21
               TabOrder = 1
@@ -12523,7 +12393,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             end
             object edtM: TEdit
               Left = 296
-              Top = 48
+              Top = 16
               Width = 57
               Height = 21
               TabOrder = 2
@@ -12531,7 +12401,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             end
             object edttekanan: TEdit
               Left = 144
-              Top = 80
+              Top = 48
               Width = 65
               Height = 21
               TabOrder = 3
@@ -12561,12 +12431,20 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 6
               Text = 'edtsuhukrs'
             end
+            object edtSpO2: TEdit
+              Left = 144
+              Top = 80
+              Width = 121
+              Height = 21
+              TabOrder = 7
+              Text = 'edtSpO2'
+            end
           end
           object GroupBox30: TGroupBox
             Left = 8
             Top = 224
             Width = 1065
-            Height = 177
+            Height = 209
             TabOrder = 5
             object lbljamrujuk: TLabel
               Left = 304
@@ -12760,6 +12638,20 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Font.Style = []
               ParentFont = False
               TabOrder = 11
+            end
+            object CheckBox1: TCheckBox
+              Left = 8
+              Top = 184
+              Width = 97
+              Height = 17
+              Caption = 'KRS'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 12
             end
           end
           object cbbpetugas: TComboBox
@@ -13176,8 +13068,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lblsaobs: TLabel
-            Left = 504
-            Top = 72
+            Left = 376
+            Top = 64
             Width = 26
             Height = 13
             Caption = 'SaO2'
@@ -13228,8 +13120,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lblpupilobs: TLabel
-            Left = 504
-            Top = 48
+            Left = 376
+            Top = 40
             Width = 28
             Height = 13
             Caption = 'PUPIL'
@@ -13280,8 +13172,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lblketobs: TLabel
-            Left = 504
-            Top = 144
+            Left = 376
+            Top = 112
             Width = 66
             Height = 13
             Caption = 'KETERANGAN'
@@ -13293,8 +13185,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lbltindakanobs: TLabel
-            Left = 504
-            Top = 120
+            Left = 688
+            Top = 40
             Width = 51
             Height = 13
             Caption = 'TINDAKAN'
@@ -13306,8 +13198,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lbloutputobs: TLabel
-            Left = 504
-            Top = 96
+            Left = 376
+            Top = 88
             Width = 40
             Height = 13
             Caption = 'OUTPUT'
@@ -13319,8 +13211,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lblpetugasobs: TLabel
-            Left = 504
-            Top = 168
+            Left = 376
+            Top = 136
             Width = 77
             Height = 13
             Caption = 'NAMA PETUGAS'
@@ -13394,7 +13286,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Text = 'edtgcsobs'
           end
           object edtpupil: TEdit
-            Left = 656
+            Left = 472
             Top = 40
             Width = 177
             Height = 22
@@ -13402,7 +13294,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Text = 'edtpupil'
           end
           object edtSa: TEdit
-            Left = 656
+            Left = 472
             Top = 64
             Width = 177
             Height = 22
@@ -13410,45 +13302,46 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Text = 'edtSa'
           end
           object edtoutput: TEdit
-            Left = 656
+            Left = 472
             Top = 88
             Width = 177
             Height = 22
             TabOrder = 9
             Text = 'edtoutput'
           end
-          object edttindakan: TEdit
-            Left = 656
+          object edtketerangan: TEdit
+            Left = 472
             Top = 112
             Width = 177
             Height = 22
             TabOrder = 10
-            Text = 'edttindakan'
-          end
-          object edtketerangan: TEdit
-            Left = 656
-            Top = 136
-            Width = 177
-            Height = 22
-            TabOrder = 11
             Text = 'edtketerangan'
           end
           object btnTAMBAHOBS: TButton
-            Left = 936
-            Top = 152
+            Left = 992
+            Top = 160
             Width = 75
             Height = 25
             Caption = 'TAMBAH'
-            TabOrder = 12
+            TabOrder = 11
           end
           object cbbpetugasobs: TComboBox
-            Left = 656
-            Top = 160
+            Left = 472
+            Top = 136
             Width = 177
             Height = 22
             ItemHeight = 14
-            TabOrder = 13
+            TabOrder = 12
             Text = 'cbbpetugasobs'
+          end
+          object Memo1: TMemo
+            Left = 744
+            Top = 40
+            Width = 289
+            Height = 105
+            Lines.Strings = (
+              'Memo1')
+            TabOrder = 13
           end
         end
         object grpdaftarobs: TGroupBox

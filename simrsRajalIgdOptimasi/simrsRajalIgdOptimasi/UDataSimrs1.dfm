@@ -1,9 +1,8 @@
 object DataSimrs1: TDataSimrs1
   OldCreateOrder = False
-  Left = 380
-  Top = 175
+  Top = 141
   Height = 843
-  Width = 1310
+  Width = 1280
   object conSimrs: TZConnection
     ControlsCodePage = cGET_ACP
     AutoEncodeStrings = False
