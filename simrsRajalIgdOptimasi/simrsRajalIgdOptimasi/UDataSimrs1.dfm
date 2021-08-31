@@ -1,6 +1,7 @@
 object DataSimrs1: TDataSimrs1
   OldCreateOrder = False
-  Top = 141
+  Left = 261
+  Top = 151
   Height = 843
   Width = 1280
   object conSimrs: TZConnection

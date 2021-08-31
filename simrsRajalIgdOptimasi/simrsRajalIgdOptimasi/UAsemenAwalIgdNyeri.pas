@@ -10,6 +10,10 @@ procedure tampilUbahNyeri;
 /// VALIDASI
 procedure penilaiNyeri;
 ///procedure identitasNyeri;
+procedure RESPONTIME;
+
+
+
 
 
 implementation
@@ -434,6 +438,8 @@ begin
 
  with FAsesmenAwalIgd do
  begin
+   cxlblIdNyeri.Caption :=  id;
+   
    /// pasien merasa nyeri
    if  DataSimrs1.qryt_asesmen_awal_nyeri.FieldByName('merasakanNyeri').AsBoolean = False then
         chkTIDAKNYERI.Checked := False
@@ -678,6 +684,22 @@ begin
     ///chkYaNyeri.Enabled := True;
     chkTIDAKNYERI.Enabled := False;
 
+    rb0.Enabled:= True;
+    rb1.Enabled:= True;
+    rb2.Enabled:= True;
+    rb3.Enabled:= True;
+    rb4.Enabled:= True;
+    rb5.Enabled:= True;
+    rb6.Enabled:= True;
+    rb7.Enabled:= True;
+    rb8.Enabled:= True;
+    rb9.Enabled:= True;
+    rb10.Enabled:= True;
+   end
+   else IF chkTIDAKNYERI.Checked = True then
+   begin
+    chkYaNyeri.Enabled := False;
+
     rb0.Enabled:= False;
     rb1.Enabled:= False;
     rb2.Enabled:= False;
@@ -693,6 +715,7 @@ begin
    else
    begin
     chkTIDAKNYERI.Enabled := True;
+    chkYaNyeri.Enabled := True;
 
     rb0.Enabled:= True;
     rb1.Enabled:= True;
@@ -709,5 +732,38 @@ begin
         
  end;
 end;
+
+procedure RESPONTIME;
+begin
+  WITH FAsesmenAwalIgd do
+  begin
+    IF rbP1.Checked = True then
+    begin
+       //rbP1.Checked := True;
+       rbP2.Checked := False;
+       rbP3.Checked := False;
+    end
+    else IF  rbP2.Checked = True then
+    begin
+      rbP1.Checked := False;
+      //rbP2.Checked := True;
+      rbP3.Checked := False;
+    end
+    ELSE IF rbP3.Checked = True then
+    begin
+       rbP1.Checked := False;
+       rbP2.Checked := False;
+       //rbP3.Checked := True;
+    end
+    ELSE
+    begin
+      rbP1.Checked := False;
+      rbP2.Checked := False;
+      rbP3.Checked := False;
+    end;
+
+  end;
+end;
+
 
 end.

@@ -1,6 +1,6 @@
 object FAsesmenAwalIgd: TFAsesmenAwalIgd
-  Left = -8
-  Top = -8
+  Left = 240
+  Top = 101
   Width = 1456
   Height = 876
   Align = alClient
@@ -381,7 +381,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
       Top = 97
       Width = 1438
       Height = 690
-      ActivePage = TabSheet3
+      ActivePage = tsNyeri
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -746,7 +746,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           object grpMenuTriage: TGroupBox
             Left = 1040
             Top = 16
-            Width = 361
+            Width = 281
             Height = 57
             Caption = 'MENU'
             Font.Charset = ANSI_CHARSET
@@ -780,22 +780,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 1
               OnClick = btnUBAHTRIAGEClick
             end
-            object btnHAPUSTRIAGE: TButton
-              Left = 264
-              Top = 16
-              Width = 81
-              Height = 25
-              Caption = 'HAPUS'
-              TabOrder = 2
-              OnClick = btnHAPUSTRIAGEClick
-            end
             object btnBaru: TButton
               Left = 8
               Top = 16
               Width = 75
               Height = 25
               Caption = 'BARU'
-              TabOrder = 3
+              TabOrder = 2
               OnClick = btnBaruClick
             end
           end
@@ -2909,7 +2900,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               object rbP1: TRadioButton
                 Left = 120
                 Top = 8
-                Width = 113
+                Width = 49
                 Height = 17
                 Caption = 'P1'
                 TabOrder = 0
@@ -3297,7 +3288,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           object grpMENUSTATUS: TGroupBox
             Left = 1040
             Top = 16
-            Width = 361
+            Width = 273
             Height = 57
             Caption = 'MENU'
             TabOrder = 5
@@ -3319,22 +3310,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 1
               OnClick = btnUBAHSTATUSClick
             end
-            object btnHAPUSSTATUS: TButton
-              Left = 264
-              Top = 16
-              Width = 81
-              Height = 25
-              Caption = 'HAPUS'
-              TabOrder = 2
-              OnClick = btnHAPUSSTATUSClick
-            end
             object btnBaruStatus: TButton
               Left = 8
               Top = 16
               Width = 75
               Height = 25
               Caption = 'BARU'
-              TabOrder = 3
+              TabOrder = 2
               OnClick = btnBaruStatusClick
             end
           end
@@ -3545,9 +3527,9 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         end
         object grpInterpretasiHasil: TGroupBox
           Left = 0
-          Top = 752
+          Top = 760
           Width = 1081
-          Height = 105
+          Height = 81
           Caption = 'Interpretasi Hasil '
           Color = 16577248
           Font.Charset = ANSI_CHARSET
@@ -3628,7 +3610,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           Left = 0
           Top = 344
           Width = 1081
-          Height = 409
+          Height = 417
           Caption = 'PENILAIAN STATUS FUNGSIONAL (Barthel Index)'
           Color = 16577248
           Font.Charset = ANSI_CHARSET
@@ -3827,6 +3809,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Width = 69
             Height = 13
             Caption = 'TOTAL SKOR'
+          end
+          object lblInterpretasiHasil: TLabel
+            Left = 320
+            Top = 384
+            Width = 109
+            Height = 13
+            Caption = 'lblInterpretasiHasil'
           end
           object cbbstatus1: TComboBox
             Left = 320
@@ -6233,11 +6222,12 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 1
+            OnClick = chkTIDAKNYERIClick
           end
           object grpMENUNYERI: TGroupBox
             Left = 1048
             Top = 16
-            Width = 353
+            Width = 337
             Height = 57
             Caption = 'MENU'
             TabOrder = 2
@@ -6259,21 +6249,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 1
               OnClick = btnUBAHNYERIClick
             end
-            object btnHAPUSNYERI: TButton
-              Left = 264
-              Top = 16
-              Width = 81
-              Height = 25
-              Caption = 'HAPUS'
-              TabOrder = 2
-            end
             object btnBaruNyeri: TButton
               Left = 8
               Top = 16
               Width = 75
               Height = 25
               Caption = 'BARU'
-              TabOrder = 3
+              TabOrder = 2
               OnClick = btnBaruNyeriClick
             end
           end
@@ -8061,7 +8043,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           object grpMENUHUMPTY: TGroupBox
             Left = 1056
             Top = 16
-            Width = 353
+            Width = 273
             Height = 57
             Caption = 'MENU'
             TabOrder = 15
@@ -8087,21 +8069,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Caption = 'UBAH'
               TabOrder = 1
             end
-            object btnHAPUSHUMPTY: TButton
-              Left = 264
-              Top = 16
-              Width = 81
-              Height = 25
-              Caption = 'HAPUS'
-              TabOrder = 2
-            end
             object btnBaruHumpty: TButton
               Left = 8
               Top = 16
               Width = 75
               Height = 25
               Caption = 'BARU'
-              TabOrder = 3
+              TabOrder = 2
               OnClick = btnBaruHumptyClick
             end
           end
@@ -9238,14 +9212,14 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object grpMENUDIS: TGroupBox
-            Left = 1080
+            Left = 1064
             Top = 16
-            Width = 321
+            Width = 289
             Height = 57
             Caption = 'MENU'
             TabOrder = 0
             object btnSIMPANDIS: TButton
-              Left = 16
+              Left = 96
               Top = 16
               Width = 81
               Height = 25
@@ -9253,19 +9227,19 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 0
             end
             object btnUBAHDIS: TButton
-              Left = 112
+              Left = 184
               Top = 16
               Width = 81
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
             end
-            object btnHAPUSDIS: TButton
-              Left = 216
+            object btnTAMBAHDISCHARGE: TButton
+              Left = 16
               Top = 16
-              Width = 81
+              Width = 75
               Height = 25
-              Caption = 'HAPUS'
+              Caption = 'BARU'
               TabOrder = 2
             end
           end
@@ -11358,12 +11332,12 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           object grpMENUFOLL: TGroupBox
             Left = 1080
             Top = 16
-            Width = 321
+            Width = 289
             Height = 57
             Caption = 'MENU'
             TabOrder = 0
             object btnSIMPANFOLL: TButton
-              Left = 16
+              Left = 96
               Top = 16
               Width = 81
               Height = 25
@@ -11371,19 +11345,19 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 0
             end
             object btnUBAHFOLL: TButton
-              Left = 112
+              Left = 184
               Top = 16
               Width = 81
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
             end
-            object btnHAPUSFOLL: TButton
-              Left = 216
+            object btnTAMBAHFOLLOW: TButton
+              Left = 16
               Top = 16
-              Width = 81
+              Width = 75
               Height = 25
-              Caption = 'HAPUS'
+              Caption = 'BARU'
               TabOrder = 2
             end
           end
@@ -11954,7 +11928,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           object grpMENUKRS: TGroupBox
             Left = 1080
             Top = 16
-            Width = 321
+            Width = 265
             Height = 57
             Caption = 'MENU'
             Font.Charset = ANSI_CHARSET
@@ -11965,7 +11939,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 8
             object btnSIMPANKRS: TButton
-              Left = 16
+              Left = 96
               Top = 16
               Width = 81
               Height = 25
@@ -11979,19 +11953,19 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 0
             end
             object btnUBAHKRS: TButton
-              Left = 112
+              Left = 184
               Top = 16
               Width = 81
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
             end
-            object Button18: TButton
-              Left = 216
+            object btnTAMBAHKONDISI: TButton
+              Left = 8
               Top = 16
               Width = 81
               Height = 25
-              Caption = 'HAPUS'
+              Caption = 'BARU'
               TabOrder = 2
             end
           end
@@ -12771,9 +12745,9 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object grpMENUOBS: TGroupBox
-            Left = 1080
-            Top = 16
-            Width = 321
+            Left = 1000
+            Top = 24
+            Width = 281
             Height = 57
             Caption = 'MENU'
             Font.Charset = ANSI_CHARSET
@@ -12784,8 +12758,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 0
             object btnSIMPANOBS: TButton
-              Left = 16
-              Top = 16
+              Left = 96
+              Top = 24
               Width = 81
               Height = 25
               Caption = 'SIMPAN'
@@ -12798,19 +12772,19 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 0
             end
             object btnUBAHOBS: TButton
-              Left = 112
-              Top = 16
+              Left = 184
+              Top = 24
               Width = 81
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
             end
-            object btnHAPUSOBS: TButton
-              Left = 216
-              Top = 16
+            object btnTAMBAHOBSERVASI: TButton
+              Left = 8
+              Top = 24
               Width = 81
               Height = 25
-              Caption = 'HAPUS'
+              Caption = 'BARU'
               TabOrder = 2
             end
           end
@@ -13499,9 +13473,9 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Width = 81
           end
           object grpMENUTL: TGroupBox
-            Left = 1080
+            Left = 1032
             Top = 16
-            Width = 321
+            Width = 281
             Height = 57
             Caption = 'MENU'
             Font.Charset = ANSI_CHARSET
@@ -13512,7 +13486,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 2
             object btnSIMPANTL: TButton
-              Left = 16
+              Left = 96
               Top = 16
               Width = 81
               Height = 25
@@ -13526,19 +13500,19 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               TabOrder = 0
             end
             object btnUBAHTL: TButton
-              Left = 112
+              Left = 184
               Top = 16
               Width = 81
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
             end
-            object btnHAPUSTL: TButton
-              Left = 216
+            object btnTAMBAHTL: TButton
+              Left = 8
               Top = 16
               Width = 81
               Height = 25
-              Caption = 'HAPUS'
+              Caption = 'BARU'
               TabOrder = 2
             end
           end

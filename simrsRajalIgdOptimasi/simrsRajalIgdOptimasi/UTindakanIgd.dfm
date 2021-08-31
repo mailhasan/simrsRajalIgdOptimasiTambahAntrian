@@ -1,6 +1,6 @@
 object FTindakanIgd: TFTindakanIgd
-  Left = 0
-  Top = 172
+  Left = 242
+  Top = 195
   Align = alClient
   BorderIcons = [biSystemMenu, biMaximize]
   BorderStyle = bsNone

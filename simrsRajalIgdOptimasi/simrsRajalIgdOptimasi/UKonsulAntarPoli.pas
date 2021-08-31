@@ -75,8 +75,8 @@ type
     lbl5: TLabel;
     cxcrncydtTarifKonsulAntarPoli: TcxCurrencyEdit;
     procedure pnlKeluarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure btnDaftarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -92,7 +92,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UDataSImrs,DateUtils, ADODB, DB;
+uses UDataSImrs,DateUtils,URajalIgd, ADODB, DB;
 
 // procedure setting umur otomatis
 procedure umur(ThnLama, ThnBaru:TDate);
@@ -135,7 +135,7 @@ begin
   begin
     Close;
     SQL.Clear;
-    SQL.Text := 'select * from t_pasien where noRekamedis="'+edtNoRm.Text+'"';
+    SQL.Text := 'select * from t_pasien where noRekamedis="'+FRawatJalanIgd.edtNoRm.Text+'"';
     Open;
   end;
 
@@ -176,20 +176,6 @@ begin
    Close;
 end;
 
-procedure TFKonsulAntarPoli.FormShow(Sender: TObject);
-begin
-  dataPasien;
-
-  with DataSimrs.qryvw_tindakantarifrajal do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Text := 'SELECT * FROM vw_tindakantarifrajal WHERE kdTindakan="0000006"';
-    Open;
-  end;
-  cxcrncydtTarifKonsulAntarPoli.Value := StrToFloat(DataSimrs.qryvw_tindakantarifrajal['tarif']);
-end;
-
 procedure TFKonsulAntarPoli.btnDaftarClick(Sender: TObject);
 var
   tglDaftar:String;
@@ -215,5 +201,19 @@ if cbbUnitPelayanan.Text = '' then
   end;
 end;
 
+
+procedure TFKonsulAntarPoli.FormShow(Sender: TObject);
+begin
+dataPasien;
+
+  with DataSimrs.qryvw_tindakantarifrajal do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'SELECT * FROM vw_tindakantarifrajal WHERE kdTindakan="0000006"';
+    Open;
+  end;
+  cxcrncydtTarifKonsulAntarPoli.Value := StrToFloat(DataSimrs.qryvw_tindakantarifrajal['tarif']);
+end;
 
 end.

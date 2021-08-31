@@ -133,7 +133,6 @@ type
     grpMenuTriage: TGroupBox;
     btnSIMPANTRIAGE: TButton;
     btnUBAHTRIAGE: TButton;
-    btnHAPUSTRIAGE: TButton;
     mmodiagrujukan: TMemo;
     mmoterapi: TMemo;
     grpRIWAYATTRIAGE: TGroupBox;
@@ -261,7 +260,6 @@ type
     grpMENUSTATUS: TGroupBox;
     btnSIMPANSTATUS: TButton;
     btnUBAHSTATUS: TButton;
-    btnHAPUSSTATUS: TButton;
     grpRIWAYATSTATUS: TGroupBox;
     TabSheet1: TTabSheet;
     tsNyeri: TTabSheet;
@@ -282,7 +280,6 @@ type
     grpMENUNYERI: TGroupBox;
     btnSIMPANNYERI: TButton;
     btnUBAHNYERI: TButton;
-    btnHAPUSNYERI: TButton;
     rb0: TRadioButton;
     rb1: TRadioButton;
     rb2: TRadioButton;
@@ -583,7 +580,6 @@ type
     grpMENUHUMPTY: TGroupBox;
     btnSIMPANHUMPTY: TButton;
     btnUBAHHUMPTY: TButton;
-    btnHAPUSHUMPTY: TButton;
     grpRIWAYATHUMPTY: TGroupBox;
     cbbAdaPenurunanBB: TComboBox;
     cbbApaAsupan: TComboBox;
@@ -645,7 +641,6 @@ type
     grpMENUDIS: TGroupBox;
     btnSIMPANDIS: TButton;
     btnUBAHDIS: TButton;
-    btnHAPUSDIS: TButton;
     cbya1: TCheckBox;
     cbtidak1: TCheckBox;
     grpRIWAYATDISCHARGE: TGroupBox;
@@ -741,7 +736,6 @@ type
     grpMENUFOLL: TGroupBox;
     btnSIMPANFOLL: TButton;
     btnUBAHFOLL: TButton;
-    btnHAPUSFOLL: TButton;
     Edit18: TEdit;
     Edit20: TEdit;
     GroupBox33: TGroupBox;
@@ -798,7 +792,7 @@ type
     grpMENUKRS: TGroupBox;
     btnSIMPANKRS: TButton;
     btnUBAHKRS: TButton;
-    Button18: TButton;
+    btnTAMBAHKONDISI: TButton;
     cbcompos: TCheckBox;
     cbsopor: TCheckBox;
     cbcoma: TCheckBox;
@@ -885,7 +879,7 @@ type
     grpMENUOBS: TGroupBox;
     btnSIMPANOBS: TButton;
     btnUBAHOBS: TButton;
-    btnHAPUSOBS: TButton;
+    btnTAMBAHOBSERVASI: TButton;
     GroupBox44: TGroupBox;
     Label88: TLabel;
     Label91: TLabel;
@@ -896,7 +890,7 @@ type
     grpMENUTL: TGroupBox;
     btnSIMPANTL: TButton;
     btnUBAHTL: TButton;
-    btnHAPUSTL: TButton;
+    btnTAMBAHTL: TButton;
     grpRIWAYATTINDAKLANJUT: TGroupBox;
     GroupBox48: TGroupBox;
     Label95: TLabel;
@@ -1228,12 +1222,14 @@ type
     Label5: TLabel;
     CheckBox1: TCheckBox;
     Memo1: TMemo;
+    btnTAMBAHDISCHARGE: TButton;
+    btnTAMBAHFOLLOW: TButton;
+    lblInterpretasiHasil: TLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnUBAHTRIAGEClick(Sender: TObject);
-    procedure btnHAPUSTRIAGEClick(Sender: TObject);
     procedure chkNontraumaClick(Sender: TObject);
     procedure chkObstetriClick(Sender: TObject);
     procedure chkTraumaClick(Sender: TObject);
@@ -1247,7 +1243,6 @@ type
     procedure chkcomaClick(Sender: TObject);
     procedure btnBaruStatusClick(Sender: TObject);
     procedure btnUBAHSTATUSClick(Sender: TObject);
-    procedure btnHAPUSSTATUSClick(Sender: TObject);
     procedure btnSIMPANSTATUSClick(Sender: TObject);
     procedure cbbstatus1Change(Sender: TObject);
     procedure cbbstatus2Change(Sender: TObject);
@@ -1287,6 +1282,7 @@ type
     procedure btnUBAHNYERIClick(Sender: TObject);
     procedure chkYaNyeriClick(Sender: TObject);
     procedure btnBaruHumptyClick(Sender: TObject);
+    procedure chkTIDAKNYERIClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1328,11 +1324,6 @@ procedure TFAsesmenAwalIgd.btnUBAHTRIAGEClick(Sender: TObject);
 begin
   /// panggil procedure ubah triage
   tampilUbahTriage;
-end;
-
-procedure TFAsesmenAwalIgd.btnHAPUSTRIAGEClick(Sender: TObject);
-begin
-  hapusTriage;
 end;
 
 procedure TFAsesmenAwalIgd.chkNontraumaClick(Sender: TObject);
@@ -1401,11 +1392,6 @@ begin
 tampilUbahStatus;
 end;
 
-procedure TFAsesmenAwalIgd.btnHAPUSSTATUSClick(Sender: TObject);
-begin
-hapusStatus;
-end;
-
 procedure TFAsesmenAwalIgd.btnSIMPANSTATUSClick(Sender: TObject);
 begin
 ProsesSimpanStatus; tampilStatus; btnSIMPANSTATUS.Caption := 'SIMPAN';
@@ -1453,12 +1439,12 @@ end;
 
 procedure TFAsesmenAwalIgd.cbbstatus9Change(Sender: TObject);
 begin
-nilaiDelapan;
+nilaiSembilan;
 end;
 
 procedure TFAsesmenAwalIgd.cbbstatus10Change(Sender: TObject);
 begin
-nilaiSembilan;
+nilaiSepuluh;
 end;
 
 procedure TFAsesmenAwalIgd.edtTOTALSKORClick(Sender: TObject);
@@ -1599,6 +1585,11 @@ end;
 procedure TFAsesmenAwalIgd.btnBaruHumptyClick(Sender: TObject);
 begin
 baruHumpty;
+end;
+
+procedure TFAsesmenAwalIgd.chkTIDAKNYERIClick(Sender: TObject);
+begin
+penilaiNyeri;
 end;
 
 end.

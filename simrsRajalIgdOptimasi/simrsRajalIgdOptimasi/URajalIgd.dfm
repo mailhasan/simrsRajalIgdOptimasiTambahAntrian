@@ -1,6 +1,6 @@
 object FRawatJalanIgd: TFRawatJalanIgd
-  Left = 111
-  Top = 115
+  Left = 247
+  Top = 134
   Width = 1316
   Height = 832
   Align = alClient

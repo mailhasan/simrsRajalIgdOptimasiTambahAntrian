@@ -45,6 +45,7 @@ procedure nilaiSepuluh;
 procedure totalNilaiStatus;
 
 
+
 implementation
 uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
   ZAbstractRODataset, DB, StdCtrls;
@@ -968,7 +969,7 @@ begin
     else if cbbstatus2.ItemIndex = 1 then
         edtNILAI2.Text := '1'
     else
-        edtNILAI3.Text := '2';
+        edtNILAI2.Text := '2';
   end;
 end;
 
@@ -1089,7 +1090,7 @@ procedure totalNilaiStatus;
 var
   nilai1,nilai2,nilai3,
   nilai4,nilai5,nilai6,
-  nilai7,nilai8,nilai9,nilai10:Integer;
+  nilai7,nilai8,nilai9,nilai10,total:Integer;
 begin
   with FAsesmenAwalIgd do
   begin
@@ -1104,9 +1105,32 @@ begin
     nilai9 := StrToInt(edtNILAI9.Text);
     nilai10 := StrToInt(edtNILAI10.Text);
     edtTOTALSKOR.Text := IntToStr(nilai1+nilai2+nilai3+nilai4+nilai5+nilai6+nilai8+nilai9+nilai10);
-  end;
-end;
+    total := StrToInt(edtTOTALSKOR.Text);
 
+    {if edtTOTALSKOR.Text >='20' then
+        lblInterpretasiHasil.Caption := '20 : Mandiri'
+    else if (edtTOTALSKOR.Text='12') or (edtTOTALSKOR.Text='13') or  (edtTOTALSKOR.Text='13') or (edtTOTALSKOR.Text='14')
+        or  (edtTOTALSKOR.Text='15') or  (edtTOTALSKOR.Text='16') or  (edtTOTALSKOR.Text='17') or  (edtTOTALSKOR.Text='18') or
+        (edtTOTALSKOR.Text='19') then
+        lblInterpretasiHasil.Caption := '12 - 19 : Ketergantungan Ringan'
+    else if (edtTOTALSKOR.Text='9') or (edtTOTALSKOR.Text='10') or (edtTOTALSKOR.Text='11') then
+        lblInterpretasiHasil.Caption := '9 - 11 Ketergantungan Sedang'
+    else if (edtTOTALSKOR.Text='5') or (edtTOTALSKOR.Text='6') or (edtTOTALSKOR.Text='7') or (edtTOTALSKOR.Text='8') then
+        lblInterpretasiHasil.Caption := '5 - 8 Ketergantungan Berat'
+    else
+        lblInterpretasiHasil.Caption := '0- 4 Ketergantungan Total';}
+    case total of
+    20..25:lblInterpretasiHasil.Caption := 'Hasil Interpretasi : 20 : Mandiri';
+    12..19:lblInterpretasiHasil.Caption := 'Hasil Interpretasi : 12 - 19 : Ketergantungasn Ringan';
+    9..11:lblInterpretasiHasil.Caption := 'Hasil Interpretasi : 9 - 11 Ketergantungan Sedang';
+    5..8:lblInterpretasiHasil.Caption := 'Hasil Interpretasi : 5 - 8 Ketergantungan Berat';
+    0..4:lblInterpretasiHasil.Caption := 'Hasil Interpretasi : 0- 4 Ketergantungan Total';
+    else
+    lblInterpretasiHasil.Caption := 'Tidak ada Hasil Interpretasi';
+
+    end;
+end;
+end;
 
 
 end.
