@@ -1,3 +1,56 @@
+{$A8,B-,C+,D+,E-,F-,G+,H+,I+,J-,K-,L+,M-,N+,O+,P+,Q-,R-,S-,T-,U-,V+,W-,X+,Y+,Z1}
+{$MINSTACKSIZE $00004000}
+{$MAXSTACKSIZE $00100000}
+{$IMAGEBASE $00400000}
+{$APPTYPE GUI}
+{$WARN SYMBOL_DEPRECATED ON}
+{$WARN SYMBOL_LIBRARY ON}
+{$WARN SYMBOL_PLATFORM ON}
+{$WARN UNIT_LIBRARY ON}
+{$WARN UNIT_PLATFORM ON}
+{$WARN UNIT_DEPRECATED ON}
+{$WARN HRESULT_COMPAT ON}
+{$WARN HIDING_MEMBER ON}
+{$WARN HIDDEN_VIRTUAL ON}
+{$WARN GARBAGE ON}
+{$WARN BOUNDS_ERROR ON}
+{$WARN ZERO_NIL_COMPAT ON}
+{$WARN STRING_CONST_TRUNCED ON}
+{$WARN FOR_LOOP_VAR_VARPAR ON}
+{$WARN TYPED_CONST_VARPAR ON}
+{$WARN ASG_TO_TYPED_CONST ON}
+{$WARN CASE_LABEL_RANGE ON}
+{$WARN FOR_VARIABLE ON}
+{$WARN CONSTRUCTING_ABSTRACT ON}
+{$WARN COMPARISON_FALSE ON}
+{$WARN COMPARISON_TRUE ON}
+{$WARN COMPARING_SIGNED_UNSIGNED ON}
+{$WARN COMBINING_SIGNED_UNSIGNED ON}
+{$WARN UNSUPPORTED_CONSTRUCT ON}
+{$WARN FILE_OPEN ON}
+{$WARN FILE_OPEN_UNITSRC ON}
+{$WARN BAD_GLOBAL_SYMBOL ON}
+{$WARN DUPLICATE_CTOR_DTOR ON}
+{$WARN INVALID_DIRECTIVE ON}
+{$WARN PACKAGE_NO_LINK ON}
+{$WARN PACKAGED_THREADVAR ON}
+{$WARN IMPLICIT_IMPORT ON}
+{$WARN HPPEMIT_IGNORED ON}
+{$WARN NO_RETVAL ON}
+{$WARN USE_BEFORE_DEF ON}
+{$WARN FOR_LOOP_VAR_UNDEF ON}
+{$WARN UNIT_NAME_MISMATCH ON}
+{$WARN NO_CFG_FILE_FOUND ON}
+{$WARN MESSAGE_DIRECTIVE ON}
+{$WARN IMPLICIT_VARIANTS ON}
+{$WARN UNICODE_TO_LOCALE ON}
+{$WARN LOCALE_TO_UNICODE ON}
+{$WARN IMAGEBASE_MULTIPLE ON}
+{$WARN SUSPICIOUS_TYPECAST ON}
+{$WARN PRIVATE_PROPACCESSOR ON}
+{$WARN UNSAFE_TYPE OFF}
+{$WARN UNSAFE_CODE OFF}
+{$WARN UNSAFE_CAST OFF}
 unit UAsemenAwalIgdNyeri;
 
 interface
@@ -10,9 +63,47 @@ procedure tampilUbahNyeri;
 /// VALIDASI
 procedure penilaiNyeri;
 ///procedure identitasNyeri;
+procedure pilihanNyeri;
 procedure RESPONTIME;
 
+procedure Nyeriterus;
+procedure NyeriHilang;
+procedure NyerilainyaSifat;
 
+/// kuealitas nyeri
+procedure tumpul;
+procedure tajam;
+procedure tertekan;
+procedure terbakar;
+procedure lainyakualitas;
+
+/// faktor pemberat
+procedure cahaya;
+procedure gerakan;
+procedure berbaring;
+procedure lainyaPemberat;
+
+/// faktor peringan
+procedure makan;
+procedure sunyi;
+procedure dingin;
+procedure panas;
+procedure lainyaPeringan;
+
+///efek nyeri
+procedure maulMuntah;
+procedure tidur;
+procedure nafsuMakan;
+procedure akttifitas;
+procedure LainyaEfek;
+
+/// otomatis nilai nyeri anak
+procedure wajah;
+procedure Kaki;
+procedure Aktifitas;
+procedure menangis;
+procedure Bersuara;
+procedure totalNilaiNyeriAnak;
 
 
 
@@ -93,6 +184,12 @@ begin
     edtlainefek.Text:= '';
 
     /// penilaian nyeri anak
+    cbbwajahnyeri.ItemIndex := 0;
+    cbbkakinyeri.ItemIndex := 0;
+    cbbaktifitasnyeri.ItemIndex := 0;
+    cbbmenangisnyeri.ItemIndex := 0;
+    cbbbersuaranyeri.ItemIndex := 0;
+
     cbbwajah.ItemIndex:= 0;
     cbbkaki.ItemIndex:= 0;
     cbbaktifitas.ItemIndex:= 0;
@@ -762,6 +859,676 @@ begin
       rbP3.Checked := False;
     end;
 
+  end;
+end;
+
+/// penilaian nyeri
+procedure pilihanNyeri;
+var
+  nilai:Integer;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    nilai := StrToInt(lblPasienMerasaNyeri.Caption);
+    case nilai of
+    /// tidak ada nyeri
+    0:begin
+     chktdknyeri.Checked:= True;
+     chkNYERIRINGAN.Checked:= False;
+     chkNYERIBERAT.Checked:= False;
+     chkNYERISEDANG.Checked:= False;
+     chkNYERISANGAT.Checked:= False;
+    end;
+    /// sedikit sakit
+    1..3:begin
+     chktdknyeri.Checked:= False;
+     chkNYERIRINGAN.Checked:= True;
+     chkNYERIBERAT.Checked:= False;
+     chkNYERISEDANG.Checked:= False;
+     chkNYERISANGAT.Checked:= False;
+    end;
+    ///
+    4..6:begin
+     chktdknyeri.Checked:= False;
+     chkNYERIRINGAN.Checked:= false;
+     chkNYERIBERAT.Checked:= False;
+     chkNYERISEDANG.Checked:= True;
+     chkNYERISANGAT.Checked:= False;
+    end;
+
+    7..9:begin
+     chktdknyeri.Checked:= False;
+     chkNYERIRINGAN.Checked:= False;
+     chkNYERIBERAT.Checked:= True;
+     chkNYERISEDANG.Checked:= False;
+     chkNYERISANGAT.Checked:= False;
+    end;
+
+    10:begin
+     chktdknyeri.Checked:= False;
+     chkNYERIRINGAN.Checked:= False;
+     chkNYERIBERAT.Checked:= False;
+     chkNYERISEDANG.Checked:= False;
+     chkNYERISANGAT.Checked:= True;
+    end;
+
+    else
+    begin
+      chktdknyeri.Checked:= False;
+      chkNYERIRINGAN.Checked:= False;
+      chkNYERIBERAT.Checked:= False;
+      chkNYERISEDANG.Checked:= False;
+      chkNYERISANGAT.Checked:= False;
+    end;
+
+    end;
+  end;
+end;
+
+/// identitas sifat nyeri
+
+/// terus
+procedure Nyeriterus;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chkterus.Checked = True then
+    begin
+     chkterus.Checked := True;
+     chkHILANG.Enabled := False;
+     chklainsifat.Enabled := False;
+     edtlainsifat.Enabled := False;
+    end
+   else 
+    begin
+     ///chkterus.Checked := True;
+     chkHILANG.Enabled := True;
+     chklainsifat.Enabled := True;
+     edtlainsifat.Enabled := True;
+    end;
+  end;
+end;
+
+/// hilang
+procedure NyeriHilang;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chkHILANG.Checked = True then
+    begin
+     chkterus.Enabled := False;
+     ///chkHILANG.Checked := True;
+     chklainsifat.Enabled := False;
+     edtlainsifat.Enabled := False;
+    end
+   else
+    begin
+     chkterus.Enabled := True;
+     ///chkHILANG.Checked := True;
+     chklainsifat.Enabled := True;
+     edtlainsifat.Enabled := True;
+    end;
+  end;
+end;
+
+/// lain sifat
+procedure NyerilainyaSifat;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chklainsifat.Checked = True then
+    begin
+     chkterus.Enabled := False;
+     chkHILANG.Enabled := False;
+     ///chklainsifat.Enabled := False;
+     ///edtlainsifat.Enabled := False;
+    end
+   else
+    begin
+     chkterus.Enabled := True;
+     chkHILANG.Enabled := True;
+     ///chklainsifat.Enabled := False;
+     edtlainsifat.Enabled := True;
+    end;
+  end;
+end;
+
+/// kualitas nyeri
+procedure tumpul;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chktumpul.Checked = True then
+    begin
+      chktajam.Enabled := False;
+      chktertekan.Enabled := False;
+      chkterbakar.Enabled := False;
+      chklainkualitas.Enabled := False;
+      edtlainkualitas.Enabled := False;
+    end
+    else
+    begin
+     chktajam.Enabled := True;
+     chktertekan.Enabled := True;
+     chkterbakar.Enabled := True;
+     chklainkualitas.Enabled := True;
+     edtlainkualitas.Enabled := True;
+    end;
+  end;
+end;
+
+procedure tajam;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chktajam.Checked = True then
+    begin
+      chktumpul.Enabled := False;
+      chktertekan.Enabled := False;
+      chkterbakar.Enabled := False;
+      chklainkualitas.Enabled := False;
+      edtlainkualitas.Enabled := False;
+    end
+    else
+    begin
+     chktumpul.Enabled := True;
+     chktertekan.Enabled := True;
+     chkterbakar.Enabled := True;
+     chklainkualitas.Enabled := True;
+     edtlainkualitas.Enabled := True;
+    end;
+  end;
+end;
+
+procedure tertekan;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chktertekan.Checked = True then
+    begin
+      chktajam.Enabled := False;
+      chktumpul.Enabled := False;
+      chkterbakar.Enabled := False;
+      chklainkualitas.Enabled := False;
+      edtlainkualitas.Enabled := False;
+    end
+    else
+    begin
+     chktajam.Enabled := True;
+     chktumpul.Enabled := True;
+     chkterbakar.Enabled := True;
+     chklainkualitas.Enabled := True;
+     edtlainkualitas.Enabled := True;
+    end;
+  end;
+end;
+
+procedure terbakar;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chkterbakar.Checked = True then
+    begin
+      chktajam.Enabled := False;
+      chktertekan.Enabled := False;
+      chktumpul.Enabled := False;
+      chklainkualitas.Enabled := False;
+      edtlainkualitas.Enabled := False;
+    end
+    else
+    begin
+     chktajam.Enabled := True;
+     chktertekan.Enabled := True;
+     chktumpul.Enabled := True;
+     chklainkualitas.Enabled := True;
+     edtlainkualitas.Enabled := True;
+    end;
+  end;
+end;
+
+procedure lainyakualitas;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chklainkualitas.Checked = True then
+    begin
+      chktajam.Enabled := False;
+      chktertekan.Enabled := False;
+      chkterbakar.Enabled := False;
+      chktumpul.Enabled := False;
+      edtlainkualitas.Enabled := True;
+    end
+    else
+    begin
+     chktajam.Enabled := True;
+     chktertekan.Enabled := True;
+     chkterbakar.Enabled := True;
+     chktumpul.Enabled := True;
+     edtlainkualitas.Enabled := True;
+    end;
+  end;
+end;
+
+/// faktor pemberat
+procedure cahaya;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chkcahaya.Checked = True then
+     begin
+       chkgerakan.Enabled := False;
+       chkberbaring.Enabled := False;
+       chklainpemberat.Enabled := False;
+       edtlainpemberat.Enabled := False;
+     end
+     else
+     begin
+       chkgerakan.Enabled := True;
+       chkberbaring.Enabled := True;
+       chklainpemberat.Enabled := True;
+       edtlainpemberat.Enabled := True;
+     end;
+  end;
+end;
+
+procedure gerakan;
+begin
+ with FAsesmenAwalIgd do
+  begin
+    if chkgerakan.Checked = True then
+     begin
+       chkcahaya.Enabled := False;
+       chkberbaring.Enabled := False;
+       chklainpemberat.Enabled := False;
+       edtlainpemberat.Enabled := False;
+     end
+     else
+     begin
+       chkcahaya.Enabled := True;
+       chkberbaring.Enabled := True;
+       chklainpemberat.Enabled := True;
+       edtlainpemberat.Enabled := True;
+     end;
+  end;
+end;
+
+procedure berbaring;
+begin
+ with FAsesmenAwalIgd do
+  begin
+    if chkberbaring.Checked = True then
+     begin
+       chkcahaya.Enabled := False;
+       chkgerakan.Enabled := False;
+       chklainpemberat.Enabled := False;
+       edtlainpemberat.Enabled := False;
+     end
+     else
+     begin
+       chkcahaya.Enabled := True;
+       chkgerakan.Enabled := True;
+       chklainpemberat.Enabled := True;
+       edtlainpemberat.Enabled := True;
+     end;
+  end;
+end;
+
+procedure lainyaPemberat;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if chklainpemberat.Checked = True then
+     begin
+       chkcahaya.Enabled := False;
+       chkgerakan.Enabled := False;
+       chkberbaring.Enabled := False;
+       edtlainpemberat.Enabled := True;
+     end
+     else
+     begin
+       chkcahaya.Enabled := True;
+       chkgerakan.Enabled := True;
+       chkberbaring.Enabled := True;
+       edtlainpemberat.Enabled := True;
+     end;
+  end;
+end;
+
+/// faktor peringan
+procedure makan;
+begin
+ with FAsesmenAwalIgd do
+ begin
+   if chkmakan.Checked = True then
+    begin
+      chkmakan.Enabled := True;
+      chksunyi.Enabled := False;
+      chkdingin.Enabled := False;
+      chkpanas.Enabled := False;
+      chklainperingan.Enabled := False;
+      edtlainperingan.Enabled := False;
+    end
+    else
+    begin
+      chkmakan.Enabled := True;
+      chksunyi.Enabled := True;
+      chkdingin.Enabled := True;
+      chkpanas.Enabled := True;
+      chklainperingan.Enabled := True;
+      edtlainperingan.Enabled := True;
+    end;
+ end;
+end;
+
+procedure sunyi;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if chksunyi.Checked = True then
+    begin
+      chkmakan.Enabled := False;
+      chksunyi.Enabled := True;
+      chkdingin.Enabled := False;
+      chkpanas.Enabled := False;
+      chklainperingan.Enabled := False;
+      edtlainperingan.Enabled := False;
+    end
+    else
+    begin
+      chkmakan.Enabled := True;
+      chksunyi.Enabled := True;
+      chkdingin.Enabled := True;
+      chkpanas.Enabled := True;
+      chklainperingan.Enabled := True;
+      edtlainperingan.Enabled := True;
+    end;
+ end;
+end;
+
+procedure dingin;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if chkdingin.Checked = True then
+    begin
+      chkmakan.Enabled := False;
+      chksunyi.Enabled := False;
+      chkdingin.Enabled := True;
+      chkpanas.Enabled := False;
+      chklainperingan.Enabled := False;
+      edtlainperingan.Enabled := False;
+    end
+    else
+    begin
+      chkmakan.Enabled := True;
+      chksunyi.Enabled := True;
+      chkdingin.Enabled := True;
+      chkpanas.Enabled := True;
+      chklainperingan.Enabled := True;
+      edtlainperingan.Enabled := True;
+    end;
+ end;
+end;
+
+procedure panas;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if chkpanas.Checked = True then
+    begin
+      chkmakan.Enabled := False;
+      chksunyi.Enabled := False;
+      chkdingin.Enabled := False;
+      chkpanas.Enabled := True;
+      chklainperingan.Enabled := False;
+      edtlainperingan.Enabled := False;
+    end
+    else
+    begin
+      chkmakan.Enabled := True;
+      chksunyi.Enabled := True;
+      chkdingin.Enabled := True;
+      chkpanas.Enabled := True;
+      chklainperingan.Enabled := True;
+      edtlainperingan.Enabled := True;
+    end;
+ end;
+end;
+
+procedure lainyaPeringan;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if chklainperingan.Checked = True then
+    begin
+      chkmakan.Enabled := False;
+      chksunyi.Enabled := False;
+      chkdingin.Enabled := False;
+      chkpanas.Enabled := False;
+      chklainperingan.Enabled := True;
+      edtlainperingan.Enabled := True;
+    end
+    else
+    begin
+      chkmakan.Enabled := True;
+      chksunyi.Enabled := True;
+      chkdingin.Enabled := True;
+      chkpanas.Enabled := True;
+      chklainperingan.Enabled := True;
+      edtlainperingan.Enabled := True;
+    end;
+ end;
+end;
+
+/// efek nyeri
+procedure maulMuntah;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chkmual.Checked = True then
+      begin
+       chkmual.Enabled := True;
+       chknafsumakan.Enabled := False;
+       chktidur.Enabled := False;
+       chkaktifitas.Enabled := False;
+       chklainefek.Enabled := False;
+       edtlainefek.Enabled := False;
+      end
+      else
+      begin
+       chkmual.Enabled := True;
+       chknafsumakan.Enabled := True;
+       chktidur.Enabled := True;
+       chkaktifitas.Enabled := True;
+       chklainefek.Enabled := True;
+       edtlainefek.Enabled := True;
+      end;
+  end;
+end;
+
+procedure tidur;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chktidur.Checked = True then
+      begin
+       chkmual.Enabled := False;
+       chknafsumakan.Enabled := False;
+       ///chktidur.Enabled := False;
+       chkaktifitas.Enabled := False;
+       chklainefek.Enabled := False;
+       edtlainefek.Enabled := False;
+      end
+      else
+      begin
+       chkmual.Enabled := True;
+       chknafsumakan.Enabled := True;
+       chktidur.Enabled := True;
+       chkaktifitas.Enabled := True;
+       chklainefek.Enabled := True;
+       edtlainefek.Enabled := True;
+      end;
+  end;
+end;
+
+procedure nafsuMakan;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chknafsumakan.Checked = True then
+      begin
+       chkmual.Enabled := False;
+       ///chknafsumakan.Enabled := False;
+       chktidur.Enabled := False;
+       chkaktifitas.Enabled := False;
+       chklainefek.Enabled := False;
+       edtlainefek.Enabled := False;
+      end
+      else
+      begin
+       chkmual.Enabled := True;
+       chknafsumakan.Enabled := True;
+       chktidur.Enabled := True;
+       chkaktifitas.Enabled := True;
+       chklainefek.Enabled := True;
+       edtlainefek.Enabled := True;
+      end;
+  end;
+end;
+
+procedure akttifitas;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chkaktifitas.Checked = True then
+      begin
+       chkmual.Enabled := False;
+       chknafsumakan.Enabled := False;
+       ///chkaktifitas.Enabled := False;
+       chklainefek.Enabled := False;
+       edtlainefek.Enabled := False;
+      end
+      else
+      begin
+       chkmual.Enabled := True;
+       chknafsumakan.Enabled := True;
+       chkaktifitas.Enabled := True;
+       chklainefek.Enabled := True;
+       edtlainefek.Enabled := True;
+      end;
+  end;
+end;
+
+procedure LainyaEfek;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if chklainefek.Checked = True then
+      begin
+       chkmual.Enabled := False;
+       chknafsumakan.Enabled := False;
+       chkaktifitas.Enabled := False;
+       chklainefek.Enabled := True;
+       edtlainefek.Enabled := True;
+      end
+      else
+      begin
+       chkmual.Enabled := True;
+       chknafsumakan.Enabled := True;
+       chkaktifitas.Enabled := True;
+       chklainefek.Enabled := True;
+       edtlainefek.Enabled := True;
+      end;
+  end;
+end;
+
+/// otomatis nilai nyeri anak
+procedure wajah;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if cbbwajahnyeri.ItemIndex = 0 then
+       cbbwajah.ItemIndex := 0
+    else if cbbwajahnyeri.ItemIndex = 1 then
+        cbbwajah.ItemIndex := 1
+    else
+        cbbwajah.ItemIndex := 2;
+  end;
+end;
+
+procedure Kaki;
+begin
+ with FAsesmenAwalIgd do
+ begin
+   if cbbkakinyeri.ItemIndex = 0 then
+       cbbkaki.ItemIndex := 0
+   else if cbbkakinyeri.ItemIndex = 1 then
+       cbbkaki.ItemIndex := 1
+   else
+       cbbkaki.ItemIndex := 2; 
+ end;
+end;
+
+procedure Aktifitas;
+begin
+ with FAsesmenAwalIgd do
+ begin
+   if cbbaktifitasnyeri.ItemIndex = 0 then
+      cbbaktifitas.ItemIndex := 0
+   else if cbbaktifitasnyeri.ItemIndex = 1 then
+      cbbaktifitas.ItemIndex := 1
+   else
+      cbbaktifitas.ItemIndex := 2;
+ end;
+end;
+
+procedure menangis;
+begin
+ with FAsesmenAwalIgd do
+ begin
+   if cbbmenangisnyeri.ItemIndex = 0 then
+        cbbmenangis.ItemIndex := 0
+   else if cbbmenangisnyeri.ItemIndex = 1 then
+        cbbmenangis.ItemIndex := 1
+   else
+        cbbmenangis.ItemIndex := 2;
+ end;
+end;
+
+procedure Bersuara;
+begin
+ with FAsesmenAwalIgd do
+ begin
+   if cbbbersuaranyeri.ItemIndex = 0 then
+        cbbbersuara.ItemIndex := 0
+   else if cbbbersuaranyeri.ItemIndex = 1 then
+        cbbbersuara.ItemIndex := 1
+   else
+        cbbbersuara.ItemIndex := 2;
+ end;
+end;
+
+procedure totalNilaiNyeriAnak;
+var
+  wajah,Kaki,Aktifitas,menangis,Bersuara,total:Integer;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   wajah := StrToInt(cbbwajah.Text);
+   Kaki := StrToInt(cbbkaki.Text);
+   Aktifitas := StrToInt(cbbaktifitas.Text);
+   Bersuara := StrToInt(cbbbersuara.Text);
+   total := wajah+Kaki+Aktifitas+Bersuara;
+   edttotalnyeri.Text := IntToStr(total);
+
+   case total of
+   0:lblHasilPenilaianAnak.Caption := '0 = Nyaman';
+   1..3:lblHasilPenilaianAnak.Caption := '1 - 3 = Kurang Nyaman';
+   4..6:lblHasilPenilaianAnak.Caption := '4 - 6 = Nyeri Sedang';
+   7..10:lblHasilPenilaianAnak.Caption := '7 - 10 = Nyeri Berat';
+   else
+   lblHasilPenilaianAnak.Caption := '';
+  end;
   end;
 end;
 

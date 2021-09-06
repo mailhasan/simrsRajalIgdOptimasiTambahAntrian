@@ -1225,6 +1225,8 @@ type
     btnTAMBAHDISCHARGE: TButton;
     btnTAMBAHFOLLOW: TButton;
     lblInterpretasiHasil: TLabel;
+    lblPasienMerasaNyeri: TLabel;
+    lblHasilPenilaianAnak: TLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1283,6 +1285,47 @@ type
     procedure chkYaNyeriClick(Sender: TObject);
     procedure btnBaruHumptyClick(Sender: TObject);
     procedure chkTIDAKNYERIClick(Sender: TObject);
+    procedure rb0Click(Sender: TObject);
+    procedure rb1Click(Sender: TObject);
+    procedure rb2Click(Sender: TObject);
+    procedure rb3Click(Sender: TObject);
+    procedure rb4Click(Sender: TObject);
+    procedure rb5Click(Sender: TObject);
+    procedure rb6Click(Sender: TObject);
+    procedure rb7Click(Sender: TObject);
+    procedure rb8Click(Sender: TObject);
+    procedure rb9Click(Sender: TObject);
+    procedure rb10Click(Sender: TObject);
+    procedure edtTOTALSKORChange(Sender: TObject);
+    procedure chkterusClick(Sender: TObject);
+    procedure chkHILANGClick(Sender: TObject);
+    procedure chklainsifatClick(Sender: TObject);
+    procedure chktumpulClick(Sender: TObject);
+    procedure chktajamClick(Sender: TObject);
+    procedure chktertekanClick(Sender: TObject);
+    procedure chkterbakarClick(Sender: TObject);
+    procedure chklainkualitasClick(Sender: TObject);
+    procedure chkcahayaClick(Sender: TObject);
+    procedure chkgerakanClick(Sender: TObject);
+    procedure chkberbaringClick(Sender: TObject);
+    procedure chklainpemberatClick(Sender: TObject);
+    procedure chkmakanClick(Sender: TObject);
+    procedure chksunyiClick(Sender: TObject);
+    procedure chkdinginClick(Sender: TObject);
+    procedure chkpanasClick(Sender: TObject);
+    procedure chklainperinganClick(Sender: TObject);
+    procedure chkmualClick(Sender: TObject);
+    procedure chktidurClick(Sender: TObject);
+    procedure chknafsumakanClick(Sender: TObject);
+    procedure chkaktifitasClick(Sender: TObject);
+    procedure chklainefekClick(Sender: TObject);
+    procedure cbbwajahnyeriChange(Sender: TObject);
+    procedure cbbkakinyeriChange(Sender: TObject);
+    procedure cbbaktifitasnyeriChange(Sender: TObject);
+    procedure cbbmenangisnyeriChange(Sender: TObject);
+    procedure cbbbersuaranyeriChange(Sender: TObject);
+    procedure edttotalnyeriClick(Sender: TObject);
+    procedure edttotalnyeriChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1494,17 +1537,17 @@ end;
 
 procedure TFAsesmenAwalIgd.chkMENDENGARClick(Sender: TObject);
 begin
-mendengar;
+///mendengar;
 end;
 
 procedure TFAsesmenAwalIgd.chkMENULISClick(Sender: TObject);
 begin
-menulis;
+///menulis;
 end;
 
 procedure TFAsesmenAwalIgd.chkMEMBACAClick(Sender: TObject);
 begin
-membaca;
+/// membaca;
 end;
 
 procedure TFAsesmenAwalIgd.chkTENANGClick(Sender: TObject);
@@ -1590,6 +1633,255 @@ end;
 procedure TFAsesmenAwalIgd.chkTIDAKNYERIClick(Sender: TObject);
 begin
 penilaiNyeri;
+end;
+
+procedure TFAsesmenAwalIgd.rb0Click(Sender: TObject);
+begin
+if rb0.Checked = True then
+begin
+  lblPasienMerasaNyeri.Caption := '0';
+  pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.rb1Click(Sender: TObject);
+begin
+if rb1.Checked = True then
+begin
+  lblPasienMerasaNyeri.Caption := '1';
+  pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.rb2Click(Sender: TObject);
+begin
+if rb2.Checked = True then
+begin
+   lblPasienMerasaNyeri.Caption := '2';
+   pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.rb3Click(Sender: TObject);
+begin
+if rb3.Checked = True then
+begin
+   lblPasienMerasaNyeri.Caption := '3';
+   pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.rb4Click(Sender: TObject);
+begin
+if rb4.Checked = True then
+begin
+   lblPasienMerasaNyeri.Caption := '4';
+   pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.rb5Click(Sender: TObject);
+begin
+if rb5.Checked = True then
+begin
+   lblPasienMerasaNyeri.Caption := '5';
+   pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.rb6Click(Sender: TObject);
+begin
+if rb6.Checked = True then
+begin
+   lblPasienMerasaNyeri.Caption := '6';
+   pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.rb7Click(Sender: TObject);
+begin
+if rb7.Checked = True then
+begin
+   lblPasienMerasaNyeri.Caption := '7';
+   pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.rb8Click(Sender: TObject);
+begin
+if rb8.Checked = True then
+begin
+   lblPasienMerasaNyeri.Caption := '8';
+   pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.rb9Click(Sender: TObject);
+begin
+if rb9.Checked = True then
+begin
+   lblPasienMerasaNyeri.Caption := '9';
+   pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.rb10Click(Sender: TObject);
+begin
+if rb10.Checked = True then
+begin
+   lblPasienMerasaNyeri.Caption := '10';
+   pilihanNyeri;
+end;
+end;
+
+procedure TFAsesmenAwalIgd.edtTOTALSKORChange(Sender: TObject);
+begin
+totalNilaiStatus;
+end;
+
+procedure TFAsesmenAwalIgd.chkterusClick(Sender: TObject);
+begin
+Nyeriterus;
+end;
+
+procedure TFAsesmenAwalIgd.chkHILANGClick(Sender: TObject);
+begin
+NyeriHilang;
+end;
+
+procedure TFAsesmenAwalIgd.chklainsifatClick(Sender: TObject);
+begin
+NyerilainyaSifat;
+end;
+
+procedure TFAsesmenAwalIgd.chktumpulClick(Sender: TObject);
+begin
+tumpul;
+end;
+
+procedure TFAsesmenAwalIgd.chktajamClick(Sender: TObject);
+begin
+tajam;
+end;
+
+procedure TFAsesmenAwalIgd.chktertekanClick(Sender: TObject);
+begin
+tertekan;
+end;
+
+procedure TFAsesmenAwalIgd.chkterbakarClick(Sender: TObject);
+begin
+terbakar;
+end;
+
+procedure TFAsesmenAwalIgd.chklainkualitasClick(Sender: TObject);
+begin
+lainyakualitas;
+end;
+
+procedure TFAsesmenAwalIgd.chkcahayaClick(Sender: TObject);
+begin
+cahaya;
+end;
+
+procedure TFAsesmenAwalIgd.chkgerakanClick(Sender: TObject);
+begin
+gerakan;
+end;
+
+procedure TFAsesmenAwalIgd.chkberbaringClick(Sender: TObject);
+begin
+berbaring;
+end;
+
+procedure TFAsesmenAwalIgd.chklainpemberatClick(Sender: TObject);
+begin
+lainyaPemberat;
+end;
+
+procedure TFAsesmenAwalIgd.chkmakanClick(Sender: TObject);
+begin
+makan;
+end;
+
+procedure TFAsesmenAwalIgd.chksunyiClick(Sender: TObject);
+begin
+sunyi;
+end;
+
+procedure TFAsesmenAwalIgd.chkdinginClick(Sender: TObject);
+begin
+dingin;
+end;
+
+procedure TFAsesmenAwalIgd.chkpanasClick(Sender: TObject);
+begin
+panas;
+end;
+
+procedure TFAsesmenAwalIgd.chklainperinganClick(Sender: TObject);
+begin
+lainyaPeringan;
+end;
+
+procedure TFAsesmenAwalIgd.chkmualClick(Sender: TObject);
+begin
+maulMuntah;
+end;
+
+procedure TFAsesmenAwalIgd.chktidurClick(Sender: TObject);
+begin
+tidur;
+end;
+
+procedure TFAsesmenAwalIgd.chknafsumakanClick(Sender: TObject);
+begin
+nafsuMakan;
+end;
+
+procedure TFAsesmenAwalIgd.chkaktifitasClick(Sender: TObject);
+begin
+akttifitas;
+end;
+
+procedure TFAsesmenAwalIgd.chklainefekClick(Sender: TObject);
+begin
+LainyaEfek;
+end;
+
+procedure TFAsesmenAwalIgd.cbbwajahnyeriChange(Sender: TObject);
+begin
+wajah;
+end;
+
+procedure TFAsesmenAwalIgd.cbbkakinyeriChange(Sender: TObject);
+begin
+Kaki;
+end;
+
+procedure TFAsesmenAwalIgd.cbbaktifitasnyeriChange(Sender: TObject);
+begin
+Aktifitas;
+end;
+
+procedure TFAsesmenAwalIgd.cbbmenangisnyeriChange(Sender: TObject);
+begin
+menangis;
+end;
+
+procedure TFAsesmenAwalIgd.cbbbersuaranyeriChange(Sender: TObject);
+begin
+Bersuara;
+end;
+
+procedure TFAsesmenAwalIgd.edttotalnyeriClick(Sender: TObject);
+begin
+totalNilaiNyeriAnak;
+end;
+
+procedure TFAsesmenAwalIgd.edttotalnyeriChange(Sender: TObject);
+begin
+totalNilaiNyeriAnak;
 end;
 
 end.

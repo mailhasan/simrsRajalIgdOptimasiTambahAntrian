@@ -199,7 +199,7 @@ begin
    cbbobs4.ItemIndex := 0;
    edtotalskorobs.Text := '0';
 
-   /// PASOEN ANAK
+   /// PASIEN ANAK
    cbbanak1.ItemIndex := 0;
    cbbanak2.ItemIndex := 0;
    cbbanak3.ItemIndex := 0;
@@ -207,5 +207,7 @@ begin
    edttotalskoranak.Text := '0';
   end;
 end;
+
+/// 
 
 end.

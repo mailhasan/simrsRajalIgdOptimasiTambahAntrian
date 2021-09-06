@@ -40365,6 +40365,7 @@ object FLoginSimrs: TFLoginSimrs
       Top = 48
       Width = 201
       Height = 21
+      PasswordChar = '*'
       TabOrder = 2
       OnKeyPress = edtPasswordKeyPress
     end

@@ -4172,6 +4172,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 20
             Text = 'edtTOTALSKOR'
+            OnChange = edtTOTALSKORChange
             OnClick = edtTOTALSKORClick
           end
         end
@@ -4649,6 +4650,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 0
+            OnClick = chkterusClick
           end
           object chktumpul: TCheckBox
             Left = 128
@@ -4663,6 +4665,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 1
+            OnClick = chktumpulClick
           end
           object chkcahaya: TCheckBox
             Left = 128
@@ -4677,6 +4680,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 2
+            OnClick = chkcahayaClick
           end
           object chkmakan: TCheckBox
             Left = 128
@@ -4691,6 +4695,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 3
+            OnClick = chkmakanClick
           end
           object chkmual: TCheckBox
             Left = 128
@@ -4705,6 +4710,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 4
+            OnClick = chkmualClick
           end
           object chktajam: TCheckBox
             Left = 280
@@ -4719,6 +4725,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 5
+            OnClick = chktajamClick
           end
           object chkgerakan: TCheckBox
             Left = 280
@@ -4733,6 +4740,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 6
+            OnClick = chkgerakanClick
           end
           object chksunyi: TCheckBox
             Left = 280
@@ -4747,6 +4755,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 7
+            OnClick = chksunyiClick
           end
           object chktidur: TCheckBox
             Left = 280
@@ -4761,6 +4770,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 8
+            OnClick = chktidurClick
           end
           object chkHILANG: TCheckBox
             Left = 456
@@ -4775,6 +4785,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 9
+            OnClick = chkHILANGClick
           end
           object chktertekan: TCheckBox
             Left = 456
@@ -4789,6 +4800,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 10
+            OnClick = chktertekanClick
           end
           object chkberbaring: TCheckBox
             Left = 456
@@ -4803,6 +4815,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 11
+            OnClick = chkberbaringClick
           end
           object chkdingin: TCheckBox
             Left = 456
@@ -4817,6 +4830,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 12
+            OnClick = chkdinginClick
           end
           object chknafsumakan: TCheckBox
             Left = 456
@@ -4831,6 +4845,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 13
+            OnClick = chknafsumakanClick
           end
           object chkterbakar: TCheckBox
             Left = 632
@@ -4845,6 +4860,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 14
+            OnClick = chkterbakarClick
           end
           object chkpanas: TCheckBox
             Left = 632
@@ -4859,6 +4875,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 15
+            OnClick = chkpanasClick
           end
           object chkaktifitas: TCheckBox
             Left = 632
@@ -4873,6 +4890,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 16
+            OnClick = chkaktifitasClick
           end
           object chklainsifat: TCheckBox
             Left = 792
@@ -4887,6 +4905,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 17
+            OnClick = chklainsifatClick
           end
           object edtlainsifat: TEdit
             Left = 896
@@ -4909,6 +4928,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 19
+            OnClick = chklainkualitasClick
           end
           object edtlainkualitas: TEdit
             Left = 896
@@ -4931,6 +4951,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 21
+            OnClick = chklainpemberatClick
           end
           object edtlainpemberat: TEdit
             Left = 896
@@ -4953,6 +4974,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 23
+            OnClick = chklainperinganClick
           end
           object edtlainperingan: TEdit
             Left = 896
@@ -4975,6 +4997,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 25
+            OnClick = chklainefekClick
           end
           object edtlainefek: TEdit
             Left = 896
@@ -6194,6 +6217,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               82030E4C26C11C77C971C071C071C071C071C071C071C07120690EFC3F18B195
               19A26FF61E0000000049454E44AE426082}
           end
+          object lblPasienMerasaNyeri: TLabel
+            Left = 816
+            Top = 96
+            Width = 121
+            Height = 13
+            Caption = 'lblPasienMerasaNyeri'
+          end
           object chkYaNyeri: TCheckBox
             Left = 160
             Top = 16
@@ -6227,7 +6257,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           object grpMENUNYERI: TGroupBox
             Left = 1048
             Top = 16
-            Width = 337
+            Width = 273
             Height = 57
             Caption = 'MENU'
             TabOrder = 2
@@ -6266,6 +6296,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '0'
             TabOrder = 3
+            OnClick = rb0Click
           end
           object rb1: TRadioButton
             Left = 224
@@ -6274,6 +6305,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '1'
             TabOrder = 4
+            OnClick = rb1Click
           end
           object rb2: TRadioButton
             Left = 288
@@ -6282,6 +6314,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '2'
             TabOrder = 5
+            OnClick = rb2Click
           end
           object rb3: TRadioButton
             Left = 352
@@ -6290,6 +6323,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '3'
             TabOrder = 6
+            OnClick = rb3Click
           end
           object rb4: TRadioButton
             Left = 408
@@ -6298,6 +6332,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '4'
             TabOrder = 7
+            OnClick = rb4Click
           end
           object rb5: TRadioButton
             Left = 464
@@ -6306,6 +6341,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '5'
             TabOrder = 8
+            OnClick = rb5Click
           end
           object rb6: TRadioButton
             Left = 528
@@ -6314,6 +6350,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '6'
             TabOrder = 9
+            OnClick = rb6Click
           end
           object rb7: TRadioButton
             Left = 584
@@ -6322,6 +6359,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '7'
             TabOrder = 10
+            OnClick = rb7Click
           end
           object rb8: TRadioButton
             Left = 648
@@ -6330,6 +6368,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '8'
             TabOrder = 11
+            OnClick = rb8Click
           end
           object rb9: TRadioButton
             Left = 704
@@ -6338,6 +6377,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '9'
             TabOrder = 12
+            OnClick = rb9Click
           end
           object rb10: TRadioButton
             Left = 760
@@ -6346,6 +6386,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 17
             Caption = '10'
             TabOrder = 13
+            OnClick = rb10Click
           end
           object cxlblIdNyeri: TcxLabel
             Left = 840
@@ -6672,6 +6713,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 5
             Text = 'cbbwajahnyeri'
+            OnChange = cbbwajahnyeriChange
             Items.Strings = (
               
                 'Tersenyum / tidak ada ekspresi khusus                           ' +
@@ -6689,6 +6731,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 6
             Text = 'cbbkakinyeri'
+            OnChange = cbbkakinyeriChange
             Items.Strings = (
               
                 'Gerakan normal / relaksasi                                      ' +
@@ -6708,6 +6751,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 7
             Text = 'cbbaktifitasnyeri'
+            OnChange = cbbaktifitasnyeriChange
             Items.Strings = (
               
                 'Tidur, posisi normal, mudah bergerak                            ' +
@@ -6725,6 +6769,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 8
             Text = 'cbbmenangisnyeri'
+            OnChange = cbbmenangisnyeriChange
             Items.Strings = (
               
                 'Tidak menangis (bangun tidur / tidur)                           ' +
@@ -6744,6 +6789,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 9
             Text = 'cbbbersuaranyeri'
+            OnChange = cbbbersuaranyeriChange
             Items.Strings = (
               
                 'Bersuara normal, tenang                                         ' +
@@ -6765,7 +6811,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           TabOrder = 4
           object lblskala: TLabel
-            Left = 32
+            Left = 24
             Top = 12
             Width = 32
             Height = 13
@@ -6778,7 +6824,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lblnyaman: TLabel
-            Left = 120
+            Left = 64
             Top = 12
             Width = 59
             Height = 13
@@ -6791,7 +6837,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lblkurangnyaman: TLabel
-            Left = 224
+            Left = 136
             Top = 12
             Width = 112
             Height = 13
@@ -6804,7 +6850,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lblnyerisedang: TLabel
-            Left = 384
+            Left = 256
             Top = 12
             Width = 100
             Height = 13
@@ -6817,7 +6863,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lblnyeriberat: TLabel
-            Left = 576
+            Left = 368
             Top = 12
             Width = 96
             Height = 13
@@ -6830,11 +6876,23 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object Label8: TLabel
-            Left = 792
+            Left = 816
             Top = 12
             Width = 69
             Height = 13
             Caption = 'TOTAL SKOR'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object lblHasilPenilaianAnak: TLabel
+            Left = 504
+            Top = 12
+            Width = 3
+            Height = 13
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -6849,6 +6907,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 22
             TabOrder = 0
             Text = 'edttotalnyeri'
+            OnChange = edttotalnyeriChange
+            OnClick = edttotalnyeriClick
           end
         end
         object grpprisikojatuh: TGroupBox
