@@ -381,7 +381,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
       Top = 97
       Width = 1438
       Height = 690
-      ActivePage = tsNyeri
+      ActivePage = TabSheet1
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -6223,6 +6223,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Width = 121
             Height = 13
             Caption = 'lblPasienMerasaNyeri'
+            Visible = False
           end
           object chkYaNyeri: TCheckBox
             Left = 160
@@ -6392,6 +6393,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Left = 840
             Top = 56
             Caption = 'cxlblIdNyeri'
+            Visible = False
           end
         end
         object grpNYERI: TGroupBox
@@ -7056,6 +7058,19 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
           end
+          object lblHasilResikoJatuh: TLabel
+            Left = 896
+            Top = 164
+            Width = 113
+            Height = 13
+            Caption = '.'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
           object cbbriwayatjatuh: TComboBox
             Left = 312
             Top = 32
@@ -7064,6 +7079,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 0
             Text = 'cbbriwayatjatuh'
+            OnChange = cbbriwayatjatuhChange
             Items.Strings = (
               'Ya                                       (25)'
               'Tidak                                   (0)')
@@ -7076,6 +7092,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 1
             Text = 'cbbdiagnosis'
+            OnChange = cbbdiagnosisChange
             Items.Strings = (
               'Ya                                       (15)'
               'Tidak                                   (0)')
@@ -7088,6 +7105,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 2
             Text = 'cbbalatbantu'
+            OnChange = cbbalatbantuChange
             Items.Strings = (
               'Perabot                                                (30)'
               'Tongkat / Alat Penopang                    (15)'
@@ -7101,6 +7119,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 3
             Text = 'cbbterpasanginfus'
+            OnChange = cbbterpasanginfusChange
             Items.Strings = (
               'Ya                                       (20)'
               'Tidak                                   (0)')
@@ -7113,6 +7132,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 4
             Text = 'cbbgayaberjalan'
+            OnChange = cbbgayaberjalanChange
             Items.Strings = (
               'Terganggu                                  (20)'
               'Lemah                                         (10)'
@@ -7126,6 +7146,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 5
             Text = 'cbbstatusmental'
+            OnChange = cbbstatusmentalChange
             Items.Strings = (
               'Sering lupa akan keterbatasan yang dimiliki    (15)'
               'Orientasi baik terhadap kemampuan diri sendiri (0)')
@@ -7215,9 +7236,11 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               end
               object cxgrdbclmnNyerinoDaftar: TcxGridDBColumn
                 DataBinding.FieldName = 'noDaftar'
+                Width = 126
               end
               object cxgrdbclmnNyerinoDaftarUnit: TcxGridDBColumn
                 DataBinding.FieldName = 'noDaftarUnit'
+                Width = 190
               end
               object cxgrdbclmnNyeritglDaftarUnit: TcxGridDBColumn
                 DataBinding.FieldName = 'tglDaftarUnit'
@@ -7442,7 +7465,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
           end
           object lbljikanyeri: TLabel
-            Left = 352
+            Left = 368
             Top = 12
             Width = 399
             Height = 13
@@ -7463,6 +7486,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 22
             TabOrder = 0
             Text = 'edttotalskorrisiko'
+            OnClick = edttotalskorrisikoClick
           end
         end
         object grpintervensi: TGroupBox
@@ -7676,6 +7700,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 0
             Text = 'cbbno1'
+            OnChange = cbbno1Change
             Items.Strings = (
               'Ya'
               'Tidak')
@@ -7694,6 +7719,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 1
             Text = 'cbbno2'
+            OnChange = cbbno2Change
             Items.Strings = (
               'Ya'
               'Tidak')
@@ -7712,6 +7738,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 2
             Text = 'cbbno3'
+            OnChange = cbbno3Change
             Items.Strings = (
               'YA'
               'TIDAK')
@@ -7905,6 +7932,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 0
             Text = 'cbbhumpty1'
+            OnChange = cbbhumpty1Change
             Items.Strings = (
               
                 'Dibawah 3 tahun                                                 ' +
@@ -7927,6 +7955,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 1
             Text = 'cbbhumpty2'
+            OnChange = cbbhumpty2Change
             Items.Strings = (
               
                 'Laki - laki                                                     ' +
@@ -7943,6 +7972,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 2
             Text = 'cbbhumpty3'
+            OnChange = cbbhumpty3Change
             Items.Strings = (
               
                 'Diagnosis Neurologi                                             ' +
@@ -7965,6 +7995,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 3
             Text = 'cbbhumpty4'
+            OnChange = cbbhumpty4Change
             Items.Strings = (
               
                 'Tidak sadar terhadap keterbatasan                               ' +
@@ -7984,6 +8015,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 4
             Text = 'cbbhumpty5'
+            OnChange = cbbhumpty5Change
             Items.Strings = (
               
                 'Riwayat jatuh dari tempat tidur saat bayi/anak                  ' +
@@ -8006,6 +8038,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 5
             Text = 'cbbhumpty6'
+            OnChange = cbbhumpty6Change
             Items.Strings = (
               
                 'Dalam 24 jam                                                    ' +
@@ -8025,6 +8058,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 6
             Text = 'cbbhumpty7'
+            OnChange = cbbhumpty7Change
             Items.Strings = (
               
                 'Bermacam-macam obat yang digunakan : obat sedatif, hipnotik,barb' +
@@ -8192,6 +8226,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 22
             TabOrder = 0
             Text = 'edtskorhumpty'
+            OnClick = edtskorhumptyClick
           end
         end
         object grpnutrisi: TGroupBox

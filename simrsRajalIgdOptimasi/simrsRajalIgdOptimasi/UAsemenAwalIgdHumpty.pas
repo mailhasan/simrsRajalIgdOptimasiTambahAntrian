@@ -7,6 +7,16 @@ procedure baruHumpty;
 procedure prosesSimpanHumpty;
 procedure tampilUbahHumpty;
 
+/// PENILAIAN RISIKO JATUH PEDIATRY (Humpty Dumpty)
+procedure Usia;
+procedure JenisKelamin;
+procedure Diagnosis;
+procedure GanguanKongnitif;
+procedure GanguanLingkungan;
+procedure ResponTerhadapOperasi;
+procedure Medikamentosa;
+procedure totalSkorResiko;
+
 implementation
 
 uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
@@ -208,6 +218,131 @@ begin
   end;
 end;
 
-/// 
+/// PENILAIAN RISIKO JATUH PEDIATRY (Humpty Dumpty)
+procedure Usia;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if cbbhumpty1.ItemIndex = 0 then
+      edtSkorPasien1.Text := '4'
+   else if cbbhumpty1.ItemIndex = 1 then
+      edtSkorPasien1.Text := '3'
+   else if cbbhumpty1.ItemIndex = 2 then
+      edtSkorPasien1.Text := '2'
+   else if cbbhumpty1.ItemIndex = 3 then
+      edtSkorPasien1.Text := '1'
+   else
+      edtSkorPasien1.Text := '0';
+  end;
+end;
+
+procedure JenisKelamin;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if cbbhumpty2.ItemIndex = 0 then
+      edtSkorPasien2.Text := '2'
+   else
+      edtSkorPasien2.Text := '1';
+  end;
+end;
+
+procedure Diagnosis;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if cbbhumpty3.ItemIndex = 0 then
+      edtSkorPasien3.Text := '4'
+   else if cbbhumpty3.ItemIndex = 1 then
+      edtSkorPasien3.Text := '3'
+   else if cbbhumpty3.ItemIndex = 2 then
+      edtSkorPasien3.Text := '2'
+   else if cbbhumpty3.ItemIndex = 3 then
+      edtSkorPasien3.Text := '1'
+   else
+      edtSkorPasien3.Text := '0';
+  end;
+end;
+
+procedure GanguanKongnitif;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if cbbhumpty4.ItemIndex = 0 then
+      edtSkorPasien4.Text := '3'
+   else if cbbhumpty4.ItemIndex = 1 then
+      edtSkorPasien4.Text := '2'
+   else if cbbhumpty4.ItemIndex = 2 then
+      edtSkorPasien4.Text := '1'
+   else
+      edtSkorPasien4.Text := '0'
+  end;
+end;
+
+procedure GanguanLingkungan;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if cbbhumpty5.ItemIndex = 0 then
+      edtSkorPasien5.Text := '4'
+   else if cbbhumpty5.ItemIndex = 1 then
+      edtSkorPasien5.Text := '3'
+   else if cbbhumpty5.ItemIndex = 2 then
+      edtSkorPasien5.Text := '2'
+   else if cbbhumpty5.ItemIndex = 3 then
+      edtSkorPasien5.Text := '1'
+   else
+      edtSkorPasien5.Text := '0';
+  end;
+end;
+
+procedure ResponTerhadapOperasi;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    if cbbhumpty6.ItemIndex = 0 then
+       edtSkorPasien6.Text := '3'
+    else if cbbhumpty6.ItemIndex = 1 then
+       edtSkorPasien6.Text := '2'
+    else if cbbhumpty6.ItemIndex = 2 then
+       edtSkorPasien6.Text := '1'
+    else
+      edtSkorPasien6.Text := '0';
+  end;
+end;
+
+procedure Medikamentosa;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if cbbhumpty7.ItemIndex = 0 then
+      edtSkorPasien7.Text := '3'
+   else if cbbhumpty7.ItemIndex = 1 then
+      edtSkorPasien7.Text := '2'
+   else if cbbhumpty7.ItemIndex = 2 then
+      edtSkorPasien7.Text := '3'
+   else
+      edtSkorPasien7.Text := '0';
+  end;
+end;
+
+//// totak skor
+procedure totalSkorResiko;
+var
+  skorPasien1,skorPasien2,skorPasien3,skorPasien4,skorPasien5,skorPasien6,skorPasien7,totalSkor:Integer;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   skorPasien1 := StrToInt(edtSkorPasien1.Text);
+   skorPasien2 := StrToInt(edtSkorPasien2.Text);
+   skorPasien3 := StrToInt(edtSkorPasien3.Text);
+   skorPasien4 := StrToInt(edtSkorPasien4.Text);
+   skorPasien5 := StrToInt(edtSkorPasien5.Text);
+   skorPasien6 := StrToInt(edtSkorPasien6.Text);
+   skorPasien7:= StrToInt(edtSkorPasien7.Text);
+   totalSkor:= skorPasien1+skorPasien2+skorPasien3+skorPasien4+skorPasien5+skorPasien6+skorPasien7;
+   edtskorhumpty.Text := IntToStr(totalSkor);
+  end;
+end;
 
 end.

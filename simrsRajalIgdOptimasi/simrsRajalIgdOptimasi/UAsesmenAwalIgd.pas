@@ -1227,6 +1227,7 @@ type
     lblInterpretasiHasil: TLabel;
     lblPasienMerasaNyeri: TLabel;
     lblHasilPenilaianAnak: TLabel;
+    lblHasilResikoJatuh: TLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1326,6 +1327,24 @@ type
     procedure cbbbersuaranyeriChange(Sender: TObject);
     procedure edttotalnyeriClick(Sender: TObject);
     procedure edttotalnyeriChange(Sender: TObject);
+    procedure cbbriwayatjatuhChange(Sender: TObject);
+    procedure cbbdiagnosisChange(Sender: TObject);
+    procedure cbbalatbantuChange(Sender: TObject);
+    procedure cbbterpasanginfusChange(Sender: TObject);
+    procedure cbbgayaberjalanChange(Sender: TObject);
+    procedure cbbstatusmentalChange(Sender: TObject);
+    procedure edttotalskorrisikoClick(Sender: TObject);
+    procedure cbbno1Change(Sender: TObject);
+    procedure cbbno2Change(Sender: TObject);
+    procedure cbbno3Change(Sender: TObject);
+    procedure cbbhumpty1Change(Sender: TObject);
+    procedure cbbhumpty2Change(Sender: TObject);
+    procedure cbbhumpty3Change(Sender: TObject);
+    procedure cbbhumpty4Change(Sender: TObject);
+    procedure cbbhumpty5Change(Sender: TObject);
+    procedure cbbhumpty6Change(Sender: TObject);
+    procedure cbbhumpty7Change(Sender: TObject);
+    procedure edtskorhumptyClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1882,6 +1901,96 @@ end;
 procedure TFAsesmenAwalIgd.edttotalnyeriChange(Sender: TObject);
 begin
 totalNilaiNyeriAnak;
+end;
+
+procedure TFAsesmenAwalIgd.cbbriwayatjatuhChange(Sender: TObject);
+begin
+riwayatJatuh;
+end;
+
+procedure TFAsesmenAwalIgd.cbbdiagnosisChange(Sender: TObject);
+begin
+Diagnosis;
+end;
+
+procedure TFAsesmenAwalIgd.cbbalatbantuChange(Sender: TObject);
+begin
+alatBantu;
+end;
+
+procedure TFAsesmenAwalIgd.cbbterpasanginfusChange(Sender: TObject);
+begin
+TerpasangInfus;
+end;
+
+procedure TFAsesmenAwalIgd.cbbgayaberjalanChange(Sender: TObject);
+begin
+GayaBerjalan;
+end;
+
+procedure TFAsesmenAwalIgd.cbbstatusmentalChange(Sender: TObject);
+begin
+StatusMental;
+end;
+
+procedure TFAsesmenAwalIgd.edttotalskorrisikoClick(Sender: TObject);
+begin
+totalNilaiResikoJatuh;
+end;
+
+procedure TFAsesmenAwalIgd.cbbno1Change(Sender: TObject);
+begin
+cbNo1;
+end;
+
+procedure TFAsesmenAwalIgd.cbbno2Change(Sender: TObject);
+begin
+cbNo2;
+end;
+
+procedure TFAsesmenAwalIgd.cbbno3Change(Sender: TObject);
+begin
+cbNo3;
+end;
+
+procedure TFAsesmenAwalIgd.cbbhumpty1Change(Sender: TObject);
+begin
+Usia;
+end;
+
+procedure TFAsesmenAwalIgd.cbbhumpty2Change(Sender: TObject);
+begin
+JenisKelamin;
+end;
+
+procedure TFAsesmenAwalIgd.cbbhumpty3Change(Sender: TObject);
+begin
+Diagnosis;
+end;
+
+procedure TFAsesmenAwalIgd.cbbhumpty4Change(Sender: TObject);
+begin
+GanguanKongnitif;
+end;
+
+procedure TFAsesmenAwalIgd.cbbhumpty5Change(Sender: TObject);
+begin
+GanguanLingkungan;
+end;
+
+procedure TFAsesmenAwalIgd.cbbhumpty6Change(Sender: TObject);
+begin
+ResponTerhadapOperasi;
+end;
+
+procedure TFAsesmenAwalIgd.cbbhumpty7Change(Sender: TObject);
+begin
+Medikamentosa;
+end;
+
+procedure TFAsesmenAwalIgd.edtskorhumptyClick(Sender: TObject);
+begin
+totalSkorResiko;
 end;
 
 end.

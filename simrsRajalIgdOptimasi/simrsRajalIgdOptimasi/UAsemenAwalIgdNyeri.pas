@@ -105,6 +105,20 @@ procedure menangis;
 procedure Bersuara;
 procedure totalNilaiNyeriAnak;
 
+/// penilain resiko jatuh
+procedure riwayatJatuh;
+procedure Diagnosis;
+procedure alatBantu;
+procedure TerpasangInfus;
+procedure GayaBerjalan;
+procedure StatusMental;
+procedure totalNilaiResikoJatuh;
+
+///intervensi resiko jatuh
+procedure cbNo1;
+procedure cbNo2;
+procedure cbNo3;
+
 
 
 implementation
@@ -151,6 +165,7 @@ begin
     chkNYERIBERAT.Checked:= False;
     chkNYERISEDANG.Checked:= False;
     chkNYERISANGAT.Checked:= False;
+
     edtLOKASINYERI.Text := '';
     edtsejak.Text := '';
 
@@ -196,12 +211,12 @@ begin
     cbbmenangis.ItemIndex:= 0;
     cbbbersuara.ItemIndex:= 0;
     /// resiko jatuh
-    cbbriwayatjatuh.ItemIndex:= 0;
-    cbbdiagnosis.ItemIndex:= 0;
-    cbbalatbantu.ItemIndex:= 0;
-    cbbterpasanginfus.ItemIndex:= 0;
-    cbbgayaberjalan.ItemIndex:= 0;
-    cbbstatusmental.ItemIndex:= 0;
+    cbbriwayatjatuh.ItemIndex:= 1;
+    cbbdiagnosis.ItemIndex:= 1;
+    cbbalatbantu.ItemIndex:= 1;
+    cbbterpasanginfus.ItemIndex:= 2;
+    cbbgayaberjalan.ItemIndex:= 1;
+    cbbstatusmental.ItemIndex:= 1;
 
     edtriwayatjatuh.Text:= '0';
     edtdiagnosis.Text:= '0';
@@ -214,12 +229,16 @@ begin
     edttotalskorrisiko.Text := '0';
 
     ///
-    cbbno1.ItemIndex := 0;
-    cbbno2.ItemIndex := 0;
-    cbbno3.ItemIndex := 0;
+    cbbno1.ItemIndex := 1;
+    cbbno2.ItemIndex := 1;
+    cbbno3.ItemIndex := 1;
     edtnamapetugas1.Text := '';
     edtnamapetugas2.Text := '';
     edtnamapetugas3.Text := '';
+
+    edtnamapetugas1.Enabled := False;
+    edtnamapetugas2.Enabled := False;
+    edtnamapetugas3.Enabled := False;
   end;
 end;
 
@@ -1530,6 +1549,143 @@ begin
    lblHasilPenilaianAnak.Caption := '';
   end;
   end;
+end;
+
+procedure riwayatJatuh;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbbriwayatjatuh.ItemIndex = 0 then
+   edtriwayatjatuh.Text := '25'
+  else
+   edtriwayatjatuh.Text := '0';
+ end;
+end;
+
+procedure Diagnosis;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbbdiagnosis.ItemIndex = 0 then
+    edtdiagnosis.Text := '15'
+  else
+    edtdiagnosis.Text := '0';
+ end;
+end;
+
+procedure alatBantu;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbbalatbantu.ItemIndex = 0 then
+   edtalatbantu.Text := '30'
+  else if cbbalatbantu.ItemIndex = 1 then
+   edtalatbantu.Text := '15'
+  else
+   edtalatbantu.Text := '0';
+ end;
+end;
+
+procedure TerpasangInfus;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbbterpasanginfus.ItemIndex = 0 then
+   edtterpasanginfus.Text := '20'
+  else
+   edtterpasanginfus.Text := '0';
+ end;
+end;
+
+procedure GayaBerjalan;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbbgayaberjalan.ItemIndex = 0 then
+   edtgayaberjalan.Text := '20'
+  else if cbbgayaberjalan.ItemIndex = 1 then
+   edtgayaberjalan.Text := '10'
+  else
+   edtgayaberjalan.Text := '0';
+ end;
+end;
+
+procedure StatusMental;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbbstatusmental.ItemIndex = 0 then
+    edtstatusmental.Text := '10'
+  else
+    edtstatusmental.Text := '0';
+ end;
+end;
+
+procedure totalNilaiResikoJatuh;
+var
+skorriwayatJatuh,
+skorDiagnosis,
+skoralatBantu,
+skorTerpasangInfus,
+skorGayaBerjalan,
+skorStatusMental,
+totalSkor:Integer;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  skorriwayatJatuh:= StrToInt(edtriwayatjatuh.Text);
+  skorDiagnosis := StrToInt(edtdiagnosis.Text);
+  skoralatBantu := StrToInt(edtalatbantu.Text);
+  skorTerpasangInfus := StrToInt(edtterpasanginfus.Text);
+  skorGayaBerjalan := StrToInt(edtgayaberjalan.Text);
+  skorStatusMental := StrToInt(edtstatusmental.Text);
+  totalSkor := skorriwayatJatuh+skorDiagnosis+skoralatBantu+skorTerpasangInfus+skorGayaBerjalan+skorStatusMental;
+  edttotalskorrisiko.Text := IntToStr(totalSkor);
+
+  case totalSkor of
+  45..150:lblHasilResikoJatuh.Caption:='>= Resiko Tinggi';
+  25..44:lblHasilResikoJatuh.Caption:= 'Resiko Sedang';
+  0..24:lblHasilResikoJatuh.Caption:= 'Resiko Rendah';
+  
+  else
+  lblHasilResikoJatuh.Caption:= 'Kosong';
+  end
+
+ end;
+end;
+
+///intervensi resiko jatuh
+procedure cbNo1;
+begin
+ with FAsesmenAwalIgd do
+ begin
+   if cbbno1.ItemIndex = 0 then
+       edtnamapetugas1.Enabled := True
+   else
+      edtnamapetugas1.Enabled := False;
+ end;
+end;
+
+procedure cbNo2;
+begin
+ with FAsesmenAwalIgd do
+ begin
+   if cbbno2.ItemIndex = 0 then
+       edtnamapetugas2.Enabled := True
+   else
+      edtnamapetugas2.Enabled := False;
+ end;
+end;
+
+procedure cbNo3;
+begin
+ with FAsesmenAwalIgd do
+ begin
+   if cbbno3.ItemIndex = 0 then
+       edtnamapetugas3.Enabled := True
+   else
+      edtnamapetugas3.Enabled := False;
+ end;
 end;
 
 
