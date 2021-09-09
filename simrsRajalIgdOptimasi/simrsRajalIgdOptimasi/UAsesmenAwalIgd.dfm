@@ -7061,7 +7061,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           object lblHasilResikoJatuh: TLabel
             Left = 896
             Top = 164
-            Width = 113
+            Width = 5
             Height = 13
             Caption = '.'
             Font.Charset = DEFAULT_CHARSET
@@ -8183,7 +8183,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           TabOrder = 1
           object lblskalahumpty: TLabel
-            Left = 200
+            Left = 32
             Top = 8
             Width = 394
             Height = 14
@@ -8192,7 +8192,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               'Rendah '
           end
           object lbljikahumpty: TLabel
-            Left = 168
+            Left = 32
             Top = 28
             Width = 387
             Height = 13
@@ -8212,6 +8212,19 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Width = 69
             Height = 13
             Caption = 'TOTAL SKOR'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object lblHasilPenilaiResiko: TLabel
+            Left = 627
+            Top = 20
+            Width = 3
+            Height = 13
+            Caption = '.'
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -8345,6 +8358,15 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 21
             TabOrder = 2
             Text = 'edtIMT'
+          end
+          object btn1: TButton
+            Left = 896
+            Top = 8
+            Width = 75
+            Height = 25
+            Caption = 'btn1'
+            TabOrder = 3
+            OnClick = btn1Click
           end
         end
         object grppasiendewasa: TGroupBox
@@ -8528,6 +8550,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 0
             Text = 'cbbImt'
+            OnChange = cbbImtChange
             Items.Strings = (
               
                 'Obesitas atau >20 kg/m2                                         ' +
@@ -8547,6 +8570,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 1
             Text = 'cbbAdaPenurunanBB'
+            OnChange = cbbAdaPenurunanBBChange
             Items.Strings = (
               
                 '< 5 %                                                           ' +
@@ -8566,6 +8590,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ItemHeight = 13
             TabOrder = 2
             Text = 'cbbApaAsupan'
+            OnChange = cbbApaAsupanChange
             Items.Strings = (
               
                 'Ya                                                              ' +
@@ -8605,6 +8630,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 21
             TabOrder = 6
             Text = 'edttotalskorhumpty1'
+            OnChange = edttotalskorhumpty1Change
           end
         end
         object grppasienobstetri: TGroupBox

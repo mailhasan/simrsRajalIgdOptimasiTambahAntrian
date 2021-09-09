@@ -1228,6 +1228,8 @@ type
     lblPasienMerasaNyeri: TLabel;
     lblHasilPenilaianAnak: TLabel;
     lblHasilResikoJatuh: TLabel;
+    lblHasilPenilaiResiko: TLabel;
+    btn1: TButton;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1345,6 +1347,11 @@ type
     procedure cbbhumpty6Change(Sender: TObject);
     procedure cbbhumpty7Change(Sender: TObject);
     procedure edtskorhumptyClick(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
+    procedure cbbImtChange(Sender: TObject);
+    procedure cbbAdaPenurunanBBChange(Sender: TObject);
+    procedure cbbApaAsupanChange(Sender: TObject);
+    procedure edttotalskorhumpty1Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1991,6 +1998,31 @@ end;
 procedure TFAsesmenAwalIgd.edtskorhumptyClick(Sender: TObject);
 begin
 totalSkorResiko;
+end;
+
+procedure TFAsesmenAwalIgd.btn1Click(Sender: TObject);
+begin
+hitungStatusNutrisi;
+end;
+
+procedure TFAsesmenAwalIgd.cbbImtChange(Sender: TObject);
+begin
+imtPxDewasa;
+end;
+
+procedure TFAsesmenAwalIgd.cbbAdaPenurunanBBChange(Sender: TObject);
+begin
+adaPenuruganPxDewasa;
+end;
+
+procedure TFAsesmenAwalIgd.cbbApaAsupanChange(Sender: TObject);
+begin
+adaAsupanPxDewasa;
+end;
+
+procedure TFAsesmenAwalIgd.edttotalskorhumpty1Change(Sender: TObject);
+begin
+totalPxHumpty;
 end;
 
 end.

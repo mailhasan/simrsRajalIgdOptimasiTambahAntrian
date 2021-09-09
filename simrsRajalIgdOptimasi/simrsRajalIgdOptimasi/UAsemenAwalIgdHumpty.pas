@@ -17,6 +17,15 @@ procedure ResponTerhadapOperasi;
 procedure Medikamentosa;
 procedure totalSkorResiko;
 
+/// status nutrisi
+procedure hitungStatusNutrisi;
+
+//// pasien dewasa
+procedure imtPxDewasa;
+procedure adaPenuruganPxDewasa;
+procedure adaAsupanPxDewasa;
+procedure totalPxHumpty;
+
 implementation
 
 uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
@@ -342,7 +351,87 @@ begin
    skorPasien7:= StrToInt(edtSkorPasien7.Text);
    totalSkor:= skorPasien1+skorPasien2+skorPasien3+skorPasien4+skorPasien5+skorPasien6+skorPasien7;
    edtskorhumpty.Text := IntToStr(totalSkor);
+
+   case totalSkor of
+   45..150:lblHasilPenilaiResiko.Caption := '>= 45 Resiko Tinggi';
+   25..44:lblHasilPenilaiResiko.Caption := '25-44 Resiko Sedang';
+   0..24:lblHasilPenilaiResiko.Caption := '00-24 Resiko Rendah';
+   else
+   lblHasilPenilaiResiko.Caption := 'Kosong';
+   end
+
   end;
+end;
+
+/// status nutrisi
+procedure hitungStatusNutrisi;
+var
+  bb,tb:extended;
+  imt:String;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    bb:=StrToFloat(edtbb.Text);
+    tb := StrToFloat(edtTb.Text)*StrToFloat(edtTb.Text);
+    ///ShowMessage(FormatFloat('#,##0.00;( #,##0.00);Kosong', tb));
+    ///imt := (bb)/StrToFloat(FormatFloat('#,##0.00;( #,##0.00);Kosong', tb));
+    imt := FloatToStr((bb)/(tb));
+
+    ///ShowMessage('#,##0 : '+formatfloat('#,##0', imt));
+    edtIMT.Text := formatfloat('0.####', StrToFloat(imt));   ///FloatToStr((imt);
+  end;
+end;
+
+/// pasien dewasa
+procedure imtPxDewasa;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if cbbImt.ItemIndex = 0 then
+       edtImt1.Text := '0'
+   else if cbbImt.ItemIndex = 0 then
+       edtImt1.Text := '1'
+   else
+       edtImt1.Text := '2'; 
+  end;
+end;
+
+procedure adaPenuruganPxDewasa;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if cbbAdaPenurunanBB.ItemIndex = 0 then
+       edtAdaPenurunan2.Text := '0'
+   else if cbbAdaPenurunanBB.ItemIndex = 1 then
+       edtAdaPenurunan2.Text := '1'
+   else
+       edtAdaPenurunan2.Text := '2';
+  end;
+end;
+
+procedure adaAsupanPxDewasa;
+begin
+  with FAsesmenAwalIgd do
+  begin
+   if cbbApaAsupan.ItemIndex = 0 then
+       edtApaAsupan.Text := '2'
+   else
+       edtApaAsupan.Text := '0';
+  end;
+end;
+
+procedure totalPxHumpty;
+var
+  skorImtpxDewasa,skorAdaPenuruanpxDewasa,skorAsupanpxDewasa,totalpxDewasaHumpty:Integer;
+begin
+ with FAsesmenAwalIgd do
+ begin
+   skorImtpxDewasa := StrToInt(edtImt1.Text);
+   skorAdaPenuruanpxDewasa :=StrToInt(edtAdaPenurunan2.Text);
+   skorAsupanpxDewasa := StrToInt(edtApaAsupan.Text);
+   totalpxDewasaHumpty := skorImtpxDewasa+skorAdaPenuruanpxDewasa+skorAsupanpxDewasa;
+   edtskorhumpty.Text := IntToStr(totalpxDewasaHumpty);
+ end;
 end;
 
 end.
