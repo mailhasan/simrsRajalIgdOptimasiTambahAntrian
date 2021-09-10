@@ -1229,7 +1229,43 @@ type
     lblHasilPenilaianAnak: TLabel;
     lblHasilResikoJatuh: TLabel;
     lblHasilPenilaiResiko: TLabel;
-    btn1: TButton;
+    cxgrdbtblvwHumpty: TcxGridDBTableView;
+    cxgrdlvlHumpty: TcxGridLevel;
+    cxgrdHumpty: TcxGrid;
+    cxgrdbclmnHumptyidAsesmenAwalHumpty: TcxGridDBColumn;
+    cxgrdbclmnHumptynoRekamedis: TcxGridDBColumn;
+    cxgrdbclmnHumptynoDaftar: TcxGridDBColumn;
+    cxgrdbclmnHumptynoDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnHumptytglDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnHumptyskorUsia: TcxGridDBColumn;
+    cxgrdbclmnHumptyskorJenisKelamin: TcxGridDBColumn;
+    cxgrdbclmnHumptyskorDiagnosa: TcxGridDBColumn;
+    cxgrdbclmnHumptyskorGanguanKognitif: TcxGridDBColumn;
+    cxgrdbclmnHumptyskorGanguanLingkungan: TcxGridDBColumn;
+    cxgrdbclmnHumptyskorResponTerhadap: TcxGridDBColumn;
+    cxgrdbclmnHumptyskorMedikamentos: TcxGridDBColumn;
+    cxgrdbclmnHumptytotalSkorPenilaianResikoJatuh: TcxGridDBColumn;
+    cxgrdbclmnHumptyberatBadan: TcxGridDBColumn;
+    cxgrdbclmnHumptytinggiBadah: TcxGridDBColumn;
+    cxgrdbclmnHumptyimt: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienDewasaSATU: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienDewasaDUA: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienDewasaTIGA: TcxGridDBColumn;
+    cxgrdbclmnHumptytotalPasienDewasa: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienObstetriSATU: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienObstetriDUA: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienObstetriTIGA: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienObstetriEMPAT: TcxGridDBColumn;
+    cxgrdbclmnHumptytotalPasienObstetri: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienAnakSATU: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienAnakDUA: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienAnakTIGA: TcxGridDBColumn;
+    cxgrdbclmnHumptypasienAnakEMPAT: TcxGridDBColumn;
+    cxgrdbclmnHumptytotalPasienAnak: TcxGridDBColumn;
+    cxgrdbclmnHumptycreateDate: TcxGridDBColumn;
+    cxgrdbclmnHumptycreateUser: TcxGridDBColumn;
+    cxgrdbclmnHumptymodifDate: TcxGridDBColumn;
+    cxgrdbclmnHumptymodifUser: TcxGridDBColumn;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1347,11 +1383,14 @@ type
     procedure cbbhumpty6Change(Sender: TObject);
     procedure cbbhumpty7Change(Sender: TObject);
     procedure edtskorhumptyClick(Sender: TObject);
-    procedure btn1Click(Sender: TObject);
     procedure cbbImtChange(Sender: TObject);
     procedure cbbAdaPenurunanBBChange(Sender: TObject);
     procedure cbbApaAsupanChange(Sender: TObject);
-    procedure edttotalskorhumpty1Change(Sender: TObject);
+    procedure edttotalskorhumpty1Click(Sender: TObject);
+    procedure edtIMTClick(Sender: TObject);
+    procedure edtotalskorobsClick(Sender: TObject);
+    procedure edttotalskoranakClick(Sender: TObject);
+    procedure btnSIMPANHUMPTYClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -2000,11 +2039,6 @@ begin
 totalSkorResiko;
 end;
 
-procedure TFAsesmenAwalIgd.btn1Click(Sender: TObject);
-begin
-hitungStatusNutrisi;
-end;
-
 procedure TFAsesmenAwalIgd.cbbImtChange(Sender: TObject);
 begin
 imtPxDewasa;
@@ -2020,9 +2054,29 @@ begin
 adaAsupanPxDewasa;
 end;
 
-procedure TFAsesmenAwalIgd.edttotalskorhumpty1Change(Sender: TObject);
+procedure TFAsesmenAwalIgd.edttotalskorhumpty1Click(Sender: TObject);
 begin
 totalPxHumpty;
+end;
+
+procedure TFAsesmenAwalIgd.edtIMTClick(Sender: TObject);
+begin
+hitungStatusNutrisi;
+end;
+
+procedure TFAsesmenAwalIgd.edtotalskorobsClick(Sender: TObject);
+begin
+totalSkorObs;
+end;
+
+procedure TFAsesmenAwalIgd.edttotalskoranakClick(Sender: TObject);
+begin
+totalSkorAnak;
+end;
+
+procedure TFAsesmenAwalIgd.btnSIMPANHUMPTYClick(Sender: TObject);
+begin
+prosesSimpanHumpty;
 end;
 
 end.

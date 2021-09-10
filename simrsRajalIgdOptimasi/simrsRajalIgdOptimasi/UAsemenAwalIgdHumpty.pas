@@ -26,6 +26,12 @@ procedure adaPenuruganPxDewasa;
 procedure adaAsupanPxDewasa;
 procedure totalPxHumpty;
 
+/// skor pasien obsterti
+procedure totalSkorObs;
+
+/// skor pasien anak
+procedure totalSkorAnak;
+
 implementation
 
 uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
@@ -86,17 +92,17 @@ begin
    edttotalskorhumpty1.Text := '0';
 
    /// pasien obsterri
-   cbbobs1.ItemIndex := 0;
-   cbbobs2.ItemIndex := 0;
-   cbbobs3.ItemIndex := 0;
-   cbbobs4.ItemIndex := 0;
+   cbbobs1.ItemIndex := 1;
+   cbbobs2.ItemIndex := 1;
+   cbbobs3.ItemIndex := 1;
+   cbbobs4.ItemIndex := 1;
    edtotalskorobs.Text := '0';
 
    /// PASOEN ANAK
-   cbbanak1.ItemIndex := 0;
-   cbbanak2.ItemIndex := 0;
-   cbbanak3.ItemIndex := 0;
-   cbbanak4.ItemIndex := 0;
+   cbbanak1.ItemIndex := 1;
+   cbbanak2.ItemIndex := 1;
+   cbbanak3.ItemIndex := 1;
+   cbbanak4.ItemIndex := 1;
    edttotalskoranak.Text := '0';
   end;
   
@@ -389,7 +395,7 @@ begin
   begin
    if cbbImt.ItemIndex = 0 then
        edtImt1.Text := '0'
-   else if cbbImt.ItemIndex = 0 then
+   else if cbbImt.ItemIndex = 1 then
        edtImt1.Text := '1'
    else
        edtImt1.Text := '2'; 
@@ -415,8 +421,8 @@ begin
   begin
    if cbbApaAsupan.ItemIndex = 0 then
        edtApaAsupan.Text := '2'
-   else
-       edtApaAsupan.Text := '0';
+   else 
+       edtApaAsupan.Text := '0'
   end;
 end;
 
@@ -430,8 +436,73 @@ begin
    skorAdaPenuruanpxDewasa :=StrToInt(edtAdaPenurunan2.Text);
    skorAsupanpxDewasa := StrToInt(edtApaAsupan.Text);
    totalpxDewasaHumpty := skorImtpxDewasa+skorAdaPenuruanpxDewasa+skorAsupanpxDewasa;
-   edtskorhumpty.Text := IntToStr(totalpxDewasaHumpty);
+   edttotalskorhumpty1.Text := IntToStr(totalpxDewasaHumpty);
  end;
 end;
+
+/// skor obsterti
+procedure totalSkorObs;
+var
+  skorObs1,skorObs2,skorObs3,skorObs4,totalSkor:Integer;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbbobs1.ItemIndex = 0 then
+      skorObs1 := 1
+  else
+      skorObs1 := 0;
+
+   if cbbobs2.ItemIndex = 0 then
+      skorObs2 := 2
+  else
+      skorObs2 := 0;
+
+  if cbbobs3.ItemIndex = 0 then
+      skorObs3 := 1
+  else
+      skorObs3 := 0;
+
+  if cbbobs4.ItemIndex = 0 then
+      skorObs4 := 2
+  else
+      skorObs4 := 0;
+
+  totalSkor:= skorObs1+skorObs2+skorObs3+skorObs4;
+  edtotalskorobs.Text := IntToStr(totalSkor);
+ end;
+end;
+
+/// skor pasien anak
+procedure totalSkorAnak;
+var
+  cbAnk1,cbAnk2,cbAnk3,cbAnk4,totalSkorAnak:Integer;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbbanak1.ItemIndex = 0 then
+      cbAnk1 := 1
+  else
+      cbAnk1 := 0;
+
+   if cbbanak2.ItemIndex = 0 then
+      cbAnk2 := 2
+  else
+      cbAnk2 := 0;
+
+  if cbbanak3.ItemIndex = 0 then
+      cbAnk3 := 1
+  else
+      cbAnk3 := 0;
+
+  if cbbanak4.ItemIndex = 0 then
+      cbAnk4 := 2
+  else
+      cbAnk4 := 0;
+
+  totalSkorAnak:= cbAnk1+cbAnk2+cbAnk3+cbAnk4;
+  edttotalskoranak.Text := IntToStr(totalSkorAnak);
+ end;
+end;
+
 
 end.

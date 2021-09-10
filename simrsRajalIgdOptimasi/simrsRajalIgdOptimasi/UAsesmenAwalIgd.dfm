@@ -7793,7 +7793,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grphumpty: TGroupBox
           Left = 0
           Top = 0
-          Width = 1433
+          Width = 1913
           Height = 217
           Caption = 'PENILAIAN RISIKO JATUH PEDIATRY (Humpty Dumpty)'
           Color = 16577248
@@ -8154,6 +8154,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Font.Style = [fsBold]
               ParentFont = False
               TabOrder = 0
+              OnClick = btnSIMPANHUMPTYClick
             end
             object btnUBAHHUMPTY: TButton
               Left = 176
@@ -8177,7 +8178,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpskalahumpty: TGroupBox
           Left = 0
           Top = 216
-          Width = 1081
+          Width = 985
           Height = 49
           Color = 16577248
           ParentColor = False
@@ -8245,7 +8246,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpnutrisi: TGroupBox
           Left = 0
           Top = 264
-          Width = 1081
+          Width = 985
           Height = 41
           Caption = 'STATUS NUTRISI (diisi oleh perawat)'
           Color = 16577248
@@ -8358,21 +8359,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 21
             TabOrder = 2
             Text = 'edtIMT'
-          end
-          object btn1: TButton
-            Left = 896
-            Top = 8
-            Width = 75
-            Height = 25
-            Caption = 'btn1'
-            TabOrder = 3
-            OnClick = btn1Click
+            OnClick = edtIMTClick
           end
         end
         object grppasiendewasa: TGroupBox
           Left = 0
           Top = 304
-          Width = 1081
+          Width = 985
           Height = 145
           Caption = 'PASIEN DEWASA'
           Color = 16577248
@@ -8630,13 +8623,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 21
             TabOrder = 6
             Text = 'edttotalskorhumpty1'
-            OnChange = edttotalskorhumpty1Change
+            OnClick = edttotalskorhumpty1Click
           end
         end
         object grppasienobstetri: TGroupBox
           Left = 0
           Top = 448
-          Width = 1081
+          Width = 985
           Height = 153
           Caption = 'PASIEN OBSTETRI / KEHAMILAN / NIFAS'
           Color = 16577248
@@ -8863,12 +8856,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 21
             TabOrder = 4
             Text = 'edtotalskorobs'
+            OnClick = edtotalskorobsClick
           end
         end
         object grppasienanak: TGroupBox
           Left = 0
           Top = 600
-          Width = 1081
+          Width = 985
           Height = 225
           Caption = 'PASIEN ANAK'
           Color = 16577248
@@ -9190,12 +9184,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 21
             TabOrder = 4
             Text = 'edttotalskoranak'
+            OnClick = edttotalskoranakClick
           end
         end
         object grpRIWAYATHUMPTY: TGroupBox
-          Left = 1080
+          Left = 984
           Top = 216
-          Width = 353
+          Width = 929
           Height = 609
           Caption = 'DAFTAR RIWAYAT PENILAIAN RISIKO JATUH'
           Color = 16577248
@@ -9207,6 +9202,130 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           ParentFont = False
           TabOrder = 6
+          object cxgrdHumpty: TcxGrid
+            Left = 2
+            Top = 15
+            Width = 925
+            Height = 592
+            Align = alClient
+            TabOrder = 0
+            object cxgrdbtblvwHumpty: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              DataController.DataSource = DataSimrs1.dst_asesmen_awal_humpty
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.Editing = False
+              OptionsData.Inserting = False
+              object cxgrdbclmnHumptyidAsesmenAwalHumpty: TcxGridDBColumn
+                DataBinding.FieldName = 'idAsesmenAwalHumpty'
+                Width = 187
+              end
+              object cxgrdbclmnHumptynoRekamedis: TcxGridDBColumn
+                DataBinding.FieldName = 'noRekamedis'
+              end
+              object cxgrdbclmnHumptynoDaftar: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftar'
+              end
+              object cxgrdbclmnHumptynoDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftarUnit'
+              end
+              object cxgrdbclmnHumptytglDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'tglDaftarUnit'
+              end
+              object cxgrdbclmnHumptyskorUsia: TcxGridDBColumn
+                DataBinding.FieldName = 'skorUsia'
+              end
+              object cxgrdbclmnHumptyskorJenisKelamin: TcxGridDBColumn
+                DataBinding.FieldName = 'skorJenisKelamin'
+              end
+              object cxgrdbclmnHumptyskorDiagnosa: TcxGridDBColumn
+                DataBinding.FieldName = 'skorDiagnosa'
+              end
+              object cxgrdbclmnHumptyskorGanguanKognitif: TcxGridDBColumn
+                DataBinding.FieldName = 'skorGanguanKognitif'
+              end
+              object cxgrdbclmnHumptyskorGanguanLingkungan: TcxGridDBColumn
+                DataBinding.FieldName = 'skorGanguanLingkungan'
+              end
+              object cxgrdbclmnHumptyskorResponTerhadap: TcxGridDBColumn
+                DataBinding.FieldName = 'skorResponTerhadap'
+              end
+              object cxgrdbclmnHumptyskorMedikamentos: TcxGridDBColumn
+                DataBinding.FieldName = 'skorMedikamentos'
+              end
+              object cxgrdbclmnHumptytotalSkorPenilaianResikoJatuh: TcxGridDBColumn
+                DataBinding.FieldName = 'totalSkorPenilaianResikoJatuh'
+              end
+              object cxgrdbclmnHumptyberatBadan: TcxGridDBColumn
+                DataBinding.FieldName = 'beratBadan'
+              end
+              object cxgrdbclmnHumptytinggiBadah: TcxGridDBColumn
+                DataBinding.FieldName = 'tinggiBadah'
+              end
+              object cxgrdbclmnHumptyimt: TcxGridDBColumn
+                DataBinding.FieldName = 'imt'
+              end
+              object cxgrdbclmnHumptypasienDewasaSATU: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienDewasaSATU'
+              end
+              object cxgrdbclmnHumptypasienDewasaDUA: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienDewasaDUA'
+              end
+              object cxgrdbclmnHumptypasienDewasaTIGA: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienDewasaTIGA'
+              end
+              object cxgrdbclmnHumptytotalPasienDewasa: TcxGridDBColumn
+                DataBinding.FieldName = 'totalPasienDewasa'
+              end
+              object cxgrdbclmnHumptypasienObstetriSATU: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienObstetriSATU'
+              end
+              object cxgrdbclmnHumptypasienObstetriDUA: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienObstetriDUA'
+              end
+              object cxgrdbclmnHumptypasienObstetriTIGA: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienObstetriTIGA'
+              end
+              object cxgrdbclmnHumptypasienObstetriEMPAT: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienObstetriEMPAT'
+              end
+              object cxgrdbclmnHumptytotalPasienObstetri: TcxGridDBColumn
+                DataBinding.FieldName = 'totalPasienObstetri'
+              end
+              object cxgrdbclmnHumptypasienAnakSATU: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienAnakSATU'
+              end
+              object cxgrdbclmnHumptypasienAnakDUA: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienAnakDUA'
+              end
+              object cxgrdbclmnHumptypasienAnakTIGA: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienAnakTIGA'
+              end
+              object cxgrdbclmnHumptypasienAnakEMPAT: TcxGridDBColumn
+                DataBinding.FieldName = 'pasienAnakEMPAT'
+              end
+              object cxgrdbclmnHumptytotalPasienAnak: TcxGridDBColumn
+                DataBinding.FieldName = 'totalPasienAnak'
+              end
+              object cxgrdbclmnHumptycreateDate: TcxGridDBColumn
+                DataBinding.FieldName = 'createDate'
+              end
+              object cxgrdbclmnHumptycreateUser: TcxGridDBColumn
+                DataBinding.FieldName = 'createUser'
+              end
+              object cxgrdbclmnHumptymodifDate: TcxGridDBColumn
+                DataBinding.FieldName = 'modifDate'
+              end
+              object cxgrdbclmnHumptymodifUser: TcxGridDBColumn
+                DataBinding.FieldName = 'modifUser'
+              end
+            end
+            object cxgrdlvlHumpty: TcxGridLevel
+              GridView = cxgrdbtblvwHumpty
+            end
+          end
         end
       end
       object TabSheet2: TTabSheet
