@@ -5,6 +5,11 @@ interface
 procedure baruDicharge;
 procedure proesesSimpanDicharge;
 
+procedure usiaLbh65;
+procedure keterBtsMobilitias;
+procedure perawatan;
+procedure bntUntuk;
+
 implementation
 
 uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
@@ -93,9 +98,49 @@ begin
 end;
 
 procedure proesesSimpanDicharge;
+var
+  usia65,ktbMobilitas,Prwt,bntuan,isiKeluhanUtama:String;
 begin
   with FAsesmenAwalIgd do
   begin
+   /// usia
+   if cbya1.Checked = True then
+       usia65 := 'YA';
+
+   if cbtidak1.Checked = True then
+       usia65 := 'TIDAK';
+
+   /// mobilitas
+    if cbya2.Checked = True then
+       ktbMobilitas := 'YA';
+
+   if cbtidak2.Checked = True then
+       ktbMobilitas := 'TIDAK';
+
+   /// perawatan
+   if cbya3.Checked = True then
+       Prwt := 'YA';
+
+   if cbtidak3.Checked = True then
+       Prwt := 'TIDAK';
+
+   /// bantuan
+   if cbya4.Checked = True then
+       bntuan := 'YA';
+
+   if cbtidak4.Checked = True then
+       bntuan := 'TIDAK';
+
+   ///isi keluhan utama
+   if cbauto.Checked = True then
+      isiKeluhanUtama := 'auto anamesis'
+   else if cbhetero.Checked = True then
+      isiKeluhanUtama := 'heteroanamnesis'
+   else
+     isiKeluhanUtama := 'kosong';
+
+
+
    if btnSIMPANDIS.Caption = 'SIMPAN' then
    begin
     with DataSimrs1.qryt_asesmen_awal_discharge do
@@ -118,7 +163,23 @@ begin
       'impelementasiSEBELAS,impelementasiDUABELAS,'+
 
       'keluhanUtama,pilihanKeluhanUtama,riwayatPenyakit,riwayatAlergi,riwayatAlergiKet,riwayatPenyakitYangLalu,ketRiwayatPenyakitYangLalu,'+
-      'menggunakanObatSaatIni,ketMenggunakanObatSaatIni,pilihPenyakitKeluarga,riwayatPenyakitKeluarga,tanggal,jam,perawat,pemeriksaanFisik,lab,rad)';
+      'menggunakanObatSaatIni,ketMenggunakanObatSaatIni,pilihPenyakitKeluarga,riwayatPenyakitKeluarga,tanggal,jam,perawat,pemeriksaanFisik,lab,rad) values '+
+      '("'+edtNoRm.Text+'","'+edtNoRegistrasi.Text+'","'+edtNoRajal.Text+'","'+FormatDateTime('yyyy-MM-dd',Now)+'",'+
+
+      '"'+usia65+'","'+ktbMobilitas+'","'+ktbMobilitas+'","'+Prwt+'","'+bntuan+'",'+
+
+      '"'+FormatDateTime('hh:mm:ss',cxtmdt01.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt02.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt03.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt04.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt05.Time)+'",'+
+      '"'+FormatDateTime('hh:mm:ss',cxtmdt06.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt07.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt08.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt09.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt10.Time)+'",'+
+      '"'+FormatDateTime('hh:mm:ss',cxtmdt11.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt12.Time)+'",'+
+
+      '"'+edtlain1.Text+'","'+edtlain2.Text+'","'+edtlain3.Text+'",'+
+      '"'+FormatDateTime('hh:mm:ss',cxtmdt13.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt14.Time)+'","'+FormatDateTime('hh:mm:ss',cxtmdt15.Time)+'",'+
+
+      '"'+edtimplementasi1.Text+'","'+edtimplementasi2.Text+'","'+edtimplementasi4.Text+'","'+edtimplementasi5.Text+'",'+
+      '"'+edtimplementasi6.Text+'","'+edtimplementasi7.Text+'","'+edtimplementasi8.Text+'","'+edtimplementasi9.Text+'","'+edtimplementasi10.Text+'",'+
+      '"'+edtimplementasi11.Text+'","'+edtimplementasi12.Text+'",'+
+      
+      '"'+edtKeluhan.Text+'","'+isiKeluhanUtama+'")';
       ExecSQL;
       SQL.Text := 'select * from t_asesmen_awal_discharge';
       Open;
@@ -129,6 +190,70 @@ begin
 
    end;
   end;
+end;
+
+procedure usiaLbh65;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbya1.Checked = True then
+     cbtidak1.Enabled := False
+  else
+     cbtidak1.Enabled := True;
+
+  if cbtidak1.Checked = True then
+     cbya1.Enabled := False
+  else
+     cbya1.Enabled := True;
+ end;
+end;
+
+procedure keterBtsMobilitias;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbya2.Checked = True then
+     cbtidak2.Enabled := False
+  else
+     cbtidak2.Enabled := True;
+
+  if cbtidak2.Checked = True then
+     cbya2.Enabled := False
+  else
+     cbya2.Enabled := True;
+ end;
+end;
+
+procedure perawatan;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbya3.Checked = True then
+     cbtidak3.Enabled := False
+  else
+     cbtidak3.Enabled := True;
+
+  if cbtidak3.Checked = True then
+     cbya3.Enabled := False
+  else
+     cbya3.Enabled := True;
+ end;
+end;
+
+procedure bntUntuk;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if cbya4.Checked = True then
+     cbtidak4.Enabled := False
+  else
+     cbtidak4.Enabled := True;
+
+  if cbtidak4.Checked = True then
+     cbya4.Enabled := False
+  else
+     cbya4.Enabled := True;
+ end;
 end;
 
 

@@ -1393,6 +1393,15 @@ type
     procedure btnSIMPANHUMPTYClick(Sender: TObject);
     procedure btnUBAHHUMPTYClick(Sender: TObject);
     procedure btnTAMBAHDISCHARGEClick(Sender: TObject);
+    procedure cbya1Click(Sender: TObject);
+    procedure cbtidak1Click(Sender: TObject);
+    procedure cbya2Click(Sender: TObject);
+    procedure cbtidak2Click(Sender: TObject);
+    procedure cbya3Click(Sender: TObject);
+    procedure cbtidak3Click(Sender: TObject);
+    procedure cbya4Click(Sender: TObject);
+    procedure cbtidak4Click(Sender: TObject);
+    procedure btnSIMPANDISClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -2089,6 +2098,51 @@ end;
 procedure TFAsesmenAwalIgd.btnTAMBAHDISCHARGEClick(Sender: TObject);
 begin
 baruDicharge;
+end;
+
+procedure TFAsesmenAwalIgd.cbya1Click(Sender: TObject);
+begin
+usiaLbh65;
+end;
+
+procedure TFAsesmenAwalIgd.cbtidak1Click(Sender: TObject);
+begin
+usiaLbh65;
+end;
+
+procedure TFAsesmenAwalIgd.cbya2Click(Sender: TObject);
+begin
+keterBtsMobilitias;
+end;
+
+procedure TFAsesmenAwalIgd.cbtidak2Click(Sender: TObject);
+begin
+keterBtsMobilitias;
+end;
+
+procedure TFAsesmenAwalIgd.cbya3Click(Sender: TObject);
+begin
+perawatan;
+end;
+
+procedure TFAsesmenAwalIgd.cbtidak3Click(Sender: TObject);
+begin
+perawatan;
+end;
+
+procedure TFAsesmenAwalIgd.cbya4Click(Sender: TObject);
+begin
+bntUntuk;
+end;
+
+procedure TFAsesmenAwalIgd.cbtidak4Click(Sender: TObject);
+begin
+bntUntuk;
+end;
+
+procedure TFAsesmenAwalIgd.btnSIMPANDISClick(Sender: TObject);
+begin
+ proesesSimpanDicharge;
 end;
 
 end.

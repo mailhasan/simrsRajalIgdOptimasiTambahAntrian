@@ -9466,6 +9466,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'SIMPAN'
               TabOrder = 0
+              OnClick = btnSIMPANDISClick
             end
             object btnUBAHDIS: TButton
               Left = 184
@@ -9498,6 +9499,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 1
+            OnClick = cbya1Click
           end
           object cbtidak1: TCheckBox
             Left = 392
@@ -9512,6 +9514,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 2
+            OnClick = cbtidak1Click
           end
           object cbya2: TCheckBox
             Left = 296
@@ -9526,6 +9529,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 3
+            OnClick = cbya2Click
           end
           object cbya3: TCheckBox
             Left = 296
@@ -9540,6 +9544,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 4
+            OnClick = cbya3Click
           end
           object cbya4: TCheckBox
             Left = 296
@@ -9554,6 +9559,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 5
+            OnClick = cbya4Click
           end
           object cbtidak2: TCheckBox
             Left = 392
@@ -9568,6 +9574,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 6
+            OnClick = cbtidak2Click
           end
           object cbtidak3: TCheckBox
             Left = 392
@@ -9582,6 +9589,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 7
+            OnClick = cbtidak3Click
           end
           object cbtidak4: TCheckBox
             Left = 392
@@ -9596,6 +9604,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 8
+            OnClick = cbtidak4Click
           end
           object grpjikadis: TGroupBox
             Left = 560
