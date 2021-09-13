@@ -381,7 +381,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
       Top = 97
       Width = 1438
       Height = 690
-      ActivePage = TabSheet1
+      ActivePage = TabSheet2
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -8163,6 +8163,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
+              OnClick = btnUBAHHUMPTYClick
             end
             object btnBaruHumpty: TButton
               Left = 8
@@ -9481,6 +9482,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'BARU'
               TabOrder = 2
+              OnClick = btnTAMBAHDISCHARGEClick
             end
           end
           object cbya1: TCheckBox
@@ -10525,7 +10527,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 3
           end
-          object Edit18: TEdit
+          object edtKeluhan: TEdit
             Left = 120
             Top = 12
             Width = 297
@@ -10539,7 +10541,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 4
             Text = 'edtkeluhan'
           end
-          object Edit20: TEdit
+          object edtriwayatalergi: TEdit
             Left = 120
             Top = 148
             Width = 297
@@ -10703,7 +10705,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
           end
-          object CheckBox4: TCheckBox
+          object chkRwTdkAda: TCheckBox
             Left = 120
             Top = 24
             Width = 113
@@ -10717,7 +10719,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             ParentFont = False
             TabOrder = 0
           end
-          object CheckBox5: TCheckBox
+          object chkRwK: TCheckBox
             Left = 256
             Top = 24
             Width = 97

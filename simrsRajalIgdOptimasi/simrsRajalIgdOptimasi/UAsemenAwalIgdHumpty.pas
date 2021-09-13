@@ -178,59 +178,71 @@ end;
 
 /// tampil ubah humpty
 procedure tampilUbahHumpty;
+var
+  id:String;
 begin
+if DataSimrs1.qryt_asesmen_awal_humpty.RecordCount >= 1 then
+begin
+   id := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('idAsesmenAwalHumpty').AsString;
+
+   with DataSimrs1.qryt_asesmen_awal_humpty do
+   begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from t_asesmen_awal_humpty where idAsesmenAwalHumpty="'+id+'"';
+    Open;
+   end;
+
   with FAsesmenAwalIgd do
   begin
+
    /// penilain resiko  
-   cbbhumpty1.ItemIndex:= 0;
+   {cbbhumpty1.ItemIndex:= 0
    cbbhumpty2.ItemIndex:= 0;
    cbbhumpty3.ItemIndex:= 0;
    cbbhumpty4.ItemIndex:= 0;
    cbbhumpty5.ItemIndex:= 0;
    cbbhumpty6.ItemIndex:= 0;
-   cbbhumpty7.ItemIndex:= 0;
+   cbbhumpty7.ItemIndex:= 0; }
    
    /// status nutrisi
-   edtSkorPasien1.Text:= '0';
-   edtSkorPasien2.Text:= '0';
-   edtSkorPasien3.Text:= '0';
-   edtSkorPasien4.Text:= '0';
-   edtSkorPasien5.Text:= '0';
-   edtSkorPasien6.Text:= '0';
-   edtSkorPasien7.Text:= '0';
+   edtSkorPasien1.Text:= DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('skorUsia').AsString;
+   edtSkorPasien2.Text:= DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('skorJenisKelamin').AsString;
+   edtSkorPasien3.Text:= DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('skorDiagnosa').AsString;
+   edtSkorPasien4.Text:= DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('skorGanguanKognitif').AsString;
+   edtSkorPasien5.Text:= DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('skorGanguanLingkungan').AsString;
+   edtSkorPasien6.Text:= DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('skorResponTerhadap').AsString;
+   edtSkorPasien7.Text:= DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('skorMedikamentos').AsString;
 
    /// stituasi nutris
-   edtbb.Text := '0';
-   edtTb.Text := '0';
-   edtIMT.Text := '0';
-   edtskorhumpty.Text := '0';
-
-   ///pasien dewasa
-   cbbImt.ItemIndex := 0;
-   cbbAdaPenurunanBB.ItemIndex := 0;
-   cbbApaAsupan.ItemIndex := 0;
-
+   edtbb.Text := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('beratBadan').AsString;
+   edtTb.Text := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('tinggiBadah').AsString;
+   edtIMT.Text := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('imt').AsString;
+   edtskorhumpty.Text := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('totalSkorPenilaianResikoJatuh').AsString;
 
    /// pasien dewasa
-   edtImt1.Text := '0';
-   edtAdaPenurunan2.Text := '0';
-   edtApaAsupan.Text := '0';
-   edttotalskorhumpty1.Text := '0';
+   edtImt1.Text := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienDewasaSATU').AsString;
+   edtAdaPenurunan2.Text := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienDewasaDUA').AsString;
+   edtApaAsupan.Text := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienDewasaTIGA').AsString;
+   edttotalskorhumpty1.Text := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('totalPasienDewasa').AsString;
 
    /// pasien obsterri
-   cbbobs1.ItemIndex := 0;
-   cbbobs2.ItemIndex := 0;
-   cbbobs3.ItemIndex := 0;
-   cbbobs4.ItemIndex := 0;
-   edtotalskorobs.Text := '0';
+   cbbobs1.ItemIndex := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienObstetriSATU').AsInteger;
+   cbbobs2.ItemIndex := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienObstetriDUA').AsInteger;
+   cbbobs3.ItemIndex := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienObstetriTIGA').AsInteger;
+   cbbobs4.ItemIndex := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienObstetriEMPAT').AsInteger;
+   edtotalskorobs.Text := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('totalPasienObstetri').AsString;
 
    /// PASIEN ANAK
-   cbbanak1.ItemIndex := 0;
-   cbbanak2.ItemIndex := 0;
-   cbbanak3.ItemIndex := 0;
-   cbbanak4.ItemIndex := 0;
-   edttotalskoranak.Text := '0';
-  end;
+   cbbanak1.ItemIndex := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienAnakSATU').AsInteger;;
+   cbbanak2.ItemIndex := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienAnakDUA').AsInteger;;
+   cbbanak3.ItemIndex := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienAnakTIGA').AsInteger;;
+   cbbanak4.ItemIndex := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('pasienAnakEMPAT').AsInteger;;
+   edttotalskoranak.Text := DataSimrs1.qryt_asesmen_awal_humpty.FieldByname('totalPasienAnak').AsString;;
+  end
+end
+else
+ MessageDlg('Data Tidak Di Temukan...!',mtWarning,[mbOK],0);
 end;
 
 /// PENILAIAN RISIKO JATUH PEDIATRY (Humpty Dumpty)

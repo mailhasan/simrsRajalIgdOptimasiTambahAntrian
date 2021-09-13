@@ -736,13 +736,13 @@ type
     grpMENUFOLL: TGroupBox;
     btnSIMPANFOLL: TButton;
     btnUBAHFOLL: TButton;
-    Edit18: TEdit;
-    Edit20: TEdit;
+    edtKeluhan: TEdit;
+    edtriwayatalergi: TEdit;
     GroupBox33: TGroupBox;
     cbtidakada1: TCheckBox;
     cbyariwayat: TCheckBox;
-    CheckBox4: TCheckBox;
-    CheckBox5: TCheckBox;
+    chkRwTdkAda: TCheckBox;
+    chkRwK: TCheckBox;
     lblriwayatkeluarga: TLabel;
     lblriwayatobat: TLabel;
     cbtidak: TCheckBox;
@@ -1391,6 +1391,8 @@ type
     procedure edtotalskorobsClick(Sender: TObject);
     procedure edttotalskoranakClick(Sender: TObject);
     procedure btnSIMPANHUMPTYClick(Sender: TObject);
+    procedure btnUBAHHUMPTYClick(Sender: TObject);
+    procedure btnTAMBAHDISCHARGEClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1403,7 +1405,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus,UAsemenAwalIgdNyeri,UAsemenAwalIgdHumpty;
+uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus,UAsemenAwalIgdNyeri,UAsemenAwalIgdHumpty,UAsemenAwalIgdDischarge;
 
 procedure TFAsesmenAwalIgd.pnlKeluarClick(Sender: TObject);
 begin
@@ -2077,6 +2079,16 @@ end;
 procedure TFAsesmenAwalIgd.btnSIMPANHUMPTYClick(Sender: TObject);
 begin
 prosesSimpanHumpty;
+end;
+
+procedure TFAsesmenAwalIgd.btnUBAHHUMPTYClick(Sender: TObject);
+begin
+tampilUbahHumpty;
+end;
+
+procedure TFAsesmenAwalIgd.btnTAMBAHDISCHARGEClick(Sender: TObject);
+begin
+baruDicharge;
 end;
 
 end.
