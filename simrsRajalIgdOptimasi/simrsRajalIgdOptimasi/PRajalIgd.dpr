@@ -31,7 +31,8 @@ uses
   UDataSimrs1 in 'UDataSimrs1.pas' {DataSimrs1: TDataModule},
   UAsemenAwalIgdTriage in 'UAsemenAwalIgdTriage.pas',
   UAsesmenAwalIgdStatus in 'UAsesmenAwalIgdStatus.pas',
-  UAsemenAwalIgdNyeri in 'UAsemenAwalIgdNyeri.pas';
+  UAsemenAwalIgdNyeri in 'UAsemenAwalIgdNyeri.pas',
+  UAsemenAwalIgdDischarge in 'UAsemenAwalIgdDischarge.pas';
 
 {$R *.res}
 

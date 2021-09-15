@@ -1266,6 +1266,7 @@ type
     cxgrdbclmnHumptycreateUser: TcxGridDBColumn;
     cxgrdbclmnHumptymodifDate: TcxGridDBColumn;
     cxgrdbclmnHumptymodifUser: TcxGridDBColumn;
+    lblIdDischarge: TLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1402,6 +1403,16 @@ type
     procedure cbya4Click(Sender: TObject);
     procedure cbtidak4Click(Sender: TObject);
     procedure btnSIMPANDISClick(Sender: TObject);
+    procedure cbautoClick(Sender: TObject);
+    procedure cbheteroClick(Sender: TObject);
+    procedure cbtidakadaClick(Sender: TObject);
+    procedure cbyaalergiClick(Sender: TObject);
+    procedure cbtidakada1Click(Sender: TObject);
+    procedure cbyariwayatClick(Sender: TObject);
+    procedure cbtidakClick(Sender: TObject);
+    procedure cbyaobatClick(Sender: TObject);
+    procedure chkRwTdkAdaClick(Sender: TObject);
+    procedure chkRwKClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -2143,6 +2154,56 @@ end;
 procedure TFAsesmenAwalIgd.btnSIMPANDISClick(Sender: TObject);
 begin
  proesesSimpanDicharge;
+end;
+
+procedure TFAsesmenAwalIgd.cbautoClick(Sender: TObject);
+begin
+klhUtama;
+end;
+
+procedure TFAsesmenAwalIgd.cbheteroClick(Sender: TObject);
+begin
+klhUtama;
+end;
+
+procedure TFAsesmenAwalIgd.cbtidakadaClick(Sender: TObject);
+begin
+rwtAlergi;
+end;
+
+procedure TFAsesmenAwalIgd.cbyaalergiClick(Sender: TObject);
+begin
+rwtAlergi;
+end;
+
+procedure TFAsesmenAwalIgd.cbtidakada1Click(Sender: TObject);
+begin
+rwtPenyakitYgLalu;
+end;
+
+procedure TFAsesmenAwalIgd.cbyariwayatClick(Sender: TObject);
+begin
+rwtPenyakitYgLalu;
+end;
+
+procedure TFAsesmenAwalIgd.cbtidakClick(Sender: TObject);
+begin
+mngKnObat;
+end;
+
+procedure TFAsesmenAwalIgd.cbyaobatClick(Sender: TObject);
+begin
+mngKnObat;
+end;
+
+procedure TFAsesmenAwalIgd.chkRwTdkAdaClick(Sender: TObject);
+begin
+rwtPyktKeluarga;
+end;
+
+procedure TFAsesmenAwalIgd.chkRwKClick(Sender: TObject);
+begin
+rwtPyktKeluarga;
 end;
 
 end.

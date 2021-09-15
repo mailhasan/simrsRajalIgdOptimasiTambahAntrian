@@ -9452,6 +9452,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
           end
+          object lblIdDischarge: TLabel
+            Left = 808
+            Top = 40
+            Width = 81
+            Height = 13
+            Caption = 'lblIdDischarge'
+          end
           object grpMENUDIS: TGroupBox
             Left = 1064
             Top = 16
@@ -9669,7 +9676,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpRIWAYATDISCHARGE: TGroupBox
           Left = 1080
           Top = 93
-          Width = 350
+          Width = 833
           Height = 732
           Caption = 'DAFTAR RIWAYAT DISCHARGE PLANNING'
           Color = 16577248
@@ -10493,6 +10500,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 0
+            OnClick = cbtidakadaClick
           end
           object cbyaalergi: TCheckBox
             Left = 256
@@ -10507,6 +10515,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 1
+            OnClick = cbyaalergiClick
           end
           object cbauto: TCheckBox
             Left = 120
@@ -10521,6 +10530,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 2
+            OnClick = cbautoClick
           end
           object cbhetero: TCheckBox
             Left = 256
@@ -10535,6 +10545,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 3
+            OnClick = cbheteroClick
           end
           object edtKeluhan: TEdit
             Left = 120
@@ -10627,6 +10638,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 0
+            OnClick = cbtidakada1Click
           end
           object cbyariwayat: TCheckBox
             Left = 256
@@ -10641,6 +10653,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 1
+            OnClick = cbyariwayatClick
           end
           object cbtidak: TCheckBox
             Left = 120
@@ -10655,6 +10668,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 2
+            OnClick = cbtidakClick
           end
           object cbyaobat: TCheckBox
             Left = 256
@@ -10669,6 +10683,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 3
+            OnClick = cbyaobatClick
           end
           object edtpenyakitkeluarga: TEdit
             Left = 120
@@ -10727,6 +10742,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 0
+            OnClick = chkRwTdkAdaClick
           end
           object chkRwK: TCheckBox
             Left = 256
@@ -10741,6 +10757,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
             TabOrder = 1
+            OnClick = chkRwKClick
           end
           object edtriwayatpenyakitkeluarga: TEdit
             Left = 120
