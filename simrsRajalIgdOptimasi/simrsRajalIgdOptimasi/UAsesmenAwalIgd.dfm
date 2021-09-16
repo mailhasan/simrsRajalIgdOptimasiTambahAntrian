@@ -9482,6 +9482,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
+              OnClick = btnUBAHDISClick
             end
             object btnTAMBAHDISCHARGE: TButton
               Left = 16
@@ -9688,6 +9689,204 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           ParentFont = False
           TabOrder = 1
+          object cxgrd1: TcxGrid
+            Left = 2
+            Top = 15
+            Width = 829
+            Height = 715
+            Align = alClient
+            TabOrder = 0
+            object cxgrdbtblvwDischargePlaning: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              DataController.DataSource = DataSimrs1.dst_asesmen_awal_discharge
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxgrdbclmnDischargePlaningidAsesmenAwalDischarge: TcxGridDBColumn
+                DataBinding.FieldName = 'idAsesmenAwalDischarge'
+              end
+              object cxgrdbclmnDischargePlaningnoRekamedis: TcxGridDBColumn
+                DataBinding.FieldName = 'noRekamedis'
+              end
+              object cxgrdbclmnDischargePlaningnoDaftar: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftar'
+              end
+              object cxgrdbclmnDischargePlaningnoDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftarUnit'
+              end
+              object cxgrdbclmnDischargePlaningtglDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'tglDaftarUnit'
+              end
+              object cxgrdbclmnDischargePlaningDischargePlaningSATU: TcxGridDBColumn
+                DataBinding.FieldName = 'DischargePlaningSATU'
+              end
+              object cxgrdbclmnDischargePlaningDischargePlaningDUA: TcxGridDBColumn
+                DataBinding.FieldName = 'DischargePlaningDUA'
+              end
+              object cxgrdbclmnDischargePlaningDischargePlaningTIGA: TcxGridDBColumn
+                DataBinding.FieldName = 'DischargePlaningTIGA'
+              end
+              object cxgrdbclmnDischargePlaningDischargePlaningEMPAT: TcxGridDBColumn
+                DataBinding.FieldName = 'DischargePlaningEMPAT'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamSATU: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamSATU'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamDUA: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamDUA'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamTIGA: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamTIGA'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamEMPAT: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamEMPAT'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamLIMA: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamLIMA'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamENAM: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamENAM'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamTUJUH: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamTUJUH'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamDELAPAN: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamDELAPAN'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamSEMBILAN: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamSEMBILAN'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamSEPULUH: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamSEPULUH'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamSEBELAS: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamSEBELAS'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanJamDUABELAS: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanJamDUABELAS'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaTIGABELAS: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanLainyaTIGABELAS'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaEMPATBELAS: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanLainyaEMPATBELAS'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaLIMABELAS: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanLainyaLIMABELAS'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaJamTIGABELAS: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanLainyaJamTIGABELAS'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaJamEMPATBELAS: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanLainyaJamEMPATBELAS'
+              end
+              object cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaJamLIMABELAS: TcxGridDBColumn
+                DataBinding.FieldName = 'masalahKeperawatanLainyaJamLIMABELAS'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiSATU: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiSATU'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiDUA: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiDUA'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiTIGA: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiTIGA'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiEMPAT: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiEMPAT'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiLIMA: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiLIMA'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiENAM: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiENAM'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiTUJUH: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiTUJUH'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiDELAPAN: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiDELAPAN'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiSEMBILAN: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiSEMBILAN'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiSEPULUH: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiSEPULUH'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiSEBELAS: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiSEBELAS'
+              end
+              object cxgrdbclmnDischargePlaningimpelementasiDUABELAS: TcxGridDBColumn
+                DataBinding.FieldName = 'impelementasiDUABELAS'
+              end
+              object cxgrdbclmnDischargePlaningkeluhanUtama: TcxGridDBColumn
+                DataBinding.FieldName = 'keluhanUtama'
+              end
+              object cxgrdbclmnDischargePlaningpilihanKeluhanUtama: TcxGridDBColumn
+                DataBinding.FieldName = 'pilihanKeluhanUtama'
+              end
+              object cxgrdbclmnDischargePlaningriwayatPenyakit: TcxGridDBColumn
+                DataBinding.FieldName = 'riwayatPenyakit'
+              end
+              object cxgrdbclmnDischargePlaningriwayatAlergi: TcxGridDBColumn
+                DataBinding.FieldName = 'riwayatAlergi'
+              end
+              object cxgrdbclmnDischargePlaningriwayatAlergiKet: TcxGridDBColumn
+                DataBinding.FieldName = 'riwayatAlergiKet'
+              end
+              object cxgrdbclmnDischargePlaningriwayatPenyakitYangLalu: TcxGridDBColumn
+                DataBinding.FieldName = 'riwayatPenyakitYangLalu'
+              end
+              object cxgrdbclmnDischargePlaningketRiwayatPenyakitYangLalu: TcxGridDBColumn
+                DataBinding.FieldName = 'ketRiwayatPenyakitYangLalu'
+              end
+              object cxgrdbclmnDischargePlaningmenggunakanObatSaatIni: TcxGridDBColumn
+                DataBinding.FieldName = 'menggunakanObatSaatIni'
+              end
+              object cxgrdbclmnDischargePlaningketMenggunakanObatSaatIni: TcxGridDBColumn
+                DataBinding.FieldName = 'ketMenggunakanObatSaatIni'
+              end
+              object cxgrdbclmnDischargePlaningpilihPenyakitKeluarga: TcxGridDBColumn
+                DataBinding.FieldName = 'pilihPenyakitKeluarga'
+              end
+              object cxgrdbclmnDischargePlaningriwayatPenyakitKeluarga: TcxGridDBColumn
+                DataBinding.FieldName = 'riwayatPenyakitKeluarga'
+              end
+              object cxgrdbclmnDischargePlaningtanggal: TcxGridDBColumn
+                DataBinding.FieldName = 'tanggal'
+              end
+              object cxgrdbclmnDischargePlaningjam: TcxGridDBColumn
+                DataBinding.FieldName = 'jam'
+              end
+              object cxgrdbclmnDischargePlaningperawat: TcxGridDBColumn
+                DataBinding.FieldName = 'perawat'
+              end
+              object cxgrdbclmnDischargePlaningpemeriksaanFisik: TcxGridDBColumn
+                DataBinding.FieldName = 'pemeriksaanFisik'
+              end
+              object cxgrdbclmnDischargePlaninglab: TcxGridDBColumn
+                DataBinding.FieldName = 'lab'
+              end
+              object cxgrdbclmnDischargePlaningrad: TcxGridDBColumn
+                DataBinding.FieldName = 'rad'
+              end
+              object cxgrdbclmnDischargePlaningcreateDate: TcxGridDBColumn
+                DataBinding.FieldName = 'createDate'
+              end
+              object cxgrdbclmnDischargePlaningcreateUser: TcxGridDBColumn
+                DataBinding.FieldName = 'createUser'
+              end
+              object cxgrdbclmnDischargePlaningmodifDate: TcxGridDBColumn
+                DataBinding.FieldName = 'modifDate'
+              end
+              object cxgrdbclmnDischargePlaningmodifUser: TcxGridDBColumn
+                DataBinding.FieldName = 'modifUser'
+              end
+            end
+            object cxgrdlvlGrid1Level1: TcxGridLevel
+              GridView = cxgrdbtblvwDischargePlaning
+            end
+          end
         end
         object grpmasalahdis: TGroupBox
           Left = 0
@@ -10685,7 +10884,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 3
             OnClick = cbyaobatClick
           end
-          object edtpenyakitkeluarga: TEdit
+          object edtMenggunakanObat: TEdit
             Left = 120
             Top = 108
             Width = 297

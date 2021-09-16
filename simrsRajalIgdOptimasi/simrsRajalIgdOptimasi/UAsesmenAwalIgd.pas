@@ -747,7 +747,7 @@ type
     lblriwayatobat: TLabel;
     cbtidak: TCheckBox;
     cbyaobat: TCheckBox;
-    edtpenyakitkeluarga: TEdit;
+    edtMenggunakanObat: TEdit;
     GroupBox26: TGroupBox;
     lbljamdis: TLabel;
     lbltanggaldis: TLabel;
@@ -1267,6 +1267,69 @@ type
     cxgrdbclmnHumptymodifDate: TcxGridDBColumn;
     cxgrdbclmnHumptymodifUser: TcxGridDBColumn;
     lblIdDischarge: TLabel;
+    cxgrdbtblvwDischargePlaning: TcxGridDBTableView;
+    cxgrdlvlGrid1Level1: TcxGridLevel;
+    cxgrd1: TcxGrid;
+    cxgrdbclmnDischargePlaningidAsesmenAwalDischarge: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningnoRekamedis: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningnoDaftar: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningnoDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningtglDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningDischargePlaningSATU: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningDischargePlaningDUA: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningDischargePlaningTIGA: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningDischargePlaningEMPAT: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamSATU: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamDUA: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamTIGA: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamEMPAT: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamLIMA: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamENAM: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamTUJUH: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamDELAPAN: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamSEMBILAN: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamSEPULUH: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamSEBELAS: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanJamDUABELAS: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaTIGABELAS: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaEMPATBELAS: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaLIMABELAS: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaJamTIGABELAS: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaJamEMPATBELAS: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmasalahKeperawatanLainyaJamLIMABELAS: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiSATU: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiDUA: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiTIGA: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiEMPAT: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiLIMA: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiENAM: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiTUJUH: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiDELAPAN: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiSEMBILAN: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiSEPULUH: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiSEBELAS: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningimpelementasiDUABELAS: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningkeluhanUtama: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningpilihanKeluhanUtama: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningriwayatPenyakit: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningriwayatAlergi: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningriwayatAlergiKet: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningriwayatPenyakitYangLalu: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningketRiwayatPenyakitYangLalu: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmenggunakanObatSaatIni: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningketMenggunakanObatSaatIni: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningpilihPenyakitKeluarga: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningriwayatPenyakitKeluarga: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningtanggal: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningjam: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningperawat: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningpemeriksaanFisik: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaninglab: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningrad: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningcreateDate: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningcreateUser: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmodifDate: TcxGridDBColumn;
+    cxgrdbclmnDischargePlaningmodifUser: TcxGridDBColumn;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1413,6 +1476,7 @@ type
     procedure cbyaobatClick(Sender: TObject);
     procedure chkRwTdkAdaClick(Sender: TObject);
     procedure chkRwKClick(Sender: TObject);
+    procedure btnUBAHDISClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -2204,6 +2268,11 @@ end;
 procedure TFAsesmenAwalIgd.chkRwKClick(Sender: TObject);
 begin
 rwtPyktKeluarga;
+end;
+
+procedure TFAsesmenAwalIgd.btnUBAHDISClick(Sender: TObject);
+begin
+ tampilUbahDicharge;
 end;
 
 end.
