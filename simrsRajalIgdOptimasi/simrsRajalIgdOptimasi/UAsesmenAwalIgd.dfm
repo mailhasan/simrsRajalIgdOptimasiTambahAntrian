@@ -381,7 +381,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
       Top = 97
       Width = 1438
       Height = 690
-      ActivePage = TabSheet2
+      ActivePage = TabSheet4
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -11810,6 +11810,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'SIMPAN'
               TabOrder = 0
+              OnClick = btnSIMPANFOLLClick
             end
             object btnUBAHFOLL: TButton
               Left = 184
@@ -11826,6 +11827,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'BARU'
               TabOrder = 2
+              OnClick = btnTAMBAHFOLLOWClick
             end
           end
           object GroupBox31: TGroupBox
@@ -11902,7 +11904,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpRIWAYATFOLL: TGroupBox
           Left = 1072
           Top = 169
-          Width = 361
+          Width = 841
           Height = 732
           Caption = 'DAFTAR RIWAYAT FOLLOW UP PASIEN'
           Color = 16577248
@@ -12016,72 +12018,12 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = [fsBold]
             ParentFont = False
           end
-          object GroupBox1: TGroupBox
-            Left = 16
-            Top = 144
-            Width = 209
-            Height = 345
-            TabOrder = 0
-            object lbltanggalfoll: TLabel
-              Left = 64
-              Top = 16
-              Width = 73
-              Height = 13
-              Caption = 'TANGGAL, JAM'
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-          end
-          object GroupBox24: TGroupBox
-            Left = 224
-            Top = 144
-            Width = 545
-            Height = 345
-            TabOrder = 1
-            object lblrekomen: TLabel
-              Left = 155
-              Top = 16
-              Width = 230
-              Height = 13
-              Caption = 'REKOMENDASI / TERAPI / RENCANA TINDAKAN'
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-          end
-          object GroupBox25: TGroupBox
-            Left = 768
-            Top = 144
-            Width = 289
-            Height = 345
-            TabOrder = 2
-            object lblnamafoll1: TLabel
-              Left = 108
-              Top = 16
-              Width = 77
-              Height = 13
-              Caption = 'NAMA PETUGAS'
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-          end
           object grpfollow: TGroupBox
             Left = 16
             Top = 24
             Width = 1041
             Height = 121
-            TabOrder = 3
+            TabOrder = 0
             object lbltanggaljam: TLabel
               Left = 8
               Top = 16
@@ -12161,12 +12103,22 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Text = 'edtrekomendasi'
             end
             object btnTAMBAHFOLL: TButton
-              Left = 952
+              Left = 872
               Top = 88
               Width = 75
               Height = 25
               Caption = 'TAMBAH'
               TabOrder = 4
+              OnClick = btnTAMBAHFOLLClick
+            end
+            object btnBaruDetailFollow: TButton
+              Left = 952
+              Top = 88
+              Width = 75
+              Height = 25
+              Caption = 'BARU'
+              TabOrder = 5
+              OnClick = btnBaruDetailFollowClick
             end
           end
         end

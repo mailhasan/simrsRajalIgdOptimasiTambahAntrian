@@ -818,12 +818,6 @@ type
     Memodiagnosis: TMemo;
     Memokeperawatan: TMemo;
     lblfollow: TLabel;
-    GroupBox1: TGroupBox;
-    GroupBox24: TGroupBox;
-    GroupBox25: TGroupBox;
-    lbltanggalfoll: TLabel;
-    lblrekomen: TLabel;
-    lblnamafoll1: TLabel;
     grpfollow: TGroupBox;
     lbltanggaljam: TLabel;
     dtpfoll: TDateTimePicker;
@@ -1330,6 +1324,7 @@ type
     cxgrdbclmnDischargePlaningcreateUser: TcxGridDBColumn;
     cxgrdbclmnDischargePlaningmodifDate: TcxGridDBColumn;
     cxgrdbclmnDischargePlaningmodifUser: TcxGridDBColumn;
+    btnBaruDetailFollow: TButton;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1477,6 +1472,10 @@ type
     procedure chkRwTdkAdaClick(Sender: TObject);
     procedure chkRwKClick(Sender: TObject);
     procedure btnUBAHDISClick(Sender: TObject);
+    procedure btnTAMBAHFOLLOWClick(Sender: TObject);
+    procedure btnSIMPANFOLLClick(Sender: TObject);
+    procedure btnTAMBAHFOLLClick(Sender: TObject);
+    procedure btnBaruDetailFollowClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1489,7 +1488,8 @@ var
 implementation
 
 {$R *.dfm}
-uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus,UAsemenAwalIgdNyeri,UAsemenAwalIgdHumpty,UAsemenAwalIgdDischarge;
+uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus,UAsemenAwalIgdNyeri,UAsemenAwalIgdHumpty,UAsemenAwalIgdDischarge,
+  ZDataset, ZAbstractDataset, ZAbstractRODataset,UAsesmenAwalFollowUp;
 
 procedure TFAsesmenAwalIgd.pnlKeluarClick(Sender: TObject);
 begin
@@ -2273,6 +2273,26 @@ end;
 procedure TFAsesmenAwalIgd.btnUBAHDISClick(Sender: TObject);
 begin
  tampilUbahDicharge;
+end;
+
+procedure TFAsesmenAwalIgd.btnTAMBAHFOLLOWClick(Sender: TObject);
+begin
+ baruFollwoUp;
+end;
+
+procedure TFAsesmenAwalIgd.btnSIMPANFOLLClick(Sender: TObject);
+begin
+proesesSimpanFollow;
+end;
+
+procedure TFAsesmenAwalIgd.btnTAMBAHFOLLClick(Sender: TObject);
+begin
+ prosesDetailSimpanFollow;
+end;
+
+procedure TFAsesmenAwalIgd.btnBaruDetailFollowClick(Sender: TObject);
+begin
+ tambahDetailSimpanFollow;
 end;
 
 end.

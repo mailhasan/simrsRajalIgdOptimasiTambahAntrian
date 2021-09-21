@@ -32,7 +32,8 @@ uses
   UAsemenAwalIgdTriage in 'UAsemenAwalIgdTriage.pas',
   UAsesmenAwalIgdStatus in 'UAsesmenAwalIgdStatus.pas',
   UAsemenAwalIgdNyeri in 'UAsemenAwalIgdNyeri.pas',
-  UAsemenAwalIgdDischarge in 'UAsemenAwalIgdDischarge.pas';
+  UAsemenAwalIgdDischarge in 'UAsemenAwalIgdDischarge.pas',
+  UAsesmenAwalFollowUp in 'UAsesmenAwalFollowUp.pas';
 
 {$R *.res}
 

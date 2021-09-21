@@ -1,0 +1,69 @@
+unit UAsesmenAwalFollowUp;
+
+interface
+
+procedure baruFollwoUp;
+procedure proesesSimpanDicharge;
+procedure prosesDetailSimpanDicharge;
+
+
+
+implementation
+
+uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
+  ZAbstractRODataset, DB, StdCtrls, Variants, DateUtils, Math;
+
+  /// procedure baru
+procedure baruFollwoUp;
+begin
+  with FAsesmenAwalIgd do
+  begin
+    Memodaftarmasalah.Text := '';
+    Memodiagnosa.Text := '';
+    Memomedis.Text := '';
+    dtpfoll.Date :=  Now;
+    cxtmdtfoll.Time := Now;
+    edtrekomendasi.Text := '';
+    cbbnamapetugas.Text := '';
+
+  end;
+
+end;
+
+/// procedure proeses simpan
+procedure proesesSimpanDicharge;
+begin
+ with FAsesmenAwalIgd do
+ begin
+  if btnSIMPANFOLL.Caption ='SIMPAN' then
+     begin
+      with DataSimrs1.qryt_asesmen_awal_follow do
+      begin
+       Close;
+       SQL.Clear;
+       SQL.Text := 'insert into ()';
+       ExecSQL;
+       SQL.Text := 'select * from t_asesmen_awal_follow';
+       Open;
+      end;
+     end
+     else
+     begin
+      Close;
+      SQL.Clear;
+      SQL.Text := 'insert into ()';
+      ExecSQL;
+      SQL.Text := 'select * from t_asesmen_awal_follow';
+      Open;
+     end;
+ end
+end;
+
+///
+
+procedure prosesDetailSimpanDicharge;
+begin
+
+end;
+
+end.
