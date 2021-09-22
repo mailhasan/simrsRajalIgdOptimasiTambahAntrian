@@ -1,8 +1,8 @@
 object FAsesmenAwalIgd: TFAsesmenAwalIgd
-  Left = 240
-  Top = 101
+  Left = 350
+  Top = 98
   Width = 1456
-  Height = 876
+  Height = 877
   Align = alClient
   AutoSize = True
   Caption = 'ASESMEN AWAL IGD'
@@ -47,7 +47,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
     Left = 0
     Top = 49
     Width = 1440
-    Height = 788
+    Height = 789
     Align = alClient
     TabOrder = 1
     object pnlTengahAtas: TPanel
@@ -380,8 +380,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
       Left = 1
       Top = 97
       Width = 1438
-      Height = 690
-      ActivePage = TabSheet4
+      Height = 691
+      ActivePage = tskondisikrsigd
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -825,7 +825,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           Left = 1081
           Top = 145
           Width = 349
-          Height = 516
+          Height = 517
           Align = alClient
           Caption = 'DAFTAR RIWAYAT DATA TRIAGE PASIEN'
           Color = 16577248
@@ -1133,7 +1133,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           Left = 0
           Top = 145
           Width = 1081
-          Height = 516
+          Height = 517
           Align = alLeft
           Caption = 'TRIAGE (diisi oleh perawat, beri tanda [v])'
           Color = 16577248
@@ -11796,6 +11796,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = [fsBold]
             ParentFont = False
           end
+          object lblIdFollowUp: TLabel
+            Left = 1136
+            Top = 104
+            Width = 75
+            Height = 13
+            Caption = 'lblIdFollowUp'
+          end
           object grpMENUFOLL: TGroupBox
             Left = 1080
             Top = 16
@@ -11819,6 +11826,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
+              OnClick = btnUBAHFOLLClick
             end
             object btnTAMBAHFOLLOW: TButton
               Left = 16
@@ -11916,6 +11924,51 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           ParentFont = False
           TabOrder = 1
+          object cxgrdDaftarDataRiwayatFollow: TcxGrid
+            Left = 2
+            Top = 15
+            Width = 837
+            Height = 715
+            Align = alClient
+            TabOrder = 0
+            object cxgrdbtblvwDaftarDataRiwayatFollow: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              DataController.DataSource = DataSimrs1.dst_asesmen_awal_follow
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxgrdbclmnDaftarDataRiwayatFollowidAsesmenAwalFollow: TcxGridDBColumn
+                DataBinding.FieldName = 'idAsesmenAwalFollow'
+              end
+              object cxgrdbclmnDaftarDataRiwayatFollownoRekamedis: TcxGridDBColumn
+                DataBinding.FieldName = 'noRekamedis'
+              end
+              object cxgrdbclmnDaftarDataRiwayatFollownoDaftar: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftar'
+              end
+              object cxgrdbclmnDaftarDataRiwayatFollownoDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftarUnit'
+              end
+              object cxgrdbclmnDaftarDataRiwayatFollowtglDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'tglDaftarUnit'
+              end
+              object cxgrdbclmnDaftarDataRiwayatFollowdaftarMasalah: TcxGridDBColumn
+                DataBinding.FieldName = 'daftarMasalah'
+              end
+              object cxgrdbclmnDaftarDataRiwayatFollowdiagnosaKerja: TcxGridDBColumn
+                DataBinding.FieldName = 'diagnosaKerja'
+              end
+              object cxgrdbclmnDaftarDataRiwayatFollowmedis: TcxGridDBColumn
+                DataBinding.FieldName = 'medis'
+              end
+              object cxgrdbclmnDaftarDataRiwayatFollowkeperawatan: TcxGridDBColumn
+                DataBinding.FieldName = 'keperawatan'
+              end
+            end
+            object cxgrdlvlDaftarDataRiwayatFollow: TcxGridLevel
+              GridView = cxgrdbtblvwDaftarDataRiwayatFollow
+            end
+          end
         end
         object GroupBox38: TGroupBox
           Left = 0
@@ -12063,6 +12116,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Font.Style = []
               ParentFont = False
             end
+            object lblIdDetailFollowUp: TLabel
+              Left = 536
+              Top = 16
+              Width = 101
+              Height = 14
+              Caption = 'lblIdDetailFollowUp'
+            end
             object dtpfoll: TDateTimePicker
               Left = 312
               Top = 16
@@ -12103,7 +12163,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Text = 'edtrekomendasi'
             end
             object btnTAMBAHFOLL: TButton
-              Left = 872
+              Left = 880
               Top = 88
               Width = 75
               Height = 25
@@ -12112,13 +12172,64 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               OnClick = btnTAMBAHFOLLClick
             end
             object btnBaruDetailFollow: TButton
-              Left = 952
+              Left = 800
               Top = 88
               Width = 75
               Height = 25
               Caption = 'BARU'
               TabOrder = 5
               OnClick = btnBaruDetailFollowClick
+            end
+            object btnUbahDetailFollow: TButton
+              Left = 960
+              Top = 88
+              Width = 75
+              Height = 25
+              Caption = 'UBAH'
+              TabOrder = 6
+              OnClick = btnUbahDetailFollowClick
+            end
+          end
+          object cxgrdDetailDaftarDataRiwayatFollow: TcxGrid
+            Left = 2
+            Top = 144
+            Width = 1069
+            Height = 343
+            Align = alCustom
+            TabOrder = 1
+            object cxgrdbtblvwDetailDaftarDataRiwayatFollow: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              DataController.DataSource = DataSimrs1.dst_detail_asesmen_awal_follow
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxgrdbclmnDetailDaftarDataRiwayatFollowidDetailAsesmenAwalFollow: TcxGridDBColumn
+                DataBinding.FieldName = 'idDetailAsesmenAwalFollow'
+              end
+              object cxgrdbclmnDetailDaftarDataRiwayatFollownoRekamedis: TcxGridDBColumn
+                DataBinding.FieldName = 'noRekamedis'
+              end
+              object cxgrdbclmnDetailDaftarDataRiwayatFollownoDaftar: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftar'
+              end
+              object cxgrdbclmnDetailDaftarDataRiwayatFollownoDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftarUnit'
+              end
+              object cxgrdbclmnDetailDaftarDataRiwayatFollowtanggal: TcxGridDBColumn
+                DataBinding.FieldName = 'tanggal'
+              end
+              object cxgrdbclmnDetailDaftarDataRiwayatFollowjam: TcxGridDBColumn
+                DataBinding.FieldName = 'jam'
+              end
+              object cxgrdbclmnDetailDaftarDataRiwayatFollowrekomendasi: TcxGridDBColumn
+                DataBinding.FieldName = 'rekomendasi'
+              end
+              object cxgrdbclmnDetailDaftarDataRiwayatFollownamaPetugas: TcxGridDBColumn
+                DataBinding.FieldName = 'namaPetugas'
+              end
+            end
+            object cxgrdlvlDetailDaftarDataRiwayatFollow: TcxGridLevel
+              GridView = cxgrdbtblvwDetailDaftarDataRiwayatFollow
             end
           end
         end
@@ -12238,7 +12349,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = [fsBold]
             ParentFont = False
           end
-          object DateTimePicker1: TDateTimePicker
+          object dtpKondisiKrs: TDateTimePicker
             Left = 112
             Top = 32
             Width = 105
@@ -12347,7 +12458,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           object grpMENUKRS: TGroupBox
             Left = 1080
             Top = 16
-            Width = 265
+            Width = 273
             Height = 57
             Caption = 'MENU'
             Font.Charset = ANSI_CHARSET
@@ -12386,6 +12497,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'BARU'
               TabOrder = 2
+              OnClick = btnTAMBAHKONDISIClick
             end
           end
           object cbcompos: TCheckBox
@@ -13032,7 +13144,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               ParentFont = False
               TabOrder = 11
             end
-            object CheckBox1: TCheckBox
+            object chkKrs: TCheckBox
               Left = 8
               Top = 184
               Width = 97

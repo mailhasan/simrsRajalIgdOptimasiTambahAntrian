@@ -333,7 +333,7 @@ end;
 procedure TFPermintaanRadRajal.btnInputClick(Sender: TObject);
 var
   i,jml:Integer;
-  tarif,total:Double;
+  tarif,total,totalPermintaanRad:Double;
 begin
 if (cbbDokter.Text = '') or (cxmKeterangan.Text='') then
   ShowMessage('Data Harus Di Isi Lengkap...!')
@@ -370,12 +370,44 @@ begin
       DataSimrs.qryt_detailtindakanradiologirajal.post;
       end;
       end;
-      dtlTndPenunjang;
+      ///dtlTndPenunjang;
+      with DataSimrs.qryt_tindakanradiologirajal do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Text := 'select * from t_tindakanradiologirajal where noTindakanRadiologiRajal="'+edtNoTindakanPermintaanLab.Text+'" ';
+        Open;
+      end;
 
       ///proses  data t_tindakanpenujangrajal
       if DataSimrs.qryt_tindakanradiologirajal.Locate('noTindakanRadiologiRajal',edtNoTindakanPermintaanLab.Text,[])  then
         begin
+          dtlTndPenunjang;
+          /// rumus sum total tarif
+          with DataSimrs.qryt_detailtindakanradiologirajal do
+          begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'SELECT SUM(totalTarif) as subTotal from t_detailtindakanradiologirajal where noTindakanRadiologiRajal="'+edtNoTindakanPermintaanLab.Text+'"';
+          Open;
+          end;
+
+          totalPermintaanRad := DataSimrs.qryt_detailtindakanradiologirajal.Fields[0].AsFloat;
+
           with DataSimrs.qryt_tindakanradiologirajal do
+          begin
+           Close;
+           SQL.Clear;
+           SQL.Text := 'update t_tindakanradiologirajal set totalTindakanRadiologiRajal="'+FloatToStr(totalPermintaanRad)+'" ';
+           ExecSQL;
+           SQL.Text := 'select * from t_tindakanradiologirajal';
+           Open;
+          end;
+
+          dtlTndPenunjang;
+
+
+          {with DataSimrs.qryt_tindakanradiologirajal do
           begin
             Edit;
             FieldByName('noTindakanRadiologiRajal').AsString := edtNoTindakanPermintaanLab.Text;
@@ -384,7 +416,8 @@ begin
             FieldByName('totalTindakanRadiologiRajal').AsFloat := StrToFloat(FloatToStr(dbgrdhTindakanPermintaanLab.columns[4].Footer.SumValue));
             FieldByName('statusPembayaran').AsString := 'BELUM LUNAS';
             Post;
-          end;
+          end;}
+          
           with DataSimrs.qryt_tindakanradiologirajal do
           begin
             Close;
@@ -392,10 +425,61 @@ begin
             SQL.Text := 'select * from t_tindakanradiologirajal';
             Open;
           end;
+
+          with DataSimrs.qryt_detailtindakanradiologirajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_detailtindakanradiologirajal';
+            Open;
+          end;
+          
         end
         else
         begin
+          dtlTndPenunjang;
+          /// rumus sum total tarif
+          with DataSimrs.qryt_detailtindakanradiologirajal do
+          begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'SELECT SUM(totalTarif) as subTotal from t_detailtindakanradiologirajal where noTindakanRadiologiRajal="'+edtNoTindakanPermintaanLab.Text+'"';
+          Open;
+          end;
+
+          totalPermintaanRad := DataSimrs.qryt_detailtindakanradiologirajal.Fields[0].AsFloat;
+
           with DataSimrs.qryt_tindakanradiologirajal do
+          begin
+           Close;
+           SQL.Clear;
+           SQL.Text := 'insert into t_tindakanradiologirajal (noTindakanRadiologiRajal,noRegistrasiRadiologiRajal,tglTindakanRadiologiRajal,totalTindakanRadiologiRajal,statusPembayaran) values '+
+           '("'+edtNoTindakanPermintaanLab.Text+'","'+edtNoRegistrasiLab.Text+'","'+FormatDateTime('yyyy-MM-dd hh:mm:ss',dtpTglPermintaan.DateTime)+'","'+FloatToStr(totalPermintaanRad)+'","BELUM LUNAS")';
+           ExecSQL;
+           SQL.Text := 'select * from t_tindakanradiologirajal';
+           Open;
+          end;
+
+          dtlTndPenunjang;
+
+          
+          with DataSimrs.qryt_tindakanradiologirajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_tindakanradiologirajal';
+            Open;
+          end;
+
+          with DataSimrs.qryt_detailtindakanradiologirajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_detailtindakanradiologirajal';
+            Open;
+          end;
+          
+          {with DataSimrs.qryt_tindakanradiologirajal do
           begin
             Append;
             FieldByName('noTindakanRadiologiRajal').AsString := edtNoTindakanPermintaanLab.Text;
@@ -411,7 +495,7 @@ begin
             SQL.Clear;
             SQL.Text := 'select * from t_tindakanradiologirajal';
             Open;
-          end;
+          end;}
         end;
 
       
@@ -426,6 +510,7 @@ procedure TFPermintaanRadRajal.btnHapusClick(Sender: TObject);
 var
   idTindkPermintaanRad:Integer;
   tndk:String;
+  totalPermintaanRad:Double;
 begin
 {if DataSimrs.qryvw_detailtindakanpenunjangrajal.RecordCount >= 1 then
 begin
@@ -487,7 +572,7 @@ begin
       Open;
     end;
     ///DataSimrs.qryt_detailtindakanpenunjangrajal.Delete;
-    dtlTndPenunjang;
+    {dtlTndPenunjang;
 
     ///proses  data t_tindakanpenujangrajal
       if DataSimrs.qryt_tindakanradiologirajal.Locate('noTindakanRadiologiRajal',edtNoTindakanPermintaanLab.Text,[])  then
@@ -529,6 +614,133 @@ begin
             SQL.Text := 'select * from t_tindakanradiologirajal';
             Open;
           end;
+        end; }
+        ///dtlTndPenunjang;
+      with DataSimrs.qryt_tindakanradiologirajal do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Text := 'select * from t_tindakanradiologirajal where noTindakanRadiologiRajal="'+edtNoTindakanPermintaanLab.Text+'" ';
+        Open;
+      end;
+
+      ///proses  data t_tindakanpenujangrajal
+      if DataSimrs.qryt_tindakanradiologirajal.Locate('noTindakanRadiologiRajal',edtNoTindakanPermintaanLab.Text,[])  then
+        begin
+          dtlTndPenunjang;
+          /// rumus sum total tarif
+          with DataSimrs.qryt_detailtindakanradiologirajal do
+          begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'SELECT SUM(totalTarif) as subTotal from t_detailtindakanradiologirajal where noTindakanRadiologiRajal="'+edtNoTindakanPermintaanLab.Text+'"';
+          Open;
+          end;
+
+          totalPermintaanRad := DataSimrs.qryt_detailtindakanradiologirajal.Fields[0].AsFloat;
+
+          with DataSimrs.qryt_tindakanradiologirajal do
+          begin
+           Close;
+           SQL.Clear;
+           SQL.Text := 'update t_tindakanradiologirajal set totalTindakanRadiologiRajal="'+FloatToStr(totalPermintaanRad)+'" ';
+           ExecSQL;
+           SQL.Text := 'select * from t_tindakanradiologirajal';
+           Open;
+          end;
+
+          dtlTndPenunjang;
+
+
+          {with DataSimrs.qryt_tindakanradiologirajal do
+          begin
+            Edit;
+            FieldByName('noTindakanRadiologiRajal').AsString := edtNoTindakanPermintaanLab.Text;
+            FieldByName('noRegistrasiRadiologiRajal').AsString := edtNoRegistrasiLab.Text;
+            FieldByName('tglTindakanRadiologiRajal').AsDateTime := dtpTglPermintaan.DateTime;
+            FieldByName('totalTindakanRadiologiRajal').AsFloat := StrToFloat(FloatToStr(dbgrdhTindakanPermintaanLab.columns[4].Footer.SumValue));
+            FieldByName('statusPembayaran').AsString := 'BELUM LUNAS';
+            Post;
+          end;}
+          
+          with DataSimrs.qryt_tindakanradiologirajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_tindakanradiologirajal';
+            Open;
+          end;
+
+          with DataSimrs.qryt_detailtindakanradiologirajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_detailtindakanradiologirajal';
+            Open;
+          end;
+          
+        end
+        else
+        begin
+          dtlTndPenunjang;
+          /// rumus sum total tarif
+          with DataSimrs.qryt_detailtindakanradiologirajal do
+          begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'SELECT SUM(totalTarif) as subTotal from t_detailtindakanradiologirajal where noTindakanRadiologiRajal="'+edtNoTindakanPermintaanLab.Text+'"';
+          Open;
+          end;
+
+          totalPermintaanRad := DataSimrs.qryt_detailtindakanradiologirajal.Fields[0].AsFloat;
+
+          with DataSimrs.qryt_tindakanradiologirajal do
+          begin
+           Close;
+           SQL.Clear;
+           SQL.Text := 'insert into t_tindakanradiologirajal (noTindakanRadiologiRajal,noRegistrasiRadiologiRajal,tglTindakanRadiologiRajal,totalTindakanRadiologiRajal,statusPembayaran) values '+
+           '("'+edtNoTindakanPermintaanLab.Text+'","'+edtNoRegistrasiLab.Text+'","'+FormatDateTime('yyyy-MM-dd hh:mm:ss',dtpTglPermintaan.DateTime)+'","'+FloatToStr(totalPermintaanRad)+'","BELUM LUNAS")';
+           ExecSQL;
+           SQL.Text := 'select * from t_tindakanradiologirajal';
+           Open;
+          end;
+
+          dtlTndPenunjang;
+
+          
+          with DataSimrs.qryt_tindakanradiologirajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_tindakanradiologirajal';
+            Open;
+          end;
+
+          with DataSimrs.qryt_detailtindakanradiologirajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_detailtindakanradiologirajal';
+            Open;
+          end;
+          
+          {with DataSimrs.qryt_tindakanradiologirajal do
+          begin
+            Append;
+            FieldByName('noTindakanRadiologiRajal').AsString := edtNoTindakanPermintaanLab.Text;
+            FieldByName('noRegistrasiRadiologiRajal').AsString := edtNoRegistrasiLab.Text;
+            FieldByName('tglTindakanRadiologiRajal').AsDateTime := dtpTglPermintaan.DateTime;
+            FieldByName('totalTindakanRadiologiRajal').AsFloat := StrToFloat(FloatToStr(dbgrdhTindakanPermintaanLab.columns[4].Footer.SumValue));
+            FieldByName('statusPembayaran').AsString := 'BELUM LUNAS';
+            Post;
+          end;
+          with DataSimrs.qryt_tindakanradiologirajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_tindakanradiologirajal';
+            Open;
+          end;}
         end;
 
   end
@@ -547,7 +759,8 @@ else
 begin
   with DataSimrs.qryt_registrasiradiologirajal do
   begin
-    Append;
+
+    {Append;
       FieldByName('noRegistrasiRadiologiRajal').AsString := edtNoRegistrasiLab.Text;
       FieldByName('noDaftar').AsString := edtNoRegistrasi.Text;
       FieldByName('kdUnitAsal').AsString := edtKode.Text;
@@ -563,7 +776,15 @@ begin
     Close;
     SQL.Clear;
     SQL.Text := 'select * from t_registrasiradiologirajal';
+    Open;}
+    Close;
+    SQL.Clear;
+    SQL.Text := 'insert into t_registrasiradiologirajal (noRegistrasiRadiologiRajal,noDaftar,kdUnitAsal,unitAsal,kdUnit,unit,tglMasukRadiologiRajal,statusRadiologi,kdTenagaMedisPengirim,keterangan) values '+
+    '("'+edtNoRegistrasiLab.Text+'","'+edtNoRegistrasi.Text+'","'+edtKode.Text+'","'+edtAsalRuang.Text+'","3001","Radiologi","'+FormatDateTime('yyyy-MM-dd hh:mm:ss',dtpTglPermintaan.DateTime)+'","PERMINTAAN","'+cbbDokter.EditValue+'","'+cxmKeterangan.Text+'")';
+    ExecSQL;
+    SQL.Text := 'select * from t_registrasiradiologirajal';
     Open;
+
   end;
   ShowMessage('PERMINTAAN RADIOLOGI BERHASIL...!');
   Close;

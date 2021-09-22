@@ -408,7 +408,7 @@ end;
 procedure TFPermintaanLabRajal.btnInputClick(Sender: TObject);
 var
   i,jml:Integer;
-  tarif,total:Double;
+  tarif,total,totalPermintaanLab:Double;
 begin
 if (cbbDokter.Text = '') or (cxmKeterangan.Text='') then
   ShowMessage('Data Harus Di Isi Lengkap...!')
@@ -446,12 +446,59 @@ begin
       end;
       end;
 
-      dtlTndPenunjang;
+      ///dtlTndPenunjang;
+      with DataSimrs.qryt_tindakanpenunjangrajal do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Text := 'select * from t_tindakanpenunjangrajal where noTindakanPenunjangRajal="'+edtNoTindakanPermintaanLab.Text+'" ';
+        Open;
+      end;
 
       ///proses  data t_tindakanpenujangrajal
       if DataSimrs.qryt_tindakanpenunjangrajal.Locate('noTindakanPenunjangRajal',edtNoTindakanPermintaanLab.Text,[])  then
         begin
+          dtlTndPenunjang;
+          /// rumus sum total tarif
+          with DataSimrs.qryt_detailtindakanpenunjangrajal do
+          begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'SELECT SUM(totalTarif) as subTotal from t_detailtindakanpenunjangrajal where noTindakanPenunjangRajal="'+edtNoTindakanPermintaanLab.Text+'"';
+          Open;
+          end;
+
+          totalPermintaanLab := DataSimrs.qryt_detailtindakanpenunjangrajal.Fields[0].AsFloat;
+
           with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+           Close;
+           SQL.Clear;
+           SQL.Text := 'update t_tindakanpenunjangrajal set totalTindakanPenunjangRajal="'+FloatToStr(totalPermintaanLab)+'" where noTindakanPenunjangRajal="'+edtNoTindakanPermintaanLab.Text+'"';
+           ExecSQL;
+           SQL.Text := 'select * from t_tindakanpenunjangrajal';
+           Open;
+          end;
+
+          dtlTndPenunjang;
+
+          with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_tindakanpenunjangrajal';
+            Open;
+          end;
+
+          with DataSimrs.qryt_detailtindakanpenunjangrajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_detailtindakanpenunjangrajal';
+            Open;
+          end;
+
+          {with DataSimrs.qryt_tindakanpenunjangrajal do
           begin
             Edit;
             FieldByName('noTindakanPenunjangRajal').AsString := edtNoTindakanPermintaanLab.Text;
@@ -467,11 +514,53 @@ begin
             SQL.Clear;
             SQL.Text := 'select * from t_tindakanpenunjangrajal';
             Open;
-          end;
+          end;}
+          
         end
         else
         begin
+        
+          dtlTndPenunjang;
+          /// rumus sum total tarif
+          with DataSimrs.qryt_detailtindakanpenunjangrajal do
+          begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'SELECT SUM(totalTarif) as subTotal from t_detailtindakanpenunjangrajal where noTindakanPenunjangRajal="'+edtNoTindakanPermintaanLab.Text+'"';
+          Open;
+          end;
+
+          totalPermintaanLab := DataSimrs.qryt_detailtindakanpenunjangrajal.Fields[0].AsFloat;
+
           with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+           Close;
+           SQL.Clear;
+           SQL.Text := 'insert into t_tindakanpenunjangrajal (noTindakanPenunjangRajal,noRegistrasiPenunjangRajal,tglTindakanPenunjangRajal,totalTindakanPenunjangRajal,statusPembayaran) values ("'+edtNoTindakanPermintaanLab.Text+'","'+edtNoRegistrasiLab.Text+'","'+FormatDateTime('yyyy-MM-dd hh:mm:ss',Now)+'","'+FloatToStr(totalPermintaanLab)+'","BELUM LUNAS")';
+           ExecSQL;
+           SQL.Text := 'select * from t_tindakanpenunjangrajal';
+           Open;
+          end;
+
+          dtlTndPenunjang;
+
+          with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_tindakanpenunjangrajal';
+            Open;
+          end;
+
+          with DataSimrs.qryt_detailtindakanpenunjangrajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_detailtindakanpenunjangrajal';
+            Open;
+          end;
+          
+          {with DataSimrs.qryt_tindakanpenunjangrajal do
           begin
             Append;
             FieldByName('noTindakanPenunjangRajal').AsString := edtNoTindakanPermintaanLab.Text;
@@ -487,7 +576,7 @@ begin
             SQL.Clear;
             SQL.Text := 'select * from t_tindakanpenunjangrajal';
             Open;
-          end;
+          end;}
         end;
 
       
@@ -501,6 +590,7 @@ end;
 procedure TFPermintaanLabRajal.btnHapusClick(Sender: TObject);
 var
   idNo,tndk:String;
+  totalPermintaanLab:Double;
 begin
 If DataSimrs.qryvw_detailtindakanpenunjangrajal.RecordCount<=0 then
   ShowMessage('Data Tidak ada ') else
@@ -528,7 +618,7 @@ begin
       Open;
     end;
     ///DataSimrs.qryt_detailtindakanpenunjangrajal.Delete;
-    dtlTndPenunjang;
+    {dtlTndPenunjang;
 
     ///proses  data t_tindakanpenujangrajal
       if DataSimrs.qryt_tindakanpenunjangrajal.Locate('noTindakanPenunjangRajal',edtNoTindakanPermintaanLab.Text,[])  then
@@ -570,7 +660,108 @@ begin
             SQL.Text := 'select * from t_tindakanpenunjangrajal';
             Open;
           end;
+        end;}
+        ///dtlTndPenunjang;
+      with DataSimrs.qryt_tindakanpenunjangrajal do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Text := 'select * from t_tindakanpenunjangrajal where noTindakanPenunjangRajal="'+edtNoTindakanPermintaanLab.Text+'" ';
+        Open;
+      end;
+
+      ///proses  data t_tindakanpenujangrajal
+      if DataSimrs.qryt_tindakanpenunjangrajal.Locate('noTindakanPenunjangRajal',edtNoTindakanPermintaanLab.Text,[])  then
+        begin
+          dtlTndPenunjang;
+          /// rumus sum total tarif
+          with DataSimrs.qryt_detailtindakanpenunjangrajal do
+          begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'SELECT SUM(totalTarif) as subTotal from t_detailtindakanpenunjangrajal where noTindakanPenunjangRajal="'+edtNoTindakanPermintaanLab.Text+'"';
+          Open;
+          end;
+
+          totalPermintaanLab := DataSimrs.qryt_detailtindakanpenunjangrajal.Fields[0].AsFloat;
+
+          with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+           Close;
+           SQL.Clear;
+           SQL.Text := 'update t_tindakanpenunjangrajal set totalTindakanPenunjangRajal="'+FloatToStr(totalPermintaanLab)+'" where noTindakanPenunjangRajal="'+edtNoTindakanPermintaanLab.Text+'"';
+           ExecSQL;
+           SQL.Text := 'select * from t_tindakanpenunjangrajal';
+           Open;
+          end;
+
+          dtlTndPenunjang;
+
+          with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_tindakanpenunjangrajal';
+            Open;
+          end;
+
+          with DataSimrs.qryt_detailtindakanpenunjangrajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_detailtindakanpenunjangrajal';
+            Open;
+          end;
+
+          
+          
+        end
+        else
+        begin
+        
+          dtlTndPenunjang;
+          /// rumus sum total tarif
+          with DataSimrs.qryt_detailtindakanpenunjangrajal do
+          begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'SELECT SUM(totalTarif) as subTotal from t_detailtindakanpenunjangrajal where noTindakanPenunjangRajal="'+edtNoTindakanPermintaanLab.Text+'"';
+          Open;
+          end;
+
+          totalPermintaanLab := DataSimrs.qryt_detailtindakanpenunjangrajal.Fields[0].AsFloat;
+
+          with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+           Close;
+           SQL.Clear;
+           SQL.Text := 'insert into t_tindakanpenunjangrajal (noTindakanPenunjangRajal,noRegistrasiPenunjangRajal,tglTindakanPenunjangRajal,totalTindakanPenunjangRajal,statusPembayaran) values ("'+edtNoTindakanPermintaanLab.Text+'","'+edtNoRegistrasiLab.Text+'","'+FormatDateTime('yyyy-MM-dd hh:mm:ss',Now)+'","'+FloatToStr(totalPermintaanLab)+'","BELUM LUNAS")';
+           ExecSQL;
+           SQL.Text := 'select * from t_tindakanpenunjangrajal';
+           Open;
+          end;
+
+          dtlTndPenunjang;
+
+          with DataSimrs.qryt_tindakanpenunjangrajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_tindakanpenunjangrajal';
+            Open;
+          end;
+
+          with DataSimrs.qryt_detailtindakanpenunjangrajal do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_detailtindakanpenunjangrajal';
+            Open;
+          end;
+          
+
         end;
+        
   end
   else
   abort;
@@ -587,7 +778,7 @@ begin
   /// insert ke registrasi penunjang
   with DataSimrs.qryt_registrasipenunjangrajal do
   begin
-    Append;
+    {Append;
       FieldByName('noRegistrasiPenunjangRajal').AsString := edtNoRegistrasiLab.Text;
       FieldByName('noDaftar').AsString := edtNoRegistrasi.Text;
       FieldByName('kdUnitAsal').AsString := edtKode.Text;
@@ -602,6 +793,13 @@ begin
 
     Close;
     SQL.Clear;
+    SQL.Text := 'select * from t_registrasipenunjangrajal';
+    Open;}
+    Close;
+    SQL.Clear;
+    SQL.Text := 'insert into t_registrasipenunjangrajal (noRegistrasiPenunjangRajal,noDaftar,kdUnitAsal,unitAsal,kdUnit,unit,tglMasukPenunjangRajal,statusPenunjang,kdTenagaMedisPengirim,ketKlinis)  '+
+    'values ("'+edtNoRegistrasiLab.Text+'","'+edtNoRegistrasi.Text+'","'+edtKode.Text+'","'+edtAsalRuang.Text+'","3002","Laboratorium","'+FormatDateTime('yyyy-MM-dd hh:mm:ss',dtpTglPermintaan.DateTime)+'","PERMINTAAN","'+cbbDokter.EditValue+'","'+cxmKeterangan.Text+'")';
+    ExecSQL;
     SQL.Text := 'select * from t_registrasipenunjangrajal';
     Open;
   end;

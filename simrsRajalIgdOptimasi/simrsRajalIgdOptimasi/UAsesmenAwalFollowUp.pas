@@ -2,6 +2,9 @@ unit UAsesmenAwalFollowUp;
 
 interface
 
+procedure tampilFollow;
+procedure tampilDetailFollow;
+
 procedure baruFollwoUp;
 procedure proesesSimpanFollow;
 procedure tambahDetailSimpanFollow;
@@ -14,8 +17,32 @@ procedure tampilDetailUbahFollow;
 
 implementation
 
-uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms, ZDataset,
+uses Messages,Dialogs,UDataSimrs1,UAsesmenAwalIgd, SysUtils, Forms,
   DB, StdCtrls, Variants, DateUtils, Math;
+
+/// tampil follow
+procedure tampilFollow;
+begin
+ with DataSimrs1.qryt_asesmen_awal_follow do
+ begin
+  close;
+  sql.clear;
+  sql.text := 'select * from t_asesmen_awal_follow';
+  open;
+ end;
+end;
+
+/// tampil detail follow
+procedure tampilDetailFollow;
+begin
+ with DataSimrs1.zqryt_detail_asesmen_awal_follow do
+ begin
+  close;
+  sql.clear;
+  sql.text := 'select * from t_detail_asesmen_awal_follow ';
+  open;
+ end;
+end;
 
   /// procedure baru
 procedure baruFollwoUp;
@@ -27,7 +54,7 @@ begin
     Memomedis.Text := '';
     Memokeperawatan.Text := '';
 
-
+    btnSIMPANFOLL.Caption := 'SIMPAN';
     /// panggil procedure
     tambahDetailSimpanFollow;
   end;
@@ -42,6 +69,7 @@ begin
   cxtmdtfoll.Time := Now;
   edtrekomendasi.Text := '';
   cbbnamapetugas.Text := '';
+  btnTAMBAHFOLL.Caption := 'TAMBAH';
  end;
 end;
 
@@ -74,7 +102,7 @@ begin
        SQL.Clear;
 
        SQL.Text := 'update t_asesmen_awal_follow set  noRekamedis="'+edtNoRm.Text+'",noDaftar="'+edtNoRegistrasi.Text+'",noDaftarUnit="'+edtNoRajal.Text+'",tglDaftarUnit="'+FormatDateTime('yyyy-MM-dd',dtpTglDaftarUnit.Date)+'",'+
-       'daftarMasalah="'+Memodaftarmasalah.Text+'",diagnosaKerja="'+Memodiagnosa.Text+'",medis="'+Memomedis.Text+'",keperawatan="'+Memokeperawatan.Text+'"';
+       'daftarMasalah="'+Memodaftarmasalah.Text+'",diagnosaKerja="'+Memodiagnosa.Text+'",medis="'+Memomedis.Text+'",keperawatan="'+Memokeperawatan.Text+'" where idAsesmenAwalFollow="'+lblIdFollowUp.Caption+'"';
        ExecSQL;
        SQL.Text := 'select * from t_asesmen_awal_follow';
        Open;
@@ -83,11 +111,14 @@ begin
  end
 end;
 
-///
+/// simpan detail
 procedure prosesDetailSimpanFollow;
 begin
  with FAsesmenAwalIgd do
  begin
+   IF btnTAMBAHFOLL.Caption = 'TAMBAH' then
+   BEGIN
+   /// PROSES SIMPAN
    with DataSimrs1.zqryt_detail_asesmen_awal_follow do
    begin
     Close;
@@ -99,6 +130,24 @@ begin
     SQL.Text := 'select * from t_detail_asesmen_awal_follow';
     Open;
    end;
+   end
+   else
+   begin
+     /// PROSES UBAH
+   with DataSimrs1.zqryt_detail_asesmen_awal_follow do
+   begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'update t_detail_asesmen_awal_follow set noRekamedis="'+edtNoRm.Text+'",noDaftar="'+edtNoRegistrasi.Text+'",noDaftarUnit="'+edtNoRegistrasi.Text+'",'+
+    'tanggal="'+FormatDateTime('yyyy-MM-dd',dtpfoll.Date)+'",jam="'+FormatDateTime('hh:mm:ss',cxtmdtfoll.Time)+'",'+
+    'rekomendasi="'+edtrekomendasi.Text+'",namaPetugas="'+cbbnamapetugas.Text+'" where idDetailAsesmenAwalFollow="'+lblIdDetailFollowUp.Caption+'"';
+    ExecSQL;
+    SQL.Text := 'select * from t_detail_asesmen_awal_follow';
+    Open;
+   end;
+
+   end;
+
  end;
 end;
 
@@ -112,6 +161,7 @@ begin
  DataSimrs1.qryt_asesmen_awal_follow.FieldByName('idAsesmenAwalFollow').AsString;
  with FAsesmenAwalIgd do
  begin
+  lblIdFollowUp.Caption := id;
   with DataSimrs1.qryt_asesmen_awal_follow do
   begin
    Close;
@@ -121,10 +171,13 @@ begin
   end;
 
   Memodaftarmasalah.Text := DataSimrs1.qryt_asesmen_awal_follow.FieldByname('daftarMasalah').AsString;
-  Memodiagnosa.Text := DataSimrs1.qryt_asesmen_awal_follow.FieldByname('diagnosaKerja').AsString;
+  Memodiagnosis.Text := DataSimrs1.qryt_asesmen_awal_follow.FieldByname('diagnosaKerja').AsString;
   Memomedis.Text := DataSimrs1.qryt_asesmen_awal_follow.FieldByname('medis').AsString;
   Memokeperawatan.Text := DataSimrs1.qryt_asesmen_awal_follow.FieldByname('keperawatan').AsString;
   btnSIMPANFOLL.Caption := 'UBAH';
+
+  /// procedure tampil
+  tampilFollow;
  end;
 end
 else
@@ -139,6 +192,7 @@ begin
 IF DataSimrs1.zqryt_detail_asesmen_awal_follow.RecordCount >= 1 then
    begin
     id := DataSimrs1.zqryt_detail_asesmen_awal_follow.Fieldbyname('idDetailAsesmenAwalFollow').AsString;
+
     with DataSimrs1.zqryt_detail_asesmen_awal_follow do
     begin
       Close;
@@ -149,12 +203,16 @@ IF DataSimrs1.zqryt_detail_asesmen_awal_follow.RecordCount >= 1 then
 
     with FAsesmenAwalIgd do
     begin
-     dtpfoll.Date := DataSimrs1.zqryt_detail_asesmen_awal_follow.Fieldbyname('idDetailAsesmenAwalFollow').AsDateTime;
-     cxtmdtfoll.Time :=DataSimrs1.zqryt_detail_asesmen_awal_follow.Fieldbyname('idDetailAsesmenAwalFollow').AsDateTime;
-     edtrekomendasi.Text := DataSimrs1.zqryt_detail_asesmen_awal_follow.Fieldbyname('idDetailAsesmenAwalFollow').AsString;
-     cbbnamapetugas.Text := DataSimrs1.zqryt_detail_asesmen_awal_follow.Fieldbyname('idDetailAsesmenAwalFollow').AsString;
+     lblIdDetailFollowUp.Caption := id;
+     dtpfoll.Date := DataSimrs1.zqryt_detail_asesmen_awal_follow.Fieldbyname('tanggal').AsDateTime;
+     cxtmdtfoll.Time :=DataSimrs1.zqryt_detail_asesmen_awal_follow.Fieldbyname('jam').AsDateTime;
+     edtrekomendasi.Text := DataSimrs1.zqryt_detail_asesmen_awal_follow.Fieldbyname('rekomendasi').AsString;
+     cbbnamapetugas.Text := DataSimrs1.zqryt_detail_asesmen_awal_follow.Fieldbyname('namaPetugas').AsString;
+     btnTAMBAHFOLL.Caption := 'UBAH';
     end;
 
+    /// panggil procedure
+    tampilDetailFollow;
    end
    else
    MessageDlg('Data Tidak DI Temukan...!',mtWarning,[mbOK],0);

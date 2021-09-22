@@ -33,15 +33,16 @@ uses
   UAsesmenAwalIgdStatus in 'UAsesmenAwalIgdStatus.pas',
   UAsemenAwalIgdNyeri in 'UAsemenAwalIgdNyeri.pas',
   UAsemenAwalIgdDischarge in 'UAsemenAwalIgdDischarge.pas',
-  UAsesmenAwalFollowUp in 'UAsesmenAwalFollowUp.pas';
+  UAsesmenAwalFollowUp in 'UAsesmenAwalFollowUp.pas',
+  UAsesmenAwalKondisiKrs in 'UAsesmenAwalKondisiKrs.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
+  Application.CreateForm(TFLoginSimrs, FLoginSimrs);
   Application.CreateForm(TFAsesmenAwalIgd, FAsesmenAwalIgd);
   Application.CreateForm(TFRawatJalanIgd, FRawatJalanIgd);
-  Application.CreateForm(TFLoginSimrs, FLoginSimrs);
   Application.CreateForm(TFKonsulAntarPoli, FKonsulAntarPoli);
   Application.CreateForm(TFPermintaanLabRajal, FPermintaanLabRajal);
   Application.CreateForm(TFPermintaanRadRajal, FPermintaanRadRajal);

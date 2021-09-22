@@ -535,7 +535,7 @@ object DataSimrs: TDataSimrs
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select * from t_registrasipenunjangrajal limit 10')
+      'select * from t_registrasipenunjangrajal ')
     Left = 568
     Top = 152
   end

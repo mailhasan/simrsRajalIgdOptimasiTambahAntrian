@@ -781,7 +781,7 @@ type
     lblkesadaran: TLabel;
     Label102: TLabel;
     lbltampak: TLabel;
-    DateTimePicker1: TDateTimePicker;
+    dtpKondisiKrs: TDateTimePicker;
     cxtmdtkrs: TcxTimeEdit;
     cbtidaksakit: TCheckBox;
     cbsakitsedang: TCheckBox;
@@ -1214,7 +1214,7 @@ type
     cbbbersuaranyeri: TComboBox;
     edtSpO2: TEdit;
     Label5: TLabel;
-    CheckBox1: TCheckBox;
+    chkKrs: TCheckBox;
     Memo1: TMemo;
     btnTAMBAHDISCHARGE: TButton;
     btnTAMBAHFOLLOW: TButton;
@@ -1325,6 +1325,32 @@ type
     cxgrdbclmnDischargePlaningmodifDate: TcxGridDBColumn;
     cxgrdbclmnDischargePlaningmodifUser: TcxGridDBColumn;
     btnBaruDetailFollow: TButton;
+    cxgrdbtblvwDaftarDataRiwayatFollow: TcxGridDBTableView;
+    cxgrdlvlDaftarDataRiwayatFollow: TcxGridLevel;
+    cxgrdDaftarDataRiwayatFollow: TcxGrid;
+    cxgrdbtblvwDetailDaftarDataRiwayatFollow: TcxGridDBTableView;
+    cxgrdlvlDetailDaftarDataRiwayatFollow: TcxGridLevel;
+    cxgrdDetailDaftarDataRiwayatFollow: TcxGrid;
+    btnUbahDetailFollow: TButton;
+    cxgrdbclmnDaftarDataRiwayatFollowidAsesmenAwalFollow: TcxGridDBColumn;
+    cxgrdbclmnDaftarDataRiwayatFollownoRekamedis: TcxGridDBColumn;
+    cxgrdbclmnDaftarDataRiwayatFollownoDaftar: TcxGridDBColumn;
+    cxgrdbclmnDaftarDataRiwayatFollownoDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnDaftarDataRiwayatFollowtglDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnDaftarDataRiwayatFollowdaftarMasalah: TcxGridDBColumn;
+    cxgrdbclmnDaftarDataRiwayatFollowdiagnosaKerja: TcxGridDBColumn;
+    cxgrdbclmnDaftarDataRiwayatFollowmedis: TcxGridDBColumn;
+    cxgrdbclmnDaftarDataRiwayatFollowkeperawatan: TcxGridDBColumn;
+    cxgrdbclmnDetailDaftarDataRiwayatFollowidDetailAsesmenAwalFollow: TcxGridDBColumn;
+    cxgrdbclmnDetailDaftarDataRiwayatFollownoRekamedis: TcxGridDBColumn;
+    cxgrdbclmnDetailDaftarDataRiwayatFollownoDaftar: TcxGridDBColumn;
+    cxgrdbclmnDetailDaftarDataRiwayatFollownoDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnDetailDaftarDataRiwayatFollowtanggal: TcxGridDBColumn;
+    cxgrdbclmnDetailDaftarDataRiwayatFollowjam: TcxGridDBColumn;
+    cxgrdbclmnDetailDaftarDataRiwayatFollowrekomendasi: TcxGridDBColumn;
+    cxgrdbclmnDetailDaftarDataRiwayatFollownamaPetugas: TcxGridDBColumn;
+    lblIdFollowUp: TLabel;
+    lblIdDetailFollowUp: TLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1476,6 +1502,9 @@ type
     procedure btnSIMPANFOLLClick(Sender: TObject);
     procedure btnTAMBAHFOLLClick(Sender: TObject);
     procedure btnBaruDetailFollowClick(Sender: TObject);
+    procedure btnUBAHFOLLClick(Sender: TObject);
+    procedure btnUbahDetailFollowClick(Sender: TObject);
+    procedure btnTAMBAHKONDISIClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1489,7 +1518,7 @@ implementation
 
 {$R *.dfm}
 uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus,UAsemenAwalIgdNyeri,UAsemenAwalIgdHumpty,UAsemenAwalIgdDischarge,
-  ZDataset, ZAbstractDataset, ZAbstractRODataset,UAsesmenAwalFollowUp;
+  ZDataset, ZAbstractDataset, ZAbstractRODataset,UAsesmenAwalFollowUp,UAsesmenAwalKondisiKrs;
 
 procedure TFAsesmenAwalIgd.pnlKeluarClick(Sender: TObject);
 begin
@@ -2293,6 +2322,21 @@ end;
 procedure TFAsesmenAwalIgd.btnBaruDetailFollowClick(Sender: TObject);
 begin
  tambahDetailSimpanFollow;
+end;
+
+procedure TFAsesmenAwalIgd.btnUBAHFOLLClick(Sender: TObject);
+begin
+tampilUbahFollow;
+end;
+
+procedure TFAsesmenAwalIgd.btnUbahDetailFollowClick(Sender: TObject);
+begin
+tampilDetailUbahFollow;
+end;
+
+procedure TFAsesmenAwalIgd.btnTAMBAHKONDISIClick(Sender: TObject);
+begin
+baruKondisiKrs;
 end;
 
 end.

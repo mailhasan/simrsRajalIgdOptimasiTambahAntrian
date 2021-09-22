@@ -194,7 +194,7 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
           Caption = 'NO TRANSAKSI TINDAKAN LAB'
         end
         object lblCaraBayar: TLabel
-          Left = 344
+          Left = 408
           Top = 120
           Width = 72
           Height = 13
@@ -212,9 +212,8 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
         object edtNoRegistrasiLab: TEdit
           Left = 152
           Top = 40
-          Width = 145
+          Width = 249
           Height = 21
-          Enabled = False
           TabOrder = 1
         end
         object edtAsalRuang: TEdit
@@ -246,7 +245,7 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
           Width = 329
         end
         object btnNoPermintaan: TBitBtn
-          Left = 304
+          Left = 408
           Top = 40
           Width = 33
           Height = 25
@@ -264,7 +263,7 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
         object edtNoTindakanPermintaanLab: TEdit
           Left = 152
           Top = 120
-          Width = 177
+          Width = 249
           Height = 21
           Enabled = False
           TabOrder = 6
@@ -443,7 +442,7 @@ object FPermintaanLabRajal: TFPermintaanLabRajal
           FooterRowCount = 1
           FooterParams.Color = clWindow
           IndicatorOptions = []
-          Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+          Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
           ParentFont = False
           SumList.Active = True
           TabOrder = 0
