@@ -40,8 +40,8 @@ uses
 
 begin
   Application.Initialize;
-  Application.CreateForm(TFLoginSimrs, FLoginSimrs);
   Application.CreateForm(TFAsesmenAwalIgd, FAsesmenAwalIgd);
+  Application.CreateForm(TFLoginSimrs, FLoginSimrs);
   Application.CreateForm(TFRawatJalanIgd, FRawatJalanIgd);
   Application.CreateForm(TFKonsulAntarPoli, FKonsulAntarPoli);
   Application.CreateForm(TFPermintaanLabRajal, FPermintaanLabRajal);

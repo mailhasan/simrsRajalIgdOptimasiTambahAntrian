@@ -1351,6 +1351,7 @@ type
     cxgrdbclmnDetailDaftarDataRiwayatFollownamaPetugas: TcxGridDBColumn;
     lblIdFollowUp: TLabel;
     lblIdDetailFollowUp: TLabel;
+    lblIdKondisiKrsIGD: TLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);

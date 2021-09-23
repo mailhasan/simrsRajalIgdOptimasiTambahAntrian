@@ -22,7 +22,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
     Width = 1440
     Height = 49
     Align = alTop
-    Caption = 'ASESMEN AWAL IGD'
+    Caption = 'ASESMEN AWAL  IGD (Masih Vesi Pengembangan)'
     Color = 15115304
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindow
@@ -12348,6 +12348,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
             ParentFont = False
+          end
+          object lblIdKondisiKrsIGD: TLabel
+            Left = 800
+            Top = 24
+            Width = 106
+            Height = 13
+            Caption = 'lblIdKondisiKrsIGD'
           end
           object dtpKondisiKrs: TDateTimePicker
             Left = 112
