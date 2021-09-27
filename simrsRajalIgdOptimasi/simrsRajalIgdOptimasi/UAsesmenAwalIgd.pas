@@ -1352,6 +1352,50 @@ type
     lblIdFollowUp: TLabel;
     lblIdDetailFollowUp: TLabel;
     lblIdKondisiKrsIGD: TLabel;
+    cxgrdbtblvwKrs: TcxGridDBTableView;
+    cxgrdlvlKrs: TcxGridLevel;
+    cxgrdKrs: TcxGrid;
+    cxgrdbclmnKrsidAsesmenAwalKondisikrs: TcxGridDBColumn;
+    cxgrdbclmnKrsnoRekamedis: TcxGridDBColumn;
+    cxgrdbclmnKrsnoDaftar: TcxGridDBColumn;
+    cxgrdbclmnKrsnoDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnKrstglDaftarUnit: TcxGridDBColumn;
+    cxgrdbclmnKrstanggal: TcxGridDBColumn;
+    cxgrdbclmnKrsjamKeluarIgd: TcxGridDBColumn;
+    cxgrdbclmnKrstidakSakit: TcxGridDBColumn;
+    cxgrdbclmnKrssakitRingan: TcxGridDBColumn;
+    cxgrdbclmnKrssakitSedah: TcxGridDBColumn;
+    cxgrdbclmnKrssakitBerat: TcxGridDBColumn;
+    cxgrdbclmnKrscomposMentis: TcxGridDBColumn;
+    cxgrdbclmnKrsapatis: TcxGridDBColumn;
+    cxgrdbclmnKrssomnorles: TcxGridDBColumn;
+    cxgrdbclmnKrssopor: TcxGridDBColumn;
+    cxgrdbclmnKrscoma: TcxGridDBColumn;
+    cxgrdbclmnKrse: TcxGridDBColumn;
+    cxgrdbclmnKrsv: TcxGridDBColumn;
+    cxgrdbclmnKrsm: TcxGridDBColumn;
+    cxgrdbclmnKrstekananDarah: TcxGridDBColumn;
+    cxgrdbclmnKrsSpO2: TcxGridDBColumn;
+    cxgrdbclmnKrsnadi: TcxGridDBColumn;
+    cxgrdbclmnKrspr: TcxGridDBColumn;
+    cxgrdbclmnKrssuhu: TcxGridDBColumn;
+    cxgrdbclmnKrsmasukRsDiRuang: TcxGridDBColumn;
+    cxgrdbclmnKrspertugasYangMenerima: TcxGridDBColumn;
+    cxgrdbclmnKrstindakanLanjut: TcxGridDBColumn;
+    cxgrdbclmnKrskamarOperasi: TcxGridDBColumn;
+    cxgrdbclmnKrskamarBersalin: TcxGridDBColumn;
+    cxgrdbclmnKrslainya: TcxGridDBColumn;
+    cxgrdbclmnKrsrujuk: TcxGridDBColumn;
+    cxgrdbclmnKrsdiRujukKe: TcxGridDBColumn;
+    cxgrdbclmnKrsjam: TcxGridDBColumn;
+    cxgrdbclmnKrspulangPaksa: TcxGridDBColumn;
+    cxgrdbclmnKrsmeninggalJam: TcxGridDBColumn;
+    cxgrdbclmnKrsdoa: TcxGridDBColumn;
+    cxgrdbclmnKrskendaraanPribadi: TcxGridDBColumn;
+    cxgrdbclmnKrsambulans: TcxGridDBColumn;
+    cxgrdbclmnKrskendaraanJenazah: TcxGridDBColumn;
+    cxgrdbclmnKrsperawatIGD: TcxGridDBColumn;
+    cxgrdbclmnKrsdokterIGD: TcxGridDBColumn;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1506,6 +1550,8 @@ type
     procedure btnUBAHFOLLClick(Sender: TObject);
     procedure btnUbahDetailFollowClick(Sender: TObject);
     procedure btnTAMBAHKONDISIClick(Sender: TObject);
+    procedure btnSIMPANKRSClick(Sender: TObject);
+    procedure btnUBAHKRSClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -2338,6 +2384,16 @@ end;
 procedure TFAsesmenAwalIgd.btnTAMBAHKONDISIClick(Sender: TObject);
 begin
 baruKondisiKrs;
+end;
+
+procedure TFAsesmenAwalIgd.btnSIMPANKRSClick(Sender: TObject);
+begin
+prosesSimpanKondisiKrs;
+end;
+
+procedure TFAsesmenAwalIgd.btnUBAHKRSClick(Sender: TObject);
+begin
+tampilUbahKondisiKrs;
 end;
 
 end.

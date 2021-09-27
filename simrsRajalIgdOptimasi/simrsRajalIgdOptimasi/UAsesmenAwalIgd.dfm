@@ -1,8 +1,8 @@
 object FAsesmenAwalIgd: TFAsesmenAwalIgd
-  Left = 350
-  Top = 98
-  Width = 1456
-  Height = 877
+  Left = -8
+  Top = -8
+  Width = 1936
+  Height = 1056
   Align = alClient
   AutoSize = True
   Caption = 'ASESMEN AWAL IGD'
@@ -13,13 +13,14 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  WindowState = wsMaximized
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlAtas: TPanel
     Left = 0
     Top = 0
-    Width = 1440
+    Width = 1920
     Height = 49
     Align = alTop
     Caption = 'ASESMEN AWAL  IGD (Masih Vesi Pengembangan)'
@@ -32,7 +33,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
     ParentFont = False
     TabOrder = 0
     object pnlKeluar: TPanel
-      Left = 1302
+      Left = 1782
       Top = 1
       Width = 137
       Height = 47
@@ -46,21 +47,21 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
   object pnlTengah: TPanel
     Left = 0
     Top = 49
-    Width = 1440
-    Height = 789
+    Width = 1920
+    Height = 968
     Align = alClient
     TabOrder = 1
     object pnlTengahAtas: TPanel
       Left = 1
       Top = 1
-      Width = 1438
+      Width = 1918
       Height = 96
       Align = alTop
       TabOrder = 0
       object grpTegah1: TGroupBox
         Left = 1
         Top = 1
-        Width = 1436
+        Width = 1916
         Height = 94
         Align = alClient
         Color = 16577248
@@ -379,8 +380,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
     object pgcAsesmenAwalIgd: TPageControl
       Left = 1
       Top = 97
-      Width = 1438
-      Height = 691
+      Width = 1918
+      Height = 870
       ActivePage = tskondisikrsigd
       Align = alClient
       Font.Charset = ANSI_CHARSET
@@ -395,7 +396,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpTriageDataRujukan: TGroupBox
           Left = 0
           Top = 0
-          Width = 1430
+          Width = 1910
           Height = 145
           Align = alTop
           Caption = 'DATA RUJUKAN'
@@ -824,8 +825,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpRIWAYATTRIAGE: TGroupBox
           Left = 1081
           Top = 145
-          Width = 349
-          Height = 517
+          Width = 829
+          Height = 696
           Align = alClient
           Caption = 'DAFTAR RIWAYAT DATA TRIAGE PASIEN'
           Color = 16577248
@@ -840,8 +841,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           object cxgrdTriage: TcxGrid
             Left = 2
             Top = 15
-            Width = 345
-            Height = 499
+            Width = 825
+            Height = 679
             Align = alClient
             TabOrder = 0
             object cxgrdbtblvwTriage: TcxGridDBTableView
@@ -1133,7 +1134,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           Left = 0
           Top = 145
           Width = 1081
-          Height = 517
+          Height = 696
           Align = alLeft
           Caption = 'TRIAGE (diisi oleh perawat, beri tanda [v])'
           Color = 16577248
@@ -3111,7 +3112,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpStatusAtas: TGroupBox
           Left = 0
           Top = 0
-          Width = 1430
+          Width = 1910
           Height = 129
           Align = alTop
           Caption = 
@@ -5011,7 +5012,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpAtasNyeri: TGroupBox
           Left = 0
           Top = 0
-          Width = 1430
+          Width = 1910
           Height = 185
           Align = alTop
           Caption = 'PENILAIAN NYERI (DEWASA)'
@@ -9335,7 +9336,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpdischarge: TGroupBox
           Left = 0
           Top = 0
-          Width = 1430
+          Width = 1910
           Height = 97
           Align = alTop
           Caption = 'DISCHARGE PLANNING (diisi oleh perawat, beri tanda [v])'
@@ -11771,7 +11772,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object GroupBox29: TGroupBox
           Left = 0
           Top = 0
-          Width = 1430
+          Width = 1910
           Height = 169
           Align = alTop
           Color = 16577248
@@ -12240,7 +12241,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpkrs: TGroupBox
           Left = 0
           Top = 0
-          Width = 1430
+          Width = 1910
           Height = 121
           Align = alTop
           Color = 16577248
@@ -12488,6 +12489,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Font.Style = [fsBold]
               ParentFont = False
               TabOrder = 0
+              OnClick = btnSIMPANKRSClick
             end
             object btnUBAHKRS: TButton
               Left = 184
@@ -12496,6 +12498,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
+              OnClick = btnUBAHKRSClick
             end
             object btnTAMBAHKONDISI: TButton
               Left = 8
@@ -12553,7 +12556,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpRIWAYATKONDISIKRS: TGroupBox
           Left = 1080
           Top = 121
-          Width = 350
+          Width = 825
           Height = 732
           Caption = 'DAFTAR RIWAYAT KONDISI KRS PASIEN'
           Color = 16577248
@@ -12565,12 +12568,153 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           ParentFont = False
           TabOrder = 1
+          object cxgrdKrs: TcxGrid
+            Left = 2
+            Top = 15
+            Width = 821
+            Height = 715
+            Align = alClient
+            TabOrder = 0
+            object cxgrdbtblvwKrs: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              DataController.DataSource = DataSimrs1.dst_asesmen_awal_kondisikrs
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              object cxgrdbclmnKrsidAsesmenAwalKondisikrs: TcxGridDBColumn
+                DataBinding.FieldName = 'idAsesmenAwalKondisikrs'
+              end
+              object cxgrdbclmnKrsnoRekamedis: TcxGridDBColumn
+                DataBinding.FieldName = 'noRekamedis'
+              end
+              object cxgrdbclmnKrsnoDaftar: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftar'
+              end
+              object cxgrdbclmnKrsnoDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'noDaftarUnit'
+              end
+              object cxgrdbclmnKrstglDaftarUnit: TcxGridDBColumn
+                DataBinding.FieldName = 'tglDaftarUnit'
+              end
+              object cxgrdbclmnKrstanggal: TcxGridDBColumn
+                DataBinding.FieldName = 'tanggal'
+              end
+              object cxgrdbclmnKrsjamKeluarIgd: TcxGridDBColumn
+                DataBinding.FieldName = 'jamKeluarIgd'
+              end
+              object cxgrdbclmnKrstidakSakit: TcxGridDBColumn
+                DataBinding.FieldName = 'tidakSakit'
+              end
+              object cxgrdbclmnKrssakitRingan: TcxGridDBColumn
+                DataBinding.FieldName = 'sakitRingan'
+              end
+              object cxgrdbclmnKrssakitSedah: TcxGridDBColumn
+                DataBinding.FieldName = 'sakitSedah'
+              end
+              object cxgrdbclmnKrssakitBerat: TcxGridDBColumn
+                DataBinding.FieldName = 'sakitBerat'
+              end
+              object cxgrdbclmnKrscomposMentis: TcxGridDBColumn
+                DataBinding.FieldName = 'composMentis'
+              end
+              object cxgrdbclmnKrsapatis: TcxGridDBColumn
+                DataBinding.FieldName = 'apatis'
+              end
+              object cxgrdbclmnKrssomnorles: TcxGridDBColumn
+                DataBinding.FieldName = 'somnorles'
+              end
+              object cxgrdbclmnKrssopor: TcxGridDBColumn
+                DataBinding.FieldName = 'sopor'
+              end
+              object cxgrdbclmnKrscoma: TcxGridDBColumn
+                DataBinding.FieldName = 'coma'
+              end
+              object cxgrdbclmnKrse: TcxGridDBColumn
+                DataBinding.FieldName = 'e'
+              end
+              object cxgrdbclmnKrsv: TcxGridDBColumn
+                DataBinding.FieldName = 'v'
+              end
+              object cxgrdbclmnKrsm: TcxGridDBColumn
+                DataBinding.FieldName = 'm'
+              end
+              object cxgrdbclmnKrstekananDarah: TcxGridDBColumn
+                DataBinding.FieldName = 'tekananDarah'
+              end
+              object cxgrdbclmnKrsSpO2: TcxGridDBColumn
+                DataBinding.FieldName = 'SpO2'
+              end
+              object cxgrdbclmnKrsnadi: TcxGridDBColumn
+                DataBinding.FieldName = 'nadi'
+              end
+              object cxgrdbclmnKrspr: TcxGridDBColumn
+                DataBinding.FieldName = 'pr'
+              end
+              object cxgrdbclmnKrssuhu: TcxGridDBColumn
+                DataBinding.FieldName = 'suhu'
+              end
+              object cxgrdbclmnKrsmasukRsDiRuang: TcxGridDBColumn
+                DataBinding.FieldName = 'masukRsDiRuang'
+              end
+              object cxgrdbclmnKrspertugasYangMenerima: TcxGridDBColumn
+                DataBinding.FieldName = 'pertugasYangMenerima'
+              end
+              object cxgrdbclmnKrstindakanLanjut: TcxGridDBColumn
+                DataBinding.FieldName = 'tindakanLanjut'
+              end
+              object cxgrdbclmnKrskamarOperasi: TcxGridDBColumn
+                DataBinding.FieldName = 'kamarOperasi'
+              end
+              object cxgrdbclmnKrskamarBersalin: TcxGridDBColumn
+                DataBinding.FieldName = 'kamarBersalin'
+              end
+              object cxgrdbclmnKrslainya: TcxGridDBColumn
+                DataBinding.FieldName = 'lainya'
+              end
+              object cxgrdbclmnKrsrujuk: TcxGridDBColumn
+                DataBinding.FieldName = 'rujuk'
+              end
+              object cxgrdbclmnKrsdiRujukKe: TcxGridDBColumn
+                DataBinding.FieldName = 'diRujukKe'
+              end
+              object cxgrdbclmnKrsjam: TcxGridDBColumn
+                DataBinding.FieldName = 'jam'
+              end
+              object cxgrdbclmnKrspulangPaksa: TcxGridDBColumn
+                DataBinding.FieldName = 'pulangPaksa'
+              end
+              object cxgrdbclmnKrsmeninggalJam: TcxGridDBColumn
+                DataBinding.FieldName = 'meninggalJam'
+              end
+              object cxgrdbclmnKrsdoa: TcxGridDBColumn
+                DataBinding.FieldName = 'doa'
+              end
+              object cxgrdbclmnKrskendaraanPribadi: TcxGridDBColumn
+                DataBinding.FieldName = 'kendaraanPribadi'
+              end
+              object cxgrdbclmnKrsambulans: TcxGridDBColumn
+                DataBinding.FieldName = 'ambulans'
+              end
+              object cxgrdbclmnKrskendaraanJenazah: TcxGridDBColumn
+                DataBinding.FieldName = 'kendaraanJenazah'
+              end
+              object cxgrdbclmnKrsperawatIGD: TcxGridDBColumn
+                DataBinding.FieldName = 'perawatIGD'
+              end
+              object cxgrdbclmnKrsdokterIGD: TcxGridDBColumn
+                DataBinding.FieldName = 'dokterIGD'
+              end
+            end
+            object cxgrdlvlKrs: TcxGridLevel
+              GridView = cxgrdbtblvwKrs
+            end
+          end
         end
         object grpkrs1: TGroupBox
           Left = 0
           Top = 120
           Width = 1081
-          Height = 705
+          Height = 721
           Color = 16577248
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
@@ -13199,7 +13343,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object GroupBox37: TGroupBox
           Left = 0
           Top = 0
-          Width = 1430
+          Width = 1910
           Height = 121
           Align = alTop
           Color = 16577248
@@ -13879,7 +14023,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object GroupBox44: TGroupBox
           Left = 0
           Top = 0
-          Width = 1430
+          Width = 1910
           Height = 121
           Align = alTop
           Color = 16577248
