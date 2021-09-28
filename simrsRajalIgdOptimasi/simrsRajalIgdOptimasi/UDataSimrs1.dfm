@@ -23,7 +23,6 @@ object DataSimrs1: TDataSimrs1
   end
   object qryt_asesmen_awal_triage: TZQuery
     Connection = conSimrs
-    Active = True
     SQL.Strings = (
       'select * from t_asesmen_awal_triage')
     Params = <>
@@ -32,7 +31,6 @@ object DataSimrs1: TDataSimrs1
   end
   object qryt_asesmen_awal_status: TZQuery
     Connection = conSimrs
-    Active = True
     SQL.Strings = (
       'select * from t_asesmen_awal_status')
     Params = <>
@@ -41,7 +39,6 @@ object DataSimrs1: TDataSimrs1
   end
   object qryt_asesmen_awal_nyeri: TZQuery
     Connection = conSimrs
-    Active = True
     SQL.Strings = (
       'select * from t_asesmen_awal_nyeri')
     Params = <>
@@ -50,7 +47,6 @@ object DataSimrs1: TDataSimrs1
   end
   object qryt_asesmen_awal_humpty: TZQuery
     Connection = conSimrs
-    Active = True
     SQL.Strings = (
       'select * from t_asesmen_awal_humpty')
     Params = <>
@@ -59,7 +55,6 @@ object DataSimrs1: TDataSimrs1
   end
   object qryt_asesmen_awal_discharge: TZQuery
     Connection = conSimrs
-    Active = True
     SQL.Strings = (
       'select * from t_asesmen_awal_discharge')
     Params = <>
@@ -68,7 +63,6 @@ object DataSimrs1: TDataSimrs1
   end
   object qryt_asesmen_awal_follow: TZQuery
     Connection = conSimrs
-    Active = True
     SQL.Strings = (
       'select * from t_asesmen_awal_follow')
     Params = <>
@@ -77,7 +71,6 @@ object DataSimrs1: TDataSimrs1
   end
   object qryt_asesmen_awal_kondisikrs: TZQuery
     Connection = conSimrs
-    Active = True
     SQL.Strings = (
       'select * from t_asesmen_awal_kondisikrs')
     Params = <>
@@ -86,7 +79,6 @@ object DataSimrs1: TDataSimrs1
   end
   object qryt_asesmen_awal_observasi: TZQuery
     Connection = conSimrs
-    Active = True
     SQL.Strings = (
       'SELECT * FROM t_asesmen_awal_observasi')
     Params = <>
@@ -95,7 +87,6 @@ object DataSimrs1: TDataSimrs1
   end
   object qryt_asesmen_awal_tindaklanjut: TZQuery
     Connection = conSimrs
-    Active = True
     SQL.Strings = (
       'select * from t_asesmen_awal_tindaklanjut')
     Params = <>
@@ -149,7 +140,6 @@ object DataSimrs1: TDataSimrs1
   end
   object zqryt_detail_asesmen_awal_follow: TZQuery
     Connection = conSimrs
-    Active = True
     SQL.Strings = (
       'select * from t_detail_asesmen_awal_follow')
     Params = <>

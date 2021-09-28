@@ -1,7 +1,7 @@
 object DataSimrs: TDataSimrs
   OldCreateOrder = False
-  Left = 282
-  Top = 31
+  Left = 270
+  Top = 146
   Height = 907
   Width = 1406
   object conSimrs: TADOConnection

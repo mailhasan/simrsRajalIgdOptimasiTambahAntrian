@@ -34,7 +34,8 @@ uses
   UAsemenAwalIgdNyeri in 'UAsemenAwalIgdNyeri.pas',
   UAsemenAwalIgdDischarge in 'UAsemenAwalIgdDischarge.pas',
   UAsesmenAwalFollowUp in 'UAsesmenAwalFollowUp.pas',
-  UAsesmenAwalKondisiKrs in 'UAsesmenAwalKondisiKrs.pas';
+  UAsesmenAwalKondisiKrs in 'UAsesmenAwalKondisiKrs.pas',
+  UAsesmenAwalObservasi in 'UAsesmenAwalObservasi.pas';
 
 {$R *.res}
 

@@ -1,6 +1,6 @@
 object FAsesmenAwalIgd: TFAsesmenAwalIgd
-  Left = -8
-  Top = -8
+  Left = 222
+  Top = 116
   Width = 1936
   Height = 1056
   Align = alClient
@@ -382,7 +382,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
       Top = 97
       Width = 1918
       Height = 870
-      ActivePage = tskondisikrsigd
+      ActivePage = TabSheet3
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -13327,9 +13327,9 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpRIWAYATOBSERVASI: TGroupBox
           Left = 1080
           Top = 120
-          Width = 350
+          Width = 833
           Height = 705
-          Caption = 'DAFTAR RIWAYAT OBSERVASI'
+          Caption = 'DAFTAR RIWAYAT OBSERVASI / INSTRUKSI DOKTER'
           Color = 16577248
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
@@ -13339,6 +13339,23 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           ParentFont = False
           TabOrder = 0
+          object cxgrdRiwayatObInstruksiDokter: TcxGrid
+            Left = 2
+            Top = 15
+            Width = 829
+            Height = 688
+            Align = alClient
+            TabOrder = 0
+            object cxgrdbtblvwRiwayatObInstruksiDokter: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxgrdlvlRiwayatObInstruksiDokter: TcxGridLevel
+              GridView = cxgrdbtblvwRiwayatObInstruksiDokter
+            end
+          end
         end
         object GroupBox37: TGroupBox
           Left = 0
@@ -13468,6 +13485,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'BARU'
               TabOrder = 2
+              OnClick = btnTAMBAHOBSERVASIClick
             end
           end
           object cbbdokterobs: TComboBox
@@ -13974,7 +13992,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Text = 'edtketerangan'
           end
           object btnTAMBAHOBS: TButton
-            Left = 992
+            Left = 880
             Top = 160
             Width = 75
             Height = 25
@@ -13990,7 +14008,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             TabOrder = 12
             Text = 'cbbpetugasobs'
           end
-          object Memo1: TMemo
+          object mmoTndk: TMemo
             Left = 744
             Top = 40
             Width = 289
@@ -13999,13 +14017,29 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               'Memo1')
             TabOrder = 13
           end
+          object btnBaruObPx: TButton
+            Left = 800
+            Top = 160
+            Width = 75
+            Height = 25
+            Caption = 'BARU'
+            TabOrder = 14
+          end
+          object btnUBAHPx: TButton
+            Left = 960
+            Top = 160
+            Width = 75
+            Height = 25
+            Caption = 'UBAH'
+            TabOrder = 15
+          end
         end
         object grpdaftarobs: TGroupBox
           Left = 0
           Top = 560
           Width = 1081
           Height = 265
-          Caption = 'DAFTAR OBSERVASI'
+          Caption = 'DAFTAR RIWAYAT / OBSERVASI PASIEN'
           Color = 16577248
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
@@ -14015,6 +14049,23 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           ParentColor = False
           ParentFont = False
           TabOrder = 4
+          object cxgrdRiwayatObPasien: TcxGrid
+            Left = 2
+            Top = 16
+            Width = 1077
+            Height = 247
+            Align = alClient
+            TabOrder = 0
+            object cxgrdbtblvwRiwayatObPasien: TcxGridDBTableView
+              NavigatorButtons.ConfirmDelete = False
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+            end
+            object cxgrdlvlRiwayatObPasien: TcxGridLevel
+              GridView = cxgrdbtblvwRiwayatObPasien
+            end
+          end
         end
       end
       object TabSheet5: TTabSheet
@@ -14224,8 +14275,8 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
         object grpRIWAYATTINDAKLANJUT: TGroupBox
           Left = 1080
           Top = 120
-          Width = 350
-          Height = 705
+          Width = 833
+          Height = 721
           Caption = 'DAFTAR RIWAYAT TINDAK LANJUT'
           Color = 16577248
           Font.Charset = ANSI_CHARSET
@@ -14241,7 +14292,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
           Left = 0
           Top = 120
           Width = 1081
-          Height = 609
+          Height = 721
           Color = 16577248
           ParentColor = False
           TabOrder = 2

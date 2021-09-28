@@ -1215,7 +1215,7 @@ type
     edtSpO2: TEdit;
     Label5: TLabel;
     chkKrs: TCheckBox;
-    Memo1: TMemo;
+    mmoTndk: TMemo;
     btnTAMBAHDISCHARGE: TButton;
     btnTAMBAHFOLLOW: TButton;
     lblInterpretasiHasil: TLabel;
@@ -1396,6 +1396,14 @@ type
     cxgrdbclmnKrskendaraanJenazah: TcxGridDBColumn;
     cxgrdbclmnKrsperawatIGD: TcxGridDBColumn;
     cxgrdbclmnKrsdokterIGD: TcxGridDBColumn;
+    btnBaruObPx: TButton;
+    btnUBAHPx: TButton;
+    cxgrdbtblvwRiwayatObInstruksiDokter: TcxGridDBTableView;
+    cxgrdlvlRiwayatObInstruksiDokter: TcxGridLevel;
+    cxgrdRiwayatObInstruksiDokter: TcxGrid;
+    cxgrdbtblvwRiwayatObPasien: TcxGridDBTableView;
+    cxgrdlvlRiwayatObPasien: TcxGridLevel;
+    cxgrdRiwayatObPasien: TcxGrid;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1552,6 +1560,7 @@ type
     procedure btnTAMBAHKONDISIClick(Sender: TObject);
     procedure btnSIMPANKRSClick(Sender: TObject);
     procedure btnUBAHKRSClick(Sender: TObject);
+    procedure btnTAMBAHOBSERVASIClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -1565,7 +1574,7 @@ implementation
 
 {$R *.dfm}
 uses UAsemenAwalIgdTriage,UDataSimrs1,UAsesmenAwalIgdStatus,UAsemenAwalIgdNyeri,UAsemenAwalIgdHumpty,UAsemenAwalIgdDischarge,
-  ZDataset, ZAbstractDataset, ZAbstractRODataset,UAsesmenAwalFollowUp,UAsesmenAwalKondisiKrs;
+  ZDataset, ZAbstractDataset, ZAbstractRODataset,UAsesmenAwalFollowUp,UAsesmenAwalKondisiKrs,UAsesmenAwalObservasi;
 
 procedure TFAsesmenAwalIgd.pnlKeluarClick(Sender: TObject);
 begin
@@ -2394,6 +2403,11 @@ end;
 procedure TFAsesmenAwalIgd.btnUBAHKRSClick(Sender: TObject);
 begin
 tampilUbahKondisiKrs;
+end;
+
+procedure TFAsesmenAwalIgd.btnTAMBAHOBSERVASIClick(Sender: TObject);
+begin
+ baruObservasi;
 end;
 
 end.
