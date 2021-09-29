@@ -151,4 +151,18 @@ object DataSimrs1: TDataSimrs1
     Left = 456
     Top = 104
   end
+  object zqryt_asesmen_awal_observasi_pasien: TZQuery
+    Connection = conSimrs
+    Active = True
+    SQL.Strings = (
+      'select * from t_asesmen_awal_observasi_pasien')
+    Params = <>
+    Left = 392
+    Top = 200
+  end
+  object dst_asesmen_awal_observasi_pasien: TDataSource
+    DataSet = zqryt_asesmen_awal_observasi_pasien
+    Left = 512
+    Top = 224
+  end
 end

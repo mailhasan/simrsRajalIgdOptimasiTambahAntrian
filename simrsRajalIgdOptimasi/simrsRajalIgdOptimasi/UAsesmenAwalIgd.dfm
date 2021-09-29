@@ -1,6 +1,6 @@
 object FAsesmenAwalIgd: TFAsesmenAwalIgd
-  Left = 222
-  Top = 116
+  Left = 10
+  Top = 49
   Width = 1936
   Height = 1056
   Align = alClient
@@ -13443,6 +13443,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = [fsBold]
             ParentFont = False
           end
+          object lblIdInstruksiDokter: TLabel
+            Left = 632
+            Top = 40
+            Width = 111
+            Height = 13
+            Caption = 'lblIdInstruksiDokter'
+          end
           object grpMENUOBS: TGroupBox
             Left = 1000
             Top = 24
@@ -13469,6 +13476,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Font.Style = [fsBold]
               ParentFont = False
               TabOrder = 0
+              OnClick = btnSIMPANOBSClick
             end
             object btnUBAHOBS: TButton
               Left = 184
@@ -13477,6 +13485,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
               Height = 25
               Caption = 'UBAH'
               TabOrder = 1
+              OnClick = btnUBAHOBSClick
             end
             object btnTAMBAHOBSERVASI: TButton
               Left = 8
@@ -13897,6 +13906,13 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Font.Style = []
             ParentFont = False
           end
+          object lblIdObservasiPasien: TLabel
+            Left = 688
+            Top = 16
+            Width = 107
+            Height = 14
+            Caption = 'lblIdObservasiPasien'
+          end
           object dtptanggalobs1: TDateTimePicker
             Left = 152
             Top = 40
@@ -13998,6 +14014,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 25
             Caption = 'TAMBAH'
             TabOrder = 11
+            OnClick = btnTAMBAHOBSClick
           end
           object cbbpetugasobs: TComboBox
             Left = 472
@@ -14024,6 +14041,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 25
             Caption = 'BARU'
             TabOrder = 14
+            OnClick = btnBaruObPxClick
           end
           object btnUBAHPx: TButton
             Left = 960
@@ -14032,6 +14050,7 @@ object FAsesmenAwalIgd: TFAsesmenAwalIgd
             Height = 25
             Caption = 'UBAH'
             TabOrder = 15
+            OnClick = btnUBAHPxClick
           end
         end
         object grpdaftarobs: TGroupBox

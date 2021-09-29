@@ -1404,6 +1404,8 @@ type
     cxgrdbtblvwRiwayatObPasien: TcxGridDBTableView;
     cxgrdlvlRiwayatObPasien: TcxGridLevel;
     cxgrdRiwayatObPasien: TcxGrid;
+    lblIdObservasiPasien: TLabel;
+    lblIdInstruksiDokter: TLabel;
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
     procedure btnSIMPANTRIAGEClick(Sender: TObject);
@@ -1561,6 +1563,11 @@ type
     procedure btnSIMPANKRSClick(Sender: TObject);
     procedure btnUBAHKRSClick(Sender: TObject);
     procedure btnTAMBAHOBSERVASIClick(Sender: TObject);
+    procedure btnSIMPANOBSClick(Sender: TObject);
+    procedure btnBaruObPxClick(Sender: TObject);
+    procedure btnTAMBAHOBSClick(Sender: TObject);
+    procedure btnUBAHOBSClick(Sender: TObject);
+    procedure btnUBAHPxClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -2407,7 +2414,32 @@ end;
 
 procedure TFAsesmenAwalIgd.btnTAMBAHOBSERVASIClick(Sender: TObject);
 begin
- baruObservasi;
+ baruObservasiInstruksiDokter;
+end;
+
+procedure TFAsesmenAwalIgd.btnSIMPANOBSClick(Sender: TObject);
+begin
+prosesInstruksiDokter;
+end;
+
+procedure TFAsesmenAwalIgd.btnBaruObPxClick(Sender: TObject);
+begin
+baruObservasi;
+end;
+
+procedure TFAsesmenAwalIgd.btnTAMBAHOBSClick(Sender: TObject);
+begin
+prosesSimpanObservasi;
+end;
+
+procedure TFAsesmenAwalIgd.btnUBAHOBSClick(Sender: TObject);
+begin
+tampilUbahInstruksiDokter;
+end;
+
+procedure TFAsesmenAwalIgd.btnUBAHPxClick(Sender: TObject);
+begin
+tampilUbahObservasi;
 end;
 
 end.

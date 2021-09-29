@@ -29,6 +29,8 @@ type
     dst_asesmen_awal_tindakLanjut: TDataSource;
     zqryt_detail_asesmen_awal_follow: TZQuery;
     dst_detail_asesmen_awal_follow: TDataSource;
+    zqryt_asesmen_awal_observasi_pasien: TZQuery;
+    dst_asesmen_awal_observasi_pasien: TDataSource;
     procedure conSimrsAfterConnect(Sender: TObject);
   private
     { Private declarations }
@@ -55,6 +57,7 @@ begin
   qryt_asesmen_awal_observasi.Active:= True;
   qryt_asesmen_awal_tindaklanjut.Active:= True;
   zqryt_detail_asesmen_awal_follow.Active := True;
+  zqryt_asesmen_awal_observasi_pasien.Active := True;
 end;
 
 end.
